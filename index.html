@@ -1,173 +1,691 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BetterConnections for Teachers</title>
-  <meta name="description" content="AI-powered, personality-specific strategies for teachers. Reduce conflict. Save time. Get clarity." />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BetterConnections for Teachers - AI-Powered Classroom Solutions</title>
+  <meta name="description" content="Overwhelmed by difficult students and parents? Get AI-powered, personality-specific strategies in 2 minutes. Free quiz + $4.99/month AI assistant.">
+  
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    :root {
+      --purple: #7a5ea7;
+      --pink: #ff69b4;
+      --text: #1a1a1a;
+      --text-light: #666;
+      --bg: #ffffff;
+      --bg-light: #f8f9fb;
+      --border: #e5e5e5;
+    }
+    
+    * {
       margin: 0;
-      color: #1a1a1a;
-      background: #ffffff;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
       line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
     }
-
-    header {
-      border-bottom: 1px solid #e5e5e5;
-      padding: 20px;
-    }
-
+    
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
-
+    
+    /* Header */
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
     .logo {
       font-size: 24px;
       font-weight: 700;
-      color: #7a5ea7;
+      color: var(--purple);
+      text-decoration: none;
     }
-
+    
+    .tagline {
+      font-size: 12px;
+      color: var(--text-light);
+      font-style: italic;
+    }
+    
+    /* Hero Section */
     .hero {
       text-align: center;
       padding: 80px 20px;
+      max-width: 900px;
+      margin: 0 auto;
     }
-
+    
     .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+      font-size: 3.5em;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      color: var(--text);
+      font-weight: 800;
     }
-
-    .hero p {
-      font-size: 1.4rem;
-      color: #555;
-      max-width: 800px;
-      margin: 0 auto 40px;
+    
+    .hero .subheadline {
+      font-size: 1.5em;
+      line-height: 1.6;
+      color: var(--text-light);
+      margin-bottom: 40px;
+      font-weight: 400;
     }
-
+    
+    .hero .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
     .btn {
-      display: inline-block;
-      padding: 14px 28px;
+      padding: 16px 32px;
       border-radius: 8px;
+      font-size: 18px;
       font-weight: 600;
       text-decoration: none;
-      margin: 10px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
     }
-
+    
     .btn-primary {
-      background: #7a5ea7;
-      color: #fff;
+      background: var(--purple);
+      color: white;
     }
-
+    
+    .btn-primary:hover {
+      background: #6a4e97;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(122, 94, 167, 0.3);
+    }
+    
     .btn-secondary {
-      border: 2px solid #7a5ea7;
-      color: #7a5ea7;
+      background: white;
+      color: var(--purple);
+      border: 2px solid var(--purple);
     }
-
-    section {
-      padding: 70px 20px;
+    
+    .btn-secondary:hover {
+      background: var(--bg-light);
     }
-
-    .light {
-      background: #f8f9fb;
+    
+    /* Problem Section */
+    .problem-section {
+      background: var(--bg-light);
+      padding: 60px 20px;
     }
-
-    h2 {
+    
+    .problem-section h2 {
+      font-size: 2.5em;
       text-align: center;
-      font-size: 2.4rem;
       margin-bottom: 40px;
+      color: var(--text);
     }
-
-    .grid {
+    
+    .problem-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
       max-width: 1000px;
       margin: 0 auto;
     }
-
-    .card {
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 12px;
+    
+    .problem-card {
+      background: white;
       padding: 30px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
     }
-
-    footer {
-      background: #1a1a1a;
-      color: #fff;
+    
+    .problem-card h3 {
+      font-size: 1.5em;
+      margin-bottom: 16px;
+      color: var(--purple);
+    }
+    
+    .problem-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .problem-card li {
+      padding: 8px 0;
+      color: var(--text-light);
+    }
+    
+    .problem-card li::before {
+      content: "→ ";
+      color: var(--purple);
+      font-weight: bold;
+    }
+    
+    /* Solution Section */
+    .solution-section {
+      padding: 80px 20px;
       text-align: center;
-      padding: 40px 20px;
     }
-
-    footer a {
-      color: #ff69b4;
+    
+    .solution-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    
+    .solution-section .intro {
+      font-size: 1.3em;
+      color: var(--text-light);
+      max-width: 800px;
+      margin: 0 auto 50px;
+      line-height: 1.8;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .benefit-card {
+      padding: 30px;
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+    
+    .benefit-card:hover {
+      border-color: var(--purple);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(122, 94, 167, 0.15);
+    }
+    
+    .benefit-icon {
+      font-size: 3em;
+      margin-bottom: 16px;
+    }
+    
+    .benefit-card h3 {
+      font-size: 1.3em;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    
+    .benefit-card p {
+      color: var(--text-light);
+      font-size: 1em;
+    }
+    
+    /* How It Works */
+    .how-it-works {
+      background: var(--bg-light);
+      padding: 80px 20px;
+    }
+    
+    .how-it-works h2 {
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .steps {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .step {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 50px;
+      align-items: flex-start;
+    }
+    
+    .step-number {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      background: var(--purple);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    
+    .step-content h3 {
+      font-size: 1.5em;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    
+    .step-content p {
+      color: var(--text-light);
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    
+    /* Pricing */
+    .pricing-section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    
+    .pricing-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 50px;
+    }
+    
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .pricing-card {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      transition: all 0.3s;
+    }
+    
+    .pricing-card.featured {
+      border-color: var(--purple);
+      box-shadow: 0 8px 32px rgba(122, 94, 167, 0.2);
+      transform: scale(1.05);
+    }
+    
+    .pricing-card h3 {
+      font-size: 1.8em;
+      margin-bottom: 16px;
+    }
+    
+    .price {
+      font-size: 3em;
+      font-weight: 800;
+      color: var(--purple);
+      margin: 20px 0;
+    }
+    
+    .price-period {
+      font-size: 0.4em;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+    
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 30px 0;
+      text-align: left;
+    }
+    
+    .features-list li {
+      padding: 12px 0;
+      color: var(--text-light);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .features-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .features-list li::before {
+      content: "✓ ";
+      color: var(--purple);
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    
+    /* Testimonial */
+    .testimonial {
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    
+    .testimonial blockquote {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.5em;
+      font-style: italic;
+      line-height: 1.8;
+    }
+    
+    .testimonial cite {
+      display: block;
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-style: normal;
+      font-weight: 600;
+    }
+    
+    /* Final CTA */
+    .final-cta {
+      padding: 80px 20px;
+      text-align: center;
+      background: var(--bg-light);
+    }
+    
+    .final-cta h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+    
+    .final-cta p {
+      font-size: 1.3em;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--text);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .footer-links a {
+      color: white;
       text-decoration: none;
-      margin: 0 10px;
+      font-size: 14px;
+    }
+    
+    .footer-links a:hover {
+      color: var(--pink);
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5em;
+      }
+      
+      .hero .subheadline {
+        font-size: 1.2em;
+      }
+      
+      .problem-section h2,
+      .solution-section h2,
+      .how-it-works h2,
+      .pricing-section h2,
+      .final-cta h2 {
+        font-size: 2em;
+      }
+      
+      .step {
+        flex-direction: column;
+      }
+      
+      .pricing-card.featured {
+        transform: scale(1);
+      }
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <div class="container">
-    <div class="logo">BetterConnections</div>
-  </div>
-</header>
-
-<section class="hero">
-  <h1>Overwhelmed by Difficult Students & Parents?</h1>
-  <p>
-    BetterConnections gives teachers AI-powered, personality-specific strategies
-    in minutes — not hours of stress and second-guessing.
-  </p>
-  <a href="#" class="btn btn-primary">Take the Free Quiz</a>
-  <a href="#" class="btn btn-secondary">See How It Works</a>
-</section>
-
-<section class="light">
-  <h2>Why Teachers Are Burning Out</h2>
-  <div class="grid">
-    <div class="card">Constant parent emails and conflict</div>
-    <div class="card">Behavior issues with no clear strategy</div>
-    <div class="card">Endless documentation and admin demands</div>
-  </div>
-</section>
-
-<section>
-  <h2>How BetterConnections Helps</h2>
-  <div class="grid">
-    <div class="card">Personality-aware parent communication</div>
-    <div class="card">Student behavior strategies that actually work</div>
-    <div class="card">Clear guidance in minutes, not hours</div>
-  </div>
-</section>
-
-<section class="light">
-  <h2>Simple Pricing</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Free</h3>
-      <p>Personality quiz + basic strategies</p>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div>
+          <a href="#" class="logo">BetterConnections</a>
+          <div class="tagline">AI Engineered, Human Inspired</div>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <h3>$4.99 / month</h3>
-      <p>Unlimited AI-powered guidance for real classroom issues</p>
-    </div>
-  </div>
-</section>
+  </header>
 
-<footer>
-  <p>© 2026 BetterConnections</p>
-  <p>
-    <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="mailto:clarityapp2025@outlook.com">Contact</a>
-  </p>
-</footer>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Overwhelmed by Problem Students<br>& Difficult Parents?</h1>
+    <p class="subheadline">
+      Get AI-powered, personality-specific strategies in 2 minutes —<br>
+      not 2 hours of Googling and second-guessing.
+    </p>
+    <div class="cta-buttons">
+      <a href="#quiz" class="btn btn-primary">Take Free Personality Quiz →</a>
+      <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="problem-section">
+    <div class="container">
+      <h2>You're Drowning in Demands</h2>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <h3>Every Day You Face:</h3>
+          <ul>
+            <li>Problem students who won't listen</li>
+            <li>Difficult parents who question everything</li>
+            <li>Overwhelming admin demands</li>
+            <li>Endless documentation (IEPs, 504s)</li>
+            <li>Grading feedback for 80+ students</li>
+            <li>Lessons that reach every learner</li>
+          </ul>
+        </div>
+        
+        <div class="problem-card">
+          <h3>You Spend HOURS:</h3>
+          <ul>
+            <li>Researching behavior strategies</li>
+            <li>Crafting the perfect parent email</li>
+            <li>Differentiating for diverse learners</li>
+            <li>Documenting for special education</li>
+            <li>Responding to admin requests</li>
+            <li>Writing personalized feedback</li>
+          </ul>
+        </div>
+        
+        <div class="problem-card">
+          <h3>And You STILL Don't Know:</h3>
+          <ul>
+            <li>If your approach will work</li>
+            <li>If you said the right thing</li>
+            <li>If you'll escalate or de-escalate</li>
+            <li>If you're reaching that student</li>
+            <li>If the parent will complain</li>
+            <li>If you can keep doing this</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="solution-section">
+    <div class="container">
+      <h2>What If AI Could Help?</h2>
+      <p class="intro">
+        BetterConnections combines personality psychology + AI assistance + teacher-specific expertise
+        to give you strategies that actually work — in minutes, not hours.
+      </p>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">📧</div>
+          <h3>Parent Emails</h3>
+          <p>Get personality-adapted templates that de-escalate conflict and build trust</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">👨‍🎓</div>
+          <h3>Student Behavior</h3>
+          <p>Strategies tailored to each personality type — what works for Marcus won't work for Emma</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">📚</div>
+          <h3>Lesson Planning</h3>
+          <p>Differentiate for all 4 personality types in one lesson — reach every student</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">💼</div>
+          <h3>Admin Relations</h3>
+          <p>Maintain boundaries professionally while protecting your time and sanity</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">📝</div>
+          <h3>Documentation</h3>
+          <p>IEP notes, 504 plans, progress reports — done faster and more professionally</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">✍️</div>
+          <h3>Grading Feedback</h3>
+          <p>Personalized comments adapted to each student's personality — motivate, don't deflate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <h2>How It Works</h2>
+      
+      <div style="max-width: 700px; margin: 0 auto 60px; text-align: center;">
+        <p style="font-size: 2em; line-height: 1.5; color: var(--text); font-weight: 600;">
+          You input the issue.<br>
+          BetterConnections gives you a customized answer<br>
+          that you can copy and paste, or edit if you like.<br>
+        </p>
+        <p style="font-size: 1.8em; line-height: 1.4; color: var(--purple); font-weight: 700; margin-top: 30px;">
+          Problems solved with our 2-click solution.<br>
+          Teachers save time.
+        </p>
+      </div>
+      
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Take the Free Personality Quiz</h3>
+            <p>Learn the 4 personality types (Driver, Analytical, Expressive, Amiable) and how to communicate with each. Takes 2 minutes.</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Input Your Issue</h3>
+            <p>Difficult student? Demanding parent? Overwhelming admin? Just describe what's happening.</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Get Your Answer</h3>
+            <p>AI generates personality-specific strategies, ready-to-use scripts, and explanations — in 2 minutes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing-section">
+    <div class="container">
+      <h2>Simple, Honest Pricing</h2>
+      
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <ul class="features-list">
+            <li>Complete personality quiz</li>
+            <li>Your personality type results</li>
+            <li>Hot buttons for all 4 types</li>
+            <li>Basic communication strategies</li>
+          </ul>
+          <a href="#quiz" class="btn btn-secondary">Get Started Free</a>
+        </div>
+        
+        <div class="pricing-card featured">
+          <h3>AI Assistant</h3>
+          <div class="price">$4.99<span class="price-period">/month</span></div>
+          <ul class="features-list">
+            <li>Everything in Free, plus:</li>
+            <li>Unlimited AI strategy generation</li>
+            <li>Parent email templates</li>
+            <li>Student behavior strategies</li>
+            <li>Lesson differentiation help</li>
+            <li>Admin communication scripts</li>
+            <li>IEP/504 documentation guidance</li>
+            <li>Grading feedback templates</li>
+            <li>Save your strategy library</li>
+          </ul>
+          <a href="#subscribe" class="btn btn-primary">Start Free Trial</a>
+          <p style="margin-top: 16px; color: var(--text-light); font-size: 0.9em;">Cancel anytime. No commitment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="testimonial">
+    <div class="container">
+      <blockquote>
+        "I learned personality types through a professional development program, then used that knowledge as a teacher and parent. Understanding how to communicate with Drivers, Analyticals, Expressives, and Amiables transformed how I connected with difficult students, navigated challenging parents, and became a better father. Now I'm bringing that transformation to you — powered by AI."
+        <cite>— Mark, Former Teacher & Creator of BetterConnections</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Ready to Get 6 Hours Back Every Week?</h2>
+      <p>Start with the free personality quiz. See how understanding personality types transforms your classroom.</p>
+      <a href="#quiz" class="btn btn-primary btn-large">Take Free Quiz Now →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="#terms">Terms of Service</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="mailto:clarityapp2025@outlook.com">Contact</a>
+      </div>
+      <p style="font-size: 14px; color: #999;">© 2025 BetterConnections. AI Engineered, Human Inspired.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
