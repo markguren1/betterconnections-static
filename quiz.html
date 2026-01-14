@@ -4,86 +4,103 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>BetterConnections — Personality Quiz</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;background:#fff;color:#0f172a}
+    .wrap{max-width:900px;margin:0 auto;padding:22px 18px 60px}
+    .top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;border:1px solid #e5e7eb;border-radius:999px;padding:10px 14px;position:sticky;top:12px;background:#fff}
+    .top a{text-decoration:none;color:#475569;padding:7px 10px;border-radius:999px}
+    .top a:hover{background:#f8fafc;color:#0f172a}
+    h1{margin:18px 0 6px;font-size:34px}
+    .sub{color:#475569;line-height:1.6;margin:0 0 16px}
+    .card{border:1px solid #e5e7eb;border-radius:16px;padding:16px;margin-top:14px;box-shadow:0 10px 24px rgba(15,23,42,.08)}
+    .qmeta{color:#475569;font-size:14px;margin-top:10px}
+    .choices{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+    @media(min-width:700px){.choices{grid-template-columns:1fr 1fr}}
+    button{border:1px solid #e5e7eb;border-radius:14px;background:#fff;padding:14px;font-weight:800;cursor:pointer}
+    button:hover{background:#f8fafc}
+    .bar{height:10px;border:1px solid #e5e7eb;border-radius:999px;overflow:hidden;background:#fff;margin-top:10px}
+    .bar > div{height:100%;width:0%;background:linear-gradient(135deg,#6d28d9,#0ea5e9)}
+  </style>
 </head>
 <body>
-
-<div class="container">
-  <div class="topbar">
-    <div class="brand">
-      BetterConnections
-      <span class="badge">Reviewer Demo</span>
-    </div>
-    <div class="nav">
+<div class="wrap">
+  <div class="top">
+    <strong>BetterConnections <span style="font-weight:600;color:#475569;font-size:12px;border:1px solid #e5e7eb;padding:4px 10px;border-radius:999px;margin-left:8px;">Reviewer Demo</span></strong>
+    <div>
       <a href="index.html">Home</a>
-      <a class="active" href="quiz.html">Personality Quiz</a>
       <a href="results.html">Results</a>
       <a href="hot-buttons.html">Hot Buttons</a>
     </div>
   </div>
 
-  <div class="hero qwrap">
-    <h1>Personality Quiz</h1>
-    <p class="lead">Answer 10 quick questions to see your Vibe Mix.</p>
+  <h1>Personality Quiz</h1>
+  <p class="sub">Answer 10 quick questions to see your Vibe Mix.</p>
 
-    <div class="small">
-      Question <span id="qNum">1</span> of <span id="qTotal">10</span>
-    </div>
-    <div class="progress" style="margin:10px 0">
-      <div id="bar"></div>
-    </div>
+  <div class="qmeta">Question <span id="qNum">1</span> of <span id="qTotal">10</span></div>
+  <div class="bar"><div id="bar"></div></div>
 
-    <div class="card">
-      <div id="qText" class="qtitle"></div>
-      <div id="choices" class="choices"></div>
-    </div>
+  <div class="card">
+    <h2 id="qText" style="margin:0 0 10px;font-size:18px"></h2>
+    <div class="choices" id="choices"></div>
   </div>
 </div>
 
 <script>
-const questions = [
-  ["When stressed, you prefer to…", ["Decide fast","D"],["Talk it out","C"],["Analyze","A"],["Calm things","H"]],
-  ["People see you as…", ["Direct","D"],["Friendly","C"],["Thoughtful","A"],["Supportive","H"]],
-  ["You value most…", ["Results","D"],["Connection","C"],["Accuracy","A"],["Harmony","H"]],
-  ["In conflict you…", ["Push resolution","D"],["Seek understanding","C"],["Ask questions","A"],["Ease tension","H"]],
-  ["You communicate best when…", ["Brief","D"],["Expressive","C"],["Detailed","A"],["Gentle","H"]],
-  ["You lead by…", ["Direction","D"],["Inspiration","C"],["Structure","A"],["Stability","H"]],
-  ["Change makes you…", ["Move fast","D"],["Rally others","C"],["Re-evaluate","A"],["Steady people","H"]],
-  ["Your strength is…", ["Decisiveness","D"],["Empathy","C"],["Logic","A"],["Patience","H"]],
-  ["You prefer feedback that is…", ["Direct","D"],["Encouraging","C"],["Specific","A"],["Kind","H"]],
-  ["In teams you focus on…", ["Outcomes","D"],["People","C"],["Process","A"],["Balance","H"]]
-];
+  const questions = [
+    ["When stressed, you prefer to…", ["Decide fast","D"],["Talk it out","C"],["Analyze","A"],["Calm things","H"]],
+    ["People see you as…", ["Direct","D"],["Friendly","C"],["Thoughtful","A"],["Supportive","H"]],
+    ["You value most…", ["Results","D"],["Connection","C"],["Accuracy","A"],["Harmony","H"]],
+    ["In conflict you…", ["Push resolution","D"],["Seek understanding","C"],["Ask questions","A"],["Ease tension","H"]],
+    ["You communicate best when…", ["Brief","D"],["Expressive","C"],["Detailed","A"],["Gentle","H"]],
+    ["You lead by…", ["Direction","D"],["Inspiration","C"],["Structure","A"],["Stability","H"]],
+    ["Change makes you…", ["Move fast","D"],["Rally others","C"],["Re-evaluate","A"],["Steady people","H"]],
+    ["Your strength is…", ["Decisiveness","D"],["Empathy","C"],["Logic","A"],["Patience","H"]],
+    ["You prefer feedback that is…", ["Direct","D"],["Encouraging","C"],["Specific","A"],["Kind","H"]],
+    ["In teams you focus on…", ["Outcomes","D"],["People","C"],["Process","A"],["Balance","H"]]
+  ];
 
-let i = 0;
-let scores = {D:0,C:0,A:0,H:0};
+  let i = 0;
+  const scores = {D:0,C:0,A:0,H:0};
 
-const qNum = document.getElementById("qNum");
-const qTotal = document.getElementById("qTotal");
-const bar = document.getElementById("bar");
-const qText = document.getElementById("qText");
-const choices = document.getElementById("choices");
+  const qNum = document.getElementById("qNum");
+  const qTotal = document.getElementById("qTotal");
+  const bar = document.getElementById("bar");
+  const qText = document.getElementById("qText");
+  const choices = document.getElementById("choices");
 
-qTotal.textContent = questions.length;
+  qTotal.textContent = questions.length;
 
-function render(){
-  const q = questions[i];
-  qNum.textContent = i+1;
-  bar.style.width = (i/questions.length*100)+"%";
-  qText.textContent = q[0];
-  choices.innerHTML = "";
-  q.slice(1).forEach(a=>{
-    const b = document.createElement("button");
-    b.className="choice";
-    b.textContent=a[0];
-    b.onclick=()=>{ scores[a[1]]++; next(); };
-    choices.appendChild(b);
-  });
-}
+  function render(){
+    const q = questions[i];
+    qNum.textContent = i+1;
+    bar.style.width = ((i)/questions.length*100) + "%";
+    qText.textContent = q[0];
+    choices.innerHTML = "";
+    q.slice(1).forEach(([label, key]) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = label;
+      b.addEventListener("click", () => { scores[key]++; next(); });
+      choices.appendChild(b);
+    });
+  }
 
-function next(){
-  if(i<questions.length-1){ i++; render(); return; }
-  const arr = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
-  const p = new URLSearchParams({
-    primary: arr[0][0],
-    secondary: arr[1][0],
-    d:scores.D,c:scores.C,a:scores.A,h:score
+  function next(){
+    if(i < questions.length - 1){
+      i++;
+      render();
+      return;
+    }
+    const ordered = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+    const p = new URLSearchParams({
+      primary: ordered[0][0],
+      secondary: ordered[1][0],
+      d:scores.D, c:scores.C, a:scores.A, h:scores.H
+    });
+    location.href = "results.html?" + p.toString();
+  }
+
+  render();
+</script>
+</body>
+</html>
