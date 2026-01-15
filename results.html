@@ -1,77 +1,236 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>BetterConnections — Results</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Results — BetterConnections</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Table + callout polish (safe even if styles.css changes) */
+    table { width:100%; border-collapse:collapse; }
+    th, td { text-align:left; padding:10px 10px; border-bottom:1px solid #e5e7eb; vertical-align:top; }
+    th { font-size:12px; color:#475569; letter-spacing:.02em; text-transform:uppercase; }
+    .tag { display:inline-block; font-size:12px; padding:3px 10px; border-radius:999px; border:1px solid #e5e7eb; color:#475569; background:#fff; }
+    .callout { border:1px dashed #e5e7eb; border-radius:16px; padding:12px 14px; background:#fbfdff; color:#475569; line-height:1.6; }
+    select { padding:10px 12px; border-radius:12px; border:1px solid #e5e7eb; background:#fff; font-weight:800; }
+    .two { display:grid; grid-template-columns:1fr; gap:14px; }
+    @media(min-width:900px){ .two{ grid-template-columns:1fr 1fr; } }
+  </style>
 </head>
 <body>
-
-<div class="container">
-  <div class="topbar">
-    <div class="brand">
-      BetterConnections
-      <span class="badge">Reviewer Demo</span>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">BetterConnections <span class="pill">Reviewer Demo</span></div>
+      <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="quiz.html">Personality Quiz</a>
+        <a href="results.html">Results</a>
+        <a href="hot-buttons.html">Hot Buttons</a>
+        <a href="nextgen-assistant.html">NextGen Assistant</a>
+        <a href="pricing.html">Pricing</a>
+      </div>
     </div>
-    <div class="nav">
-      <a href="index.html">Home</a>
-      <a href="quiz.html">Personality Quiz</a>
-      <a class="active" href="results.html">Results</a>
-      <a href="hot-buttons.html">Hot Buttons</a>
-    </div>
-  </div>
 
-  <div class="hero">
-    <h1>Your Vibe Mix</h1>
-    <p class="lead" id="subtitle">Based on your quiz responses.</p>
+    <h1>Your Results</h1>
+    <p class="lead">
+      Your “vibe mix” plus the fun part: best/challenging matches that explain why a spouse or best friend can
+      sometimes be your toughest match.
+    </p>
 
-    <div class="grid">
-      <div class="card half">
-        <h2>Primary Style</h2>
-        <p id="primary"></p>
+    <div class="card" style="margin-top:14px">
+      <h2 id="winnerTitle" style="margin:0 0 6px">Primary Style</h2>
+      <div class="small" id="winnerSub"></div>
+
+      <div class="hr"></div>
+
+      <h2 style="margin:0 0 8px">Vibe Mix (Bar Chart)</h2>
+      <div class="bars" id="bars"></div>
+
+      <!-- A) FUN INSIGHT: immediately after bar chart -->
+      <div class="hr"></div>
+      <div class="callout">
+        <strong>Fun PD insight:</strong> your spouse or best friend may be your <strong>most challenging match</strong> —
+        and that’s normal. It doesn’t mean “bad”… it means you’ll need different language and expectations.
       </div>
 
-      <div class="card half">
-        <h2>Secondary Style</h2>
-        <p id="secondary"></p>
+      <!-- A) BEST / WORST CHART: immediately after fun insight -->
+      <div class="hr"></div>
+      <div class="tag">Best / Challenging Matches (Snapshot)</div>
+      <div style="overflow:auto; margin-top:10px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Your Style</th>
+              <th>Best Match</th>
+              <th>Most Challenging</th>
+              <th>Quick Tip</th>
+            </tr>
+          </thead>
+          <tbody id="matchRows"></tbody>
+        </table>
+      </div>
+
+      <!-- Match checker -->
+      <div class="hr"></div>
+      <div class="tag">Match Checker</div>
+      <p class="small" style="margin:10px 0 10px">
+        Pick two types and see the likely “easy” vs “challenging” dynamic. Great for spouses, colleagues, students, and parents.
+      </p>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <select id="m1"></select>
+        <select id="m2"></select>
+        <span class="small">→</span>
+        <span id="matchResult" class="tag">Select two types</span>
+      </div>
+      <div class="small" id="matchExplain" style="margin-top:10px"></div>
+
+      <div class="btnrow">
+        <a class="btn primary" href="nextgen-assistant.html">See NextGen Assistant Example</a>
+        <a class="btn" href="hot-buttons.html">Hot Buttons</a>
+        <a class="btn" href="quiz.html">Retake Quiz</a>
+      </div>
+    </div>
+
+    <!-- Optional deep-dive tables (kept but below the “fun” section) -->
+    <div class="two" style="margin-top:14px">
+      <div class="card">
+        <div class="tag">Strengths & Watch-outs</div>
+        <div class="hr"></div>
+        <div style="overflow:auto">
+          <table>
+            <thead>
+              <tr><th>Type</th><th>Strengths</th><th>Watch-outs</th></tr>
+            </thead>
+            <tbody id="swRows"></tbody>
+          </table>
+        </div>
       </div>
 
       <div class="card">
-        <h2>Score Breakdown</h2>
-        <p class="small" id="scores"></p>
+        <div class="tag">Hot Buttons (Quick)</div>
+        <div class="hr"></div>
+        <div class="small" id="hbQuick"></div>
+        <div class="btnrow">
+          <a class="btn" href="hot-buttons.html">Go to Hot Buttons Page</a>
+        </div>
       </div>
     </div>
-
-    <div class="actions" style="margin-top:20px">
-      <a class="btn primary" href="hot-buttons.html">See Hot Buttons</a>
-      <a class="btn" href="quiz.html">Retake Quiz</a>
-      <a class="btn" href="index.html">Back to Home</a>
-    </div>
   </div>
-</div>
 
 <script>
-const styleNames = {
-  D: "Driver — decisive, direct, fast-moving",
-  C: "Connector — expressive, relational, people-focused",
-  A: "Analyst — thoughtful, precise, data-oriented",
-  H: "Harmonizer — supportive, calm, stability-focused"
-};
+  // Canonical order for BetterConnections
+  const TYPES = ["Driver", "Amiable", "Expressive", "Analytical"];
 
-const params = new URLSearchParams(location.search);
-const primary = params.get("primary");
-const secondary = params.get("secondary");
+  // Strengths/Watch-outs (lightweight but useful)
+  const SW = {
+    "Driver":      { s: "Decisive • Direct • Action-oriented",     w: "Impatient • Can sound blunt" },
+    "Amiable":     { s: "Supportive • Calm • Trust-building",      w: "Avoids conflict • Can hesitate" },
+    "Expressive":  { s: "Energizing • Inspires • Big-picture",     w: "Can be scattered • Overpromises" },
+    "Analytical":  { s: "Thorough • Accurate • Logical",           w: "Overthinks • Slow to decide" }
+  };
 
-document.getElementById("primary").textContent =
-  primary ? styleNames[primary] : "Take the quiz to see results.";
+  // Best / Challenging mapping (PD gold)
+  const SNAP = [
+    { p: "Driver",     best: "Amiable",     hard: "Expressive",  tip: "Be direct, then soften tone." },
+    { p: "Amiable",    best: "Expressive",  hard: "Driver",      tip: "Build trust first, then set boundary." },
+    { p: "Expressive", best: "Amiable",     hard: "Analytical",  tip: "Start warm; add structure + specifics." },
+    { p: "Analytical", best: "Driver",      hard: "Amiable",     tip: "Lead with facts; add reassurance." }
+  ];
 
-document.getElementById("secondary").textContent =
-  secondary ? styleNames[secondary] : "";
+  // Quick hot-button summaries
+  const HB = {
+    "Driver": "Triggered by indecision or slow pace. De-escalate with clarity, options, and timelines.",
+    "Amiable": "Triggered by harsh tone or conflict. De-escalate with reassurance and respect.",
+    "Expressive": "Triggered by being ignored or flat tone. De-escalate with warmth and engagement.",
+    "Analytical": "Triggered by vague details or sudden changes. De-escalate with specifics and rationale."
+  };
 
-document.getElementById("scores").textContent =
-  `Driver: ${params.get("d")} • Connector: ${params.get("c")} • Analyst: ${params.get("a")} • Harmonizer: ${params.get("h")}`;
+  // --- Bar chart from quiz storage ---
+  const savedScores = localStorage.getItem("bc_scores");
+  const scores = savedScores ? JSON.parse(savedScores) : [0,0,0,0];
+
+  const total = scores.reduce((a,b)=>a+b,0) || 1;
+  const maxIdx = scores.indexOf(Math.max(...scores));
+  const primary = TYPES[maxIdx];
+
+  document.getElementById("winnerTitle").textContent = `Primary Style: ${primary}`;
+  document.getElementById("winnerSub").textContent = "Scores reflect your answers across 10 questions (demo).";
+
+  const bars = document.getElementById("bars");
+  const classes = ["a","b","c","d"];
+  TYPES.forEach((name, i) => {
+    const pct = Math.round((scores[i]/total)*100);
+    const row = document.createElement("div");
+    row.className = "barRow";
+    row.innerHTML = `
+      <div class="barLabel">${name}</div>
+      <div class="barTrack"><div class="barFill ${classes[i]}" style="width:${pct}%"></div></div>
+      <div class="small">${scores[i]}/${total}</div>
+    `;
+    bars.appendChild(row);
+  });
+
+  // --- Snapshot table immediately after bar chart ---
+  document.getElementById("matchRows").innerHTML = SNAP.map(r => `
+    <tr>
+      <td><strong>${r.p}</strong></td>
+      <td>${r.best}</td>
+      <td>${r.hard}</td>
+      <td>${r.tip}</td>
+    </tr>
+  `).join("");
+
+  // --- Strengths/Watch-outs table (below the fun section) ---
+  const swOrder = ["Driver","Amiable","Expressive","Analytical"];
+  document.getElementById("swRows").innerHTML = swOrder.map(t => `
+    <tr><td><strong>${t}</strong></td><td>${SW[t].s}</td><td>${SW[t].w}</td></tr>
+  `).join("");
+
+  // --- Hot buttons quick summary for primary type ---
+  document.getElementById("hbQuick").innerHTML = `
+    <div class="callout" style="margin:0;">
+      <strong>${primary} Hot Button:</strong> ${HB[primary]}
+    </div>
+  `;
+
+  // --- Match Checker ---
+  const m1 = document.getElementById("m1");
+  const m2 = document.getElementById("m2");
+  const matchResult = document.getElementById("matchResult");
+  const matchExplain = document.getElementById("matchExplain");
+
+  function fillSelect(sel){
+    sel.innerHTML = TYPES.map(t => `<option value="${t}">${t}</option>`).join("");
+  }
+  fillSelect(m1); fillSelect(m2);
+  m1.value = primary;
+  m2.value = "Amiable";
+
+  function relation(a,b){
+    const rowA = SNAP.find(x => x.p === a);
+    const rowB = SNAP.find(x => x.p === b);
+    if (!rowA || !rowB) return {label:"", why:""};
+
+    const isBest = (rowA.best === b) || (rowB.best === a);
+    const isHard = (rowA.hard === b) || (rowB.hard === a);
+
+    if (a === b) return {label:"Same style", why:"Often feels easy — but watch for shared blind spots (same strengths, same weaknesses)."};
+    if (isBest) return {label:"Best Match (often easy)", why:"You tend to “fit” naturally — communication friction is lower."};
+    if (isHard) return {label:"Challenging Match (fun + growth)", why:"Not bad — just different. This is where BetterConnections language hacks matter most."};
+    return {label:"Mixed / depends", why:"Not a classic best/worst pairing — outcome depends on stress level, roles, and tone."};
+  }
+
+  function updateMatch(){
+    const a = m1.value, b = m2.value;
+    const r = relation(a,b);
+    matchResult.textContent = r.label || "Select two types";
+    matchExplain.textContent = r.why || "";
+  }
+
+  m1.addEventListener("change", updateMatch);
+  m2.addEventListener("change", updateMatch);
+  updateMatch();
 </script>
-
 </body>
 </html>
