@@ -6,231 +6,170 @@
   <title>Results — BetterConnections</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Table + callout polish (safe even if styles.css changes) */
-    table { width:100%; border-collapse:collapse; }
-    th, td { text-align:left; padding:10px 10px; border-bottom:1px solid #e5e7eb; vertical-align:top; }
-    th { font-size:12px; color:#475569; letter-spacing:.02em; text-transform:uppercase; }
-    .tag { display:inline-block; font-size:12px; padding:3px 10px; border-radius:999px; border:1px solid #e5e7eb; color:#475569; background:#fff; }
-    .callout { border:1px dashed #e5e7eb; border-radius:16px; padding:12px 14px; background:#fbfdff; color:#475569; line-height:1.6; }
-    select { padding:10px 12px; border-radius:12px; border:1px solid #e5e7eb; background:#fff; font-weight:800; }
-    .two { display:grid; grid-template-columns:1fr; gap:14px; }
-    @media(min-width:900px){ .two{ grid-template-columns:1fr 1fr; } }
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid #e5e7eb;vertical-align:top}
+    th{font-size:12px;color:#475569;text-transform:uppercase}
+    .callout{border:1px dashed #e5e7eb;border-radius:16px;padding:14px;background:#fbfdff;color:#475569;line-height:1.6}
+    .tag{display:inline-block;font-size:12px;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;color:#475569}
+    select{padding:10px;border-radius:12px;border:1px solid #e5e7eb;font-weight:700}
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="topbar">
-      <div class="brand">BetterConnections <span class="pill">Reviewer Demo</span></div>
-      <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="quiz.html">Personality Quiz</a>
-        <a href="results.html">Results</a>
-        <a href="hot-buttons.html">Hot Buttons</a>
-        <a href="nextgen-assistant.html">NextGen Assistant</a>
-        <a href="pricing.html">Pricing</a>
-      </div>
-    </div>
+<div class="container">
 
-    <h1>Your Results</h1>
-    <p class="lead">
-      Your “vibe mix” plus the fun part: best/challenging matches that explain why a spouse or best friend can
-      sometimes be your toughest match.
-    </p>
-
-    <div class="card" style="margin-top:14px">
-      <h2 id="winnerTitle" style="margin:0 0 6px">Primary Style</h2>
-      <div class="small" id="winnerSub"></div>
-
-      <div class="hr"></div>
-
-      <h2 style="margin:0 0 8px">Vibe Mix (Bar Chart)</h2>
-      <div class="bars" id="bars"></div>
-
-      <!-- A) FUN INSIGHT: immediately after bar chart -->
-      <div class="hr"></div>
-      <div class="callout">
-        <strong>Fun PD insight:</strong> your spouse or best friend may be your <strong>most challenging match</strong> —
-        and that’s normal. It doesn’t mean “bad”… it means you’ll need different language and expectations.
-      </div>
-
-      <!-- A) BEST / WORST CHART: immediately after fun insight -->
-      <div class="hr"></div>
-      <div class="tag">Best / Challenging Matches (Snapshot)</div>
-      <div style="overflow:auto; margin-top:10px;">
-        <table>
-          <thead>
-            <tr>
-              <th>Your Style</th>
-              <th>Best Match</th>
-              <th>Most Challenging</th>
-              <th>Quick Tip</th>
-            </tr>
-          </thead>
-          <tbody id="matchRows"></tbody>
-        </table>
-      </div>
-
-      <!-- Match checker -->
-      <div class="hr"></div>
-      <div class="tag">Match Checker</div>
-      <p class="small" style="margin:10px 0 10px">
-        Pick two types and see the likely “easy” vs “challenging” dynamic. Great for spouses, colleagues, students, and parents.
-      </p>
-
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-        <select id="m1"></select>
-        <select id="m2"></select>
-        <span class="small">→</span>
-        <span id="matchResult" class="tag">Select two types</span>
-      </div>
-      <div class="small" id="matchExplain" style="margin-top:10px"></div>
-
-      <div class="btnrow">
-        <a class="btn primary" href="nextgen-assistant.html">See NextGen Assistant Example</a>
-        <a class="btn" href="hot-buttons.html">Hot Buttons</a>
-        <a class="btn" href="quiz.html">Retake Quiz</a>
-      </div>
-    </div>
-
-    <!-- Optional deep-dive tables (kept but below the “fun” section) -->
-    <div class="two" style="margin-top:14px">
-      <div class="card">
-        <div class="tag">Strengths & Watch-outs</div>
-        <div class="hr"></div>
-        <div style="overflow:auto">
-          <table>
-            <thead>
-              <tr><th>Type</th><th>Strengths</th><th>Watch-outs</th></tr>
-            </thead>
-            <tbody id="swRows"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="tag">Hot Buttons (Quick)</div>
-        <div class="hr"></div>
-        <div class="small" id="hbQuick"></div>
-        <div class="btnrow">
-          <a class="btn" href="hot-buttons.html">Go to Hot Buttons Page</a>
-        </div>
-      </div>
+  <div class="topbar">
+    <div class="brand">BetterConnections <span class="pill">Reviewer Demo</span></div>
+    <div class="nav">
+      <a href="index.html">Home</a>
+      <a href="quiz.html">Personality Quiz</a>
+      <a href="results.html">Results</a>
+      <a href="hot-buttons.html">Hot Buttons</a>
+      <a href="nextgen-assistant.html">NextGen Assistant</a>
+      <a href="pricing.html">Pricing</a>
     </div>
   </div>
 
-<script>
-  // Canonical order for BetterConnections
-  const TYPES = ["Driver", "Amiable", "Expressive", "Analytical"];
+  <h1>Your Results</h1>
+  <p class="lead">
+    This page shows your communication style mix — and why some people feel easy to connect with
+    while others require a different approach.
+  </p>
 
-  // Strengths/Watch-outs (lightweight but useful)
-  const SW = {
-    "Driver":      { s: "Decisive • Direct • Action-oriented",     w: "Impatient • Can sound blunt" },
-    "Amiable":     { s: "Supportive • Calm • Trust-building",      w: "Avoids conflict • Can hesitate" },
-    "Expressive":  { s: "Energizing • Inspires • Big-picture",     w: "Can be scattered • Overpromises" },
-    "Analytical":  { s: "Thorough • Accurate • Logical",           w: "Overthinks • Slow to decide" }
-  };
+  <div class="card" style="margin-top:14px">
+    <h2 id="winnerTitle" style="margin:0 0 6px"></h2>
+    <div class="small" id="winnerSub"></div>
 
-  // Best / Challenging mapping (PD gold)
-  const SNAP = [
-    { p: "Driver",     best: "Amiable",     hard: "Expressive",  tip: "Be direct, then soften tone." },
-    { p: "Amiable",    best: "Expressive",  hard: "Driver",      tip: "Build trust first, then set boundary." },
-    { p: "Expressive", best: "Amiable",     hard: "Analytical",  tip: "Start warm; add structure + specifics." },
-    { p: "Analytical", best: "Driver",      hard: "Amiable",     tip: "Lead with facts; add reassurance." }
-  ];
+    <div class="hr"></div>
 
-  // Quick hot-button summaries
-  const HB = {
-    "Driver": "Triggered by indecision or slow pace. De-escalate with clarity, options, and timelines.",
-    "Amiable": "Triggered by harsh tone or conflict. De-escalate with reassurance and respect.",
-    "Expressive": "Triggered by being ignored or flat tone. De-escalate with warmth and engagement.",
-    "Analytical": "Triggered by vague details or sudden changes. De-escalate with specifics and rationale."
-  };
+    <h2>Vibe Mix</h2>
+    <div class="bars" id="bars"></div>
 
-  // --- Bar chart from quiz storage ---
-  const savedScores = localStorage.getItem("bc_scores");
-  const scores = savedScores ? JSON.parse(savedScores) : [0,0,0,0];
+    <div class="hr"></div>
 
-  const total = scores.reduce((a,b)=>a+b,0) || 1;
-  const maxIdx = scores.indexOf(Math.max(...scores));
-  const primary = TYPES[maxIdx];
-
-  document.getElementById("winnerTitle").textContent = `Primary Style: ${primary}`;
-  document.getElementById("winnerSub").textContent = "Scores reflect your answers across 10 questions (demo).";
-
-  const bars = document.getElementById("bars");
-  const classes = ["a","b","c","d"];
-  TYPES.forEach((name, i) => {
-    const pct = Math.round((scores[i]/total)*100);
-    const row = document.createElement("div");
-    row.className = "barRow";
-    row.innerHTML = `
-      <div class="barLabel">${name}</div>
-      <div class="barTrack"><div class="barFill ${classes[i]}" style="width:${pct}%"></div></div>
-      <div class="small">${scores[i]}/${total}</div>
-    `;
-    bars.appendChild(row);
-  });
-
-  // --- Snapshot table immediately after bar chart ---
-  document.getElementById("matchRows").innerHTML = SNAP.map(r => `
-    <tr>
-      <td><strong>${r.p}</strong></td>
-      <td>${r.best}</td>
-      <td>${r.hard}</td>
-      <td>${r.tip}</td>
-    </tr>
-  `).join("");
-
-  // --- Strengths/Watch-outs table (below the fun section) ---
-  const swOrder = ["Driver","Amiable","Expressive","Analytical"];
-  document.getElementById("swRows").innerHTML = swOrder.map(t => `
-    <tr><td><strong>${t}</strong></td><td>${SW[t].s}</td><td>${SW[t].w}</td></tr>
-  `).join("");
-
-  // --- Hot buttons quick summary for primary type ---
-  document.getElementById("hbQuick").innerHTML = `
-    <div class="callout" style="margin:0;">
-      <strong>${primary} Hot Button:</strong> ${HB[primary]}
+    <div class="callout">
+      <strong>Fun PD insight:</strong>
+      Your spouse or best friend may be your <strong>most challenging match</strong> —
+      and that’s normal. Different styles value different things.
     </div>
-  `;
 
-  // --- Match Checker ---
-  const m1 = document.getElementById("m1");
-  const m2 = document.getElementById("m2");
-  const matchResult = document.getElementById("matchResult");
-  const matchExplain = document.getElementById("matchExplain");
+    <div class="hr"></div>
 
-  function fillSelect(sel){
-    sel.innerHTML = TYPES.map(t => `<option value="${t}">${t}</option>`).join("");
-  }
-  fillSelect(m1); fillSelect(m2);
-  m1.value = primary;
-  m2.value = "Amiable";
+    <span class="tag">Best / Challenging Matches</span>
 
-  function relation(a,b){
-    const rowA = SNAP.find(x => x.p === a);
-    const rowB = SNAP.find(x => x.p === b);
-    if (!rowA || !rowB) return {label:"", why:""};
+    <table style="margin-top:10px">
+      <thead>
+        <tr>
+          <th>Your Style</th>
+          <th>Best Match</th>
+          <th>Most Challenging</th>
+          <th>Why</th>
+        </tr>
+      </thead>
+      <tbody id="matchRows"></tbody>
+    </table>
 
-    const isBest = (rowA.best === b) || (rowB.best === a);
-    const isHard = (rowA.hard === b) || (rowB.hard === a);
+    <div class="callout" style="margin-top:14px">
+      <strong>Why matches aren’t always reciprocal:</strong>
+      Best matches are based on what each style <em>needs</em> — not similarity.
+      That’s why a pairing can feel easy for one person and challenging for the other.
+    </div>
 
-    if (a === b) return {label:"Same style", why:"Often feels easy — but watch for shared blind spots (same strengths, same weaknesses)."};
-    if (isBest) return {label:"Best Match (often easy)", why:"You tend to “fit” naturally — communication friction is lower."};
-    if (isHard) return {label:"Challenging Match (fun + growth)", why:"Not bad — just different. This is where BetterConnections language hacks matter most."};
-    return {label:"Mixed / depends", why:"Not a classic best/worst pairing — outcome depends on stress level, roles, and tone."};
-  }
+    <div class="hr"></div>
 
-  function updateMatch(){
-    const a = m1.value, b = m2.value;
-    const r = relation(a,b);
-    matchResult.textContent = r.label || "Select two types";
-    matchExplain.textContent = r.why || "";
-  }
+    <span class="tag">Match Checker</span>
+    <p class="small" style="margin:10px 0">
+      Pick two styles to see how the connection typically feels.
+    </p>
 
-  m1.addEventListener("change", updateMatch);
-  m2.addEventListener("change", updateMatch);
-  updateMatch();
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <select id="m1"></select>
+      <select id="m2"></select>
+      <span id="matchResult" class="tag">Select two types</span>
+    </div>
+    <div class="small" id="matchExplain" style="margin-top:10px"></div>
+
+    <div class="hr"></div>
+
+    <div class="callout">
+      <strong>Real-life moment:</strong>
+      Mary is running late, but remembers Joe values being on time.
+      She adjusts — and the interaction starts on the right foot.
+    </div>
+
+    <div class="btnrow">
+      <a class="btn primary" href="nextgen-assistant.html">See NextGen Assistant</a>
+      <a class="btn" href="hot-buttons.html">Hot Buttons</a>
+      <a class="btn" href="learn-more-quiz.html">Learn More</a>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <span class="tag">Where this framework comes from</span>
+    <p class="lead" style="margin-top:10px">
+      BetterConnections is based on widely used communication-style frameworks
+      (including Social Style and DISC-type models).
+      This is not clinical or diagnostic — it’s a practical approach to choosing language
+      that builds trust and understanding faster.
+    </p>
+  </div>
+
+</div>
+
+<script>
+const TYPES=["Driver","Amiable","Expressive","Analytical"];
+const SNAP=[
+ {p:"Driver",best:"Amiable",hard:"Expressive",why:"Drivers value results; Amiables provide steadiness."},
+ {p:"Amiable",best:"Expressive",hard:"Driver",why:"Amiables value warmth; Expressives provide energy."},
+ {p:"Expressive",best:"Amiable",hard:"Analytical",why:"Expressives value connection; Amiables listen."},
+ {p:"Analytical",best:"Driver",hard:"Amiable",why:"Analyticals value clarity; Drivers move things forward."}
+];
+
+const scores=JSON.parse(localStorage.getItem("bc_scores")||"[0,0,0,0]");
+const total=scores.reduce((a,b)=>a+b,0)||1;
+const primary=TYPES[scores.indexOf(Math.max(...scores))];
+
+document.getElementById("winnerTitle").textContent=`Primary Style: ${primary}`;
+document.getElementById("winnerSub").textContent="Your mix reflects how you tend to communicate.";
+
+const bars=document.getElementById("bars");
+["a","b","c","d"].forEach((c,i)=>{
+ const pct=Math.round(scores[i]/total*100);
+ bars.innerHTML+=`
+ <div class="barRow">
+   <div class="barLabel">${TYPES[i]}</div>
+   <div class="barTrack"><div class="barFill ${c}" style="width:${pct}%"></div></div>
+   <div class="small">${scores[i]}/${total}</div>
+ </div>`;
+});
+
+document.getElementById("matchRows").innerHTML=SNAP.map(r=>`
+<tr>
+<td><strong>${r.p}</strong></td>
+<td>${r.best}</td>
+<td>${r.hard}</td>
+<td>${r.why}</td>
+</tr>`).join("");
+
+const m1=document.getElementById("m1");
+const m2=document.getElementById("m2");
+TYPES.forEach(t=>{
+ m1.innerHTML+=`<option>${t}</option>`;
+ m2.innerHTML+=`<option>${t}</option>`;
+});
+m1.value=primary;m2.value="Amiable";
+
+function updateMatch(){
+ const a=m1.value,b=m2.value;
+ const ra=SNAP.find(x=>x.p===a);
+ const rb=SNAP.find(x=>x.p===b);
+ let label="Mixed",why="Different styles require awareness.";
+ if(a===b){label="Same Style";why="Often feels easy — but watch shared blind spots."}
+ else if(ra.best===b||rb.best===a){label="Best Match";why="Communication tends to flow naturally."}
+ else if(ra.hard===b||rb.hard===a){label="Challenging Match";why="Different needs — language choice matters most here."}
+ document.getElementById("matchResult").textContent=label;
+ document.getElementById("matchExplain").textContent=why;
+}
+m1.onchange=updateMatch;m2.onchange=updateMatch;updateMatch();
 </script>
 </body>
 </html>
