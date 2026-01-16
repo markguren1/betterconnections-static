@@ -1,110 +1,283 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>NextGen Assistant — BetterConnections</title>
-<style>
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;background:#fff;color:#0f172a}
-.wrap{max-width:1000px;margin:0 auto;padding:22px 18px 60px}
-.top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;border:1px solid #e5e7eb;border-radius:999px;padding:10px 14px;position:sticky;top:12px;background:#fff}
-.top a{text-decoration:none;color:#475569;padding:7px 10px;border-radius:999px}
-.top a:hover{background:#f8fafc;color:#0f172a}
-h1{margin:18px 0 6px;font-size:34px}
-.sub{color:#475569;line-height:1.6;margin:0 0 16px}
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:14px}
-.card{grid-column:span 12;border:1px solid #e5e7eb;border-radius:16px;padding:16px;box-shadow:0 10px 24px rgba(15,23,42,.08)}
-@media(min-width:900px){.half{grid-column:span 6}}
-.badge{display:inline-block;font-size:12px;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;color:#475569;margin-bottom:8px}
-pre{white-space:pre-wrap;background:#0b1220;color:#eaf0ff;border-radius:14px;padding:14px;overflow:auto}
-.btn{display:inline-flex;padding:11px 14px;border-radius:12px;border:1px solid #e5e7eb;text-decoration:none;font-weight:800}
-.btn.primary{border-color:transparent;color:#fff;background:linear-gradient(135deg,#6d28d9,#0ea5e9)}
-ul{color:#475569;line-height:1.7;margin:8px 0 0}
-</style></head>
-<body><div class="wrap">
-  <div class="top">
-    <strong>BetterConnections</strong>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="quiz.html">Quiz</a>
-      <a href="results.html">Results</a>
-      <a href="hot-buttons.html">Hot Buttons</a>
-    </div>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NextGen Assistant — BetterConnections</title>
 
-  <h1>NextGen Assistant (Example)</h1>
-  <p class="sub">
-    This page is intentionally <strong>practical + impressive</strong>.
-    First, the real teacher situation. Then, the “behind the curtain” output that saves time.
-  </p>
+  <!-- If styles.css exists, we keep it for site consistency -->
+  <link rel="stylesheet" href="styles.css" />
 
-  <div class="grid">
-    <div class="card half">
-      <div class="badge">A — Practical reality</div>
-      <h3>What teachers do today (20–30 minutes)</h3>
-      <ul>
-        <li>Reconstruct what happened (facts vs emotion)</li>
-        <li>Choose the tone (firm but not inflammatory)</li>
-        <li>Write an email + anticipate pushback</li>
-        <li>Plan tomorrow’s first 2 minutes</li>
-      </ul>
-      <p class="sub" style="margin-top:12px"><strong>Trigger:</strong> A parent email arrives angry and accusatory.</p>
-    </div>
+  <style>
+    body { background:#f6f7f9; color:#1f2937; }
+    .wrap { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .topnav {
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 16px; padding: 14px 16px; background:#fff;
+      border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.06);
+      margin-bottom: 18px;
+    }
+    .brand { font-weight: 800; }
+    .pill {
+      display:inline-block; margin-left:10px; font-size:12px;
+      padding: 4px 10px; border-radius: 999px;
+      border: 1px solid #e5e7eb; color:#374151; background:#fff;
+      vertical-align: middle;
+    }
+    .nav a { margin-left: 12px; text-decoration:none; color:#374151; font-weight:600; }
+    .nav a:hover { text-decoration: underline; }
 
-    <div class="card half">
-      <div class="badge">Input (what teacher types)</div>
-      <pre>Student: “Marcus” (frequently challenges directions)
-Parent email tone: angry + demanding
-Teacher goal: de-escalate, hold boundary, propose next steps
-Constraints: keep it short, professional, calm
-Teacher style: (unknown yet)</pre>
+    .card {
+      background:#ffffff; border-radius:12px; padding:24px; margin-bottom:18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    }
+    h1 { margin: 6px 0 8px; }
+    .lead { font-size: 16px; color:#374151; line-height:1.6; margin: 0 0 10px; }
+    .subtle { font-size: 13px; color:#6b7280; line-height:1.5; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+    label { font-weight:700; font-size:13px; color:#374151; display:block; margin: 10px 0 6px; }
+    input, select, textarea {
+      width:100%; border:1px solid #e5e7eb; border-radius:10px;
+      padding:10px 12px; font-size:14px; background:#fff;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    .row { display:flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      display:inline-block; border:1px solid #e5e7eb; background:#fff;
+      padding:10px 14px; border-radius:10px; font-weight:800; cursor:pointer;
+    }
+    .btn.primary { background:#111827; color:#fff; border-color:#111827; }
+    .btn:disabled { opacity:.55; cursor:not-allowed; }
+
+    .callout {
+      background:#eef2ff; border-left:5px solid #6366f1;
+      padding:14px 16px; border-radius:10px; color:#1f2937;
+      line-height:1.6;
+    }
+    .mini {
+      display:inline-block; font-size:12px; padding: 4px 10px;
+      border-radius:999px; border:1px solid #e5e7eb; color:#374151; background:#fff;
+    }
+    .box {
+      border:1px solid #e5e7eb; border-radius:12px; padding:12px; background:#fff;
+    }
+    .out {
+      white-space: pre-wrap; line-height: 1.55; font-size: 14px; color:#111827;
+    }
+    .muted { color:#6b7280; font-size: 12.5px; }
+    details summary { cursor:pointer; font-weight:800; color:#374151; }
+    .hr { height:1px; background:#e5e7eb; margin: 16px 0; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="topnav">
+      <div class="brand">BetterConnections <span class="pill">Reviewer Demo</span></div>
+      <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="quiz.html">Personality Quiz</a>
+        <a href="results.html">Results</a>
+        <a href="hot-buttons.html">Hot Buttons</a>
+        <a href="nextgen-assistant.html">NextGen Assistant</a>
+        <a href="pricing.html">Pricing</a>
+      </div>
     </div>
 
     <div class="card">
-      <div class="badge">B — “Behind the curtain” output (what the Assistant produces)</div>
-      <pre><strong>Subject:</strong> Marcus — quick update and next steps
-
-Hi [Parent Name],
-
-Thank you for reaching out. I want to make sure we handle this calmly and productively.
-
-<strong>What happened (facts):</strong>
-• During independent work, Marcus refused the first direction and spoke over me twice.
-• After a brief reset, he completed the task with one prompt.
-
-<strong>What I’m doing:</strong>
-• Clear choices + a short reset routine when emotions rise.
-• Positive reinforcement when Marcus starts within 30 seconds.
-
-<strong>Next steps (choose one):</strong>
-A) I’ll send a brief daily note for the next 5 school days.
-B) We schedule a 10-minute call this week to align on a plan.
-
-Please reply with A or B, and I’ll take it from there.
-
-Respectfully,
-[Teacher Name]</pre>
-      <p class="sub" style="margin-top:10px">
-        <strong>Why this is powerful:</strong> it separates facts from emotion, maintains authority without escalation,
-        and makes the parent choose between two reasonable options.
+      <h1>NextGen Assistant</h1>
+      <p class="lead">
+        One-time setup. Smarter parent communication all year. Less stress. Fewer misunderstandings.
+        The assistant adapts tone and structure to different personality styles so people feel understood.
       </p>
-    </div>
 
-    <div class="card half">
-      <div class="badge">Time saved</div>
-      <h3>From 20–30 minutes → ~60 seconds</h3>
-      <ul>
-        <li>No rewriting tone 5 times</li>
-        <li>No second-guessing</li>
-        <li>Clear boundary + clear action</li>
-      </ul>
-    </div>
+      <div class="callout">
+        <strong>Why teachers care (WIIFM):</strong>
+        Save time on emails, keep tone consistent, and reduce the likelihood of <strong>formal escalation</strong>
+        by responding calmly, clearly, and consistently.
+      </div>
 
-    <div class="card half">
-      <div class="badge">Make it personalized</div>
-      <h3>Add personality for even better results</h3>
-      <p class="sub">In the full product, the Assistant adapts to the teacher style + parent style automatically.</p>
-      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn primary" href="quiz.html">Try the Personality Quiz</a>
-        <a class="btn" href="index.html">Back to Features</a>
+      <div class="hr"></div>
+
+      <div class="grid">
+        <div>
+          <span class="mini">One-time context (stored)</span>
+          <label>Student name</label>
+          <input id="student" value="Marcus Rivera" />
+
+          <label>Grade / class</label>
+          <input id="grade" value="7th Grade – Math" />
+
+          <label>Student personality (if known)</label>
+          <select id="studentStyle">
+            <option>Driver</option>
+            <option selected>Amiable</option>
+            <option>Expressive</option>
+            <option>Analytical</option>
+          </select>
+
+          <label>Parent personality (guess is OK)</label>
+          <select id="parentStyle">
+            <option>Driver</option>
+            <option selected>Amiable</option>
+            <option>Expressive</option>
+            <option>Analytical</option>
+          </select>
+
+          <label>Key context (1–3 bullets)</label>
+          <textarea id="context">• Marcus is bright but shuts down when he feels criticized.
+• Family wants reassurance and frequent updates.
+• Goal: keep tone calm, collaborative, and specific.</textarea>
+
+          <p class="subtle" style="margin-top:10px">
+            <strong>Reviewer Note:</strong> This demo simulates how the assistant would use stored context and personality style to generate consistent responses.
+            No real email or database integrations are used in this reviewer version.
+          </p>
+        </div>
+
+        <div>
+          <span class="mini">Incoming email (example)</span>
+          <label>Parent email</label>
+          <textarea id="incoming">Hi, I'm concerned Marcus says he's lost and embarrassed in class. He told me he doesn't want to come to school tomorrow. What are you doing about this?</textarea>
+
+          <div class="row" style="margin-top:10px">
+            <button class="btn" id="showWithout">Show WITHOUT NextGen</button>
+            <button class="btn primary" id="showWith">Generate WITH NextGen</button>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="box">
+            <div class="muted" id="outputLabel">Output will appear here.</div>
+            <div class="out" id="output"></div>
+          </div>
+
+          <div class="hr"></div>
+
+          <span class="mini">Follow-up (the WOW moment)</span>
+          <label>Parent follow-up email</label>
+          <textarea id="followup">Thanks. He still feels singled out. What are the next steps, and how will I know if things are improving?</textarea>
+
+          <div class="row" style="margin-top:10px">
+            <button class="btn primary" id="followBtn">Generate follow-up response</button>
+          </div>
+
+          <div class="box" style="margin-top:12px">
+            <div class="muted" id="followLabel">Follow-up output will appear here.</div>
+            <div class="out" id="followOut"></div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="card">
+      <h2>What makes this different</h2>
+      <div class="grid">
+        <div class="box">
+          <strong>Enter once → reuse all year</strong>
+          <p class="lead" style="margin-top:8px">
+            Teachers don’t retype background every time. The assistant remembers what matters and keeps communication consistent.
+          </p>
+        </div>
+        <div class="box">
+          <strong>Personality-aware language</strong>
+          <p class="lead" style="margin-top:8px">
+            The same message can land differently depending on style. The assistant adjusts tone and structure to reduce friction.
+          </p>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <details>
+        <summary>Real-life micro-story (how “hot buttons” show up naturally)</summary>
+        <p class="lead" style="margin-top:10px">
+          Mary is running late, but she remembers Joe is a <strong>Driver</strong> who values being on time. She communicates early and clearly,
+          gets to the point, and makes up time where she can. The interaction starts on the right foot.
+        </p>
+      </details>
+
+      <details style="margin-top:10px">
+        <summary>Environmental cue story (credibility + relatability)</summary>
+        <p class="lead" style="margin-top:10px">
+          Emma walks into a meeting and sees family photos on the principal’s desk. She starts with connection first.
+          The principal feels understood — and the meeting goes smoother.
+        </p>
+      </details>
+    </div>
+
   </div>
-</div></body></html>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+
+  function styleNotes(style){
+    if(style==="Driver") return "Lead with the point, next steps, and time expectations. Keep it concise.";
+    if(style==="Amiable") return "Lead with reassurance and partnership. Use warm, calm language.";
+    if(style==="Expressive") return "Lead with recognition and big picture. Keep it upbeat and engaging.";
+    return "Lead with clarity, facts, and structure. Define success and how you’ll measure improvement.";
+  }
+
+  function buildWithResponse(isFollowup=false){
+    const student = $("student").value.trim() || "the student";
+    const grade = $("grade").value.trim() || "class";
+    const pStyle = $("parentStyle").value;
+    const sStyle = $("studentStyle").value;
+    const ctx = $("context").value.trim();
+
+    const openerByStyle = {
+      Driver: `Thanks for reaching out. I want to address this quickly and clearly.`,
+      Amiable: `Thank you for letting me know — I can hear how worried you are, and I want you to know we’re on the same team.`,
+      Expressive: `Thank you for reaching out — I really appreciate you advocating for ${student}.`,
+      Analytical: `Thank you for the message. Here’s what I know so far and what I’m doing next.`
+    };
+
+    const structureByStyle = {
+      Driver: `**Next steps (today/tomorrow):**\n1) Quick check-in with ${student} at the start of ${grade}.\n2) Clarify expectations privately.\n3) Simple plan for what to do if he feels stuck.\n\n**What I need from you:**\nPlease reply with anything that’s helped at home.\n\n**How you’ll know it’s improving:**\nI’ll send a brief update after class tomorrow.`,
+      Amiable: `**What I’m doing:**\n• I will check in with ${student} privately to help him feel safe and supported.\n• I’ll make sure he has a clear way to ask for help without feeling embarrassed.\n\n**How we’ll partner:**\nIf you can share what he said at home (what felt embarrassing), that will help me respond in a supportive way.\n\n**Updates:**\nI’ll send you a short update after tomorrow’s class so you’re not left wondering.`,
+      Expressive: `**Big picture:**\nMy goal is to help ${student} feel confident and supported in ${grade}.\n\n**What I’m doing next:**\n• Quick check-in and a reset plan.\n• A clear “ask for help” signal.\n• A confidence-building win early in the lesson.\n\n**Updates:**\nI’ll send you a quick update tomorrow after class.`,
+      Analytical: `**What I know / what I’m observing:**\n• ${student} is participating inconsistently when he feels uncertain.\n\n**Plan:**\n1) Private check-in.\n2) Clear success criteria for the lesson.\n3) A structured support step if he feels stuck.\n\n**How we’ll measure improvement:**\nI’ll track participation and help-seeking for the next 3 class periods and update you.`
+    };
+
+    const assistantTone = styleNotes(pStyle);
+
+    const intro = openerByStyle[pStyle] || openerByStyle.Amiable;
+    const body = structureByStyle[pStyle] || structureByStyle.Amiable;
+
+    const guardrail = `\n\n**Tone guardrail (for credibility):**\nI will keep communication calm, specific, and consistent to reduce misunderstanding and prevent formal escalation.\n`;
+    const personalityLine = `\n\n**Why this lands:**\nParent style: ${pStyle}. Student style: ${sStyle}. ${assistantTone}\n`;
+
+    const contextLine = ctx ? `\n\n**Stored context used:**\n${ctx}\n` : "";
+
+    if(isFollowup){
+      return `${intro}\n\nThanks for the follow-up.\n\n${body}\n${guardrail}${personalityLine}${contextLine}`.replace(/\*\*/g,"");
+    }
+
+    return `${intro}\n\n${body}\n${guardrail}${personalityLine}${contextLine}`.replace(/\*\*/g,"");
+  }
+
+  function buildWithoutResponse(){
+    const student = $("student").value.trim() || "your child";
+    return `Hi,\n\nThanks for your email. I’m sorry to hear ${student} is feeling that way. I will try to talk to him tomorrow and see what is going on. We have a lot of students and it can be hard to notice everything in the moment. I will do my best.\n\nPlease let me know if you have any more details.\n\nThank you,\nTeacher`;
+  }
+
+  $("showWithout").addEventListener("click", () => {
+    $("outputLabel").textContent = "WITHOUT NextGen (manual draft – slower, less consistent)";
+    $("output").textContent = buildWithoutResponse();
+  });
+
+  $("showWith").addEventListener("click", () => {
+    $("outputLabel").textContent = "WITH NextGen (personality-aware, calm, structured)";
+    $("output").textContent = buildWithResponse(false);
+  });
+
+  $("followBtn").addEventListener("click", () => {
+    $("followLabel").textContent = "Follow-up response (uses stored context; no retyping)";
+    $("followOut").textContent = buildWithResponse(true);
+  });
+</script>
+</body>
+</html>
