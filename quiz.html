@@ -3,27 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <title>BetterConnections Personality Quiz</title>
-  <link rel="stylesheet" href="styles.css" />
+
+  <!-- FORCE SAFE, READABLE STYLES (OVERRIDES ANY DARK THEME) -->
   <style>
-    body { font-family: Arial, sans-serif; max-width: 900px; margin: auto; padding: 20px; }
-    h1 { margin-bottom: 10px; }
-    .question { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
-    .option { display: block; margin: 8px 0; cursor: pointer; }
-    button { padding: 12px 18px; font-size: 16px; cursor: pointer; }
-    .hidden { display: none; }
-    .results { border: 1px solid #ccc; padding: 20px; border-radius: 8px; margin-top: 20px; }
-    pre { background: #f5f5f5; padding: 10px; border-radius: 6px; }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 24px;
+      background: #ffffff !important;
+      color: #111111 !important;
+    }
+
+    h1, h2, h3, p, strong, label {
+      color: #111111 !important;
+    }
+
+    .question {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      background: #ffffff !important;
+    }
+
+    .option {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+
+    button {
+      padding: 12px 18px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #111;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+    }
+
+    button.secondary {
+      background: #e5e5e5;
+      color: #111;
+      margin-top: 12px;
+    }
+
+    .results {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 24px;
+      background: #ffffff !important;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    pre {
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 6px;
+      color: #111;
+    }
   </style>
 </head>
 
 <body>
 
-<h1>Personality Quiz</h1>
-<p><strong>Step 1 (required):</strong> Take the quiz first. Results power the rest of the demo.</p>
+<h1>BetterConnections Personality Quiz</h1>
+<p><strong>Step 1 (required):</strong> Take the quiz first. Your results power the rest of the demo.</p>
 
 <form id="quizForm">
 
-  <!-- QUESTION TEMPLATE -->
   <div class="question">
     <p><strong>1. In a group, you usually:</strong></p>
     <label class="option"><input type="radio" name="q1" value="Driver"> Take charge and move things forward</label>
@@ -63,7 +116,7 @@
   <h2>Your Personality Type: <span id="resultType"></span></h2>
   <h3>Score Breakdown</h3>
   <pre id="scoreOutput"></pre>
-  <button onclick="retakeQuiz()">Retake Quiz</button>
+  <button class="secondary" onclick="retakeQuiz()">Retake Quiz</button>
 </div>
 
 <script>
@@ -71,8 +124,11 @@
     const types = ["Driver", "Amiable", "Expressive", "Analytical"];
     const scores = { Driver: 0, Amiable: 0, Expressive: 0, Analytical: 0 };
 
-    for (let i = 1; i <= 4; i++) {
-      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    const inputs = document.querySelectorAll('#quizForm input[type="radio"]');
+    const questionNames = [...new Set([...inputs].map(i => i.name))];
+
+    for (const q of questionNames) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
       if (!selected) {
         alert("Please answer all questions.");
         return;
@@ -91,7 +147,9 @@
     }
 
     document.getElementById("resultType").textContent = topType;
-    document.getElementById("scoreOutput").textContent = JSON.stringify(scores, null, 2);
+    document.getElementById("scoreOutput").textContent =
+      JSON.stringify(scores, null, 2);
+
     document.getElementById("results").classList.remove("hidden");
     window.scrollTo(0, 0);
   }
