@@ -13,9 +13,7 @@
       background: #ffffff !important;
       color: #111111 !important;
     }
-
     h1, p, strong, label { color: #111111 !important; }
-
     .question {
       border: 1px solid #ddd;
       border-radius: 8px;
@@ -23,9 +21,7 @@
       margin-bottom: 16px;
       background: #ffffff !important;
     }
-
     .option { display: block; margin: 8px 0; cursor: pointer; }
-
     button {
       padding: 12px 18px;
       font-size: 16px;
@@ -35,7 +31,6 @@
       border: none;
       border-radius: 6px;
     }
-
     .progress {
       border: 1px solid #e5e5e5;
       border-radius: 10px;
@@ -143,22 +138,15 @@
     const inputs = document.querySelectorAll('#quizForm input[type="radio"]');
     const questionNames = [...new Set([...inputs].map(i => i.name))];
     let answered = 0;
-
     for (const q of questionNames) {
-      const selected = document.querySelector(`input[name="${q}"]:checked`);
-      if (selected) answered++;
+      if (document.querySelector(`input[name="${q}"]:checked`)) answered++;
     }
-
     document.getElementById("progress").textContent =
       `Progress: ${answered}/${questionNames.length} answered`;
   }
-
   document.addEventListener("change", function(e) {
-    if (e.target && e.target.matches('#quizForm input[type="radio"]')) {
-      updateProgress();
-    }
+    if (e.target && e.target.matches('#quizForm input[type="radio"]')) updateProgress();
   });
-
   updateProgress();
 
   function calculateResult() {
@@ -170,14 +158,24 @@
 
     for (const q of questionNames) {
       const selected = document.querySelector(`input[name="${q}"]:checked`);
-      if (!selected) {
-        alert("Please answer all questions.");
-        return;
-      }
+      if (!selected) { alert("Please answer all questions."); return; }
       scores[selected.value]++;
     }
 
     let topType = types[0];
     let topScore = scores[topType];
-    for (const type of types) {
-      if (scores[type] > topSco
+    for (const t of types) {
+      if (scores[t] > topScore) { topScore = scores[t]; topType = t; }
+    }
+
+    localStorage.setItem("bc_personality_type", topType);
+    localStorage.setItem("bc_personality_scores", JSON.stringify(scores));
+
+    // THIS MUST HAPPEN — you should land on results.html
+    window.location.href =
+      `results.html?type=${encodeURIComponent(topType)}&scores=${encodeURIComponent(JSON.stringify(scores))}`;
+  }
+</script>
+
+</body>
+</html>
