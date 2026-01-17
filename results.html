@@ -14,30 +14,26 @@
       color: #111111 !important;
     }
 
-    h1 { margin: 0 0 8px; }
-    p { line-height: 1.5; }
-
     .flow {
       border: 1px solid #e5e5e5;
       border-radius: 10px;
       padding: 12px 14px;
-      margin: 0 0 18px;
+      margin-bottom: 18px;
       background: #fff;
+      font-size: 14px;
     }
-    .flow strong { display: inline-block; margin-right: 6px; }
     .flow .step {
       display: inline-block;
       padding: 4px 10px;
       border-radius: 999px;
       border: 1px solid #ddd;
-      margin: 4px 6px 0 0;
-      font-size: 13px;
+      margin-right: 6px;
       background: #fafafa;
     }
-    .flow .step.current {
-      border-color: #111;
+    .flow .current {
       background: #111;
       color: #fff;
+      border-color: #111;
     }
 
     .card {
@@ -50,57 +46,22 @@
 
     .pill {
       display: inline-block;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 999px;
       border: 1px solid #ddd;
       font-weight: 700;
-      font-size: 14px;
       background: #fafafa;
     }
 
-    .btnRow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    a.button {
-      display: inline-block;
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 1px solid #111;
-      background: #111;
-      color: #fff;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    a.secondary {
-      background: #fff;
-      color: #111;
-    }
-
-    .typeGrid {
+    .layout {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    @media (min-width: 860px) {
-      .typeGrid { grid-template-columns: 1.3fr 0.7fr; }
-    }
-
-    .barWrap {
-      border: 1px solid #e5e5e5;
-      border-radius: 10px;
-      padding: 12px;
-      background: #fff;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 16px;
     }
 
     .barLine {
       display: grid;
-      grid-template-columns: 110px 1fr 48px;
+      grid-template-columns: 110px 1fr 40px;
       gap: 10px;
       align-items: center;
       margin: 10px 0;
@@ -118,16 +79,37 @@
     .fill {
       height: 100%;
       width: 0%;
-      background: #111;
       border-radius: 999px;
     }
+
+    /* COLOR CODING */
+    .Driver { background: #e74c3c; }      /* red */
+    .Amiable { background: #27ae60; }     /* green */
+    .Expressive { background: #f39c12; }  /* orange */
+    .Analytical { background: #3498db; }  /* blue */
 
     pre {
       background: #f5f5f5;
       padding: 10px;
       border-radius: 6px;
+      font-size: 13px;
+    }
+
+    button, a.button {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #111;
+      background: #111;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      margin-right: 8px;
+      display: inline-block;
+    }
+
+    a.secondary {
+      background: #fff;
       color: #111;
-      overflow: auto;
     }
 
     table {
@@ -136,153 +118,127 @@
       margin-top: 10px;
       font-size: 14px;
     }
+
     th, td {
-      text-align: left;
-      padding: 10px 8px;
+      padding: 10px;
       border-bottom: 1px solid #eee;
+      text-align: left;
       vertical-align: top;
     }
-    th { width: 190px; color: #333; }
 
-    .muted { opacity: 0.85; }
-    .warning {
-      border: 1px solid #f0d7a7;
-      background: #fff7e6;
-      border-radius: 10px;
-      padding: 12px;
+    th {
+      width: 190px;
+      color: #333;
     }
-    .small { font-size: 12px; opacity: 0.85; }
-    code { background: #f3f3f3; padding: 2px 6px; border-radius: 6px; }
   </style>
 </head>
 
 <body>
 
-  <div class="flow">
-    <strong>Locked Demo Flow:</strong>
-    <span class="step">1) Personality Quiz</span>
-    <span class="step current">2) Results</span>
-    <span class="step">3) Deep Dive</span>
-    <span class="step">4) Compatibility</span>
-    <span class="step">5) NextGen Assistant</span>
-  </div>
+<div class="flow">
+  <span class="step">1) Personality Quiz</span>
+  <span class="step current">2) Results</span>
+  <span class="step">3) Deep Dive</span>
+  <span class="step">4) Compatibility</span>
+  <span class="step">5) NextGen Assistant</span>
+</div>
 
-  <h1>Personality Results</h1>
-  <p class="muted">
-    Your personality type is the foundation for BetterConnections. Use it to understand communication style, strengths,
-    stress behavior, and relationship friction points.
-  </p>
+<h1>Personality Results</h1>
+<p>Your personality type is the foundation for BetterConnections.</p>
 
-  <div id="missingResult" class="card warning" style="display:none;">
-    <strong>No quiz result found.</strong>
-    <p class="muted" style="margin:8px 0 0;">
-      Please take the Personality Quiz first so we can show your results.
-    </p>
-    <div class="btnRow">
-      <a class="button" href="quiz.html">Go to Personality Quiz</a>
-    </div>
-  </div>
+<div id="missing" class="card" style="display:none;">
+  <strong>No quiz result found.</strong>
+  <p>Please take the Personality Quiz first.</p>
+  <a class="button" href="quiz.html">Go to Quiz</a>
+</div>
 
-  <div id="resultsBlock" class="card" style="display:none;">
-    <div class="typeGrid">
-      <div>
-        <h2 style="margin:0 0 8px;">Your Type: <span id="typeLabel" class="pill"></span></h2>
-        <p id="typeSummary" class="muted" style="margin:0;"></p>
+<div id="main" style="display:none;">
 
-        <div class="btnRow">
-          <a class="button secondary" href="quiz.html">Retake Quiz</a>
-          <a class="button secondary" href="deep-dive.html">Continue to Deep Dive</a>
-          <a class="button secondary" href="compatibility.html">Continue to Compatibility</a>
-        </div>
+  <div class="layout">
+    <div class="card">
+      <h2>Your Type: <span id="typeLabel" class="pill"></span></h2>
+      <p id="summary"></p>
 
-        <div class="card" style="margin-top:14px;">
-          <strong>Score Breakdown (raw)</strong>
-          <pre id="scoreJson" style="margin:10px 0 0;"></pre>
-        </div>
-      </div>
+      <a class="button secondary" href="quiz.html">Retake Quiz</a>
+      <a class="button secondary" href="deep-dive.html">Continue to Deep Dive</a>
+      <a class="button secondary" href="compatibility.html">Continue to Compatibility</a>
 
-      <div class="barWrap">
-        <strong>Score Bars</strong>
-        <div id="scoreBars"></div>
-        <div class="small" style="margin-top:8px;">
-          Bars show your scores across the four personality types.
-        </div>
+      <div class="card" style="margin-top:16px;">
+        <strong>Score Breakdown (raw)</strong>
+        <pre id="raw"></pre>
       </div>
     </div>
 
-    <div class="card" style="margin-top:16px;">
-      <h3 style="margin:0 0 8px;">Strengths & Challenges</h3>
-      <table>
-        <tr><th>Strengths</th><td id="strengthsCell"></td></tr>
-        <tr><th>Challenges</th><td id="challengesCell"></td></tr>
-        <tr><th>Communication Style</th><td id="commCell"></td></tr>
-        <tr><th>Under Stress</th><td id="stressCell"></td></tr>
-      </table>
+    <div class="card">
+      <strong>Score Bars</strong>
+      <div id="bars"></div>
+      <p style="font-size:12px;opacity:0.85;margin-top:6px;">
+        Color-coded by personality type.
+      </p>
     </div>
   </div>
+
+  <div class="card">
+    <h3>Strengths & Challenges</h3>
+    <table>
+      <tr><th>Strengths</th><td id="strengths"></td></tr>
+      <tr><th>Challenges</th><td id="challenges"></td></tr>
+      <tr><th>Communication Style</th><td id="comm"></td></tr>
+      <tr><th>Under Stress</th><td id="stress"></td></tr>
+    </table>
+  </div>
+
+</div>
 
 <script>
-  function getQueryParam(name) {
-    const url = new URL(window.location.href);
-    return url.searchParams.get(name);
-  }
-
-  function normalizeType(raw) {
-    if (!raw) return null;
-    const v = String(raw).trim().toLowerCase();
-    if (v === "driver") return "Driver";
-    if (v === "amiable") return "Amiable";
-    if (v === "expressive") return "Expressive";
-    if (v === "analytical") return "Analytical";
-    return null;
-  }
-
-  function safeParseJSON(str) {
-    try { return JSON.parse(str); } catch (e) { return null; }
-  }
-
   const TYPES = ["Driver", "Amiable", "Expressive", "Analytical"];
 
-  const TYPE_CONTENT = {
+  const CONTENT = {
     Driver: {
-      summary: "Direct, decisive, and goal-focused. You value progress, clarity, and results.",
-      strengths: ["Decisive", "Confident", "Action-oriented", "Efficient"],
-      challenges: ["Can seem blunt", "Impatient with slow pace", "May overlook feelings"],
-      comm: "Prefers concise communication, clear expectations, and fast decisions.",
-      stress: "May become more forceful, controlling, or frustrated if blocked."
+      summary: "Direct, decisive, and goal-focused.",
+      strengths: "Decisive • Confident • Action-oriented • Efficient",
+      challenges: "Can seem blunt • Impatient • May overlook feelings",
+      comm: "Concise, direct, results-focused.",
+      stress: "May become controlling or forceful."
     },
     Amiable: {
-      summary: "Supportive, steady, and relationship-focused. You value harmony, trust, and cooperation.",
-      strengths: ["Patient", "Loyal", "Supportive", "Team-oriented"],
-      challenges: ["Avoids conflict", "May struggle to say no", "Can internalize stress"],
-      comm: "Prefers warm tone, reassurance, and collaborative decision-making.",
-      stress: "May withdraw, people-please, or avoid uncomfortable conversations."
+      summary: "Supportive, steady, and relationship-focused.",
+      strengths: "Patient • Loyal • Supportive • Team-oriented",
+      challenges: "Avoids conflict • Difficulty saying no",
+      comm: "Warm, collaborative, reassuring.",
+      stress: "May withdraw or people-please."
     },
     Expressive: {
-      summary: "Enthusiastic, social, and idea-driven. You value connection, recognition, and inspiration.",
-      strengths: ["Energetic", "Optimistic", "Persuasive", "Creative"],
-      challenges: ["Can be impulsive", "May miss details", "Can overtalk or overwhelm"],
-      comm: "Prefers open dialogue, encouragement, and big-picture framing.",
-      stress: "May become dramatic, scattered, or seek reassurance frequently."
+      summary: "Enthusiastic, social, and idea-driven.",
+      strengths: "Energetic • Optimistic • Persuasive • Creative",
+      challenges: "Impulsive • Misses details • Can overwhelm",
+      comm: "Open, animated, big-picture.",
+      stress: "May become scattered or dramatic."
     },
     Analytical: {
-      summary: "Thoughtful, precise, and logic-focused. You value accuracy, structure, and understanding.",
-      strengths: ["Logical", "Accurate", "Prepared", "Problem-solver"],
-      challenges: ["Can overthink", "Slow to decide", "May seem detached"],
-      comm: "Prefers specifics, data, written clarity, and time to process.",
-      stress: "May become critical, rigid, or stuck in analysis paralysis."
+      summary: "Thoughtful, precise, and logic-focused.",
+      strengths: "Logical • Accurate • Prepared • Thorough",
+      challenges: "Overthinks • Slow to decide • Rigid",
+      comm: "Structured, detailed, data-driven.",
+      stress: "Analysis paralysis or withdrawal."
     }
   };
 
-  function renderScoreBars(scores) {
-    const container = document.getElementById("scoreBars");
+  function parseJSON(str) {
+    try { return JSON.parse(str); } catch { return null; }
+  }
+
+  function getParam(name) {
+    return new URL(window.location.href).searchParams.get(name);
+  }
+
+  function renderBars(scores) {
+    const container = document.getElementById("bars");
+    const max = Math.max(...TYPES.map(t => scores[t])) || 1;
     container.innerHTML = "";
 
-    const max = Math.max(...TYPES.map(t => Number(scores[t] || 0))) || 1;
-
-    for (const t of TYPES) {
-      const value = Number(scores[t] || 0);
-      const pct = Math.round((value / max) * 100);
+    TYPES.forEach(t => {
+      const pct = Math.round((scores[t] / max) * 100);
 
       const row = document.createElement("div");
       row.className = "barLine";
@@ -294,63 +250,41 @@
       track.className = "track";
 
       const fill = document.createElement("div");
-      fill.className = "fill";
+      fill.className = `fill ${t}`;
       fill.style.width = pct + "%";
 
       track.appendChild(fill);
 
       const num = document.createElement("div");
-      num.textContent = value;
+      num.textContent = scores[t];
 
       row.appendChild(label);
       row.appendChild(track);
       row.appendChild(num);
 
       container.appendChild(row);
-    }
+    });
   }
 
   (function init() {
-    // Prefer URL params
-    let type = normalizeType(getQueryParam("type"));
-    let scores = null;
-
-    const scoresFromQuery = getQueryParam("scores");
-    if (scoresFromQuery) scores = safeParseJSON(scoresFromQuery);
-
-    // Fallback to localStorage
-    if (!type) type = normalizeType(localStorage.getItem("bc_personality_type"));
-    if (!scores) {
-      const lsScores = localStorage.getItem("bc_personality_scores");
-      if (lsScores) scores = safeParseJSON(lsScores);
-    }
+    const type = getParam("type") || localStorage.getItem("bc_personality_type");
+    const scores = parseJSON(getParam("scores")) || parseJSON(localStorage.getItem("bc_personality_scores"));
 
     if (!type || !scores) {
-      document.getElementById("missingResult").style.display = "block";
-      document.getElementById("resultsBlock").style.display = "none";
+      document.getElementById("missing").style.display = "block";
       return;
     }
 
-    // Ensure all keys exist
-    for (const t of TYPES) {
-      if (typeof scores[t] !== "number") scores[t] = 0;
-    }
-
-    const content = TYPE_CONTENT[type];
-
     document.getElementById("typeLabel").textContent = type;
-    document.getElementById("typeSummary").textContent = content.summary;
+    document.getElementById("summary").textContent = CONTENT[type].summary;
+    document.getElementById("strengths").textContent = CONTENT[type].strengths;
+    document.getElementById("challenges").textContent = CONTENT[type].challenges;
+    document.getElementById("comm").textContent = CONTENT[type].comm;
+    document.getElementById("stress").textContent = CONTENT[type].stress;
+    document.getElementById("raw").textContent = JSON.stringify(scores, null, 2);
 
-    document.getElementById("strengthsCell").textContent = content.strengths.join(" • ");
-    document.getElementById("challengesCell").textContent = content.challenges.join(" • ");
-    document.getElementById("commCell").textContent = content.comm;
-    document.getElementById("stressCell").textContent = content.stress;
-
-    document.getElementById("scoreJson").textContent = JSON.stringify(scores, null, 2);
-    renderScoreBars(scores);
-
-    document.getElementById("missingResult").style.display = "none";
-    document.getElementById("resultsBlock").style.display = "block";
+    renderBars(scores);
+    document.getElementById("main").style.display = "block";
   })();
 </script>
 
