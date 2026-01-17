@@ -180,21 +180,4 @@
     let topType = types[0];
     let topScore = scores[topType];
     for (const type of types) {
-      if (scores[type] > topScore) {
-        topScore = scores[type];
-        topType = type;
-      }
-    }
-
-    // Store for results.html
-    localStorage.setItem("bc_personality_type", topType);
-    localStorage.setItem("bc_personality_scores", JSON.stringify(scores));
-
-    // GO TO RESULTS PAGE (THIS IS THE KEY FIX)
-    window.location.href =
-      `results.html?type=${encodeURIComponent(topType)}&scores=${encodeURIComponent(JSON.stringify(scores))}`;
-  }
-</script>
-
-</body>
-</html>
+      if (scores[type] > topSco
