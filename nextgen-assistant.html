@@ -8,24 +8,42 @@
 <link rel="stylesheet" href="styles.css">
 
 <style>
-body { background:#f6f7f9; color:#1f2937; font-family: system-ui, -apple-system, BlinkMacSystemFont; }
-.container { max-width:1200px; margin:40px auto; padding:0 20px; }
-
+body {
+  background:#f6f7f9;
+  color:#1f2937;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+.container {
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 20px;
+}
 .card {
-  background:#fff;
+  background:#ffffff;
   border-radius:14px;
   padding:28px;
   margin-bottom:24px;
   box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
-
 h1,h2 { margin-top:0; }
-.lead { font-size:16px; line-height:1.6; color:#374151; }
-
-.grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-@media(max-width:900px){ .grid { grid-template-columns:1fr; } }
-
-label { font-weight:700; font-size:13px; display:block; margin:12px 0 6px; }
+.lead {
+  font-size:16px;
+  line-height:1.6;
+  color:#374151;
+}
+.callout {
+  background:#eef2ff;
+  border-left:6px solid #6366f1;
+  padding:16px;
+  border-radius:12px;
+  margin-top:16px;
+}
+label {
+  font-weight:700;
+  font-size:13px;
+  display:block;
+  margin:12px 0 6px;
+}
 input, select, textarea {
   width:100%;
   padding:10px 12px;
@@ -33,9 +51,18 @@ input, select, textarea {
   border:1px solid #e5e7eb;
   font-size:14px;
 }
-textarea { min-height:110px; }
+textarea { min-height:100px; }
 
-.output {
+.grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+@media(max-width:900px){
+  .grid { grid-template-columns:1fr; }
+}
+
+.panel {
   background:#f9fafb;
   border-radius:12px;
   padding:16px;
@@ -43,9 +70,8 @@ textarea { min-height:110px; }
   line-height:1.55;
   font-size:14px;
 }
-
-.bad { border-left:6px solid #ef4444; }
-.good { border-left:6px solid #22c55e; }
+.without { border-left:6px solid #ef4444; }
+.with { border-left:6px solid #22c55e; }
 
 .tag {
   display:inline-block;
@@ -55,35 +81,33 @@ textarea { min-height:110px; }
   border-radius:999px;
   margin-bottom:8px;
 }
-.bad .tag { background:#fee2e2; color:#991b1b; }
-.good .tag { background:#dcfce7; color:#166534; }
+.without .tag { background:#fee2e2; color:#991b1b; }
+.with .tag { background:#dcfce7; color:#166534; }
 
-.callout {
-  background:#eef2ff;
-  border-left:6px solid #6366f1;
-  padding:16px;
-  border-radius:12px;
-  margin-bottom:20px;
+strong.note {
+  display:block;
+  margin-top:12px;
+  font-size:13px;
 }
 
-button {
-  background:#111827;
-  color:#fff;
+hr {
   border:none;
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:800;
-  cursor:pointer;
+  height:1px;
+  background:#e5e7eb;
+  margin:28px 0;
 }
 
-hr { border:none; height:1px; background:#e5e7eb; margin:24px 0; }
-.small { font-size:13px; color:#6b7280; }
+.small {
+  font-size:13px;
+  color:#6b7280;
+}
 </style>
 </head>
 
 <body>
 <div class="container">
 
+<!-- INTRO -->
 <div class="card">
 <h1>NextGen Assistant</h1>
 <p class="lead">
@@ -93,22 +117,23 @@ Less stress. Fewer misunderstandings. Reduced formal escalation.
 
 <div class="callout">
 <strong>Why teachers care (WIIFM):</strong><br>
-Save time on emails, maintain a calm and consistent tone, and reduce the likelihood of
-<strong>formal escalation</strong> by responding clearly and professionally every time.
+The assistant generates calm, professional responses using stored context —  
+saving time, reducing emotional load, and lowering the risk of escalation.
 </div>
 </div>
 
+<!-- STORED CONTEXT -->
 <div class="card">
 <h2>One-time context (stored)</h2>
 
 <label>Student name</label>
-<input id="student" value="Marcus Rivera">
+<input value="Marcus Rivera">
 
 <label>Grade / class</label>
-<input id="grade" value="7th Grade Math">
+<input value="7th Grade Math">
 
 <label>Student personality</label>
-<select id="studentStyle">
+<select>
   <option>Amiable</option>
   <option>Driver</option>
   <option>Expressive</option>
@@ -116,7 +141,7 @@ Save time on emails, maintain a calm and consistent tone, and reduce the likelih
 </select>
 
 <label>Parent personality</label>
-<select id="parentStyle">
+<select>
   <option selected>Amiable</option>
   <option>Driver</option>
   <option>Expressive</option>
@@ -124,106 +149,132 @@ Save time on emails, maintain a calm and consistent tone, and reduce the likelih
 </select>
 
 <label>Key context</label>
-<textarea id="context">Marcus is bright but shuts down when he feels criticized. Family wants reassurance and frequent updates.</textarea>
+<textarea>Marcus is bright but shuts down when he feels criticized. Family wants reassurance and frequent updates.</textarea>
 </div>
 
+<!-- STEP 1 -->
 <div class="card">
-<h2>Side-by-side comparison</h2>
+<h2>Step 1 — Parent email arrives</h2>
+
+<div class="panel">
+Hi, I’m concerned Marcus says he feels embarrassed and lost in math class.
+He told me he doesn’t want to come to school tomorrow.
+What are you doing to help him?
+</div>
+</div>
+
+<!-- STEP 2 -->
+<div class="card">
+<h2>Step 2 — Teacher response</h2>
 
 <div class="grid">
 
-<div class="bad">
+<div class="without">
 <span class="tag">❌ Without NextGen Assistant</span>
-<div class="output" id="without">
+<div class="panel">
 Hi,
 
-Thanks for your email. I’m sorry to hear Marcus is feeling that way.
+Thanks for your email. I’m sorry to hear Marcus is feeling this way.
 I will try to talk to him tomorrow and see what is going on.
-It can be difficult to catch everything in class.
+It can be hard to catch everything in class.
 
 Please let me know if you have more information.
 
 Thank you,
 Teacher
 </div>
+<strong class="note">
+Teacher manually composes response (10–15 minutes).  
+Tone and clarity depend on the moment.
+</strong>
 </div>
 
-<div class="good">
+<div class="with">
 <span class="tag">✅ With NextGen Assistant</span>
-<div class="output" id="with"></div>
-</div>
-
-</div>
-</div>
-
-<div class="card">
-<h2>Follow-up email (the “wow” moment)</h2>
-
-<label>Parent follow-up email</label>
-<textarea id="followup">Thanks. He still feels singled out. What are the next steps?</textarea>
-
-<button onclick="generateFollowup()">Generate follow-up response</button>
-
-<div class="output good" style="margin-top:16px" id="followOutput"></div>
-</div>
-
-<div class="card small">
-<strong>Reviewer note:</strong>  
-This page demonstrates how the NextGen Assistant would use stored context and personality
-awareness to produce consistent, professional communication. This reviewer demo does not
-send emails or store data.
-</div>
-
-</div>
-
-<script>
-function generateWith(){
-const student = studentInput.value;
-const grade = gradeInput.value;
-const style = parentStyle.value;
-
-const openers = {
-  Amiable: "Thank you for reaching out. I can hear how concerned you are, and I want you to know we’re on the same team.",
-  Driver: "Thanks for reaching out. I want to address this quickly and clearly.",
-  Expressive: "Thank you for the message — I appreciate you advocating for your child.",
-  Analytical: "Thank you for your message. Here is what I know and what I am doing next."
-};
-
-withOutput.textContent =
-`${openers[style]}
+<div class="panel">
+Thank you for reaching out. I can hear how concerned you are, and I want you to know we’re on the same team.
 
 Here’s what I’m doing:
-• I will check in privately with ${student} during ${grade}.
-• I’ll clarify expectations and provide a clear way to ask for help.
-• I’ll monitor progress closely.
+• I’ll check in privately with Marcus during math class.
+• I’ll make sure he has a clear, low-stress way to ask for help.
+• I’ll watch closely for signs he’s feeling overwhelmed.
 
 How you’ll know it’s improving:
-I will send a brief update after tomorrow’s class.
+I’ll send you a brief update after tomorrow’s class.
 
-My goal is to keep communication calm, consistent, and supportive to prevent misunderstandings and reduce escalation.`;
-}
+My goal is to keep communication calm, consistent, and supportive to prevent misunderstandings and escalation.
+</div>
+<strong class="note">
+Generated in one click using stored context.  
+No composing. Lower risk of formal escalation.
+</strong>
+</div>
 
-function generateFollowup(){
-followOutput.textContent =
-`Thanks for checking back in.
+</div>
+</div>
+
+<!-- STEP 3 -->
+<div class="card">
+<h2>Step 3 — Parent follows up</h2>
+
+<div class="panel">
+Thanks for checking in. He still feels singled out.
+What are the next steps, and how will I know if things are improving?
+</div>
+</div>
+
+<!-- STEP 4 -->
+<div class="card">
+<h2>Step 4 — Teacher follow-up response</h2>
+
+<div class="grid">
+
+<div class="without">
+<span class="tag">❌ Without NextGen Assistant</span>
+<div class="panel">
+Hi,
+
+I understand your concerns. I’ll continue to keep an eye on Marcus
+and see how things go over the next few days.
+Please let me know if you hear anything else.
+
+Thank you,
+Teacher
+</div>
+<strong class="note">
+Teacher rereads thread and re-composes response.  
+Context and tone must be rebuilt.
+</strong>
+</div>
+
+<div class="with">
+<span class="tag">✅ With NextGen Assistant</span>
+<div class="panel">
+Thank you for following up.
 
 Here’s what we’ll do next:
 • Continue private check-ins.
 • Reinforce help-seeking strategies.
 • Monitor progress over the next few classes.
 
-I’ll follow up again soon so you’re not left wondering.`;
-}
+I’ll reach out again soon so you’re not left wondering.
+</div>
+<strong class="note">
+Generated automatically using prior context.  
+One click. No retyping. No escalation risk added.
+</strong>
+</div>
 
-const studentInput = document.getElementById("student");
-const gradeInput = document.getElementById("grade");
-const parentStyle = document.getElementById("parentStyle");
-const withOutput = document.getElementById("with");
-const followOutput = document.getElementById("followOutput");
+</div>
+</div>
 
-generateWith();
-parentStyle.addEventListener("change", generateWith);
-</script>
+<!-- FOOTER -->
+<div class="card small">
+<strong>Reviewer note:</strong>  
+This demo illustrates real workflows using simulated data.  
+The full version stores context securely and generates responses dynamically.
+</div>
 
+</div>
 </body>
 </html>
