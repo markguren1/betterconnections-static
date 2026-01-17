@@ -1,315 +1,106 @@
-"use client";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BetterConnections Personality Quiz</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: auto; padding: 20px; }
+    h1 { margin-bottom: 10px; }
+    .question { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+    .option { display: block; margin: 8px 0; cursor: pointer; }
+    button { padding: 12px 18px; font-size: 16px; cursor: pointer; }
+    .hidden { display: none; }
+    .results { border: 1px solid #ccc; padding: 20px; border-radius: 8px; margin-top: 20px; }
+    pre { background: #f5f5f5; padding: 10px; border-radius: 6px; }
+  </style>
+</head>
 
-import React, { useMemo, useState } from "react";
+<body>
 
-/**
- * BetterConnections - Personality Quiz (FULL FILE)
- * Fixes the "always Driver" bug by:
- * - Storing a unique option id per question
- * - Assigning each option to exactly ONE personality type
- * - Recomputing scores from scratch on every submit
- * - Deterministically selecting the highest score type
- */
+<h1>Personality Quiz</h1>
+<p><strong>Step 1 (required):</strong> Take the quiz first. Results power the rest of the demo.</p>
 
-type PersonalityType = "Driver" | "Amiable" | "Expressive" | "Analytical";
+<form id="quizForm">
 
-type Option = {
-  id: string; // unique per option (IMPORTANT)
-  text: string;
-  type: PersonalityType; // exactly one type per option (IMPORTANT)
-};
+  <!-- QUESTION TEMPLATE -->
+  <div class="question">
+    <p><strong>1. In a group, you usually:</strong></p>
+    <label class="option"><input type="radio" name="q1" value="Driver"> Take charge and move things forward</label>
+    <label class="option"><input type="radio" name="q1" value="Amiable"> Make sure everyone feels included</label>
+    <label class="option"><input type="radio" name="q1" value="Expressive"> Bring energy and ideas</label>
+    <label class="option"><input type="radio" name="q1" value="Analytical"> Think things through carefully</label>
+  </div>
 
-type Question = {
-  id: string; // unique per question (IMPORTANT)
-  prompt: string;
-  options: Option[];
-};
+  <div class="question">
+    <p><strong>2. When there is conflict, you tend to:</strong></p>
+    <label class="option"><input type="radio" name="q2" value="Driver"> Address it directly</label>
+    <label class="option"><input type="radio" name="q2" value="Amiable"> Try to keep harmony</label>
+    <label class="option"><input type="radio" name="q2" value="Expressive"> Talk it out openly</label>
+    <label class="option"><input type="radio" name="q2" value="Analytical"> Analyze what caused it</label>
+  </div>
 
-const TYPES: PersonalityType[] = ["Driver", "Amiable", "Expressive", "Analytical"];
+  <div class="question">
+    <p><strong>3. You are most comfortable when:</strong></p>
+    <label class="option"><input type="radio" name="q3" value="Driver"> Goals are clear and moving fast</label>
+    <label class="option"><input type="radio" name="q3" value="Amiable"> People are cooperative</label>
+    <label class="option"><input type="radio" name="q3" value="Expressive"> Things are upbeat and social</label>
+    <label class="option"><input type="radio" name="q3" value="Analytical"> Plans and details make sense</label>
+  </div>
 
-/**
- * IMPORTANT:
- * Replace these prompts with your final questions if needed.
- * What matters most is that each option's "type" is correct.
- */
-const QUESTIONS: Question[] = [
-  {
-    id: "q1",
-    prompt: "In a group, you naturally tend to…",
-    options: [
-      { id: "q1_d", text: "Take charge and move things forward", type: "Driver" },
-      { id: "q1_a", text: "Make sure everyone feels included", type: "Amiable" },
-      { id: "q1_e", text: "Bring energy and spark ideas", type: "Expressive" },
-      { id: "q1_n", text: "Ask questions and think it through", type: "Analytical" },
-    ],
-  },
-  {
-    id: "q2",
-    prompt: "When there’s conflict, you usually…",
-    options: [
-      { id: "q2_d", text: "Address it directly and resolve it fast", type: "Driver" },
-      { id: "q2_a", text: "Try to keep harmony and reduce tension", type: "Amiable" },
-      { id: "q2_e", text: "Talk it out openly and express feelings", type: "Expressive" },
-      { id: "q2_n", text: "Step back and analyze what caused it", type: "Analytical" },
-    ],
-  },
-  {
-    id: "q3",
-    prompt: "You feel most comfortable when…",
-    options: [
-      { id: "q3_d", text: "There’s a clear goal and quick progress", type: "Driver" },
-      { id: "q3_a", text: "People are supportive and cooperative", type: "Amiable" },
-      { id: "q3_e", text: "Things are fun, social, and upbeat", type: "Expressive" },
-      { id: "q3_n", text: "Details are clear and plans make sense", type: "Analytical" },
-    ],
-  },
-  {
-    id: "q4",
-    prompt: "When making decisions, you’re most likely to…",
-    options: [
-      { id: "q4_d", text: "Decide quickly and adjust later", type: "Driver" },
-      { id: "q4_a", text: "Consider how it affects people", type: "Amiable" },
-      { id: "q4_e", text: "Go with what feels exciting or inspiring", type: "Expressive" },
-      { id: "q4_n", text: "Weigh evidence and reduce risk", type: "Analytical" },
-    ],
-  },
-  {
-    id: "q5",
-    prompt: "Others often describe you as…",
-    options: [
-      { id: "q5_d", text: "Bold, confident, and decisive", type: "Driver" },
-      { id: "q5_a", text: "Kind, loyal, and patient", type: "Amiable" },
-      { id: "q5_e", text: "Enthusiastic, expressive, and friendly", type: "Expressive" },
-      { id: "q5_n", text: "Thoughtful, precise, and logical", type: "Analytical" },
-    ],
-  },
-  {
-    id: "q6",
-    prompt: "In a new situation, you prefer to…",
-    options: [
-      { id: "q6_d", text: "Jump in and lead the way", type: "Driver" },
-      { id: "q6_a", text: "Build trust and connect with others first", type: "Amiable" },
-      { id: "q6_e", text: "Meet people and explore possibilities", type: "Expressive" },
-      { id: "q6_n", text: "Observe and understand before acting", type: "Analytical" },
-    ],
-  },
-  {
-    id: "q7",
-    prompt: "Under stress, you’re most likely to…",
-    options: [
-      { id: "q7_d", text: "Become more forceful and impatient", type: "Driver" },
-      { id: "q7_a", text: "Withdraw or avoid conflict", type: "Amiable" },
-      { id: "q7_e", text: "Talk more and seek reassurance", type: "Expressive" },
-      { id: "q7_n", text: "Overthink and focus on details", type: "Analytical" },
-    ],
-  },
-  {
-    id: "q8",
-    prompt: "Your communication style is usually…",
-    options: [
-      { id: "q8_d", text: "Direct and to the point", type: "Driver" },
-      { id: "q8_a", text: "Warm and supportive", type: "Amiable" },
-      { id: "q8_e", text: "Animated and story-driven", type: "Expressive" },
-      { id: "q8_n", text: "Clear, structured, and specific", type: "Analytical" },
-    ],
-  },
-  {
-    id: "q9",
-    prompt: "You’re most motivated by…",
-    options: [
-      { id: "q9_d", text: "Winning, achieving, and results", type: "Driver" },
-      { id: "q9_a", text: "Belonging, helping, and stability", type: "Amiable" },
-      { id: "q9_e", text: "Recognition, excitement, and connection", type: "Expressive" },
-      { id: "q9_n", text: "Accuracy, mastery, and understanding", type: "Analytical" },
-    ],
-  },
-  {
-    id: "q10",
-    prompt: "A strong day for you feels like…",
-    options: [
-      { id: "q10_d", text: "You got a lot done", type: "Driver" },
-      { id: "q10_a", text: "You supported someone and kept peace", type: "Amiable" },
-      { id: "q10_e", text: "You had fun and connected with people", type: "Expressive" },
-      { id: "q10_n", text: "You solved a problem or learned something", type: "Analytical" },
-    ],
-  },
-];
+  <div class="question">
+    <p><strong>4. When deciding, you usually:</strong></p>
+    <label class="option"><input type="radio" name="q4" value="Driver"> Decide quickly</label>
+    <label class="option"><input type="radio" name="q4" value="Amiable"> Consider people first</label>
+    <label class="option"><input type="radio" name="q4" value="Expressive"> Go with what feels exciting</label>
+    <label class="option"><input type="radio" name="q4" value="Analytical"> Weigh evidence carefully</label>
+  </div>
 
-function blankScores() {
-  return {
-    Driver: 0,
-    Amiable: 0,
-    Expressive: 0,
-    Analytical: 0,
-  } as Record<PersonalityType, number>;
-}
+  <button type="button" onclick="calculateResult()">View Results</button>
+</form>
 
-function computeScores(answersByQuestionId: Record<string, string>) {
-  const scores = blankScores();
+<div id="results" class="results hidden">
+  <h2>Your Personality Type: <span id="resultType"></span></h2>
+  <h3>Score Breakdown</h3>
+  <pre id="scoreOutput"></pre>
+  <button onclick="retakeQuiz()">Retake Quiz</button>
+</div>
 
-  for (const q of QUESTIONS) {
-    const chosenOptionId = answersByQuestionId[q.id];
-    const chosenOption = q.options.find((o) => o.id === chosenOptionId);
-    if (!chosenOption) continue;
+<script>
+  function calculateResult() {
+    const types = ["Driver", "Amiable", "Expressive", "Analytical"];
+    const scores = { Driver: 0, Amiable: 0, Expressive: 0, Analytical: 0 };
 
-    scores[chosenOption.type] += 1;
-  }
-
-  return scores;
-}
-
-function computeResult(scores: Record<PersonalityType, number>): PersonalityType {
-  // Deterministic top type selection:
-  // Sort by score desc; ties resolve by fixed order in TYPES.
-  const sorted = [...TYPES].sort((a, b) => {
-    const diff = scores[b] - scores[a];
-    if (diff !== 0) return diff;
-    return TYPES.indexOf(a) - TYPES.indexOf(b);
-  });
-  return sorted[0];
-}
-
-export default function QuizPage() {
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [submitted, setSubmitted] = useState(false);
-
-  const scores = useMemo(() => computeScores(answers), [answers]);
-  const result = useMemo(() => computeResult(scores), [scores]);
-
-  const totalAnswered = Object.keys(answers).length;
-  const totalQuestions = QUESTIONS.length;
-  const allAnswered = totalAnswered === totalQuestions;
-
-  function choose(qid: string, optionId: string) {
-    setAnswers((prev) => ({ ...prev, [qid]: optionId }));
-  }
-
-  function submit() {
-    // Require all answered in demo (prevents "always default" situations).
-    if (!allAnswered) {
-      alert("Please answer all questions before viewing results.");
-      return;
+    for (let i = 1; i <= 4; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      if (!selected) {
+        alert("Please answer all questions.");
+        return;
+      }
+      scores[selected.value]++;
     }
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    let topType = types[0];
+    let topScore = scores[topType];
+
+    for (const type of types) {
+      if (scores[type] > topScore) {
+        topScore = scores[type];
+        topType = type;
+      }
+    }
+
+    document.getElementById("resultType").textContent = topType;
+    document.getElementById("scoreOutput").textContent = JSON.stringify(scores, null, 2);
+    document.getElementById("results").classList.remove("hidden");
+    window.scrollTo(0, 0);
   }
 
-  function retake() {
-    setAnswers({});
-    setSubmitted(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  function retakeQuiz() {
+    document.getElementById("quizForm").reset();
+    document.getElementById("results").classList.add("hidden");
   }
+</script>
 
-  return (
-    <div style={{ maxWidth: 880, margin: "0 auto", padding: "24px 16px", fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Arial" }}>
-      <h1 style={{ fontSize: 28, margin: "0 0 8px" }}>BetterConnections Personality Quiz</h1>
-      <p style={{ margin: "0 0 18px", lineHeight: 1.4 }}>
-        Take the quiz first. Your results power the rest of the demo (NextGen comes second).
-      </p>
-
-      {!submitted ? (
-        <>
-          <div style={{ padding: 12, border: "1px solid #ddd", borderRadius: 10, marginBottom: 16 }}>
-            <strong>Progress:</strong> {totalAnswered}/{totalQuestions}
-          </div>
-
-          {QUESTIONS.map((q, idx) => (
-            <div key={q.id} style={{ padding: 16, border: "1px solid #e5e5e5", borderRadius: 12, marginBottom: 14 }}>
-              <div style={{ fontWeight: 700, marginBottom: 10 }}>
-                {idx + 1}. {q.prompt}
-              </div>
-
-              <div style={{ display: "grid", gap: 10 }}>
-                {q.options.map((o) => {
-                  const checked = answers[q.id] === o.id;
-                  return (
-                    <label
-                      key={o.id}
-                      style={{
-                        display: "flex",
-                        gap: 10,
-                        alignItems: "flex-start",
-                        padding: 12,
-                        border: `1px solid ${checked ? "#111" : "#ddd"}`,
-                        borderRadius: 10,
-                        cursor: "pointer",
-                      }}
-                    >
-                      <input
-                        type="radio"
-                        name={q.id}
-                        value={o.id}
-                        checked={checked}
-                        onChange={() => choose(q.id, o.id)}
-                        style={{ marginTop: 3 }}
-                      />
-                      <div>
-                        <div style={{ fontWeight: 600 }}>{o.text}</div>
-                      </div>
-                    </label>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-
-          <button
-            onClick={submit}
-            style={{
-              padding: "12px 16px",
-              borderRadius: 10,
-              border: "1px solid #111",
-              background: "#111",
-              color: "#fff",
-              fontWeight: 700,
-              cursor: "pointer",
-            }}
-          >
-            View Results
-          </button>
-
-          <div style={{ marginTop: 14, fontSize: 12, opacity: 0.8 }}>
-            (Debug help) Live scores: <pre style={{ display: "inline-block", margin: 0 }}>{JSON.stringify(scores, null, 2)}</pre>
-          </div>
-        </>
-      ) : (
-        <>
-          <div style={{ padding: 18, border: "1px solid #e5e5e5", borderRadius: 12, marginBottom: 14 }}>
-            <h2 style={{ margin: "0 0 6px" }}>Your Result: {result}</h2>
-            <p style={{ margin: "0 0 10px", lineHeight: 1.4 }}>
-              This result is based on the personality-coded options you selected.
-            </p>
-
-            <div style={{ padding: 12, border: "1px solid #ddd", borderRadius: 10 }}>
-              <strong>Score breakdown</strong>
-              <pre style={{ margin: "10px 0 0" }}>{JSON.stringify(scores, null, 2)}</pre>
-            </div>
-          </div>
-
-          <button
-            onClick={retake}
-            style={{
-              padding: "12px 16px",
-              borderRadius: 10,
-              border: "1px solid #111",
-              background: "#fff",
-              color: "#111",
-              fontWeight: 700,
-              cursor: "pointer",
-              marginRight: 10,
-            }}
-          >
-            Retake Quiz
-          </button>
-
-          <div style={{ marginTop: 18, padding: 14, border: "1px solid #e5e5e5", borderRadius: 12 }}>
-            <strong>Next step (locked flow):</strong>
-            <div style={{ marginTop: 6 }}>
-              After this, your demo proceeds to the Results/Deep Dive/Compatibility screens, then NextGen Assistant second.
-            </div>
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
+</body>
+</html>
