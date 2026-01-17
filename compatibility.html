@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BetterConnections Compatibility</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Small, safe add-ons just for this page */
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 860px) {
+      .grid2 { grid-template-columns: 1fr; }
+    }
+    .note {
+      border-left: 6px solid rgba(79,70,229,0.35);
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--border);
+      border-left-width: 6px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      color: var(--muted);
+    }
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .matrix th, .matrix td {
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(229,231,235,0.85);
+      border-right: 1px solid rgba(229,231,235,0.55);
+      text-align: center;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+    .matrix th:first-child, .matrix td:first-child {
+      text-align: left;
+      font-weight: 800;
+      color: var(--text);
+      background: rgba(17,24,39,0.02);
+    }
+    .matrix th {
+      font-weight: 900;
+      color: var(--text);
+      background: rgba(17,24,39,0.02);
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-weight: 900;
+      font-size: 12px;
+      min-width: 78px;
+    }
+    .best { background: rgba(34,197,94,0.14); border-color: rgba(34,197,94,0.35); }
+    .good { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.30); }
+    .mixed { background: rgba(245,158,11,0.14); border-color: rgba(245,158,11,0.35); }
+    .hard { background: rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.30); }
+
+    .legendRow { display:flex; flex-wrap:wrap; gap:10px; margin-top: 10px; }
+    .legendRow .chip { min-width: auto; }
+
+    .pairTitle {
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:10px;
+      margin: 0 0 8px;
+    }
+
+    .selectRow {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-top: 10px;
+    }
+    select {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      font-weight: 800;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="flow">
+      <span class="step">1) Personality Quiz</span>
+      <span class="step">2) Results</span>
+      <span class="step">3) Deep Dive</span>
+      <span class="step current">4) Compatibility</span>
+      <span class="step">5) NextGen Assistant</span>
+    </div>
+
+    <h1>Compatibility</h1>
+    <p>Some pairs feel natural. Others can be “high friction” unless you understand what each person needs.</p>
+
+    <div class="note">
+      <strong>Important:</strong> Best friends and spouses can still show up as a “worst match” on paper —
+      because chemistry is not the same as communication compatibility. This chart helps explain the friction points
+      and what to do about them.
+    </div>
+
+    <div id="missing" class="card" style="display:none; margin-top:14px;">
+      <h2>No quiz result found</h2>
+      <p>Please take the Personality Quiz first so we can personalize your compatibility view.</p>
+      <div class="btnRow">
+        <a class="button" href="quiz.html">Go to Quiz</a>
+      </div>
+    </div>
+
+    <div id="main" style="display:none;">
+
+      <div class="card" style="margin-top:14px;">
+        <div class="pairTitle">
+          <h2 style="margin:0;">Your Type: <span id="yourType" class="pill"></span></h2>
+          <span id="yourTag" class="chip"></span>
+        </div>
+
+        <p style="margin-top:0;">
+          Choose the other person’s type to see what typically goes well, what typically clashes, and how to reduce friction.
+        </p>
+
+        <div class="selectRow">
+          <label style="font-weight:900; color: var(--text);">Other person:</label>
+          <select id="otherSelect"></select>
+          <span id="pairChip" class="chip"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Best/Worst Match Matrix</h2>
+        <p style="margin-top:0;">Rows = you, columns = the other person.</p>
+
+        <table class="matrix" aria-label="Compatibility matrix">
+          <thead>
+            <tr>
+              <th>You \ Them</th>
+              <th>Driver</th>
+              <th>Amiable</th>
+              <th>Expressive</th>
+              <th>Analytical</th>
+            </tr>
+          </thead>
+          <tbody id="matrixBody"></tbody>
+        </table>
+
+        <div class="legendRow">
+          <span class="chip best">Best</span>
+          <span class="chip good">Good</span>
+          <span class="chip mixed">Mixed</span>
+          <span class="chip hard">High friction</span>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="card">
+          <h2>What works</h2>
+          <p id="works"></p>
+        </div>
+        <div class="card">
+          <h2>Common friction</h2>
+          <p id="friction"></p>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="card">
+          <h2>Do this</h2>
+          <p id="doThis"></p>
+        </div>
+        <div class="card">
+          <h2>Avoid this</h2>
+          <p id="avoidThis"></p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <h2>Next step</h2>
+        <p>The NextGen Assistant uses your type to help you phrase messages, reduce misunderstandings, and choose the best approach in hard conversations.</p>
+        <div class="btnRow">
+          <a class="button secondary" href="deep-dive.html">Back to Deep Dive</a>
+          <a class="button" href="nextgen-assistant.html">Continue to NextGen Assistant</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+  const TYPES = ["Driver", "Amiable", "Expressive", "Analytical"];
+
+  function getParam(name) { return new URL(window.location.href).searchParams.get(name); }
+  function normalizeType(raw) {
+    if (!raw) return null;
+    const v = String(raw).trim().toLowerCase();
+    if (v === "driver") return "Driver";
+    if (v === "amiable") return "Amiable";
+    if (v === "expressive") return "Expressive";
+    if (v === "analytical") return "Analytical";
+    return null;
+  }
+
+  // Compatibility labels (simple, intuitive for demo)
+  // NOTE: This is *communication compatibility*, not “love chemistry”.
+  const MATRIX = {
+    Driver:     { Driver:"mixed", Amiable:"good",  Expressive:"mixed", Analytical:"good"  },
+    Amiable:    { Driver:"good",  Amiable:"best",  Expressive:"good",  Analytical:"mixed" },
+    Expressive: { Driver:"mixed", Amiable:"good",  Expressive:"best",  Analytical:"hard"  },
+    Analytical: { Driver:"good",  Amiable:"mixed", Expressive:"hard",  Analytical:"best"  }
+  };
+
+  const LABEL = { best:"Best", good:"Good", mixed:"Mixed", hard:"High friction" };
+  const CHIP_CLASS = { best:"best", good:"good", mixed:"mixed", hard:"hard" };
+
+  // Pair-specific guidance (demo-friendly, short but meaningful)
+  const PAIRS = {
+    "Driver|Driver": {
+      works: "Fast decisions, clear expectations, strong execution.",
+      friction: "Power struggles, impatience, competing priorities.",
+      doThis: "Define roles, decide quickly, and agree on the win condition.",
+      avoidThis: "Competing for control or turning everything into a contest."
+    },
+    "Driver|Amiable": {
+      works: "Driver provides direction; Amiable stabilizes relationships and follow-through.",
+      friction: "Driver can feel slowed down; Amiable can feel bulldozed.",
+      doThis: "Driver: soften tone + explain why. Amiable: ask for clarity + timelines.",
+      avoidThis: "Driver: blunt criticism. Amiable: hinting instead of stating needs."
+    },
+    "Driver|Expressive": {
+      works: "Energy + action: Expressive inspires; Driver executes.",
+      friction: "Driver wants focus; Expressive wants freedom and recognition.",
+      doThis: "Let ideas flow, then pick one plan and define the next step.",
+      avoidThis: "Shutting down ideas early or drifting without commitment."
+    },
+    "Driver|Analytical": {
+      works: "Driver drives momentum; Analytical improves quality and reduces risk.",
+      friction: "Driver feels ‘analysis delay’; Analytical feels ‘rushed’.",
+      doThis: "Ask for the top 2 risks + best recommendation, then decide.",
+      avoidThis: "Forcing decisions without criteria or dismissing details as irrelevant."
+    },
+
+    "Amiable|Amiable": {
+      works: "Warmth, trust, teamwork, steady consistency.",
+      friction: "Avoiding hard conversations; slow decisions when stakes rise.",
+      doThis: "Name the issue gently, agree on a plan, and follow through.",
+      avoidThis: "Silence, resentment, or hoping the other person ‘just knows’."
+    },
+    "Amiable|Expressive": {
+      works: "Friendly connection, optimism, encouragement, social ease.",
+      friction: "Expressive intensity can overwhelm; Amiable may avoid setting boundaries.",
+      doThis: "Expressive: slow down and ask. Amiable: state needs clearly and kindly.",
+      avoidThis: "People-pleasing, mixed signals, or emotional overreactions."
+    },
+    "Amiable|Analytical": {
+      works: "Calm + thoughtful: stability with careful reasoning.",
+      friction: "Amiable reads emotion; Analytical reads logic—signals can be missed.",
+      doThis: "Be explicit: ‘I feel ___ and I need ___.’ Pair it with facts and a plan.",
+      avoidThis: "Assuming tone is obvious or expecting mind-reading."
+    },
+
+    "Expressive|Expressive": {
+      works: "High energy, creativity, fun, strong emotional connection.",
+      friction: "Scattered priorities, drama, inconsistent follow-through.",
+      doThis: "Choose one priority, set a short deadline, and celebrate progress.",
+      avoidThis: "Endless brainstorming without decisions or escalating emotions."
+    },
+    "Expressive|Analytical": {
+      works: "Big ideas + careful execution (when respected).",
+      friction: "This can be a ‘worst match’ on paper: Expressive wants vibe; Analytical wants proof.",
+      doThis: "Expressive: slow down and specify. Analytical: validate feelings, then clarify criteria.",
+      avoidThis: "Calling the other ‘too emotional’ or ‘too cold’—it shuts communication down."
+    },
+
+    "Analytical|Analytical": {
+      works: "Accuracy, consistency, strong planning, high-quality outcomes.",
+      friction: "Overthinking, slow decisions, perfectionism, too much critique.",
+      doThis: "Agree on ‘good enough’, define criteria, and set a decision deadline.",
+      avoidThis: "Endless analysis loops or nitpicking each other into paralysis."
+    }
+  };
+
+  function getPairKey(a, b) { return a + "|" + b; }
+
+  function pairContent(a, b) {
+    // Use direct match, else try reversed (symmetry for demo).
+    return PAIRS[getPairKey(a,b)] || PAIRS[getPairKey(b,a)] || {
+      works: "This pairing can work well with awareness and clear communication.",
+      friction: "Differences in pace, tone, and decision style can create misunderstandings.",
+      doThis: "Name what each person needs, then agree on a shared approach.",
+      avoidThis: "Assuming the other person is ‘wrong’ instead of simply different."
+    };
+  }
+
+  function renderMatrix() {
+    const body = document.getElementById("matrixBody");
+    body.innerHTML = "";
+
+    for (const you of TYPES) {
+      const tr = document.createElement("tr");
+
+      const th = document.createElement("td");
+      th.textContent = you;
+      tr.appendChild(th);
+
+      for (const them of TYPES) {
+        const level = MATRIX[you][them];
+        const td = document.createElement("td");
+        const chip = document.createElement("span");
+        chip.className = `chip ${CHIP_CLASS[level]}`;
+        chip.textContent = LABEL[level];
+        td.appendChild(chip);
+        tr.appendChild(td);
+      }
+
+      body.appendChild(tr);
+    }
+  }
+
+  function setChip(el, level) {
+    el.className = `chip ${CHIP_CLASS[level]}`;
+    el.textContent = LABEL[level];
+  }
+
+  (function init(){
+    let type = normalizeType(getParam("type"));
+    if (!type) type = normalizeType(localStorage.getItem("bc_personality_type"));
+
+    if (!type) {
+      document.getElementById("missing").style.display = "block";
+      return;
+    }
+
+    document.getElementById("yourType").textContent = type;
+
+    // Populate dropdown
+    const sel = document.getElementById("otherSelect");
+    for (const t of TYPES) {
+      const opt = document.createElement("option");
+      opt.value = t;
+      opt.textContent = t;
+      sel.appendChild(opt);
+    }
+
+    // Default "other" is the strongest contrast for insight
+    const defaultOther = (type === "Expressive") ? "Analytical"
+                      : (type === "Analytical") ? "Expressive"
+                      : (type === "Driver") ? "Amiable"
+                      : "Driver";
+    sel.value = defaultOther;
+
+    renderMatrix();
+
+    function updatePair() {
+      const other = sel.value;
+      const level = MATRIX[type][other];
+      setChip(document.getElementById("pairChip"), level);
+      setChip(document.getElementById("yourTag"), MATRIX[type][type]); // self label (often best/mixed)
+
+      const info = pairContent(type, other);
+      document.getElementById("works").textContent = info.works;
+      document.getElementById("friction").textContent = info.friction;
+      document.getElementById("doThis").textContent = info.doThis;
+      document.getElementById("avoidThis").textContent = info.avoidThis;
+    }
+
+    sel.addEventListener("change", updatePair);
+    updatePair();
+
+    document.getElementById("main").style.display = "block";
+  })();
+</script>
+
+</body>
+</html>
