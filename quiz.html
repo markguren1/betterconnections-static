@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>BetterConnections Personality Quiz</title>
 
-  <!-- FORCE SAFE, READABLE STYLES (OVERRIDES ANY DARK THEME) -->
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,9 +14,7 @@
       color: #111111 !important;
     }
 
-    h1, h2, h3, p, strong, label {
-      color: #111111 !important;
-    }
+    h1, p, strong, label { color: #111111 !important; }
 
     .question {
       border: 1px solid #ddd;
@@ -27,11 +24,7 @@
       background: #ffffff !important;
     }
 
-    .option {
-      display: block;
-      margin: 8px 0;
-      cursor: pointer;
-    }
+    .option { display: block; margin: 8px 0; cursor: pointer; }
 
     button {
       padding: 12px 18px;
@@ -41,31 +34,6 @@
       color: #fff;
       border: none;
       border-radius: 6px;
-    }
-
-    button.secondary {
-      background: #e5e5e5;
-      color: #111;
-      margin-top: 12px;
-    }
-
-    .results {
-      border: 1px solid #ccc;
-      padding: 20px;
-      border-radius: 8px;
-      margin-top: 24px;
-      background: #ffffff !important;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    pre {
-      background: #f5f5f5;
-      padding: 10px;
-      border-radius: 6px;
-      color: #111;
     }
 
     .progress {
@@ -170,13 +138,6 @@
   <button type="button" onclick="calculateResult()">View Results</button>
 </form>
 
-<div id="results" class="results hidden">
-  <h2>Your Personality Type: <span id="resultType"></span></h2>
-  <h3>Score Breakdown</h3>
-  <pre id="scoreOutput"></pre>
-  <button class="secondary" onclick="retakeQuiz()">Retake Quiz</button>
-</div>
-
 <script>
   function updateProgress() {
     const inputs = document.querySelectorAll('#quizForm input[type="radio"]');
@@ -188,17 +149,16 @@
       if (selected) answered++;
     }
 
-    document.getElementById("progress").textContent = `Progress: ${answered}/${questionNames.length} answered`;
+    document.getElementById("progress").textContent =
+      `Progress: ${answered}/${questionNames.length} answered`;
   }
 
-  // Update progress on any click
   document.addEventListener("change", function(e) {
     if (e.target && e.target.matches('#quizForm input[type="radio"]')) {
       updateProgress();
     }
   });
 
-  // Initialize progress
   updateProgress();
 
   function calculateResult() {
@@ -214,18 +174,11 @@
         alert("Please answer all questions.");
         return;
       }
-      const val = selected.value;
-      if (!scores.hasOwnProperty(val)) {
-        alert("Scoring error: an option has an invalid value: " + val);
-        return;
-      }
-      scores[val]++;
+      scores[selected.value]++;
     }
 
-    // Determine top type (deterministic)
     let topType = types[0];
     let topScore = scores[topType];
-
     for (const type of types) {
       if (scores[type] > topScore) {
         topScore = scores[type];
@@ -233,30 +186,13 @@
       }
     }
 
-    // Store for results page
-    try {
-      localStorage.setItem("bc_personality_type", topType);
-      localStorage.setItem("bc_personality_scores", JSON.stringify(scores));
-    } catch (e) {
-      // ignore
-    }
+    // Store for results.html
+    localStorage.setItem("bc_personality_type", topType);
+    localStorage.setItem("bc_personality_scores", JSON.stringify(scores));
 
-    document.getElementById("resultType").textContent = topType;
-    document.getElementById("scoreOutput").textContent =
-      JSON.stringify(scores, null, 2);
-
-    document.getElementById("results").classList.remove("hidden");
-    window.scrollTo(0, 0);
-
-    // OPTIONAL: if you want automatic navigation to results.html, uncomment below:
-    // window.location.href = `results.html?type=${encodeURIComponent(topType)}&scores=${encodeURIComponent(JSON.stringify(scores))}`;
-  }
-
-  function retakeQuiz() {
-    document.getElementById("quizForm").reset();
-    document.getElementById("results").classList.add("hidden");
-    updateProgress();
-    window.scrollTo(0, 0);
+    // GO TO RESULTS PAGE (THIS IS THE KEY FIX)
+    window.location.href =
+      `results.html?type=${encodeURIComponent(topType)}&scores=${encodeURIComponent(JSON.stringify(scores))}`;
   }
 </script>
 
