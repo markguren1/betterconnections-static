@@ -3,242 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <title>BetterConnections Results</title>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 24px;
-      background: #ffffff !important;
-      color: #111111 !important;
-    }
-
-    .flow {
-      border: 1px solid #e5e5e5;
-      border-radius: 10px;
-      padding: 12px 14px;
-      margin-bottom: 18px;
-      background: #fff;
-      font-size: 14px;
-    }
-    .flow .step {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid #ddd;
-      margin-right: 6px;
-      background: #fafafa;
-    }
-    .flow .current {
-      background: #111;
-      color: #fff;
-      border-color: #111;
-    }
-
-    .card {
-      border: 1px solid #e5e5e5;
-      border-radius: 12px;
-      padding: 18px;
-      margin: 14px 0;
-      background: #fff;
-    }
-
-    .pill {
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid #ddd;
-      font-weight: 700;
-      background: #fafafa;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 16px;
-    }
-
-    .barLine {
-      display: grid;
-      grid-template-columns: 110px 1fr 40px;
-      gap: 10px;
-      align-items: center;
-      margin: 10px 0;
-      font-size: 14px;
-    }
-
-    .track {
-      height: 12px;
-      border-radius: 999px;
-      background: #f0f0f0;
-      overflow: hidden;
-      border: 1px solid #e5e5e5;
-    }
-
-    .fill {
-      height: 100%;
-      width: 0%;
-      border-radius: 999px;
-    }
-
-    /* COLOR CODING */
-    .Driver { background: #e74c3c; }      /* red */
-    .Amiable { background: #27ae60; }     /* green */
-    .Expressive { background: #f39c12; }  /* orange */
-    .Analytical { background: #3498db; }  /* blue */
-
-    pre {
-      background: #f5f5f5;
-      padding: 10px;
-      border-radius: 6px;
-      font-size: 13px;
-    }
-
-    button, a.button {
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1px solid #111;
-      background: #111;
-      color: #fff;
-      font-weight: 700;
-      text-decoration: none;
-      margin-right: 8px;
-      display: inline-block;
-    }
-
-    a.secondary {
-      background: #fff;
-      color: #111;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-      font-size: 14px;
-    }
-
-    th, td {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    th {
-      width: 190px;
-      color: #333;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <div class="container">
 
-<div class="flow">
-  <span class="step">1) Personality Quiz</span>
-  <span class="step current">2) Results</span>
-  <span class="step">3) Deep Dive</span>
-  <span class="step">4) Compatibility</span>
-  <span class="step">5) NextGen Assistant</span>
-</div>
+    <div class="flow">
+      <span class="step">1) Personality Quiz</span>
+      <span class="step current">2) Results</span>
+      <span class="step">3) Deep Dive</span>
+      <span class="step">4) Compatibility</span>
+      <span class="step">5) NextGen Assistant</span>
+    </div>
 
-<h1>Personality Results</h1>
-<p>Your personality type is the foundation for BetterConnections.</p>
+    <h1>Personality Results</h1>
+    <p>Your personality type is the foundation for BetterConnections. The bars show your percentage across the four styles.</p>
 
-<div id="missing" class="card" style="display:none;">
-  <strong>No quiz result found.</strong>
-  <p>Please take the Personality Quiz first.</p>
-  <a class="button" href="quiz.html">Go to Quiz</a>
-</div>
-
-<div id="main" style="display:none;">
-
-  <div class="layout">
-    <div class="card">
-      <h2>Your Type: <span id="typeLabel" class="pill"></span></h2>
-      <p id="summary"></p>
-
-      <a class="button secondary" href="quiz.html">Retake Quiz</a>
-      <a class="button secondary" href="deep-dive.html">Continue to Deep Dive</a>
-      <a class="button secondary" href="compatibility.html">Continue to Compatibility</a>
-
-      <div class="card" style="margin-top:16px;">
-        <strong>Score Breakdown (raw)</strong>
-        <pre id="raw"></pre>
+    <div id="missing" class="card" style="display:none;">
+      <h2>No quiz result found</h2>
+      <p>Please take the Personality Quiz first.</p>
+      <div class="btnRow">
+        <a class="button" href="quiz.html">Go to Quiz</a>
       </div>
     </div>
 
-    <div class="card">
-      <strong>Score Bars</strong>
-      <div id="bars"></div>
-      <p style="font-size:12px;opacity:0.85;margin-top:6px;">
-        Color-coded by personality type.
-      </p>
+    <div id="main" style="display:none;">
+
+      <div class="card" style="margin-bottom: 14px;">
+        <h2>Your Type: <span id="typeLabel" class="pill"></span></h2>
+        <p id="summary"></p>
+
+        <div class="btnRow">
+          <a class="button secondary" href="quiz.html">Retake Quiz</a>
+          <a class="button secondary" href="deep-dive.html">Continue to Deep Dive</a>
+          <a class="button secondary" href="compatibility.html">Continue to Compatibility</a>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 14px;">
+        <h2>Score Bars (Percentages)</h2>
+        <div id="bars"></div>
+        <p style="margin-top:10px;">Percentages are based on your answers out of 10 questions.</p>
+      </div>
+
+      <div class="card" style="margin-bottom: 14px;">
+        <h2>Score Breakdown (raw)</h2>
+        <pre id="raw"></pre>
+      </div>
+
+      <div class="card">
+        <h2>Strengths & Challenges</h2>
+        <table class="table">
+          <tr><th>Strengths</th><td id="strengths"></td></tr>
+          <tr><th>Challenges</th><td id="challenges"></td></tr>
+          <tr><th>Communication Style</th><td id="comm"></td></tr>
+          <tr><th>Under Stress</th><td id="stress"></td></tr>
+        </table>
+      </div>
+
     </div>
-  </div>
 
-  <div class="card">
-    <h3>Strengths & Challenges</h3>
-    <table>
-      <tr><th>Strengths</th><td id="strengths"></td></tr>
-      <tr><th>Challenges</th><td id="challenges"></td></tr>
-      <tr><th>Communication Style</th><td id="comm"></td></tr>
-      <tr><th>Under Stress</th><td id="stress"></td></tr>
-    </table>
   </div>
-
-</div>
 
 <script>
   const TYPES = ["Driver", "Amiable", "Expressive", "Analytical"];
 
   const CONTENT = {
     Driver: {
-      summary: "Direct, decisive, and goal-focused.",
+      summary: "Direct, decisive, and goal-focused. You value progress, clarity, and results.",
       strengths: "Decisive • Confident • Action-oriented • Efficient",
       challenges: "Can seem blunt • Impatient • May overlook feelings",
       comm: "Concise, direct, results-focused.",
       stress: "May become controlling or forceful."
     },
     Amiable: {
-      summary: "Supportive, steady, and relationship-focused.",
+      summary: "Supportive, steady, and relationship-focused. You value harmony, trust, and cooperation.",
       strengths: "Patient • Loyal • Supportive • Team-oriented",
-      challenges: "Avoids conflict • Difficulty saying no",
+      challenges: "Avoids conflict • Difficulty saying no • Internalizes stress",
       comm: "Warm, collaborative, reassuring.",
       stress: "May withdraw or people-please."
     },
     Expressive: {
-      summary: "Enthusiastic, social, and idea-driven.",
+      summary: "Enthusiastic, social, and idea-driven. You value connection, recognition, and inspiration.",
       strengths: "Energetic • Optimistic • Persuasive • Creative",
       challenges: "Impulsive • Misses details • Can overwhelm",
       comm: "Open, animated, big-picture.",
       stress: "May become scattered or dramatic."
     },
     Analytical: {
-      summary: "Thoughtful, precise, and logic-focused.",
+      summary: "Thoughtful, precise, and logic-focused. You value accuracy, structure, and understanding.",
       strengths: "Logical • Accurate • Prepared • Thorough",
-      challenges: "Overthinks • Slow to decide • Rigid",
+      challenges: "Overthinks • Slow to decide • Can seem detached",
       comm: "Structured, detailed, data-driven.",
       stress: "Analysis paralysis or withdrawal."
     }
   };
 
-  function parseJSON(str) {
-    try { return JSON.parse(str); } catch { return null; }
-  }
-
   function getParam(name) {
     return new URL(window.location.href).searchParams.get(name);
   }
 
-  function renderBars(scores) {
-    const container = document.getElementById("bars");
-    const max = Math.max(...TYPES.map(t => scores[t])) || 1;
-    container.innerHTML = "";
+  function parseJSON(str) {
+    try { return JSON.parse(str); } catch { return null; }
+  }
 
-    TYPES.forEach(t => {
-      const pct = Math.round((scores[t] / max) * 100);
+  function renderBars(scores) {
+    const bars = document.getElementById("bars");
+    bars.innerHTML = "";
+
+    const total = TYPES.reduce((sum, t) => sum + Number(scores[t] || 0), 0) || 1;
+
+    for (const t of TYPES) {
+      const value = Number(scores[t] || 0);
+      const pct = Math.round((value / total) * 100);
 
       const row = document.createElement("div");
       row.className = "barLine";
@@ -250,20 +128,20 @@
       track.className = "track";
 
       const fill = document.createElement("div");
-      fill.className = `fill ${t}`;
-      fill.style.width = pct + "%";
+      fill.className = `fill ${t}`;      // uses .fill.Driver, .fill.Amiable, etc. from styles.css
+      fill.style.width = pct + "%";      // percentage width
 
       track.appendChild(fill);
 
       const num = document.createElement("div");
-      num.textContent = scores[t];
+      num.textContent = pct + "%";       // show % on the right
 
       row.appendChild(label);
       row.appendChild(track);
       row.appendChild(num);
 
-      container.appendChild(row);
-    });
+      bars.appendChild(row);
+    }
   }
 
   (function init() {
@@ -276,11 +154,12 @@
     }
 
     document.getElementById("typeLabel").textContent = type;
-    document.getElementById("summary").textContent = CONTENT[type].summary;
-    document.getElementById("strengths").textContent = CONTENT[type].strengths;
-    document.getElementById("challenges").textContent = CONTENT[type].challenges;
-    document.getElementById("comm").textContent = CONTENT[type].comm;
-    document.getElementById("stress").textContent = CONTENT[type].stress;
+    document.getElementById("summary").textContent = CONTENT[type]?.summary || "";
+    document.getElementById("strengths").textContent = CONTENT[type]?.strengths || "";
+    document.getElementById("challenges").textContent = CONTENT[type]?.challenges || "";
+    document.getElementById("comm").textContent = CONTENT[type]?.comm || "";
+    document.getElementById("stress").textContent = CONTENT[type]?.stress || "";
+
     document.getElementById("raw").textContent = JSON.stringify(scores, null, 2);
 
     renderBars(scores);
