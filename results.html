@@ -2,149 +2,386 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Results – BetterConnections</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>BetterConnections Results</title>
+
   <style>
     body {
-      background: #f6f7f9;
-      color: #1f2937;
-    }
-    .results-container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .card {
-      background: #ffffff;
-      border-radius: 12px;
+      font-family: Arial, sans-serif;
+      max-width: 980px;
+      margin: 0 auto;
       padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      background: #ffffff !important;
+      color: #111111 !important;
     }
+
+    h1 { margin: 0 0 8px; }
+    p { line-height: 1.5; }
+
+    .flow {
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 0 0 18px;
+      background: #fff;
+    }
+    .flow strong { display: inline-block; margin-right: 6px; }
+    .flow .step {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+      margin: 4px 6px 0 0;
+      font-size: 13px;
+      background: #fafafa;
+    }
+    .flow .step.current {
+      border-color: #111;
+      background: #111;
+      color: #fff;
+    }
+
+    .card {
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 18px;
+      margin: 14px 0;
+      background: #fff;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+      font-weight: 700;
+      font-size: 14px;
+      background: #fafafa;
+    }
+
+    .btnRow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    button, a.button {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #111;
+      background: #111;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .secondary, a.secondary {
+      background: #fff;
+      color: #111;
+    }
+
+    .typeGrid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 860px) {
+      .typeGrid { grid-template-columns: 1.3fr 0.7fr; }
+    }
+
+    .chartRow {
+      margin-top: 12px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .barWrap {
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .barLine {
+      display: grid;
+      grid-template-columns: 110px 1fr 48px;
+      gap: 10px;
+      align-items: center;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .track {
+      height: 12px;
+      border-radius: 999px;
+      background: #f0f0f0;
+      overflow: hidden;
+      border: 1px solid #e5e5e5;
+    }
+
+    .fill {
+      height: 100%;
+      width: 0%;
+      background: #111;
+      border-radius: 999px;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 12px;
+      margin-top: 10px;
+      font-size: 14px;
     }
     th, td {
       text-align: left;
-      padding: 10px;
-      border-bottom: 1px solid #e5e7eb;
+      padding: 10px 8px;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
     }
-    th {
-      background: #f3f4f6;
+    th { width: 190px; color: #333; }
+
+    .muted { opacity: 0.85; }
+    .warning {
+      border: 1px solid #f0d7a7;
+      background: #fff7e6;
+      border-radius: 10px;
+      padding: 12px;
     }
-    .callout {
-      background: #eef2ff;
-      border-left: 5px solid #6366f1;
-      padding: 16px;
-      border-radius: 8px;
-      margin: 20px 0;
-    }
-    .references {
-      font-size: 0.9rem;
-      color: #374151;
-    }
+
+    .small { font-size: 12px; opacity: 0.85; }
   </style>
 </head>
 
 <body>
 
-<div class="results-container">
+  <!-- LOCKED DEMO FLOW -->
+  <div class="flow">
+    <strong>Locked Demo Flow:</strong>
+    <span class="step">1) Personality Quiz</span>
+    <span class="step current">2) Results</span>
+    <span class="step">3) Deep Dive</span>
+    <span class="step">4) Compatibility</span>
+    <span class="step">5) NextGen Assistant</span>
+  </div>
 
-  <h1>Your Results</h1>
-  <p>
-    This page shows your communication style mix — and why some people feel easy
-    to connect with while others require a different approach.
+  <h1>Personality Results</h1>
+  <p class="muted">
+    Your personality type is the foundation for BetterConnections. Use it to understand communication style, strengths,
+    stress behavior, and relationship friction points.
   </p>
 
-  <div class="card">
-    <h2>Primary Style: Driver</h2>
-    <p><strong>Vibe Mix (sample demo)</strong></p>
-    <ul>
-      <li>Driver</li>
-      <li>Amiable</li>
-      <li>Expressive</li>
-      <li>Analytical</li>
-    </ul>
-
-    <div class="callout">
-      <strong>Fun PD insight:</strong><br />
-      Your spouse or best friend may be your <strong>most challenging match</strong> —
-      and that’s completely normal. Different styles value different things.
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Best & Most Challenging Matches</h2>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Your Style</th>
-          <th>Best Match</th>
-          <th>Most Challenging</th>
-          <th>Why</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Driver</td>
-          <td>Amiable</td>
-          <td>Expressive</td>
-          <td>Drivers value results; Amiables provide steadiness.</td>
-        </tr>
-        <tr>
-          <td>Amiable</td>
-          <td>Expressive</td>
-          <td>Driver</td>
-          <td>Amiables value warmth; Expressives bring energy.</td>
-        </tr>
-        <tr>
-          <td>Expressive</td>
-          <td>Amiable</td>
-          <td>Analytical</td>
-          <td>Expressives value connection; Amiables listen.</td>
-        </tr>
-        <tr>
-          <td>Analytical</td>
-          <td>Driver</td>
-          <td>Amiable</td>
-          <td>Analyticals value clarity; Drivers move things forward.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="callout">
-      <strong>Why matches aren’t always reciprocal:</strong><br />
-      Best matches are based on what each style <em>needs</em> — not similarity.
-      That’s why a pairing can feel easy for one person and challenging for the other.
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Why This Matters in Real Life</h2>
-    <p>
-      In classrooms, staff meetings, parent conferences, and leadership interactions,
-      misunderstandings are rarely about intent — they’re about communication style.
+  <div id="missingResult" class="card warning" style="display:none;">
+    <strong>No quiz result found.</strong>
+    <p class="muted" style="margin:8px 0 0;">
+      Please take the Personality Quiz first so we can show your results.
     </p>
-    <p>
-      BetterConnections helps you adjust <strong>how</strong> you communicate,
-      not <strong>who</strong> you are.
+    <div class="btnRow">
+      <a class="button" href="quiz.html">Go to Personality Quiz</a>
+    </div>
+    <p class="small" style="margin-top:10px;">
+      (For demo testing) You can also append <code>?type=Amiable</code> or <code>?type=Driver</code> to this page’s URL.
     </p>
   </div>
 
-  <div class="card references">
-    <h2>References & Credibility</h2>
-    <ul>
-      <li>Adapted from classic behavioral and communication-style models</li>
-      <li>Aligned with DISC-style frameworks (non-diagnostic)</li>
-      <li>Used in professional development, leadership training, and education settings</li>
-      <li>Field-tested in classrooms, schools, and PD workshops</li>
-    </ul>
+  <div id="resultsBlock" class="card" style="display:none;">
+    <div class="typeGrid">
+      <div>
+        <h2 style="margin:0 0 8px;">Your Type: <span id="typeLabel" class="pill"></span></h2>
+        <p id="typeSummary" class="muted" style="margin:0;"></p>
+
+        <div class="btnRow">
+          <a class="button secondary" href="quiz.html">Retake Quiz</a>
+          <a class="button secondary" href="deep-dive.html">Continue to Deep Dive</a>
+          <a class="button secondary" href="compatibility.html">Continue to Compatibility</a>
+        </div>
+
+        <p class="small" style="margin-top:10px;">
+          Note: NextGen Assistant is locked later in the demo flow (after quiz, results, deep dive, and compatibility).
+        </p>
+      </div>
+
+      <div class="barWrap">
+        <strong>Quick Score Chart</strong>
+        <div class="chartRow" id="scoreBars"></div>
+        <div class="small" style="margin-top:8px;">
+          Scores are shown if available. If not, the chart displays a balanced default for demo readability.
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <h3 style="margin:0 0 8px;">Strengths & Challenges</h3>
+      <table>
+        <tr>
+          <th>Strengths</th>
+          <td id="strengthsCell"></td>
+        </tr>
+        <tr>
+          <th>Challenges</th>
+          <td id="challengesCell"></td>
+        </tr>
+        <tr>
+          <th>Communication Style</th>
+          <td id="commCell"></td>
+        </tr>
+        <tr>
+          <th>Under Stress</th>
+          <td id="stressCell"></td>
+        </tr>
+      </table>
+    </div>
   </div>
 
-</div>
+<script>
+  // --- Helpers ---
+  function getQueryParam(name) {
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name);
+  }
+
+  function normalizeType(raw) {
+    if (!raw) return null;
+    const v = String(raw).trim().toLowerCase();
+    if (v === "driver") return "Driver";
+    if (v === "amiable") return "Amiable";
+    if (v === "expressive") return "Expressive";
+    if (v === "analytical") return "Analytical";
+    return null;
+  }
+
+  function safeParseJSON(str) {
+    try { return JSON.parse(str); } catch (e) { return null; }
+  }
+
+  const TYPES = ["Driver", "Amiable", "Expressive", "Analytical"];
+
+  // Content for each type (kept concise + chart-friendly)
+  const TYPE_CONTENT = {
+    Driver: {
+      summary: "Direct, decisive, and goal-focused. You value progress, clarity, and results.",
+      strengths: ["Decisive", "Confident", "Action-oriented", "Efficient"],
+      challenges: ["Can seem blunt", "Impatient with slow pace", "May overlook feelings"],
+      comm: "Prefers concise communication, clear expectations, and fast decisions.",
+      stress: "May become more forceful, controlling, or frustrated if blocked."
+    },
+    Amiable: {
+      summary: "Supportive, steady, and relationship-focused. You value harmony, trust, and cooperation.",
+      strengths: ["Patient", "Loyal", "Supportive", "Team-oriented"],
+      challenges: ["Avoids conflict", "May struggle to say no", "Can internalize stress"],
+      comm: "Prefers warm tone, reassurance, and collaborative decision-making.",
+      stress: "May withdraw, people-please, or avoid uncomfortable conversations."
+    },
+    Expressive: {
+      summary: "Enthusiastic, social, and idea-driven. You value connection, recognition, and inspiration.",
+      strengths: ["Energetic", "Optimistic", "Persuasive", "Creative"],
+      challenges: ["Can be impulsive", "May miss details", "Can overtalk or overwhelm"],
+      comm: "Prefers open dialogue, encouragement, and big-picture framing.",
+      stress: "May become dramatic, scattered, or seek reassurance frequently."
+    },
+    Analytical: {
+      summary: "Thoughtful, precise, and logic-focused. You value accuracy, structure, and understanding.",
+      strengths: ["Logical", "Accurate", "Prepared", "Problem-solver"],
+      challenges: ["Can overthink", "Slow to decide", "May seem detached"],
+      comm: "Prefers specifics, data, written clarity, and time to process.",
+      stress: "May become critical, rigid, or stuck in analysis paralysis."
+    }
+  };
+
+  // Build score bar UI
+  function renderScoreBars(scores) {
+    const container = document.getElementById("scoreBars");
+    container.innerHTML = "";
+
+    const max = Math.max(...TYPES.map(t => Number(scores[t] || 0))) || 1;
+
+    for (const t of TYPES) {
+      const value = Number(scores[t] || 0);
+      const pct = Math.round((value / max) * 100);
+
+      const row = document.createElement("div");
+      row.className = "barLine";
+
+      const label = document.createElement("div");
+      label.textContent = t;
+
+      const track = document.createElement("div");
+      track.className = "track";
+
+      const fill = document.createElement("div");
+      fill.className = "fill";
+      fill.style.width = pct + "%";
+
+      track.appendChild(fill);
+
+      const num = document.createElement("div");
+      num.textContent = value;
+
+      row.appendChild(label);
+      row.appendChild(track);
+      row.appendChild(num);
+
+      container.appendChild(row);
+    }
+  }
+
+  // --- Main ---
+  (function init() {
+    // 1) Prefer URL param: ?type=Amiable
+    let type = normalizeType(getQueryParam("type"));
+
+    // 2) Fallback to localStorage if present (optional wiring later)
+    // These keys are safe to support; if absent, no harm.
+    if (!type) {
+      type = normalizeType(localStorage.getItem("bc_personality_type"));
+    }
+
+    // 3) Optional scores in localStorage or query param
+    // You can later store a JSON string like: {"Driver":2,"Amiable":6,"Expressive":1,"Analytical":1}
+    let scores = null;
+
+    const scoresFromQuery = getQueryParam("scores");
+    if (scoresFromQuery) scores = safeParseJSON(scoresFromQuery);
+
+    if (!scores) {
+      const lsScores = localStorage.getItem("bc_personality_scores");
+      if (lsScores) scores = safeParseJSON(lsScores);
+    }
+
+    // If no scores provided, show a balanced default so the chart is always visible
+    if (!scores) {
+      scores = { Driver: 2, Amiable: 2, Expressive: 2, Analytical: 2 };
+    } else {
+      // Ensure all keys exist
+      for (const t of TYPES) {
+        if (typeof scores[t] !== "number") scores[t] = 0;
+      }
+    }
+
+    if (!type) {
+      document.getElementById("missingResult").style.display = "block";
+      document.getElementById("resultsBlock").style.display = "none";
+      return;
+    }
+
+    const content = TYPE_CONTENT[type];
+
+    document.getElementById("typeLabel").textContent = type;
+    document.getElementById("typeSummary").textContent = content.summary;
+
+    document.getElementById("strengthsCell").textContent = content.strengths.join(" • ");
+    document.getElementById("challengesCell").textContent = content.challenges.join(" • ");
+    document.getElementById("commCell").textContent = content.comm;
+    document.getElementById("stressCell").textContent = content.stress;
+
+    renderScoreBars(scores);
+
+    document.getElementById("missingResult").style.display = "none";
+    document.getElementById("resultsBlock").style.display = "block";
+  })();
+</script>
 
 </body>
 </html>
