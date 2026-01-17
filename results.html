@@ -65,7 +65,7 @@
       margin-top: 12px;
     }
 
-    button, a.button {
+    a.button {
       display: inline-block;
       padding: 12px 16px;
       border-radius: 10px;
@@ -73,11 +73,10 @@
       background: #111;
       color: #fff;
       font-weight: 700;
-      cursor: pointer;
       text-decoration: none;
     }
 
-    .secondary, a.secondary {
+    a.secondary {
       background: #fff;
       color: #111;
     }
@@ -90,12 +89,6 @@
 
     @media (min-width: 860px) {
       .typeGrid { grid-template-columns: 1.3fr 0.7fr; }
-    }
-
-    .chartRow {
-      margin-top: 12px;
-      display: grid;
-      gap: 10px;
     }
 
     .barWrap {
@@ -129,6 +122,14 @@
       border-radius: 999px;
     }
 
+    pre {
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 6px;
+      color: #111;
+      overflow: auto;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -150,14 +151,13 @@
       border-radius: 10px;
       padding: 12px;
     }
-
     .small { font-size: 12px; opacity: 0.85; }
+    code { background: #f3f3f3; padding: 2px 6px; border-radius: 6px; }
   </style>
 </head>
 
 <body>
 
-  <!-- LOCKED DEMO FLOW -->
   <div class="flow">
     <strong>Locked Demo Flow:</strong>
     <span class="step">1) Personality Quiz</span>
@@ -181,9 +181,6 @@
     <div class="btnRow">
       <a class="button" href="quiz.html">Go to Personality Quiz</a>
     </div>
-    <p class="small" style="margin-top:10px;">
-      (For demo testing) You can also append <code>?type=Amiable</code> or <code>?type=Driver</code> to this page’s URL.
-    </p>
   </div>
 
   <div id="resultsBlock" class="card" style="display:none;">
@@ -198,16 +195,17 @@
           <a class="button secondary" href="compatibility.html">Continue to Compatibility</a>
         </div>
 
-        <p class="small" style="margin-top:10px;">
-          Note: NextGen Assistant is locked later in the demo flow (after quiz, results, deep dive, and compatibility).
-        </p>
+        <div class="card" style="margin-top:14px;">
+          <strong>Score Breakdown (raw)</strong>
+          <pre id="scoreJson" style="margin:10px 0 0;"></pre>
+        </div>
       </div>
 
       <div class="barWrap">
-        <strong>Quick Score Chart</strong>
-        <div class="chartRow" id="scoreBars"></div>
+        <strong>Score Bars</strong>
+        <div id="scoreBars"></div>
         <div class="small" style="margin-top:8px;">
-          Scores are shown if available. If not, the chart displays a balanced default for demo readability.
+          Bars show your scores across the four personality types.
         </div>
       </div>
     </div>
@@ -215,28 +213,15 @@
     <div class="card" style="margin-top:16px;">
       <h3 style="margin:0 0 8px;">Strengths & Challenges</h3>
       <table>
-        <tr>
-          <th>Strengths</th>
-          <td id="strengthsCell"></td>
-        </tr>
-        <tr>
-          <th>Challenges</th>
-          <td id="challengesCell"></td>
-        </tr>
-        <tr>
-          <th>Communication Style</th>
-          <td id="commCell"></td>
-        </tr>
-        <tr>
-          <th>Under Stress</th>
-          <td id="stressCell"></td>
-        </tr>
+        <tr><th>Strengths</th><td id="strengthsCell"></td></tr>
+        <tr><th>Challenges</th><td id="challengesCell"></td></tr>
+        <tr><th>Communication Style</th><td id="commCell"></td></tr>
+        <tr><th>Under Stress</th><td id="stressCell"></td></tr>
       </table>
     </div>
   </div>
 
 <script>
-  // --- Helpers ---
   function getQueryParam(name) {
     const url = new URL(window.location.href);
     return url.searchParams.get(name);
@@ -258,7 +243,6 @@
 
   const TYPES = ["Driver", "Amiable", "Expressive", "Analytical"];
 
-  // Content for each type (kept concise + chart-friendly)
   const TYPE_CONTENT = {
     Driver: {
       summary: "Direct, decisive, and goal-focused. You value progress, clarity, and results.",
@@ -290,7 +274,6 @@
     }
   };
 
-  // Build score bar UI
   function renderScoreBars(scores) {
     const container = document.getElementById("scoreBars");
     container.innerHTML = "";
@@ -327,43 +310,30 @@
     }
   }
 
-  // --- Main ---
   (function init() {
-    // 1) Prefer URL param: ?type=Amiable
+    // Prefer URL params
     let type = normalizeType(getQueryParam("type"));
-
-    // 2) Fallback to localStorage if present (optional wiring later)
-    // These keys are safe to support; if absent, no harm.
-    if (!type) {
-      type = normalizeType(localStorage.getItem("bc_personality_type"));
-    }
-
-    // 3) Optional scores in localStorage or query param
-    // You can later store a JSON string like: {"Driver":2,"Amiable":6,"Expressive":1,"Analytical":1}
     let scores = null;
 
     const scoresFromQuery = getQueryParam("scores");
     if (scoresFromQuery) scores = safeParseJSON(scoresFromQuery);
 
+    // Fallback to localStorage
+    if (!type) type = normalizeType(localStorage.getItem("bc_personality_type"));
     if (!scores) {
       const lsScores = localStorage.getItem("bc_personality_scores");
       if (lsScores) scores = safeParseJSON(lsScores);
     }
 
-    // If no scores provided, show a balanced default so the chart is always visible
-    if (!scores) {
-      scores = { Driver: 2, Amiable: 2, Expressive: 2, Analytical: 2 };
-    } else {
-      // Ensure all keys exist
-      for (const t of TYPES) {
-        if (typeof scores[t] !== "number") scores[t] = 0;
-      }
-    }
-
-    if (!type) {
+    if (!type || !scores) {
       document.getElementById("missingResult").style.display = "block";
       document.getElementById("resultsBlock").style.display = "none";
       return;
+    }
+
+    // Ensure all keys exist
+    for (const t of TYPES) {
+      if (typeof scores[t] !== "number") scores[t] = 0;
     }
 
     const content = TYPE_CONTENT[type];
@@ -376,6 +346,7 @@
     document.getElementById("commCell").textContent = content.comm;
     document.getElementById("stressCell").textContent = content.stress;
 
+    document.getElementById("scoreJson").textContent = JSON.stringify(scores, null, 2);
     renderScoreBars(scores);
 
     document.getElementById("missingResult").style.display = "none";
