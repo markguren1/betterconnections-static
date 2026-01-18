@@ -1,146 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BetterConnections — Reviewer Demo</title>
-  <meta name="description" content="BetterConnections reviewer demo: clickable feature pages + NextGen Assistant example + quiz/results/hot buttons." />
-  <style>
-    :root{
-      --bg:#ffffff;
-      --ink:#0f172a;
-      --muted:#475569;
-      --border:#e5e7eb;
-      --card:#ffffff;
-      --shadow:0 10px 24px rgba(15,23,42,.08);
-      --radius:18px;
-      --max:1100px;
-      --accent:#6d28d9;
-      --accent2:#0ea5e9;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:var(--font);background:var(--bg);color:var(--ink)}
-    a{color:inherit}
-    .container{max-width:var(--max);margin:0 auto;padding:22px 18px 60px}
-    .topbar{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-      border:1px solid var(--border);border-radius:999px;padding:10px 14px;background:#fff;
-      position:sticky;top:12px;z-index:10;
-      box-shadow:0 6px 16px rgba(15,23,42,.06);
-    }
-    .brand{font-weight:900;letter-spacing:.2px}
-    .pill{
-      font-size:12px;color:var(--muted);border:1px solid var(--border);
-      padding:4px 10px;border-radius:999px;margin-left:8px
-    }
-    .nav{display:flex;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
-    .nav a{padding:7px 10px;border-radius:999px;border:1px solid transparent;text-decoration:none}
-    .nav a:hover{border-color:var(--border);background:#f8fafc;color:var(--ink)}
-    header{padding:34px 10px 6px;text-align:center}
-    h1{margin:0 0 10px;font-size:40px;line-height:1.1}
-    .sub{margin:0 auto;color:var(--muted);max-width:860px;line-height:1.6}
-    .ctaRow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      padding:11px 14px;border-radius:12px;border:1px solid var(--border);
-      background:#fff;text-decoration:none;font-weight:800;font-size:14px;
-      box-shadow:0 6px 14px rgba(15,23,42,.06);
-    }
-    .btn.primary{
-      border-color:transparent;color:white;
-      background:linear-gradient(135deg, var(--accent), var(--accent2));
-    }
-    .sectionTitle{margin:28px 0 10px;font-size:18px}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:14px}
-    .card{
-      grid-column:span 12;
-      border:1px solid var(--border);border-radius:var(--radius);
-      background:var(--card);box-shadow:var(--shadow);
-      padding:18px;text-decoration:none;display:block;
-      transition:transform .12s ease, box-shadow .12s ease;
-    }
-    .card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(15,23,42,.10)}
-    @media(min-width:900px){ .card.third{grid-column:span 4} .card.twothird{grid-column:span 8} }
-    .icon{font-size:22px}
-    .card h3{margin:10px 0 6px;font-size:18px}
-    .card p{margin:0;color:var(--muted);line-height:1.55}
-    .note{
-      margin:18px auto 0;max-width:920px;
-      border:1px dashed var(--border);border-radius:14px;padding:14px;color:var(--muted);
-      background:#fbfdff;
-    }
-    .mini{font-size:12px;color:var(--muted);margin-top:8px}
-  </style>
+  <meta charset="UTF-8" />
+  <title>BetterConnections</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
-    <div class="topbar">
-      <div class="brand">BetterConnections <span class="pill">Reviewer Demo</span></div>
-      <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="quiz.html">Personality Quiz</a>
-        <a href="nextgen-assistant.html">NextGen Assistant</a>
-        <a href="results.html">Results</a>
-        <a href="hot-buttons.html">Hot Buttons</a>
-      </div>
+
+    <div class="flow">
+      <a class="step current" href="quiz.html">1) Personality Quiz</a>
+      <a class="step" href="results.html">2) Results</a>
+      <a class="step" href="deep-dive.html">3) Deep Dive</a>
+      <a class="step" href="compatibility.html">4) Compatibility</a>
+      <a class="step" href="nextgen-assistant.html">5) NextGen Assistant</a>
+      <a class="step" href="wrap-up.html">6) Next Steps</a>
     </div>
 
-    <header>
-      <h1>What If AI Could Help?</h1>
-      <p class="sub">
-        BetterConnections combines personality psychology + AI assistance + teacher-specific expertise to give you strategies that actually work — in minutes, not hours.
-        Click any feature below to see what’s “behind the curtain.”
-      </p>
-      <div class="ctaRow">
-        <a class="btn primary" href="nextgen-assistant.html">See NextGen Assistant Example</a>
-        <a class="btn" href="quiz.html">Try the Personality Quiz</a>
-      </div>
-      <div class="mini">No sign-in. No payments. Just a clickable reviewer demo.</div>
-    </header>
+    <h1>What If AI Could Help?</h1>
+    <p>
+      BetterConnections combines personality psychology, AI assistance,
+      and teacher-specific expertise to give you strategies that work —
+      in minutes, not hours.
+    </p>
 
-    <div class="note">
-      <strong>Reviewer path:</strong> Click a feature → see rationale + example → click “NextGen Assistant” → (optional) try the Quiz.
+    <div class="btnRow">
+      <a class="button" href="quiz.html">Take the Personality Quiz</a>
+      <a class="button secondary" href="nextgen-assistant.html">See NextGen Assistant Example</a>
     </div>
 
-    <h2 class="sectionTitle">Explore the 6 core use-cases</h2>
-    <div class="grid">
-      <a class="card third" href="parent-emails.html">
-        <div class="icon">📧</div>
-        <h3>Parent Emails</h3>
-        <p>Personality-adapted templates that de-escalate conflict and build trust.</p>
-      </a>
+    <p style="margin-top:12px;">
+      <strong>Reviewer path:</strong>
+      Take the Personality Quiz → see your Results → explore Deep Dive & Compatibility →
+      experience the NextGen Assistant.
+    </p>
 
-      <a class="card third" href="student-behavior.html">
-        <div class="icon">🎓</div>
-        <h3>Student Behavior</h3>
-        <p>What works for Marcus won’t work for Emma — match strategies to personality.</p>
-      </a>
-
-      <a class="card third" href="lesson-planning.html">
-        <div class="icon">📚</div>
-        <h3>Lesson Planning</h3>
-        <p>Differentiate for all 4 personality types in one lesson.</p>
-      </a>
-
-      <a class="card third" href="admin-relations.html">
-        <div class="icon">💼</div>
-        <h3>Admin Relations</h3>
-        <p>Maintain boundaries professionally while protecting time and sanity.</p>
-      </a>
-
-      <a class="card third" href="documentation.html">
-        <div class="icon">📝</div>
-        <h3>Documentation</h3>
-        <p>IEP/504 notes and progress reports — faster, clearer, more professional.</p>
-      </a>
-
-      <a class="card third" href="grading-feedback.html">
-        <div class="icon">✍️</div>
-        <h3>Grading Feedback</h3>
-        <p>Personalized comments that motivate instead of deflate.</p>
-      </a>
-    </div>
   </div>
 </body>
 </html>
