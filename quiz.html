@@ -2,180 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>BetterConnections Personality Quiz</title>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: auto;
-      padding: 24px;
-      background: #ffffff !important;
-      color: #111111 !important;
-    }
-    h1, p, strong, label { color: #111111 !important; }
-    .question {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 16px;
-      background: #ffffff !important;
-    }
-    .option { display: block; margin: 8px 0; cursor: pointer; }
-    button {
-      padding: 12px 18px;
-      font-size: 16px;
-      cursor: pointer;
-      background: #111;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-    }
-    .progress {
-      border: 1px solid #e5e5e5;
-      border-radius: 10px;
-      padding: 10px 12px;
-      margin: 12px 0 18px;
-      background: #fff;
-      font-size: 14px;
-    }
-  </style>
+  <title>Personality Quiz</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
+<div class="container">
 
-<h1>BetterConnections Personality Quiz</h1>
-<p><strong>Step 1 (required):</strong> Take the quiz first. Your results power the rest of the demo.</p>
-<div class="progress" id="progress">Progress: 0/10 answered</div>
-
-<form id="quizForm">
-
-  <div class="question">
-    <p><strong>1. In a group, you usually:</strong></p>
-    <label class="option"><input type="radio" name="q1" value="Driver"> Take charge and move things forward</label>
-    <label class="option"><input type="radio" name="q1" value="Amiable"> Make sure everyone feels included</label>
-    <label class="option"><input type="radio" name="q1" value="Expressive"> Bring energy and ideas</label>
-    <label class="option"><input type="radio" name="q1" value="Analytical"> Think things through carefully</label>
+  <div class="flow">
+    <a class="step current" href="quiz.html">1) Personality Quiz</a>
+    <a class="step" href="results.html">2) Results</a>
+    <a class="step" href="deep-dive.html">3) Deep Dive</a>
+    <a class="step" href="compatibility.html">4) Compatibility</a>
+    <a class="step" href="nextgen-assistant.html">5) NextGen Assistant</a>
+    <a class="step" href="wrap-up.html">6) Next Steps</a>
   </div>
 
-  <div class="question">
-    <p><strong>2. When there is conflict, you tend to:</strong></p>
-    <label class="option"><input type="radio" name="q2" value="Driver"> Address it directly and resolve it fast</label>
-    <label class="option"><input type="radio" name="q2" value="Amiable"> Try to keep harmony and reduce tension</label>
-    <label class="option"><input type="radio" name="q2" value="Expressive"> Talk it out openly and express feelings</label>
-    <label class="option"><input type="radio" name="q2" value="Analytical"> Step back and analyze what caused it</label>
-  </div>
+  <h1>Personality Quiz</h1>
+  <p>Answer honestly. There are no right or wrong answers.</p>
 
-  <div class="question">
-    <p><strong>3. You are most comfortable when:</strong></p>
-    <label class="option"><input type="radio" name="q3" value="Driver"> Goals are clear and moving fast</label>
-    <label class="option"><input type="radio" name="q3" value="Amiable"> People are cooperative and respectful</label>
-    <label class="option"><input type="radio" name="q3" value="Expressive"> Things are upbeat, social, and fun</label>
-    <label class="option"><input type="radio" name="q3" value="Analytical"> Plans and details are clear and logical</label>
-  </div>
+  <!-- KEEP YOUR EXISTING QUESTIONS + JS HERE -->
+  <!-- Do NOT change your quiz logic -->
 
-  <div class="question">
-    <p><strong>4. When making decisions, you usually:</strong></p>
-    <label class="option"><input type="radio" name="q4" value="Driver"> Decide quickly and adjust later</label>
-    <label class="option"><input type="radio" name="q4" value="Amiable"> Consider how it affects people first</label>
-    <label class="option"><input type="radio" name="q4" value="Expressive"> Go with what feels exciting or inspiring</label>
-    <label class="option"><input type="radio" name="q4" value="Analytical"> Weigh evidence carefully and reduce risk</label>
-  </div>
-
-  <div class="question">
-    <p><strong>5. Others often describe you as:</strong></p>
-    <label class="option"><input type="radio" name="q5" value="Driver"> Bold, confident, and decisive</label>
-    <label class="option"><input type="radio" name="q5" value="Amiable"> Kind, loyal, and patient</label>
-    <label class="option"><input type="radio" name="q5" value="Expressive"> Enthusiastic, expressive, and friendly</label>
-    <label class="option"><input type="radio" name="q5" value="Analytical"> Thoughtful, precise, and logical</label>
-  </div>
-
-  <div class="question">
-    <p><strong>6. In a new situation, you prefer to:</strong></p>
-    <label class="option"><input type="radio" name="q6" value="Driver"> Jump in and lead the way</label>
-    <label class="option"><input type="radio" name="q6" value="Amiable"> Build trust and connect with others first</label>
-    <label class="option"><input type="radio" name="q6" value="Expressive"> Meet people and explore possibilities</label>
-    <label class="option"><input type="radio" name="q6" value="Analytical"> Observe and understand before acting</label>
-  </div>
-
-  <div class="question">
-    <p><strong>7. Under stress, you’re most likely to:</strong></p>
-    <label class="option"><input type="radio" name="q7" value="Driver"> Become more forceful and impatient</label>
-    <label class="option"><input type="radio" name="q7" value="Amiable"> Withdraw or avoid conflict</label>
-    <label class="option"><input type="radio" name="q7" value="Expressive"> Talk more and seek reassurance</label>
-    <label class="option"><input type="radio" name="q7" value="Analytical"> Overthink and focus on details</label>
-  </div>
-
-  <div class="question">
-    <p><strong>8. Your communication style is usually:</strong></p>
-    <label class="option"><input type="radio" name="q8" value="Driver"> Direct and to the point</label>
-    <label class="option"><input type="radio" name="q8" value="Amiable"> Warm and supportive</label>
-    <label class="option"><input type="radio" name="q8" value="Expressive"> Animated and story-driven</label>
-    <label class="option"><input type="radio" name="q8" value="Analytical"> Clear, structured, and specific</label>
-  </div>
-
-  <div class="question">
-    <p><strong>9. You’re most motivated by:</strong></p>
-    <label class="option"><input type="radio" name="q9" value="Driver"> Winning, achieving, and results</label>
-    <label class="option"><input type="radio" name="q9" value="Amiable"> Belonging, helping, and stability</label>
-    <label class="option"><input type="radio" name="q9" value="Expressive"> Recognition, excitement, and connection</label>
-    <label class="option"><input type="radio" name="q9" value="Analytical"> Accuracy, mastery, and understanding</label>
-  </div>
-
-  <div class="question">
-    <p><strong>10. A strong day for you feels like:</strong></p>
-    <label class="option"><input type="radio" name="q10" value="Driver"> You got a lot done</label>
-    <label class="option"><input type="radio" name="q10" value="Amiable"> You supported someone and kept peace</label>
-    <label class="option"><input type="radio" name="q10" value="Expressive"> You had fun and connected with people</label>
-    <label class="option"><input type="radio" name="q10" value="Analytical"> You solved a problem or learned something</label>
-  </div>
-
-  <button type="button" onclick="calculateResult()">View Results</button>
-</form>
-
-<script>
-  function updateProgress() {
-    const inputs = document.querySelectorAll('#quizForm input[type="radio"]');
-    const questionNames = [...new Set([...inputs].map(i => i.name))];
-    let answered = 0;
-    for (const q of questionNames) {
-      if (document.querySelector(`input[name="${q}"]:checked`)) answered++;
-    }
-    document.getElementById("progress").textContent =
-      `Progress: ${answered}/${questionNames.length} answered`;
-  }
-  document.addEventListener("change", function(e) {
-    if (e.target && e.target.matches('#quizForm input[type="radio"]')) updateProgress();
-  });
-  updateProgress();
-
-  function calculateResult() {
-    const types = ["Driver", "Amiable", "Expressive", "Analytical"];
-    const scores = { Driver: 0, Amiable: 0, Expressive: 0, Analytical: 0 };
-
-    const inputs = document.querySelectorAll('#quizForm input[type="radio"]');
-    const questionNames = [...new Set([...inputs].map(i => i.name))];
-
-    for (const q of questionNames) {
-      const selected = document.querySelector(`input[name="${q}"]:checked`);
-      if (!selected) { alert("Please answer all questions."); return; }
-      scores[selected.value]++;
-    }
-
-    let topType = types[0];
-    let topScore = scores[topType];
-    for (const t of types) {
-      if (scores[t] > topScore) { topScore = scores[t]; topType = t; }
-    }
-
-    localStorage.setItem("bc_personality_type", topType);
-    localStorage.setItem("bc_personality_scores", JSON.stringify(scores));
-
-    // THIS MUST HAPPEN — you should land on results.html
-    window.location.href =
-      `results.html?type=${encodeURIComponent(topType)}&scores=${encodeURIComponent(JSON.stringify(scores))}`;
-  }
-</script>
-
+</div>
 </body>
 </html>
