@@ -290,9 +290,84 @@ hr{
   margin: 16px 0;
 }
 
+/* ====== Top Navigation ====== */
+.topNav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.88);
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+}
+
+.topNav a{
+  display:inline-flex;
+  align-items:center;
+  padding: 7px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.95);
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.topNav a:hover{
+  border-color: rgba(29,78,216,0.25);
+  background: rgba(29,78,216,0.06);
+  color: var(--text);
+}
+
+.topNav a.active{
+  border-color: rgba(29,78,216,0.35);
+  background: rgba(29,78,216,0.12);
+  color: var(--text);
+  font-weight: 900;
+}
+
+/* ====== Swipe Game Buttons ====== */
+.swipe-container { width: 100%; }
+.btn.love { background: #ff4d88; color: #fff; border: none; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-weight: 700; }
+.btn.brand { background: #2b6cb0; color: #fff; border: none; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-weight: 700; }
+.btn.love:hover { background: #e6436f; }
+.btn.brand:hover { background: #2563a0; }
+
+/* ====== Grid ====== */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.grid .card{
+  text-align: center;
+  text-decoration: none;
+  padding: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.grid .card:hover{
+  border-color: rgba(29,78,216,0.25);
+  background: rgba(29,78,216,0.06);
+}
+
+/* ====== Sub text ====== */
+.sub{
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 /* ====== Responsive ====== */
 @media (max-width: 860px){
   .container{ padding: 18px; }
   h1{ font-size: 28px; }
   .barLine{ grid-template-columns: 110px 1fr 64px; }
+  .topNav{ gap: 6px; }
+  .topNav a{ padding: 6px 9px; font-size: 12px; }
 }
