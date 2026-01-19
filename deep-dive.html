@@ -1,195 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>BetterConnections Deep Dive</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>Deep Dive</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <div class="container">
+<div class="container">
 
-    <!-- Locked Demo Flow -->
-    <div class="flow">
-      <span class="step">1) Personality Quiz</span>
-      <span class="step">2) Results</span>
-      <span class="step current">3) Deep Dive</span>
-      <span class="step">4) Compatibility</span>
-      <span class="step">5) NextGen Assistant</span>
-    </div>
+<nav class="topNav">
+  <a href="index.html">Home</a>
+  <a href="quiz.html">Personality Quiz</a>
+  <a href="results.html">Results</a>
+  <a class="active" href="deep-dive.html">Deep Dive</a>
+  <a href="compatibility.html">Compatibility</a>
+  <a href="nextgen-assistant.html">NextGen Assistant</a>
+  <a href="wrap-up.html">Wrap-Up</a>
+</nav>
 
-    <h1>Deep Dive</h1>
-    <p>This page explains what your personality type really means in everyday life.</p>
+<h1>Deep Dive</h1>
 
-    <!-- Missing safeguard -->
-    <div id="missing" class="card" style="display:none;">
-      <h2>No quiz result found</h2>
-      <p>Please take the Personality Quiz first so we can personalize this page.</p>
-      <div class="btnRow">
-        <a class="button" href="quiz.html">Go to Quiz</a>
-      </div>
-    </div>
+<div class="card">
+<strong>Important Note</strong><br>
+BetterConnections does not diagnose conditions.
+Personality styles apply to everyone.
+Some students may also have executive function challenges,
+ADHD, or anxiety — which can affect how personality shows up.
+</div>
 
-    <!-- Main content -->
-    <div id="main" style="display:none;">
+<h2>Support Lens</h2>
+<ul>
+  <li><strong>Executive Function:</strong> organization, initiation, follow-through</li>
+  <li><strong>ADHD:</strong> attention regulation, impulse control</li>
+  <li><strong>Anxiety:</strong> threat perception, emotional safety</li>
+</ul>
 
-      <div class="card" style="margin-bottom:14px;">
-        <h2>Your Type: <span id="typeLabel" class="pill"></span></h2>
-        <p id="oneLine"></p>
+<p class="sub">
+These lenses help teachers adjust expectations and communication —
+not label students.
+</p>
 
-        <div class="btnRow">
-          <a class="button secondary" id="backToResults" href="results.html">Back to Results</a>
-          <a class="button secondary" href="compatibility.html">Continue to Compatibility</a>
-          <a class="button secondary" href="nextgen-assistant.html">Skip to NextGen Assistant</a>
-        </div>
-      </div>
-
-      <div class="card" style="margin-bottom:14px;">
-        <h2>What you value</h2>
-        <p id="values"></p>
-      </div>
-
-      <div class="card" style="margin-bottom:14px;">
-        <h2>How you tend to communicate</h2>
-        <p id="communication"></p>
-      </div>
-
-      <div class="card" style="margin-bottom:14px;">
-        <h2>What stresses you</h2>
-        <p id="stress"></p>
-      </div>
-
-      <div class="card" style="margin-bottom:14px;">
-        <h2>What you need from others</h2>
-        <p id="needs"></p>
-      </div>
-
-      <div class="card" style="margin-bottom:14px;">
-        <h2>How to work with each personality type</h2>
-        <table class="table">
-          <tr><th>With a Driver</th><td id="tipsDriver"></td></tr>
-          <tr><th>With an Amiable</th><td id="tipsAmiable"></td></tr>
-          <tr><th>With an Expressive</th><td id="tipsExpressive"></td></tr>
-          <tr><th>With an Analytical</th><td id="tipsAnalytical"></td></tr>
-        </table>
-      </div>
-
-      <div class="card">
-        <h2>Next step</h2>
-        <p>
-          Compatibility is where people usually say,
-          <em>“Oh… that explains a LOT.”</em>
-          This is also where you’ll see how spouses and best friends
-          can still be a “worst match” on paper.
-        </p>
-        <div class="btnRow">
-          <a class="button" href="compatibility.html">Go to Compatibility</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-<script>
-  function getParam(name) {
-    return new URL(window.location.href).searchParams.get(name);
-  }
-
-  function normalizeType(val) {
-    if (!val) return null;
-    const v = val.toLowerCase();
-    if (v === "driver") return "Driver";
-    if (v === "amiable") return "Amiable";
-    if (v === "expressive") return "Expressive";
-    if (v === "analytical") return "Analytical";
-    return null;
-  }
-
-  const CONTENT = {
-    Driver: {
-      oneLine: "Direct, decisive, and goal-focused.",
-      values: "Results, speed, ownership, and forward momentum.",
-      communication: "Clear, direct, and action-oriented.",
-      stress: "Slow decisions, vague plans, inefficiency.",
-      needs: "Be concise. Lead with the point. Offer solutions.",
-      tips: {
-        Driver: "Be direct and efficient. Respect time.",
-        Amiable: "Be firm but considerate. Avoid steamrolling.",
-        Expressive: "Let ideas flow, then focus on action.",
-        Analytical: "Ask for key facts, then decide."
-      }
-    },
-    Amiable: {
-      oneLine: "Supportive, steady, and people-focused.",
-      values: "Harmony, trust, stability, and cooperation.",
-      communication: "Warm, patient, and encouraging.",
-      stress: "Conflict, abrupt change, harsh criticism.",
-      needs: "Reassurance, kindness, and clear expectations.",
-      tips: {
-        Driver: "Clarify needs calmly. Don’t assume intent.",
-        Amiable: "Check in often. Be consistent.",
-        Expressive: "Enjoy energy, then confirm plans.",
-        Analytical: "Ask questions gently. Allow processing time."
-      }
-    },
-    Expressive: {
-      oneLine: "Energetic, social, and idea-driven.",
-      values: "Connection, recognition, excitement, creativity.",
-      communication: "Animated, story-driven, enthusiastic.",
-      stress: "Being ignored, rigid rules, excessive detail.",
-      needs: "Engagement first, structure second.",
-      tips: {
-        Driver: "Bring energy, then land decisions.",
-        Amiable: "Be upbeat but respectful.",
-        Expressive: "Brainstorm, then commit.",
-        Analytical: "Respect details and logic."
-      }
-    },
-    Analytical: {
-      oneLine: "Thoughtful, precise, and logic-focused.",
-      values: "Accuracy, structure, consistency, understanding.",
-      communication: "Structured, careful, detail-oriented.",
-      stress: "Ambiguity, rushed decisions, emotional pressure.",
-      needs: "Clear criteria, time, and information.",
-      tips: {
-        Driver: "Ask for goals and constraints.",
-        Amiable: "Be clear and calm.",
-        Expressive: "Sort ideas by feasibility.",
-        Analytical: "Align on definitions and process."
-      }
-    }
-  };
-
-  (function init() {
-    let type = normalizeType(getParam("type"));
-    if (!type) type = normalizeType(localStorage.getItem("bc_personality_type"));
-
-    if (!type || !CONTENT[type]) {
-      document.getElementById("missing").style.display = "block";
-      return;
-    }
-
-    const c = CONTENT[type];
-
-    document.getElementById("typeLabel").textContent = type;
-    document.getElementById("oneLine").textContent = c.oneLine;
-    document.getElementById("values").textContent = c.values;
-    document.getElementById("communication").textContent = c.communication;
-    document.getElementById("stress").textContent = c.stress;
-    document.getElementById("needs").textContent = c.needs;
-
-    document.getElementById("tipsDriver").textContent = c.tips.Driver;
-    document.getElementById("tipsAmiable").textContent = c.tips.Amiable;
-    document.getElementById("tipsExpressive").textContent = c.tips.Expressive;
-    document.getElementById("tipsAnalytical").textContent = c.tips.Analytical;
-
-    // Preserve query string when going back
-    const back = document.getElementById("backToResults");
-    back.href = "results.html" + (window.location.search || "");
-
-    document.getElementById("main").style.display = "block";
-  })();
-</script>
-
+</div>
 </body>
 </html>

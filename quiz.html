@@ -1,38 +1,18 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>BetterConnections Personality Quiz</title>
-
+  <meta charset="UTF-8">
+  <title>Personality Quiz</title>
+  <link rel="stylesheet" href="styles.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: auto;
-      padding: 24px;
-      background: #ffffff !important;
-      color: #111111 !important;
-    }
-    h1, p, strong, label { color: #111111 !important; }
     .question {
       border: 1px solid #ddd;
       border-radius: 8px;
       padding: 16px;
       margin-bottom: 16px;
-      background: #ffffff !important;
+      background: #ffffff;
     }
     .option { display: block; margin: 8px 0; cursor: pointer; }
-    button {
-      padding: 12px 18px;
-      font-size: 16px;
-      cursor: pointer;
-      background: #111;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-    }
     .progress {
       border: 1px solid #e5e5e5;
       border-radius: 10px;
@@ -43,11 +23,24 @@
     }
   </style>
 </head>
-
 <body>
+<div class="container">
 
-<h1>BetterConnections Personality Quiz</h1>
-<p><strong>Step 1 (required):</strong> Take the quiz first. Your results power the rest of the demo.</p>
+<nav class="topNav">
+  <a href="index.html">Home</a>
+  <a class="active" href="quiz.html">Personality Quiz</a>
+  <a href="results.html">Results</a>
+  <a href="deep-dive.html">Deep Dive</a>
+  <a href="compatibility.html">Compatibility</a>
+  <a href="nextgen-assistant.html">NextGen Assistant</a>
+  <a href="wrap-up.html">Wrap-Up</a>
+</nav>
+
+<h1>Personality Quiz</h1>
+<p class="sub">
+Answer honestly. There are no right or wrong answers.
+</p>
+
 <div class="progress" id="progress">Progress: 0/10 answered</div>
 
 <form id="quizForm">
@@ -101,7 +94,7 @@
   </div>
 
   <div class="question">
-    <p><strong>7. Under stress, you’re most likely to:</strong></p>
+    <p><strong>7. Under stress, you're most likely to:</strong></p>
     <label class="option"><input type="radio" name="q7" value="Driver"> Become more forceful and impatient</label>
     <label class="option"><input type="radio" name="q7" value="Amiable"> Withdraw or avoid conflict</label>
     <label class="option"><input type="radio" name="q7" value="Expressive"> Talk more and seek reassurance</label>
@@ -117,7 +110,7 @@
   </div>
 
   <div class="question">
-    <p><strong>9. You’re most motivated by:</strong></p>
+    <p><strong>9. You're most motivated by:</strong></p>
     <label class="option"><input type="radio" name="q9" value="Driver"> Winning, achieving, and results</label>
     <label class="option"><input type="radio" name="q9" value="Amiable"> Belonging, helping, and stability</label>
     <label class="option"><input type="radio" name="q9" value="Expressive"> Recognition, excitement, and connection</label>
@@ -134,6 +127,8 @@
 
   <button type="button" onclick="calculateResult()">View Results</button>
 </form>
+
+</div>
 
 <script>
   function updateProgress() {
@@ -173,7 +168,6 @@
     localStorage.setItem("bc_personality_type", topType);
     localStorage.setItem("bc_personality_scores", JSON.stringify(scores));
 
-    // THIS MUST HAPPEN — you should land on results.html
     window.location.href =
       `results.html?type=${encodeURIComponent(topType)}&scores=${encodeURIComponent(JSON.stringify(scores))}`;
   }
