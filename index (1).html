@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetterConnections - Build Better Relationships Through Personality Understanding</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        nav {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        /* Intro Hook Section */
+        .intro-hook {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            margin: 0 0 50px 0;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .hook-text {
+            font-size: 1.4em;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        .hook-text strong {
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        /* Reviewer Path */
+        .reviewer-path {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 50px;
+            border-left: 5px solid #667eea;
+        }
+
+        .reviewer-path h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .reviewer-path p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .reviewer-path .arrow {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Six Core Feature Boxes - MUCH LARGER */
+        .core-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .feature-box h3 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .core-features {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .feature-box {
+                padding: 50px 30px;
+                min-height: 180px;
+            }
+
+            .feature-box h3 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .tagline {
+                font-size: 1em;
+            }
+
+            .intro-hook {
+                padding: 30px 20px;
+            }
+
+            .hook-text {
+                font-size: 1.2em;
+            }
+
+            .core-features {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-box {
+                padding: 40px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="quiz.html">Personality Quiz</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="deep-dive.html">Deep Dive</a></li>
+            <li><a href="compatibility.html">Compatibility</a></li>
+            <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
+            <li><a href="application-stories.html">Application Stories</a></li>
+            <li><a href="learning-quiz.html">Learning Quiz</a></li>
+            <li><a href="wrap-up.html">Wrap-Up</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>What If AI Could Help?</h1>
+        <p class="tagline">BetterConnections combines personality psychology, classroom experience, and AI-assisted structure to help teachers communicate clearly, calmly, and consistently.</p>
+
+        <!-- Intro Hook -->
+        <div class="intro-hook">
+            <p class="hook-text">
+                This isn't theory. This isn't philosophy. This is a proven method to build better connections with students, families, friends, and even romantic partners. <strong>Start with the quiz and don't look back.</strong>
+            </p>
+        </div>
+
+        <!-- Reviewer Path -->
+        <div class="reviewer-path">
+            <h2>Reviewer Path</h2>
+            <p>
+                Take the Personality Quiz <span class="arrow">→</span> 
+                Review Results <span class="arrow">→</span> 
+                Explore Deep Dive <span class="arrow">→</span> 
+                See Compatibility <span class="arrow">→</span> 
+                Experience NextGen Assistant <span class="arrow">→</span>
+                Read Application Stories <span class="arrow">→</span>
+                Take Learning Quiz <span class="arrow">→</span>
+                Wrap-Up
+            </p>
+        </div>
+
+        <!-- Six Core Features - MUCH LARGER BOXES -->
+        <div class="core-features">
+            <div class="feature-box" onclick="window.location.href='parent-emails.html'">
+                <h3>Parent Emails</h3>
+            </div>
+
+            <div class="feature-box" onclick="window.location.href='student-behavior.html'">
+                <h3>Student Behavior</h3>
+            </div>
+
+            <div class="feature-box" onclick="window.location.href='ieps.html'">
+                <h3>IEPs</h3>
+            </div>
+
+            <div class="feature-box" onclick="window.location.href='lesson-planning.html'">
+                <h3>Lesson Planning</h3>
+            </div>
+
+            <div class="feature-box" onclick="window.location.href='grading-feedback.html'">
+                <h3>Grading Feedback</h3>
+            </div>
+
+            <div class="feature-box" onclick="window.location.href='admin-relations.html'">
+                <h3>Admin Relations</h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

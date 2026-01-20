@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEPs - BetterConnections</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        nav {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 1.6em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .section ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .example {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin-top: 15px;
+        }
+
+        .example-label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .example-text {
+            color: #555;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1em;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 640px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quiz.html">Personality Quiz</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="deep-dive.html">Deep Dive</a></li>
+            <li><a href="compatibility.html">Compatibility</a></li>
+            <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
+            <li><a href="application-stories.html">Application Stories</a></li>
+            <li><a href="learning-quiz.html">Learning Quiz</a></li>
+            <li><a href="wrap-up.html">Wrap-Up</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>IEPs</h1>
+        <p class="subtitle">Behind the curtain: legally compliant goals and documentation, generated in minutes.</p>
+
+        <div class="section">
+            <h2>What this solves</h2>
+            <ul>
+                <li>Writing legally sound IEP goals requires specific language and formatting</li>
+                <li>Teachers need professional, data-based progress notes quickly</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>What BetterConnections gives you</h2>
+            <ul>
+                <li>Smart question-based goal generator</li>
+                <li>State-compliant IEP language templates</li>
+                <li>Progress note scripts that are objective and professional</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Example output (short)</h2>
+            <div class="example">
+                <div class="example-text">
+                    "[Student] will improve oral reading fluency from 45 to 70 words per minute when reading grade-level passages, as measured by weekly curriculum-based assessments, with 80% accuracy across 3 consecutive trials by May 2026."
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <a href="nextgen-assistant.html" class="btn btn-primary">See NextGen Assistant example</a>
+            <a href="quiz.html" class="btn btn-secondary">Try the Quiz (optional)</a>
+            <a href="index.html" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+</body>
+</html>

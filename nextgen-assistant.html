@@ -1,505 +1,188 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NextGen Assistant — BetterConnections</title>
-  <link rel="stylesheet" href="styles.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Assistant - BetterConnections</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    /* Page defaults: keep LIGHT + consistent with the rest of the demo */
-    body { background:#f6f7f9; color:#1f2937; }
-    .page { max-width: 1100px; margin: 32px auto; padding: 0 16px; }
-    .hero { margin: 18px 0 18px; }
-    h1 { font-size: 34px; margin: 6px 0 8px; }
-    .sub { color:#4b5563; line-height:1.55; margin: 0 0 14px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
 
-    .card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.06);
-      margin: 14px 0;
-    }
+        nav {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
 
-    .callout {
-      background: #eef2ff;
-      border-left: 6px solid #6366f1;
-      padding: 14px;
-      border-radius: 12px;
-      color:#1f2937;
-      margin-top: 10px;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
 
-    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    @media (max-width: 900px){ .grid-2 { grid-template-columns: 1fr; } }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
 
-    label { font-weight: 700; font-size: 12px; color:#374151; display:block; margin: 10px 0 6px; }
-    input, select, textarea {
-      width: 100%;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-size: 14px;
-      background: #fff;
-      color:#111827;
-    }
-    textarea { min-height: 96px; resize: vertical; }
+        nav a:hover,
+        nav a.active {
+            background-color: #f0f0f0;
+        }
 
-    .step-title { font-weight: 800; margin: 0 0 8px; font-size: 16px; }
-    .muted { color:#6b7280; font-size: 13px; line-height: 1.5; }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-    .compare {
-      border: 1px solid #e5e7eb;
-      border-radius: 14px;
-      overflow: hidden;
-      background:#fff;
-    }
-    .compare-head {
-      display:flex;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 12px 14px;
-      border-bottom: 1px solid #e5e7eb;
-      background: #f9fafb;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .badge {
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 12px;
-      border: 1px solid #e5e7eb;
-      background:#fff;
-    }
-    .badge.red { border-color:#fecaca; background:#fef2f2; color:#991b1b; }
-    .badge.green { border-color:#bbf7d0; background:#f0fdf4; color:#166534; }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
 
-    .pane-wrap { display:grid; grid-template-columns: 1fr 1fr; gap: 0; }
-    @media (max-width: 900px){ .pane-wrap { grid-template-columns: 1fr; } }
+        /* Prominent Why NextGen Link */
+        .why-nextgen-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+        }
 
-    .pane { padding: 14px; }
-    .pane.left { border-right: 1px solid #e5e7eb; }
-    @media (max-width: 900px){ .pane.left { border-right: 0; border-bottom: 1px solid #e5e7eb; } }
+        .why-nextgen-banner h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
 
-    .text-block {
-      background:#f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 12px;
-      white-space: pre-wrap;
-      line-height: 1.55;
-      font-size: 14px;
-      min-height: 130px;
-    }
+        .why-nextgen-banner p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
 
-    .btn-row { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-    .btn {
-      appearance:none;
-      border: 0;
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-weight: 800;
-      font-size: 13px;
-      cursor: pointer;
-      background:#111827;
-      color:#fff;
-    }
-    .btn.secondary { background:#374151; }
-    .btn.ghost { background:#fff; color:#111827; border: 1px solid #e5e7eb; }
-    .btn.small { padding: 8px 10px; font-size: 12px; }
+        .why-nextgen-btn {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 35px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
 
-    .inline-note {
-      font-size: 13px;
-      color:#374151;
-      margin-top: 10px;
-      background:#f3f4f6;
-      border:1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 10px 12px;
-    }
+        .why-nextgen-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
 
-    .divider { height: 1px; background:#e5e7eb; margin: 16px 0; border:0; }
+        .content-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
 
-    .refs ul { margin: 10px 0 0; padding-left: 18px; }
-    .refs li { margin: 6px 0; color:#374151; }
-    .mini { font-size: 12px; color:#6b7280; }
-  </style>
+        .content-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .content-section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 640px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .why-nextgen-banner {
+                padding: 25px 20px;
+            }
+
+            .why-nextgen-banner h2 {
+                font-size: 1.5em;
+            }
+
+            .why-nextgen-banner p {
+                font-size: 1em;
+            }
+
+            .content-section {
+                padding: 25px 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quiz.html">Personality Quiz</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="deep-dive.html">Deep Dive</a></li>
+            <li><a href="compatibility.html">Compatibility</a></li>
+            <li><a href="nextgen-assistant.html" class="active">NextGen Assistant</a></li>
+            <li><a href="application-stories.html">Application Stories</a></li>
+            <li><a href="learning-quiz.html">Learning Quiz</a></li>
+            <li><a href="wrap-up.html">Wrap-Up</a></li>
+        </ul>
+    </nav>
 
-  <!-- Simple top nav consistent with the rest of your static pages -->
-  <div class="page">
-    <div class="card" style="padding:12px 14px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-        <div style="font-weight:900;">BetterConnections <span class="mini" style="margin-left:8px;">Reviewer Demo</span></div>
-        <div style="display:flex; gap:14px; flex-wrap:wrap;">
-          <a href="index.html">Home</a>
-          <a href="quiz.html">Personality Quiz</a>
-          <a href="results.html">Results</a>
-          <a href="hot-buttons.html">Hot Buttons</a>
-          <a href="nextgen-assistant.html" style="font-weight:900;">NextGen Assistant</a>
-          <a href="pricing.html">Pricing</a>
+    <div class="container">
+        <h1>NextGen Assistant</h1>
+
+        <!-- Prominent Why NextGen Banner -->
+        <div class="why-nextgen-banner">
+            <h2>Why use NextGen Assistant instead of any AI?</h2>
+            <p>Generic AI can draft an email. NextGen Assistant helps you communicate in a way that actually lands well with this parent, in this situation, over the whole school year.</p>
+            <a href="nextgen-why.html" class="why-nextgen-btn">Learn Why NextGen is Different →</a>
         </div>
-      </div>
+
+        <!-- Main NextGen Assistant Content -->
+        <div class="content-section">
+            <h2>Your AI-Powered Communication Partner</h2>
+            <p>NextGen Assistant combines your personality insights with advanced AI to help you craft perfect communications for any situation.</p>
+            
+            <p>Whether you're writing to parents, collaborating with colleagues, or documenting student progress, NextGen Assistant adapts its guidance to match both your communication style and your recipient's personality type.</p>
+
+            <!-- Add your NextGen Assistant tool/interface here -->
+        </div>
     </div>
-
-    <div class="hero">
-      <h1>NextGen Assistant</h1>
-      <p class="sub">
-        One-time context → fast, calm parent communication all year. This page demonstrates the “wow” effect:
-        <b>WITHOUT</b> NextGen (manual drafting) vs <b>WITH</b> NextGen (one click, structured, lower risk of formal escalation).
-      </p>
-      <div class="callout">
-        <b>How teachers use this (low-cost MVP):</b> Click “Generate WITH NextGen” to create a strong draft. Then either
-        <b>Copy Draft</b> or <b>Open in Email</b>. Optional: paste into your AI tool of choice to polish wording — the
-        <b>structure, tone, and escalation-safety</b> come from NextGen.
-      </div>
-    </div>
-
-    <!-- Context -->
-    <div class="card">
-      <div class="step-title">Teacher context (stored once)</div>
-      <div class="muted">This is the “set it once” information that makes follow-ups fast and consistent.</div>
-
-      <div class="grid-2" style="margin-top:10px;">
-        <div>
-          <label>Student name</label>
-          <input id="studentName" value="Marcus Rivera" />
-        </div>
-        <div>
-          <label>Class / period</label>
-          <input id="classInfo" value="7th Grade Math" />
-        </div>
-        <div>
-          <label>Student personality</label>
-          <select id="studentType">
-            <option>Driver</option>
-            <option selected>Amiable</option>
-            <option>Expressive</option>
-            <option>Analytical</option>
-          </select>
-        </div>
-        <div>
-          <label>Parent personality</label>
-          <select id="parentType">
-            <option>Driver</option>
-            <option selected>Amiable</option>
-            <option>Expressive</option>
-            <option>Analytical</option>
-          </select>
-        </div>
-      </div>
-
-      <label>Key context (1–2 sentences)</label>
-      <textarea id="context">
-Marcus is bright but shuts down when he feels criticized. Family values reassurance and frequent updates.
-      </textarea>
-    </div>
-
-    <!-- Step 1 -->
-    <div class="card">
-      <div class="step-title">Step 1 — Parent email arrives</div>
-      <label>Parent email (incoming)</label>
-      <textarea id="parentEmail">
-Hi, I’m concerned Marcus says he feels embarrassed and lost in math class.
-He told me he doesn’t want to come to school tomorrow.
-What are you doing to help him?
-      </textarea>
-    </div>
-
-    <!-- Step 2 comparison -->
-    <div class="compare">
-      <div class="compare-head">
-        <div style="font-weight:900;">Step 2 — Teacher response (side-by-side)</div>
-        <div class="btn-row" style="margin:0;">
-          <button class="btn secondary" id="showWithout1">Show WITHOUT NextGen</button>
-          <button class="btn" id="generateWith1">Generate WITH NextGen</button>
-        </div>
-      </div>
-
-      <div class="pane-wrap">
-        <div class="pane left">
-          <div class="badge red">❌ WITHOUT NextGen Assistant</div>
-          <div id="withoutResponse1" class="text-block" style="margin-top:10px;"></div>
-
-          <div class="inline-note">
-            <b>Manual work:</b> teacher reads the email, worries about tone, drafts and rewrites.
-            Typical: <b>10–15 minutes</b>. Risk: unintentional escalation.
-          </div>
-        </div>
-
-        <div class="pane">
-          <div class="badge green">✅ WITH NextGen Assistant</div>
-          <div id="withResponse1" class="text-block" style="margin-top:10px;"></div>
-
-          <div class="inline-note">
-            <b>One click. No composing.</b> Uses stored context + personality logic to produce a calm, structured response.
-            <b>Lower risk of formal escalation</b> because tone, boundaries, and next steps are explicit.
-          </div>
-
-          <div class="btn-row">
-            <button class="btn ghost small" id="copyWith1">Copy Draft</button>
-            <a class="btn ghost small" id="emailWith1" href="#" target="_blank" rel="noopener">Open in Email</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 3 -->
-    <div class="card">
-      <div class="step-title">Step 3 — Parent follows up</div>
-      <label>Parent follow-up email (incoming)</label>
-      <textarea id="parentFollowup">
-Thanks for checking in. He still feels singled out.
-What are the next steps, and how will I know if things are improving?
-      </textarea>
-    </div>
-
-    <!-- Step 4 comparison -->
-    <div class="compare">
-      <div class="compare-head">
-        <div style="font-weight:900;">Step 4 — Teacher follow-up response (side-by-side)</div>
-        <div class="btn-row" style="margin:0;">
-          <button class="btn secondary" id="showWithout2">Show WITHOUT NextGen</button>
-          <button class="btn" id="generateWith2">Generate WITH NextGen</button>
-        </div>
-      </div>
-
-      <div class="pane-wrap">
-        <div class="pane left">
-          <div class="badge red">❌ WITHOUT NextGen Assistant</div>
-          <div id="withoutResponse2" class="text-block" style="margin-top:10px;"></div>
-
-          <div class="inline-note">
-            <b>Manual work again:</b> teacher rereads the full thread, rebuilds context, and tries to keep tone consistent.
-            Risk: mixed messaging and frustration.
-          </div>
-        </div>
-
-        <div class="pane">
-          <div class="badge green">✅ WITH NextGen Assistant</div>
-          <div id="withResponse2" class="text-block" style="margin-top:10px;"></div>
-
-          <div class="inline-note">
-            <b>No retyping. No re-explaining.</b> NextGen uses stored context to keep continuity and reduce escalation risk
-            while giving clear next steps.
-          </div>
-
-          <div class="btn-row">
-            <button class="btn ghost small" id="copyWith2">Copy Draft</button>
-            <a class="btn ghost small" id="emailWith2" href="#" target="_blank" rel="noopener">Open in Email</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Credibility -->
-    <div class="card refs">
-      <div class="step-title">Credibility & references (for reviewer trust)</div>
-      <div class="muted">
-        This demo reflects common principles used in teacher PD: tone regulation, de-escalation, clear next steps,
-        and personality-aware communication. In the full app, we can add a curated “Sources” area per section.
-      </div>
-
-      <ul>
-        <li><b>Communication best practice:</b> acknowledge concerns, clarify next steps, set timelines for updates.</li>
-        <li><b>De-escalation:</b> calm tone + specific actions reduces misunderstandings that lead to formal escalation.</li>
-        <li><b>Personality-aware framing:</b> different styles respond to different signals (clarity, warmth, brevity, detail).</li>
-      </ul>
-
-      <hr class="divider"/>
-
-      <div class="mini">
-        Reviewer note: This is a clickable demo. In an MVP, the “WITH NextGen” draft can be copied, opened in email, or optionally
-        polished in a teacher’s AI tool. Sending email directly from the app is a later-phase feature.
-      </div>
-    </div>
-
-  </div>
-
-<script>
-  // ----- Helpers -----
-  function safe(s){ return (s || "").toString().trim(); }
-
-  function buildMailto(subject, body){
-    const s = encodeURIComponent(subject);
-    const b = encodeURIComponent(body);
-    return `mailto:?subject=${s}&body=${b}`;
-  }
-
-  function copyText(text){
-    if (!navigator.clipboard) {
-      alert("Copy not supported in this browser. Select the text and copy manually.");
-      return;
-    }
-    navigator.clipboard.writeText(text).then(() => {
-      alert("Copied!");
-    }).catch(() => {
-      alert("Copy failed. Select the text and copy manually.");
-    });
-  }
-
-  // ----- Draft templates -----
-  function withoutDraft_1(studentName){
-    return `Hi,
-
-Thanks for your email. I’m sorry to hear ${studentName} is feeling this way.
-I will try to talk with ${studentName} tomorrow and see what’s going on.
-
-Please let me know if you have more information.
-
-Thank you,
-Teacher`;
-  }
-
-  function withoutDraft_2(studentName){
-    return `Hi,
-
-Thanks for following up. I understand your concerns.
-I’ll continue to keep an eye on ${studentName} over the next few days and see how things go.
-
-Thank you,
-Teacher`;
-  }
-
-  function withDraft_1(data){
-    const { studentName, classInfo, studentType, parentType, context, parentEmail } = data;
-
-    // Slight tailoring by parentType (tone/structure tweaks)
-    const parentTone =
-      parentType === "Driver" ? "I’ll be direct and specific." :
-      parentType === "Analytical" ? "I’ll be clear with steps and how we’ll measure progress." :
-      parentType === "Expressive" ? "I’ll keep this supportive and encouraging while staying clear." :
-      "I’ll make sure you feel reassured and informed.";
-
-    // StudentType cue
-    const studentSupport =
-      studentType === "Driver" ? "I’ll give clear, short instructions and quick wins to rebuild confidence." :
-      studentType === "Analytical" ? "I’ll provide clarity and a simple plan so expectations feel predictable." :
-      studentType === "Expressive" ? "I’ll keep engagement positive and reduce public pressure." :
-      "I’ll prioritize reassurance and a private check-in so he feels safe.";
-
-    return `Subject: Quick update on ${studentName}
-
-Thank you for reaching out. I can hear how concerned you are — and I want you to know we’re on the same team.
-
-${parentTone}
-
-What I’m doing next:
-• Private check-in with ${studentName} in ${classInfo}
-• A simple “help signal” so ${studentName} can ask for help without feeling embarrassed
-• Clear expectations and a short, supportive plan for tomorrow
-
-Support approach (based on ${studentName}’s style):
-• ${studentSupport}
-
-How you’ll know it’s improving:
-• I’ll send you a brief update after tomorrow’s class
-
-(Stored context used)
-• ${safe(context)}
-
-My goal is to keep communication calm, clear, and supportive — reducing the risk of misunderstandings that can lead to formal escalation.`;
-  }
-
-  function withDraft_2(data){
-    const { studentName, classInfo, parentType, context } = data;
-
-    const cadence =
-      parentType === "Driver" ? "I’ll send a short update within 48 hours." :
-      parentType === "Analytical" ? "I’ll send an update with what we tried and what changed by Friday." :
-      parentType === "Expressive" ? "I’ll keep you posted with a quick update soon, and we’ll stay positive." :
-      "I’ll send a reassuring update soon so you’re not left wondering.";
-
-    return `Subject: Next steps for ${studentName}
-
-Thank you for following up — that helps.
-
-Next steps (starting immediately):
-• Continue private check-ins in ${classInfo}
-• Reinforce a low-stress way to ask for help
-• Track whether ${studentName} engages and completes the first step successfully
-
-What I’ll do for you:
-• ${cadence}
-
-(Stored context used)
-• ${safe(context)}
-
-This keeps messaging consistent and reduces the risk of formal escalation by clarifying actions, timelines, and expectations.`;
-  }
-
-  // ----- Wire up UI -----
-  function getData(){
-    return {
-      studentName: safe(document.getElementById("studentName").value) || "the student",
-      classInfo: safe(document.getElementById("classInfo").value) || "class",
-      studentType: safe(document.getElementById("studentType").value),
-      parentType: safe(document.getElementById("parentType").value),
-      context: safe(document.getElementById("context").value),
-      parentEmail: safe(document.getElementById("parentEmail").value),
-      parentFollowup: safe(document.getElementById("parentFollowup").value),
-    };
-  }
-
-  // Initialize panes with something visible
-  (function init(){
-    const d = getData();
-    document.getElementById("withoutResponse1").textContent = withoutDraft_1(d.studentName);
-    document.getElementById("withResponse1").textContent = "Click “Generate WITH NextGen” to see the one-click draft here.";
-    document.getElementById("withoutResponse2").textContent = withoutDraft_2(d.studentName);
-    document.getElementById("withResponse2").textContent = "Click “Generate WITH NextGen” to see the one-click follow-up here.";
-
-    // Mailto defaults
-    document.getElementById("emailWith1").href = "#";
-    document.getElementById("emailWith2").href = "#";
-  })();
-
-  // Buttons
-  document.getElementById("showWithout1").addEventListener("click", () => {
-    const d = getData();
-    document.getElementById("withoutResponse1").textContent = withoutDraft_1(d.studentName);
-  });
-
-  document.getElementById("generateWith1").addEventListener("click", () => {
-    const d = getData();
-    const txt = withDraft_1(d);
-    document.getElementById("withResponse1").textContent = txt;
-
-    // update mailto
-    const subject = `Quick update on ${d.studentName}`;
-    document.getElementById("emailWith1").href = buildMailto(subject, txt);
-  });
-
-  document.getElementById("copyWith1").addEventListener("click", () => {
-    const txt = document.getElementById("withResponse1").textContent;
-    copyText(txt);
-  });
-
-  document.getElementById("showWithout2").addEventListener("click", () => {
-    const d = getData();
-    document.getElementById("withoutResponse2").textContent = withoutDraft_2(d.studentName);
-  });
-
-  document.getElementById("generateWith2").addEventListener("click", () => {
-    const d = getData();
-    const txt = withDraft_2(d);
-    document.getElementById("withResponse2").textContent = txt;
-
-    const subject = `Next steps for ${d.studentName}`;
-    document.getElementById("emailWith2").href = buildMailto(subject, txt);
-  });
-
-  document.getElementById("copyWith2").addEventListener("click", () => {
-    const txt = document.getElementById("withResponse2").textContent;
-    copyText(txt);
-  });
-</script>
-
 </body>
 </html>
