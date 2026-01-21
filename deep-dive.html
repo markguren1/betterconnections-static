@@ -1,46 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Deep Dive</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Dive - BetterConnections</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .personality-section {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            border-left: 6px solid;
+        }
+        
+        .driver-section { border-left-color: #ef4444; }
+        .analytical-section { border-left-color: #3b82f6; }
+        .expressive-section { border-left-color: #a855f7; }
+        .amiable-section { border-left-color: #10b981; }
+        
+        .personality-section h2 {
+            margin-top: 0;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .personality-section .tagline {
+            font-size: 1.3em;
+            color: #6b7280;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .info-box {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .info-box h4 {
+            margin-top: 0;
+            color: #374151;
+            font-size: 1.1em;
+        }
+        
+        .info-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .info-box li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .back-next-nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+        
+        .nav-button {
+            background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .quote-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
+    <nav>
+        <div class="container">
+            <div class="nav-brand">BetterConnections</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quiz.html">Personality Quiz</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="deep-dive.html" class="active">Deep Dive</a></li>
+                <li><a href="hot-buttons.html">Hot Buttons</a></li>
+                <li><a href="compatibility.html">Compatibility</a></li>
+                <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
+                <li><a href="application-stories.html">Application Stories</a></li>
+                <li><a href="learning-quiz.html">Learning Quiz</a></li>
+                <li><a href="wrap-up.html">Wrap-Up</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<nav class="topNav">
-  <a href="index.html">Home</a>
-  <a href="quiz.html">Personality Quiz</a>
-  <a href="results.html">Results</a>
-  <a class="active" href="deep-dive.html">Deep Dive</a>
-  <a href="compatibility.html">Compatibility</a>
-  <a href="nextgen-assistant.html">NextGen Assistant</a>
-  <a href="wrap-up.html">Wrap-Up</a>
-  <a href="learning-quiz.html">Learning Quiz</a>
-</nav>
+    <div class="container">
+        <div class="back-next-nav">
+            <a href="results.html" class="nav-button">← Back to Results</a>
+            <a href="hot-buttons.html" class="nav-button">Next: Hot Buttons →</a>
+        </div>
 
-<h1>Deep Dive</h1>
+        <h1 style="text-align: center; color: #7c3aed; margin-bottom: 20px;">🔍 Deep Dive into Personality Types</h1>
+        <p style="text-align: center; font-size: 1.2em; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            Understanding the four personality types deeply helps you adapt your communication style, build stronger relationships, and navigate challenging situations with confidence.
+        </p>
 
-<div class="card">
-<strong>Important Note</strong><br>
-BetterConnections does not diagnose conditions.
-Personality styles apply to everyone.
-Some students may also have executive function challenges,
-ADHD, or anxiety — which can affect how personality shows up.
-</div>
+        <!-- Driver Section -->
+        <div class="personality-section driver-section">
+            <h2>🔥 Driver - The Results-Oriented Leader</h2>
+            <p class="tagline">"Let's get this done. What's next?"</p>
+            
+            <p><strong>Core Motivation:</strong> Drivers are motivated by results, control, and achievement. They want to make things happen quickly and efficiently. Time is their most valuable resource.</p>
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>✅ Strengths</h4>
+                    <ul>
+                        <li>Decisive and action-oriented</li>
+                        <li>Natural leaders who take charge</li>
+                        <li>Efficient with time and resources</li>
+                        <li>Direct and honest communicators</li>
+                        <li>Thrive under pressure</li>
+                        <li>Focus on big-picture results</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>⚠️ Watch-outs</h4>
+                    <ul>
+                        <li>Can appear impatient or abrupt</li>
+                        <li>May overlook people's feelings</li>
+                        <li>Risk of burnout from overwork</li>
+                        <li>Can be too blunt or insensitive</li>
+                        <li>May make hasty decisions</li>
+                        <li>Struggle with delegating control</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>🎯 In the Classroom</h4>
+                    <ul>
+                        <li><strong>As Teachers:</strong> Clear expectations, structured lessons, efficient use of time</li>
+                        <li><strong>As Students:</strong> Want to know "what's the point?" and move quickly</li>
+                        <li><strong>Behavior Management:</strong> Give them leadership roles and challenges</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>💼 Best Careers</h4>
+                    <ul>
+                        <li>Executive, CEO, Entrepreneur</li>
+                        <li>Sales Manager, Business Owner</li>
+                        <li>Attorney, Surgeon</li>
+                        <li>Military Officer</li>
+                        <li>Project Manager</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quote-box">
+                <strong>Real Example:</strong> "A Driver principal walks into your classroom and says, 'I need your lesson plans by Friday. Here's the template. Any questions?' No small talk, just clear direction and an expectation for results."
+            </div>
+        </div>
 
-<h2>Support Lens</h2>
-<ul>
-  <li><strong>Executive Function:</strong> organization, initiation, follow-through</li>
-  <li><strong>ADHD:</strong> attention regulation, impulse control</li>
-  <li><strong>Anxiety:</strong> threat perception, emotional safety</li>
-</ul>
+        <!-- Analytical Section -->
+        <div class="personality-section analytical-section">
+            <h2>📊 Analytical - The Methodical Thinker</h2>
+            <p class="tagline">"Show me the data. Let me think about this."</p>
+            
+            <p><strong>Core Motivation:</strong> Analyticals are motivated by accuracy, quality, and understanding. They want to make the right decision based on thorough analysis. Knowledge is their most valuable resource.</p>
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>✅ Strengths</h4>
+                    <ul>
+                        <li>Thorough and detail-oriented</li>
+                        <li>Logical problem-solvers</li>
+                        <li>High standards for quality</li>
+                        <li>Systematic and organized</li>
+                        <li>Careful decision-makers</li>
+                        <li>Strong analytical skills</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>⚠️ Watch-outs</h4>
+                    <ul>
+                        <li>Analysis paralysis - overthinking</li>
+                        <li>Can seem cold or distant</li>
+                        <li>May struggle with quick decisions</li>
+                        <li>Perfectionistic tendencies</li>
+                        <li>Resistant to change without data</li>
+                        <li>Can get lost in details</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>🎯 In the Classroom</h4>
+                    <ul>
+                        <li><strong>As Teachers:</strong> Well-organized, clear rubrics, detailed feedback</li>
+                        <li><strong>As Students:</strong> Want to understand the "why" and have time to process</li>
+                        <li><strong>Behavior Management:</strong> Explain logical consequences, give structure</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>💼 Best Careers</h4>
+                    <ul>
+                        <li>Engineer, Scientist, Researcher</li>
+                        <li>Accountant, Financial Analyst</li>
+                        <li>Software Developer, IT Specialist</li>
+                        <li>Quality Control, Auditor</li>
+                        <li>Librarian, Archivist</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quote-box">
+                <strong>Real Example:</strong> "An Analytical colleague receives your new curriculum proposal and responds, 'This looks interesting. Can you send me the research supporting this approach? I'd like to review the data before our meeting.'"
+            </div>
+        </div>
 
-<p class="sub">
-These lenses help teachers adjust expectations and communication —
-not label students.
-</p>
+        <!-- Expressive Section -->
+        <div class="personality-section expressive-section">
+            <h2>🎤 Expressive - The Enthusiastic Motivator</h2>
+            <p class="tagline">"This is going to be amazing! Let me tell you about my idea!"</p>
+            
+            <p><strong>Core Motivation:</strong> Expressives are motivated by recognition, creativity, and connection. They want to inspire others and be part of something exciting. Relationships are their most valuable resource.</p>
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>✅ Strengths</h4>
+                    <ul>
+                        <li>Enthusiastic and energizing</li>
+                        <li>Creative and innovative</li>
+                        <li>Natural networkers</li>
+                        <li>Persuasive communicators</li>
+                        <li>Optimistic outlook</li>
+                        <li>Great at motivating others</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>⚠️ Watch-outs</h4>
+                    <ul>
+                        <li>Can be disorganized</li>
+                        <li>May overpromise and underdeliver</li>
+                        <li>Struggle with follow-through</li>
+                        <li>Sensitive to criticism</li>
+                        <li>Can be impulsive</li>
+                        <li>May lose track of details</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>🎯 In the Classroom</h4>
+                    <ul>
+                        <li><strong>As Teachers:</strong> Engaging lessons, storytelling, lots of energy</li>
+                        <li><strong>As Students:</strong> Want collaboration, creativity, and recognition</li>
+                        <li><strong>Behavior Management:</strong> Positive reinforcement, public praise</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>💼 Best Careers</h4>
+                    <ul>
+                        <li>Marketing, PR, Advertising</li>
+                        <li>Sales, Entertainment</li>
+                        <li>Event Planning, Training</li>
+                        <li>Teacher (especially elementary)</li>
+                        <li>Artist, Designer, Writer</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quote-box">
+                <strong>Real Example:</strong> "An Expressive student raises their hand excitedly, 'Oh! Oh! I have the BEST idea for our project! What if we made a video and got the whole class involved? It'll be so fun!'"
+            </div>
+        </div>
 
-</div>
+        <!-- Amiable Section -->
+        <div class="personality-section amiable-section">
+            <h2>🤝 Amiable - The Supportive Team Player</h2>
+            <p class="tagline">"How can I help? Let's make sure everyone's okay with this."</p>
+            
+            <p><strong>Core Motivation:</strong> Amiables are motivated by harmony, relationships, and helping others. They want everyone to feel valued and included. Stability is their most valuable resource.</p>
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>✅ Strengths</h4>
+                    <ul>
+                        <li>Supportive and caring</li>
+                        <li>Excellent listeners</li>
+                        <li>Patient and understanding</li>
+                        <li>Team-oriented</li>
+                        <li>Reliable and consistent</li>
+                        <li>Great at building trust</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>⚠️ Watch-outs</h4>
+                    <ul>
+                        <li>May avoid necessary conflict</li>
+                        <li>Can be indecisive</li>
+                        <li>Struggle saying "no"</li>
+                        <li>May be taken advantage of</li>
+                        <li>Resistant to change</li>
+                        <li>Can hold grudges quietly</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>🎯 In the Classroom</h4>
+                    <ul>
+                        <li><strong>As Teachers:</strong> Nurturing, patient, create safe environments</li>
+                        <li><strong>As Students:</strong> Want support, clear expectations, steady pace</li>
+                        <li><strong>Behavior Management:</strong> Private conversations, empathy, consistency</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>💼 Best Careers</h4>
+                    <ul>
+                        <li>Counselor, Social Worker</li>
+                        <li>Nurse, Caregiver, Therapist</li>
+                        <li>Teacher (especially special ed)</li>
+                        <li>Human Resources</li>
+                        <li>Customer Service, Support</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quote-box">
+                <strong>Real Example:</strong> "An Amiable parent emails you, 'Thank you so much for your patience with my son. I know he can be challenging sometimes. Is there anything I can do at home to support what you're working on in class?'"
+            </div>
+        </div>
+
+        <div style="background: #f3f4f6; padding: 30px; border-radius: 12px; margin: 40px 0;">
+            <h2 style="color: #7c3aed; text-align: center;">💡 Key Insight</h2>
+            <p style="font-size: 1.2em; text-align: center; line-height: 1.8;">
+                <strong>Everyone has a primary style, but we all use aspects of each type.</strong> The goal isn't to put people in boxes—it's to understand preferences so you can communicate more effectively and build stronger relationships.
+            </p>
+        </div>
+
+        <div class="back-next-nav">
+            <a href="results.html" class="nav-button">← Back to Results</a>
+            <a href="hot-buttons.html" class="nav-button">Next: Hot Buttons →</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 BetterConnections. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

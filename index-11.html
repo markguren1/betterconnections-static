@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetterConnections - Build Better Relationships Through Personality Understanding</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Softer purple/lavender color scheme */
+        :root {
+            --primary-purple: #a78bfa;  /* Softer purple instead of bold purple */
+            --light-purple: #e9d5ff;
+            --accent-purple: #c4b5fd;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--light-purple) 0%, #fae8ff 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            color: #7c3aed;  /* Softer purple for heading */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            color: #6b21a8;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-purple), #8b5cf6);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: #ffffff;
+            border: 2px solid var(--light-purple);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(167, 139, 250, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(167, 139, 250, 0.2);
+            border-color: var(--primary-purple);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            color: #7c3aed;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .reviewer-path {
+            background: linear-gradient(135deg, #f3e8ff 0%, #fae8ff 100%);
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+            border: 2px solid var(--accent-purple);
+        }
+        
+        .reviewer-path h2 {
+            color: #7c3aed;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .path-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .path-step {
+            background: #ffffff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-purple);
+            transition: all 0.2s;
+        }
+        
+        .path-step:hover {
+            transform: translateX(5px);
+            border-left-color: #8b5cf6;
+        }
+        
+        .path-step a {
+            color: #7c3aed;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #7c3aed;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        
+        .back-button:hover {
+            color: #6d28d9;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-brand">BetterConnections</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="quiz.html">Personality Quiz</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="deep-dive.html">Deep Dive</a></li>
+                <li><a href="hot-buttons.html">Hot Buttons</a></li>
+                <li><a href="compatibility.html">Compatibility</a></li>
+                <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
+                <li><a href="application-stories.html">Application Stories</a></li>
+                <li><a href="learning-quiz.html">Learning Quiz</a></li>
+                <li><a href="wrap-up.html">Wrap-Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>✨ What If AI Could Help?</h1>
+            <p>BetterConnections combines personality psychology, classroom experience, and AI-assisted structure to help teachers communicate clearly, calmly, and consistently.</p>
+            <p><strong>This isn't theory. This isn't philosophy.</strong> This is a proven method to build better connections with students, families, friends, and even romantic partners.</p>
+            <a href="quiz.html" class="cta-button">Start with the Quiz →</a>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📧</div>
+                <h3>Parent Emails</h3>
+                <p>Craft clear, empathetic emails that build trust and prevent misunderstandings with parents.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Student Behavior</h3>
+                <p>Understand behavioral patterns and respond with strategies tailored to each personality type.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>IEPs</h3>
+                <p>Navigate IEP meetings with confidence using personality-aware communication strategies.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Lesson Planning</h3>
+                <p>Design lessons that engage different learning styles based on personality insights.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">✏️</div>
+                <h3>Grading Feedback</h3>
+                <p>Provide feedback that motivates each student based on their personality style.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Admin Relations</h3>
+                <p>Communicate effectively with administrators using their preferred communication style.</p>
+            </div>
+        </div>
+
+        <div class="reviewer-path">
+            <h2>📍 Reviewer Path</h2>
+            <div class="path-steps">
+                <div class="path-step">
+                    <a href="quiz.html">1. Take the Personality Quiz →</a>
+                </div>
+                <div class="path-step">
+                    <a href="results.html">2. Review Results →</a>
+                </div>
+                <div class="path-step">
+                    <a href="deep-dive.html">3. Explore Deep Dive →</a>
+                </div>
+                <div class="path-step">
+                    <a href="hot-buttons.html">4. Learn Hot Buttons →</a>
+                </div>
+                <div class="path-step">
+                    <a href="compatibility.html">5. See Compatibility →</a>
+                </div>
+                <div class="path-step">
+                    <a href="nextgen-assistant.html">6. Experience NextGen Assistant →</a>
+                </div>
+                <div class="path-step">
+                    <a href="application-stories.html">7. Read Application Stories →</a>
+                </div>
+                <div class="path-step">
+                    <a href="learning-quiz.html">8. Take Learning Quiz →</a>
+                </div>
+                <div class="path-step">
+                    <a href="wrap-up.html">9. Wrap-Up →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 BetterConnections. All rights reserved.</p>
+            <p>Build better relationships through personality understanding.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,307 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hot Buttons — BetterConnections</title>
-  <link rel="stylesheet" href="styles.css"/>
-
-  <style>
-    body { background:#f6f7f9; color:#1f2937; font-family: system-ui, -apple-system, BlinkMacSystemFont; }
-    .page { max-width: 1100px; margin: 32px auto; padding: 0 16px; }
-
-    .card {
-      background:#fff;
-      border:1px solid #e5e7eb;
-      border-radius:14px;
-      padding:18px;
-      box-shadow:0 10px 24px rgba(0,0,0,.06);
-      margin:14px 0;
-    }
-
-    .topbar { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-    
-    .nav { display:flex; gap:14px; flex-wrap:wrap; }
-    .brand { font-weight:800; color:#374151; }
-
-.mini { font-size:12px; color:#6b7280; margin-left:8px; }
-
-.nav a { text-decoration:none; color:#4b5563; font-weight:600; }
-
-.nav a:hover { text-decoration:underline; color:#1f2937; }
-
-    h1 { margin: 6px 0 8px; font-size: 32px; }
-    .sub { margin: 0 0 10px; color:#4b5563; line-height:1.55; }
-
-    label { font-weight:800; font-size:12px; color:#374151; display:block; margin: 10px 0 6px; }
-    select { width:100%; border:1px solid #e5e7eb; border-radius:10px; padding:10px 12px; background:#fff; font-size:14px; }
-
-    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
-    @media (max-width: 900px){ .grid-2 { grid-template-columns: 1fr; } }
-
-    .pill {
-      display:inline-block;
-      padding:4px 10px;
-      border-radius:999px;
-      border:1px solid #e5e7eb;
-      background:#fff;
-      font-size:12px;
-      font-weight:800;
-      color:#374151;
-    }
-
-    .section-title { font-weight:900; margin: 0 0 8px; }
-    ul { margin: 10px 0 0; padding-left: 18px; }
-    li { margin: 8px 0; color:#374151; line-height:1.45; }
-
-    .callout {
-      background:#eef2ff;
-      border-left:6px solid #6366f1;
-      padding:14px;
-      border-radius:12px;
-      color:#1f2937;
-    }
-
-    .tip {
-      background:#f9fafb;
-      border:1px solid #e5e7eb;
-      border-radius:12px;
-      padding:12px;
-      margin-top:12px;
-    }
-
-    .mini-note { font-size:12px; color:#6b7280; line-height:1.5; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Buttons - BetterConnections</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .hot-button-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid;
+        }
+        
+        .driver-card { border-left-color: #ef4444; }
+        .analytical-card { border-left-color: #3b82f6; }
+        .expressive-card { border-left-color: #a855f7; }
+        .amiable-card { border-left-color: #10b981; }
+        
+        .hot-button-card h2 {
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+        
+        .hot-button-card ul {
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+        
+        .hot-button-card ul li {
+            margin-bottom: 10px;
+        }
+        
+        .back-next-nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+        
+        .nav-button {
+            background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
-
 <body>
-  <div class="page">
-
-    <div class="card">
-      <div class="topbar">
-        <div class="brand">BetterConnections <span class="mini">Reviewer Demo</span></div>
-        <div class="nav">
-          <a href="index.html">Home</a>
-          <a href="quiz.html">Personality Quiz</a>
-          <a href="results.html">Results</a>
-          <a href="hot-buttons.html" style="font-weight:900;">Hot Buttons</a>
-          <a href="nextgen-assistant.html">NextGen Assistant</a>
-          <a href="pricing.html">Pricing</a>
+    <nav>
+        <div class="container">
+            <div class="nav-brand">BetterConnections</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quiz.html">Personality Quiz</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="deep-dive.html">Deep Dive</a></li>
+                <li><a href="hot-buttons.html" class="active">Hot Buttons</a></li>
+                <li><a href="compatibility.html">Compatibility</a></li>
+                <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
+                <li><a href="application-stories.html">Application Stories</a></li>
+                <li><a href="learning-quiz.html">Learning Quiz</a></li>
+                <li><a href="wrap-up.html">Wrap-Up</a></li>
+            </ul>
         </div>
-      </div>
-    </div>
+    </nav>
 
-    <div class="card">
-      <h1>Hot Buttons</h1>
-      <p class="sub">
-        “Hot Buttons” are the quick triggers that make people feel respected… or disrespected.
-        Use them to build faster connections and avoid unnecessary conflict.
-      </p>
-
-      <div class="callout">
-        <strong>How to use this section:</strong> Choose a personality type below.
-        You’ll see what matters most, what to avoid, and quick “real life” examples a teacher can use immediately.
-      </div>
-
-      <div style="margin-top:12px;">
-        <label>Choose a personality type</label>
-        <select id="typeSelect">
-          <option value="Driver">Driver</option>
-          <option value="Amiable" selected>Amiable</option>
-          <option value="Expressive">Expressive</option>
-          <option value="Analytical">Analytical</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="grid-2">
-      <div class="card">
-        <div class="section-title"><span class="pill" id="pillType">Amiable</span> — What matters most</div>
-        <ul id="matters"></ul>
-
-        <div class="tip">
-          <div class="section-title">Fast “break the ice” moves</div>
-          <ul id="ice"></ul>
+    <div class="container">
+        <div class="back-next-nav">
+            <a href="deep-dive.html" class="nav-button">← Back to Deep Dive</a>
+            <a href="compatibility.html" class="nav-button">Next: Compatibility →</a>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="section-title">What to avoid (common hot buttons)</div>
-        <ul id="avoid"></ul>
+        <h1 style="text-align: center; color: #7c3aed; margin-bottom: 40px;">🔥 Hot Buttons</h1>
+        <p style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">Learn exactly what to say and do to connect with each personality type</p>
 
-        <div class="tip">
-          <div class="section-title">Real-life micro-stories (PD style)</div>
-          <ul id="stories"></ul>
+        <div class="hot-button-card driver-card">
+            <h2>🔥 Driver</h2>
+            <h3>What They Value: Results, Efficiency, Action</h3>
+            <ul>
+                <li><strong>Lead with outcomes and next steps</strong> - "Here's what we'll accomplish and how we'll do it."</li>
+                <li><strong>Keep it brief and move to action</strong> - Skip the small talk, get to the point quickly.</li>
+                <li><strong>Show confidence and respect their time</strong> - Be decisive and well-prepared.</li>
+                <li><strong>Give them control and options</strong> - "Would you prefer A or B?"</li>
+                <li><strong>Focus on the bottom line</strong> - What's the ROI? What's the impact?</li>
+            </ul>
+            <p><strong>⚠️ Avoid:</strong> Long explanations, indecisiveness, wasting time, being overly emotional</p>
         </div>
-      </div>
+
+        <div class="hot-button-card analytical-card">
+            <h2>📊 Analytical</h2>
+            <h3>What They Value: Accuracy, Logic, Details</h3>
+            <ul>
+                <li><strong>Provide facts, steps, and options</strong> - Back everything up with data and evidence.</li>
+                <li><strong>Explain the "why" behind choices</strong> - Show your reasoning and methodology.</li>
+                <li><strong>Give time to think and analyze</strong> - Don't rush them into decisions.</li>
+                <li><strong>Be thorough and precise</strong> - Double-check your information.</li>
+                <li><strong>Organize information logically</strong> - Use clear structure and frameworks.</li>
+            </ul>
+            <p><strong>⚠️ Avoid:</strong> Vague statements, rushing decisions, emotional appeals, lack of data</p>
+        </div>
+
+        <div class="hot-button-card expressive-card">
+            <h2>🎤 Expressive</h2>
+            <h3>What They Value: Energy, Creativity, Recognition</h3>
+            <ul>
+                <li><strong>Bring energy and stories</strong> - Make it engaging and fun.</li>
+                <li><strong>Make it social and collaborative</strong> - Include team activities and brainstorming.</li>
+                <li><strong>Paint the vision and big picture</strong> - Show the exciting possibilities.</li>
+                <li><strong>Give public recognition</strong> - Celebrate their contributions openly.</li>
+                <li><strong>Be enthusiastic and positive</strong> - Match their energy level.</li>
+            </ul>
+            <p><strong>⚠️ Avoid:</strong> Being too serious, focusing only on details, lack of enthusiasm, ignoring their ideas</p>
+        </div>
+
+        <div class="hot-button-card amiable-card">
+            <h2>🤝 Amiable</h2>
+            <h3>What They Value: Harmony, Support, Relationships</h3>
+            <ul>
+                <li><strong>Build trust first</strong> - Take time to establish rapport and connection.</li>
+                <li><strong>Invite input and collaboration</strong> - "What do you think?" "How do you feel about this?"</li>
+                <li><strong>Keep the tone kind and supportive</strong> - Show empathy and understanding.</li>
+                <li><strong>Move at a steady, comfortable pace</strong> - Don't rush or pressure them.</li>
+                <li><strong>Show how it helps people</strong> - Emphasize the human impact.</li>
+            </ul>
+            <p><strong>⚠️ Avoid:</strong> Being pushy, conflict, rushing decisions, ignoring feelings, being impersonal</p>
+        </div>
+
+        <div class="back-next-nav">
+            <a href="deep-dive.html" class="nav-button">← Back to Deep Dive</a>
+            <a href="compatibility.html" class="nav-button">Next: Compatibility →</a>
+        </div>
     </div>
 
-    <div class="card">
-      <div class="section-title">Environmental cues (quick tells)</div>
-      <p class="sub">
-        Desk and office cues can offer clues — not certainty — but they help you choose a respectful starting approach.
-      </p>
-      <ul id="cues"></ul>
-      <p class="mini-note">
-        Note: Cues can overlap. Example: plaques/awards can show up with <strong>Analyticals</strong> (achievement/precision) and also <strong>Drivers</strong> (status/results).
-        Use cues as a gentle hint, then adjust based on the person’s response.
-      </p>
-    </div>
-
-  </div>
-
-<script>
-  const data = {
-    Driver: {
-      matters: [
-        "Efficiency, clarity, results, and momentum",
-        "Being on time and keeping commitments",
-        "Directness (they prefer the point, not the preamble)",
-        "Choices and control (give options and next steps)"
-      ],
-      avoid: [
-        "Wasting time (long explanations, circular meetings)",
-        "Being late without acknowledging it",
-        "Vague answers (no plan, no timeline)",
-        "Publicly challenging them or making them look incompetent"
-      ],
-      ice: [
-        "Start with the point: “Here’s the plan and the timeline.”",
-        "If you’re late: acknowledge immediately, then move fast.",
-        "Offer two options: “Do you want A or B?”"
-      ],
-      stories: [
-        "Mary is running late but remembers Joe is a Driver who values being on time. She texts early, apologizes briefly, and gives a clear ETA. Joe relaxes because the situation is handled.",
-        "A student Driver is frustrated. The teacher says: “Here’s the next step. Do this first, then we’ll move on.” The student calms down because the path is clear."
-      ],
-      cues: [
-        "Goal tracking tools, schedules, visible timers",
-        "Awards/recognition displayed (can also indicate Analytical)",
-        "Minimal clutter; functional desk layout",
-        "Direct language in notes: “Next / Done / Deadline”"
-      ]
-    },
-
-    Amiable: {
-      matters: [
-        "Trust, belonging, and respectful tone",
-        "Feeling supported and not embarrassed",
-        "Collaboration: “We’ll handle this together.”",
-        "Consistency and follow-through"
-      ],
-      avoid: [
-        "Public criticism or sarcasm",
-        "Rushing them when they’re emotional",
-        "Cold or abrupt communication",
-        "Surprising them with negative news without reassurance"
-      ],
-      ice: [
-        "Lead with reassurance: “I’m glad you told me.”",
-        "Use partnership language: “We’re on the same team.”",
-        "Ask a gentle question: “What would help you feel safer today?”"
-      ],
-      stories: [
-        "A worried parent emails. The teacher starts: “I hear your concern, and I want you to know we’re on the same team.” The parent’s tone softens immediately.",
-        "Emma notices family photos on the principal’s desk. She begins with genuine connection. The principal feels understood and the meeting goes smoothly."
-      ],
-      cues: [
-        "Family photos, thank-you notes, personal mementos",
-        "Warm colors, comfortable seating, inviting decorations",
-        "Group/team pictures and relationship-focused items",
-        "A desk that feels welcoming rather than “formal”"
-      ]
-    },
-
-    Expressive: {
-      matters: [
-        "Being seen, heard, and appreciated",
-        "Energy, optimism, and encouragement",
-        "Human connection and enthusiasm",
-        "A positive, engaging tone"
-      ],
-      avoid: [
-        "Dry, cold delivery with no warmth",
-        "Being ignored or dismissed",
-        "Overly rigid structure without room for expression",
-        "Criticism that feels personal (especially in public)"
-      ],
-      ice: [
-        "Start upbeat: “I’m glad you’re here—let’s do this.”",
-        "Use humor appropriately (light, not sarcastic).",
-        "Ask about interests or people: “How did your group go?”"
-      ],
-      stories: [
-        "A student walks in energized. The teacher matches tone briefly, then guides: “Love the energy—here’s our goal and how you can shine today.”",
-        "An expressive staff member has a desk with funny ornaments and lots of group photos. A quick, warm comment sparks instant connection."
-      ],
-      cues: [
-        "Group photos, team pictures, signs of social connection",
-        "Humorous ornaments or playful items (tasteful)",
-        "Stylish outfits or attention to presentation (often, not always)",
-        "Colorful or creative decor (can also overlap with other types)"
-      ]
-    },
-
-    Analytical: {
-      matters: [
-        "Accuracy, logic, and clear expectations",
-        "Preparedness and credibility",
-        "Details that support conclusions",
-        "Time to think and process"
-      ],
-      avoid: [
-        "Vague statements with no evidence",
-        "Surprises or last-minute changes with no explanation",
-        "Overly emotional arguments without facts",
-        "Interrupting or pressuring them to decide instantly"
-      ],
-      ice: [
-        "Be specific: “Here are the facts, and here’s the plan.”",
-        "Define success: “We’ll know it’s working when…”",
-        "Give a short summary + a place to ask questions"
-      ],
-      stories: [
-        "A parent asks for updates. The teacher sends a structured response: observations, steps, timeline, and how improvement will be measured. The parent relaxes because it feels credible.",
-        "A new principal has plaques and awards displayed and a very organized office. The teacher opens with clear purpose and agenda. The principal appreciates the professionalism."
-      ],
-      cues: [
-        "Plaques/awards displayed (can overlap with Driver)",
-        "Neat, organized workspace; labeled folders",
-        "Charts, data, rubrics, checklists, schedules",
-        "Evidence of planning: agendas, notes, structured documents"
-      ]
-    }
-  };
-
-  const sel = document.getElementById("typeSelect");
-  const pillType = document.getElementById("pillType");
-  const matters = document.getElementById("matters");
-  const avoid = document.getElementById("avoid");
-  const ice = document.getElementById("ice");
-  const stories = document.getElementById("stories");
-  const cues = document.getElementById("cues");
-
-  function fillList(ul, items){
-    ul.innerHTML = "";
-    items.forEach(t => {
-      const li = document.createElement("li");
-      li.textContent = t;
-      ul.appendChild(li);
-    });
-  }
-
-  function render(type){
-    pillType.textContent = type;
-    fillList(matters, data[type].matters);
-    fillList(avoid, data[type].avoid);
-    fillList(ice, data[type].ice);
-    fillList(stories, data[type].stories);
-    fillList(cues, data[type].cues);
-  }
-
-  sel.addEventListener("change", () => render(sel.value));
-  render(sel.value);
-</script>
-
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 BetterConnections. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
