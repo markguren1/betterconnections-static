@@ -6,183 +6,413 @@
     <title>NextGen Assistant - BetterConnections</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
+            background: #f6f7f9;
+            color: #1f2937;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont;
         }
-
-        nav {
-            background: white;
-            padding: 15px 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            padding: 8px 15px;
-            border-radius: 6px;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover,
-        nav a.active {
-            background-color: #f0f0f0;
-        }
-
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-
-        h1 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #2c3e50;
+        .card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
         }
-
-        /* Prominent Why NextGen Link */
-        .why-nextgen-banner {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 16px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+        h1, h2 {
+            margin-top: 0;
         }
-
-        .why-nextgen-banner h2 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
+        .lead {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #374151;
         }
-
-        .why-nextgen-banner p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            opacity: 0.95;
+        .callout {
+            background: #eef2ff;
+            border-left: 6px solid #6366f1;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 16px;
         }
-
-        .why-nextgen-btn {
-            display: inline-block;
-            background: white;
-            color: #667eea;
-            padding: 15px 35px;
+        label {
+            font-weight: 700;
+            font-size: 13px;
+            display: block;
+            margin: 12px 0 6px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 12px;
             border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            font-size: 14px;
+        }
+        textarea {
+            min-height: 100px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media(max-width:900px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .panel {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 16px;
+            white-space: pre-wrap;
+            line-height: 1.55;
+            font-size: 14px;
+        }
+        .without {
+            border-left: 6px solid #ef4444;
+        }
+        .with {
+            border-left: 6px solid #22c55e;
+        }
+        .tag {
+            display: inline-block;
+            padding: 6px 12px;
+            font-weight: 700;
+            font-size: 12px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+        .without .tag {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .with .tag {
+            background: #dcfce7;
+            color: #166534;
+        }
+        strong.note {
+            display: block;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+        hr {
+            border: none;
+            height: 1px;
+            background: #e5e7eb;
+            margin: 28px 0;
+        }
+        .small {
+            font-size: 13px;
+            color: #6b7280;
+        }
+        .back-next-nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+        .nav-button {
+            background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.2s;
         }
-
-        .why-nextgen-btn:hover {
+        .nav-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
         }
-
-        .content-section {
-            background: white;
+        .divider-section {
+            background: linear-gradient(135deg, #f3e8ff 0%, #fae8ff 100%);
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
+            margin: 50px 0;
+            text-align: center;
+            border: 2px solid #e9d5ff;
         }
-
-        .content-section h2 {
-            color: #2c3e50;
+        .divider-section h2 {
+            color: #7c3aed;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .feature-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
             margin-bottom: 20px;
-            font-size: 1.8em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 5px solid #a78bfa;
         }
-
-        .content-section p {
-            font-size: 1.1em;
+        .feature-box h3 {
+            color: #7c3aed;
+            margin-top: 0;
+        }
+        .feature-box ul {
             line-height: 1.8;
-            color: #555;
-            margin-bottom: 15px;
-        }
-
-        @media (max-width: 640px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            .why-nextgen-banner {
-                padding: 25px 20px;
-            }
-
-            .why-nextgen-banner h2 {
-                font-size: 1.5em;
-            }
-
-            .why-nextgen-banner p {
-                font-size: 1em;
-            }
-
-            .content-section {
-                padding: 25px 20px;
-            }
         }
     </style>
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="quiz.html">Personality Quiz</a></li>
-            <li><a href="results.html">Results</a></li>
-            <li><a href="deep-dive.html">Deep Dive</a></li>
-            <li><a href="compatibility.html">Compatibility</a></li>
-            <li><a href="nextgen-assistant.html" class="active">NextGen Assistant</a></li>
-            <li><a href="application-stories.html">Application Stories</a></li>
-            <li><a href="learning-quiz.html">Learning Quiz</a></li>
-            <li><a href="wrap-up.html">Wrap-Up</a></li>
-        </ul>
+        <div class="container">
+            <div class="nav-brand">BetterConnections</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quiz.html">Personality Quiz</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="deep-dive.html">Deep Dive</a></li>
+                <li><a href="hot-buttons.html">Hot Buttons</a></li>
+                <li><a href="compatibility.html">Compatibility</a></li>
+                <li><a href="nextgen-assistant.html" class="active">NextGen Assistant</a></li>
+                <li><a href="application-stories.html">Application Stories</a></li>
+                <li><a href="learning-quiz.html">Learning Quiz</a></li>
+                <li><a href="wrap-up.html">Wrap-Up</a></li>
+            </ul>
+        </div>
     </nav>
 
     <div class="container">
-        <h1>NextGen Assistant</h1>
-
-        <!-- Prominent Why NextGen Banner -->
-        <div class="why-nextgen-banner">
-            <h2>Why use NextGen Assistant instead of any AI?</h2>
-            <p>Generic AI can draft an email. NextGen Assistant helps you communicate in a way that actually lands well with this parent, in this situation, over the whole school year.</p>
-            <a href="nextgen-why.html" class="why-nextgen-btn">Learn Why NextGen is Different →</a>
+        <div class="back-next-nav">
+            <a href="compatibility.html" class="nav-button">← Back to Compatibility</a>
+            <a href="application-stories.html" class="nav-button">Next: Application Stories →</a>
         </div>
 
-        <!-- Main NextGen Assistant Content -->
-        <div class="content-section">
-            <h2>Your AI-Powered Communication Partner</h2>
-            <p>NextGen Assistant combines your personality insights with advanced AI to help you craft perfect communications for any situation.</p>
-            
-            <p>Whether you're writing to parents, collaborating with colleagues, or documenting student progress, NextGen Assistant adapts its guidance to match both your communication style and your recipient's personality type.</p>
+        <!-- INTRO -->
+        <div class="card">
+            <h1>NextGen Assistant</h1>
+            <p class="lead">
+                The NextGen Assistant helps teachers respond to parent emails professionally and efficiently by
+                using stored context, personality insights, and a structured approach to communication.
+            </p>
 
-            <!-- Add your NextGen Assistant tool/interface here -->
+            <div class="callout">
+                <strong>Why teachers care (WIIFM):</strong><br>
+                The assistant generates calm, professional responses using stored context —
+                saving time, reducing emotional load, and lowering the risk of escalation.
+            </div>
+        </div>
+
+        <!-- STORED CONTEXT -->
+        <div class="card">
+            <h2>One-time context (stored)</h2>
+
+            <label>Student name</label>
+            <input value="Marcus Rivera">
+
+            <label>Grade / class</label>
+            <input value="7th Grade Math">
+
+            <label>Student personality</label>
+            <select>
+                <option>Amiable</option>
+                <option>Driver</option>
+                <option>Expressive</option>
+                <option>Analytical</option>
+            </select>
+
+            <label>Parent personality</label>
+            <select>
+                <option selected>Amiable</option>
+                <option>Driver</option>
+                <option>Expressive</option>
+                <option>Analytical</option>
+            </select>
+
+            <label>Key context</label>
+            <textarea>Marcus is bright but shuts down when he feels criticized. Family wants reassurance and frequent updates.</textarea>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="card">
+            <h2>Step 1 — Parent email arrives</h2>
+
+            <div class="panel">
+Hi, I'm concerned Marcus says he feels embarrassed and lost in math class.
+He told me he doesn't want to come to school tomorrow.
+What are you doing to help him?
+            </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="card">
+            <h2>Step 2 — Teacher response</h2>
+
+            <div class="grid">
+                <div class="without">
+                    <span class="tag">❌ Without NextGen Assistant</span>
+                    <div class="panel">
+Hi,
+
+Thanks for your email. I'm sorry to hear Marcus is feeling this way.
+I will try to talk to him tomorrow and see what is going on.
+It can be hard to catch everything in class.
+
+Please let me know if you have more information.
+
+Thank you,
+Teacher
+                    </div>
+                    <strong class="note">
+                        Teacher manually composes response (10–15 minutes).
+                        Tone and clarity depend on the moment.
+                    </strong>
+                </div>
+
+                <div class="with">
+                    <span class="tag">✅ With NextGen Assistant</span>
+                    <div class="panel">
+Thank you for reaching out. I can hear how concerned you are, and I want you to know we're on the same team.
+
+Here's what I'm doing:
+• I'll check in privately with Marcus during math class.
+• I'll make sure he has a clear, low-stress way to ask for help.
+• I'll watch closely for signs he's feeling overwhelmed.
+
+How you'll know it's improving:
+I'll send you a brief update after tomorrow's class.
+
+My goal is to keep communication calm, consistent, and supportive to prevent misunderstandings and escalation.
+                    </div>
+                    <strong class="note">
+                        Generated in one click using stored context.
+                        No composing. Lower risk of formal escalation.
+                    </strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="card">
+            <h2>Step 3 — Parent follows up</h2>
+
+            <div class="panel">
+Thanks for checking in. He still feels singled out.
+What are the next steps, and how will I know if things are improving?
+            </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="card">
+            <h2>Step 4 — Teacher follow-up response</h2>
+
+            <div class="grid">
+                <div class="without">
+                    <span class="tag">❌ Without NextGen Assistant</span>
+                    <div class="panel">
+Hi,
+
+I understand your concerns. I'll continue to keep an eye on Marcus
+and see how things go over the next few days.
+Please let me know if you hear anything else.
+
+Thank you,
+Teacher
+                    </div>
+                    <strong class="note">
+                        Teacher rereads thread and re-composes response.
+                        Context and tone must be rebuilt.
+                    </strong>
+                </div>
+
+                <div class="with">
+                    <span class="tag">✅ With NextGen Assistant</span>
+                    <div class="panel">
+Thank you for following up.
+
+Here's what we'll do next:
+• Continue private check-ins.
+• Reinforce help-seeking strategies.
+• Monitor progress over the next few classes.
+
+I'll reach out again soon so you're not left wondering.
+                    </div>
+                    <strong class="note">
+                        Generated automatically using prior context.
+                        One click. No retyping. No escalation risk added.
+                    </strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIVIDER SECTION -->
+        <div class="divider-section">
+            <h2>⭐ Why Use NextGen Assistant?</h2>
+            <p style="font-size: 1.1em; color: #6b21a8;">
+                Beyond saving time, the NextGen Assistant transforms how teachers manage communication and relationships
+            </p>
+        </div>
+
+        <!-- WHY USE SECTION -->
+        <div class="feature-box">
+            <h3>🎯 Reduces Emotional Load</h3>
+            <p>Parent emails often arrive at the worst times—after a long day, during dinner, or late at night. The emotional weight of crafting the "perfect" response can be draining.</p>
+            <p><strong>With NextGen Assistant:</strong> The assistant handles the heavy lifting, generating calm, professional responses instantly. Teachers can review and send without the stress of starting from scratch.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>⚖️ Maintains Consistency</h3>
+            <p>When composing emails manually, tone and quality can vary based on mood, energy level, or time pressure. This inconsistency can accidentally escalate situations.</p>
+            <p><strong>With NextGen Assistant:</strong> Every response follows a proven structure—acknowledge, action, follow-up—ensuring consistency even during high-stress periods.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>🛡️ Prevents Escalation</h3>
+            <p>Poorly worded responses can trigger formal complaints, involve administrators, or damage relationships. Teachers need to get it right the first time.</p>
+            <p><strong>With NextGen Assistant:</strong> Responses are designed to prevent misunderstandings, demonstrate accountability, and maintain professional boundaries—reducing the risk of escalation.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>🧠 Uses Personality Insights</h3>
+            <p>Different parents respond to different communication styles. A Driver parent wants action steps; an Amiable parent needs reassurance.</p>
+            <p><strong>With NextGen Assistant:</strong> The assistant automatically adjusts tone and structure based on stored personality insights, making every parent feel heard and respected.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>📋 Remembers Context Across Conversations</h3>
+            <p>Teachers juggle dozens of students and families. It's easy to lose track of previous commitments or forget important details from earlier conversations.</p>
+            <p><strong>With NextGen Assistant:</strong> Stored context ensures that every response builds on previous interactions, demonstrating follow-through and accountability.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>⏰ Saves Time Without Sacrificing Quality</h3>
+            <p>Manual email composition can take 10-15 minutes per response. Multiply that by dozens of emails per week, and it adds up to hours of lost time.</p>
+            <p><strong>With NextGen Assistant:</strong> Generate professional, personalized responses in seconds—giving teachers back valuable time to focus on teaching, planning, or self-care.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>🤝 Builds Trust with Families</h3>
+            <p>When parents receive clear, timely, and empathetic communication, they feel like partners in their child's education.</p>
+            <p><strong>With NextGen Assistant:</strong> Consistent, high-quality responses help build trust and strengthen the teacher-parent relationship over time.</p>
+        </div>
+
+        <div class="card" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #f59e0b;">
+            <h2 style="color: #92400e; margin-top: 0;">💡 The Bottom Line</h2>
+            <p style="font-size: 1.1em; line-height: 1.8; color: #78350f;">
+                <strong>The NextGen Assistant isn't about replacing teachers—it's about protecting them.</strong> By handling the mechanical work of email composition, teachers can focus on what matters most: their students, their teaching, and their well-being.
+            </p>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="card small">
+            <strong>Reviewer note:</strong>
+            This demo illustrates real workflows using simulated data.
+            The full version stores context securely and generates responses dynamically.
+        </div>
+
+        <div class="back-next-nav">
+            <a href="compatibility.html" class="nav-button">← Back to Compatibility</a>
+            <a href="application-stories.html" class="nav-button">Next: Application Stories →</a>
         </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 BetterConnections. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
