@@ -6,6 +6,63 @@
     <title>BetterConnections - Build Better Relationships Through Personality Understanding</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Navigation styling */
+        nav {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-brand {
+            font-size: 1.5em;
+            font-weight: 900;
+            color: #7c3aed;
+            padding: 15px 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 5px;
+        }
+        
+        .nav-links li {
+            margin: 0;
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: 15px 12px;
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: #7c3aed;
+        }
+        
+        .nav-links a.active {
+            color: #7c3aed;
+            border-bottom: 2px solid #7c3aed;
+        }
+        
         /* Softer purple/lavender color scheme */
         :root {
             --primary-purple: #a78bfa;  /* Softer purple instead of bold purple */
@@ -174,37 +231,37 @@
         </div>
 
         <div class="feature-grid">
-            <div class="feature-card">
+            <div class="feature-card" onclick="window.location.href='parent-emails.html'" style="cursor: pointer;">
                 <div class="feature-icon">📧</div>
                 <h3>Parent Emails</h3>
                 <p>Craft clear, empathetic emails that build trust and prevent misunderstandings with parents.</p>
             </div>
 
-            <div class="feature-card">
+            <div class="feature-card" onclick="window.location.href='student-behavior.html'" style="cursor: pointer;">
                 <div class="feature-icon">🎯</div>
                 <h3>Student Behavior</h3>
                 <p>Understand behavioral patterns and respond with strategies tailored to each personality type.</p>
             </div>
 
-            <div class="feature-card">
+            <div class="feature-card" onclick="window.location.href='ieps.html'" style="cursor: pointer;">
                 <div class="feature-icon">📋</div>
                 <h3>IEPs</h3>
                 <p>Navigate IEP meetings with confidence using personality-aware communication strategies.</p>
             </div>
 
-            <div class="feature-card">
+            <div class="feature-card" onclick="window.location.href='lesson-planning.html'" style="cursor: pointer;">
                 <div class="feature-icon">📚</div>
                 <h3>Lesson Planning</h3>
                 <p>Design lessons that engage different learning styles based on personality insights.</p>
             </div>
 
-            <div class="feature-card">
+            <div class="feature-card" onclick="window.location.href='grading-feedback.html'" style="cursor: pointer;">
                 <div class="feature-icon">✏️</div>
                 <h3>Grading Feedback</h3>
                 <p>Provide feedback that motivates each student based on their personality style.</p>
             </div>
 
-            <div class="feature-card">
+            <div class="feature-card" onclick="window.location.href='admin-relations.html'" style="cursor: pointer;">
                 <div class="feature-icon">🤝</div>
                 <h3>Admin Relations</h3>
                 <p>Communicate effectively with administrators using their preferred communication style.</p>
