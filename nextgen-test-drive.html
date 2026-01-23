@@ -1,359 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGen Assistant - Test Drive</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <title>NextGen Assistant – Test Drive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #e9d5ff 0%, #fae8ff 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e9d5ff 0%, #faf5ff 100%);
+      padding: 20px;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      overflow: hidden;
+    }
 
-        .header {
-            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
+    header {
+      background: linear-gradient(135deg, #7a5cff, #8b5cf6);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
 
-        .header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
+    h1 {
+      margin-bottom: 10px;
+    }
 
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.95;
-        }
+    .section {
+      padding: 25px 30px;
+    }
 
-        .emoji {
-            font-size: 1.2em;
-        }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
 
-        .content {
-            padding: 40px;
-        }
+    select, textarea, button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
 
-        .intro {
-            background: #f8f9ff;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            border-left: 5px solid #a78bfa;
-        }
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
 
-        .intro h2 {
-            color: #7c3aed;
-            margin-bottom: 15px;
-        }
+    button {
+      margin-top: 25px;
+      background: linear-gradient(135deg, #7a5cff, #8b5cf6);
+      color: white;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
 
-        .form-section {
-            background: white;
-            border: 2px solid #e0e7ff;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
+    button:hover {
+      opacity: 0.95;
+    }
 
-        .form-section h3 {
-            color: #7c3aed;
-            margin-bottom: 20px;
-            font-size: 1.3em;
-        }
+    .email-output {
+      margin-top: 30px;
+      white-space: pre-wrap;
+      background: #f9f9ff;
+      border-left: 5px solid #8b5cf6;
+      padding: 20px;
+      border-radius: 10px;
+    }
 
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 1.05em;
-        }
-
-        select, textarea {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e7ff;
-            border-radius: 10px;
-            font-size: 1em;
-            font-family: inherit;
-            transition: all 0.3s;
-        }
-
-        select:focus, textarea:focus {
-            outline: none;
-            border-color: #7c3aed;
-            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .personality-options {
-            display: grid;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .personality-option {
-            padding: 12px;
-            background: #f8f9ff;
-            border-radius: 8px;
-            font-size: 0.95em;
-            line-height: 1.5;
-        }
-
-        .generate-btn {
-            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-            color: white;
-            border: none;
-            padding: 18px 40px;
-            font-size: 1.1em;
-            font-weight: 600;
-            border-radius: 12px;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-        }
-
-        .generate-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
-        }
-
-        .generate-btn:active {
-            transform: translateY(0);
-        }
-
-        .generate-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .result-section {
-            margin-top: 30px;
-            padding: 25px;
-            background: #f8f9ff;
-            border-radius: 15px;
-            border-left: 5px solid #a78bfa;
-            display: none;
-        }
-
-        .result-section.show {
-            display: block;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .result-section h3 {
-            color: #7c3aed;
-            margin-bottom: 15px;
-        }
-
-        .email-output {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #e0e7ff;
-            white-space: pre-wrap;
-            font-family: inherit;
-            line-height: 1.6;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 20px;
-            color: #7c3aed;
-            font-weight: 600;
-        }
-
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #7c3aed;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .error {
-            background: #fee;
-            color: #c33;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 5px solid #c33;
-            margin-top: 20px;
-        }
-
-        .footer {
-            background: #f8f9ff;
-            padding: 20px;
-            text-align: center;
-            color: #666;
-            font-size: 0.9em;
-        }
-    </style>
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 13px;
+      color: #666;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <h1><span class="emoji">🚀</span> Take a Test Drive</h1>
-            <p>See how NextGen Assistant creates personality-matched parent emails in seconds. One free demo to experience the magic.</p>
-        </div>
 
-        <div class="content">
-            <div class="intro">
-                <h2>Generate Your Test Email</h2>
-                <p><strong>Parent's Personality Type</strong></p>
-                <div class="personality-options">
-                    <div class="personality-option"><strong>Balanced</strong> (Default - use when unsure)<br>
-                        Driver - Direct, results-focused<br>
-                        Analytical - Detail-oriented, data-driven<br>
-                        Expressive - Warm, relationship-focused<br>
-                        Amiable - Supportive, harmony-seeking
-                    </div>
-                </div>
-            </div>
+<div class="container">
 
-            <form id="testDriveForm" class="form-section">
-                <h3>Create Your Email</h3>
-                
-                <div class="form-group">
-                    <label for="parentType">Choose "Balanced" if you're not sure of the parent's personality type yet.</label>
-                    <select id="parentType" required>
-                        <option value="balanced">Balanced (Default - use when unsure)</option>
-                        <option value="driver">Driver - Direct, results-focused</option>
-                        <option value="analytical">Analytical - Detail-oriented, data-driven</option>
-                        <option value="expressive">Expressive - Warm, relationship-focused</option>
-                        <option value="amiable">Amiable - Supportive, harmony-seeking</option>
-                    </select>
-                </div>
+  <header>
+    <h1>NextGen Assistant</h1>
+    <p>Generate a thoughtful, professional parent response</p>
+  </header>
 
-                <div class="form-group">
-                    <label for="emailContext">Parent's Email to You</label>
-                    <textarea id="emailContext" placeholder="Paste the actual email you received from the parent." required></textarea>
-                </div>
+  <div class="section">
 
-                <div class="form-group">
-                    <label for="situationContext">Your Situation Context</label>
-                    <textarea id="situationContext" placeholder="Briefly describe what happened and what you've done or plan to do." required></textarea>
-                </div>
+    <label for="parentType">Parent Personality Style</label>
+    <select id="parentType">
+      <option>Balanced (Default – use when unsure)</option>
+      <option>Driver</option>
+      <option>Amiable</option>
+      <option>Expressive</option>
+      <option>Analytical</option>
+    </select>
 
-                <button type="submit" class="generate-btn">Generate Response</button>
-            </form>
+    <label for="parentEmail">Parent’s Email to You</label>
+    <textarea id="parentEmail">
+Why are you punishing Johnny for something he claims he didn't do?
+    </textarea>
 
-            <div id="loadingSection" class="loading" style="display: none;">
-                <div class="spinner"></div>
-                <p>✨ Back to NextGen Assistant</p>
-            </div>
+    <label for="situationContext">Your Situation Context</label>
+    <textarea id="situationContext">
+I personally observed Johnny hit another student during class.
+    </textarea>
 
-            <div id="resultSection" class="result-section">
-                <h3>Next: Why NextGen? →</h3>
-                <div id="emailOutput" class="email-output"></div>
-            </div>
+    <button type="button" onclick="generateEmail()">Generate Response</button>
 
-            <div id="errorSection" class="error" style="display: none;"></div>
-        </div>
+    <div id="emailOutput" class="email-output" style="display:none;"></div>
 
-        <div class="footer">
-            © 2025 BetterConnections. All rights reserved.
-        </div>
-    </div>
+  </div>
 
-    <script>
-        document.getElementById('testDriveForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const parentType = document.getElementById('parentType').value;
-            const emailContext = document.getElementById('emailContext').value;
-            const situationContext = document.getElementById('situationContext').value;
+  <footer>
+    © 2025 BetterConnections. All rights reserved.
+  </footer>
 
-            // Show loading
-            document.getElementById('loadingSection').style.display = 'block';
-            document.getElementById('resultSection').classList.remove('show');
-            document.getElementById('errorSection').style.display = 'none';
+</div>
 
-            try {
-                // Call our serverless function instead of Anthropic directly
-                const response = await fetch('/api/generate-email', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        parentType,
-                        emailContext,
-                        situationContext
-                    })
-                });
+<script>
+function generateEmail() {
+  const style = document.getElementById("parentType").value.toLowerCase();
+  const parentMsg = document.getElementById("parentEmail").value.trim();
+  const context = document.getElementById("situationContext").value.trim();
+  const output = document.getElementById("emailOutput");
 
-                if (!response.ok) {
-                    throw new Error(`API request failed: ${response.status}`);
-                }
+  let opening = "";
 
-                const data = await response.json();
-                const emailResponse = data.email;
+  if (style.includes("driver")) {
+    opening = "Thank you for your email. I want to address your concern clearly and directly.";
+  } else if (style.includes("amiable")) {
+    opening = "Thank you for reaching out. I understand how upsetting this situation feels.";
+  } else if (style.includes("expressive")) {
+    opening = "I appreciate you reaching out and sharing your concerns.";
+  } else if (style.includes("analytical")) {
+    opening = "Thank you for your message. I’d like to clearly outline what I observed and the steps taken.";
+  } else {
+    opening = "Thank you for reaching out. I appreciate the opportunity to clarify what occurred.";
+  }
 
-                // Hide loading, show result
-                document.getElementById('loadingSection').style.display = 'none';
-                document.getElementById('emailOutput').textContent = emailResponse;
-                document.getElementById('resultSection').classList.add('show');
+  const email = `
+Subject: Re: Classroom Concern
 
-                // Scroll to result
-                document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+${opening}
 
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById('loadingSection').style.display = 'none';
-                document.getElementById('errorSection').textContent = 'Sorry, there was an error generating the email. Please try again.';
-                document.getElementById('errorSection').style.display = 'block';
-            }
-        });
-    </script>
+I understand your concern:
+"${parentMsg || "…"}"
+
+Here is what I observed in class:
+- ${context || "A situation occurred that required immediate intervention."}
+
+My goal is always student safety, fairness, and helping students learn from mistakes—not punishment. I will also speak with your child to hear their perspective and review any additional information.
+
+Please let me know if you’d like to discuss this further. I value working together to support your child.
+
+Sincerely,
+[Teacher Name]
+  `.trim();
+
+  output.style.display = "block";
+  output.textContent = email;
+}
+</script>
+
 </body>
 </html>
