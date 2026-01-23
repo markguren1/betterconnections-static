@@ -12,27 +12,24 @@
       margin: 0;
       padding: 20px;
     }
-
     .container {
-      max-width: 780px;
+      max-width: 860px;
       margin: auto;
       background: #fff;
       border-radius: 18px;
       box-shadow: 0 15px 40px rgba(0,0,0,.15);
       overflow: hidden;
     }
-
     header {
       background: linear-gradient(135deg, #7a5cff, #8b5cf6);
       color: #fff;
       padding: 28px;
       text-align: center;
     }
+    header h1 { margin: 0 0 6px 0; }
+    header p { margin: 0; opacity: 0.95; }
 
-    .section {
-      padding: 24px 28px;
-    }
-
+    .section { padding: 24px 28px; }
     .note {
       background: #f5f3ff;
       border-left: 5px solid #8b5cf6;
@@ -40,34 +37,28 @@
       border-radius: 10px;
       margin-bottom: 14px;
       font-size: 14px;
+      line-height: 1.35;
     }
-
     .uses {
       font-size: 14px;
       font-weight: bold;
       margin-bottom: 10px;
     }
-
     label {
       font-weight: bold;
       display: block;
       margin-top: 16px;
       margin-bottom: 6px;
     }
-
     select, textarea, button {
       width: 100%;
       padding: 12px;
       border-radius: 8px;
       border: 1px solid #ccc;
       font-size: 14px;
+      box-sizing: border-box;
     }
-
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
+    textarea { min-height: 100px; resize: vertical; }
     button {
       margin-top: 18px;
       background: #7a5cff;
@@ -77,9 +68,22 @@
       font-weight: bold;
       cursor: pointer;
     }
+    button:hover { opacity: 0.95; }
 
-    button:hover {
-      opacity: 0.95;
+    .row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .secondary {
+      background: #fff;
+      border: 1px solid #ccc;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+      flex: 1;
+      min-width: 160px;
     }
 
     .output {
@@ -90,8 +94,14 @@
       padding: 16px;
       border-radius: 10px;
       margin-top: 18px;
+      line-height: 1.35;
     }
-
+    .micro {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.35;
+    }
     footer {
       text-align: center;
       font-size: 13px;
@@ -108,22 +118,33 @@
       align-items: center;
       justify-content: center;
       z-index: 999;
+      padding: 16px;
     }
-
     .modal {
       background: #fff;
       border-radius: 16px;
-      max-width: 600px;
+      max-width: 680px;
       width: 100%;
-      padding: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
     }
-
-    .modal h2 {
-      margin-top: 0;
+    .modalHeader {
+      background: linear-gradient(135deg, #7a5cff, #8b5cf6);
+      color: #fff;
+      padding: 16px 18px;
     }
-
+    .modalBody { padding: 16px 18px; }
+    .modalBody ul { margin: 10px 0 12px 18px; }
+    .priceBox {
+      background: #f5f3ff;
+      border: 1px solid #e5ddff;
+      border-radius: 12px;
+      padding: 12px;
+      margin-top: 10px;
+      line-height: 1.35;
+    }
     .close {
-      margin-top: 14px;
+      margin-top: 12px;
       background: #fff;
       border: 1px solid #ccc;
       color: #444;
@@ -135,12 +156,13 @@
 <div class="container">
   <header>
     <h1>NextGen Assistant</h1>
-    <p>Test Drive</p>
+    <p>Test Drive (demo mode – no AI keys needed)</p>
   </header>
 
   <div class="section">
     <div class="note">
-      Try a few real examples. After the test drive, pricing appears.
+      <strong>Take a Test Drive</strong><br>
+      Try 3 real scenarios. After your test drive, you’ll see a calm reflection + pricing screen (no free trial).
     </div>
 
     <div class="uses">
@@ -156,15 +178,25 @@
       <option>Analytical</option>
     </select>
 
-    <label>Parent’s Email</label>
+    <label>Parent’s Email (paste what they wrote)</label>
     <textarea id="parentMsg">Why are you punishing Johnny for something he says he didn’t do?</textarea>
 
-    <label>Your Context</label>
-    <textarea id="context">I personally observed Johnny hit another student.</textarea>
+    <label>Your Situation Context (what you observed)</label>
+    <textarea id="context">I personally observed Johnny hit another student during class.</textarea>
 
     <button onclick="generate()">Generate Response</button>
 
+    <div class="row">
+      <button class="secondary" type="button" onclick="copyEmail()">Copy Email</button>
+      <button class="secondary" type="button" onclick="resetTestDrive()">Reset Test Drive (for you only)</button>
+    </div>
+
     <div id="output" class="output"></div>
+
+    <div class="micro">
+      <strong>Reviewer note:</strong> This demo shows how BetterConnections would guide tone and structure.
+      Full AI automation and payment flow will be added later.
+    </div>
   </div>
 
   <footer>© 2025 BetterConnections</footer>
@@ -172,72 +204,164 @@
 
 <div id="modal" class="modal-bg">
   <div class="modal">
-    <h2>Did this feel useful?</h2>
-    <ul>
-      <li>Saved time?</li>
-      <li>Reduced escalation?</li>
-      <li>Improved communication?</li>
-    </ul>
-    <p><strong>$9.99 / month</strong><br><strong>$79 / year</strong> (gift option)</p>
-    <button class="close" onclick="closeModal()">Close</button>
+    <div class="modalHeader">
+      <div style="font-weight:900;font-size:18px;">Did this feel useful?</div>
+      <div style="opacity:.95;margin-top:4px;">Take a moment to reflect.</div>
+    </div>
+    <div class="modalBody">
+      <ul>
+        <li>Did this save you time?</li>
+        <li>Help prevent misunderstandings or escalation?</li>
+        <li>Improve overall communication?</li>
+        <li>Increase your confidence?</li>
+        <li>Give you a professional edge?</li>
+      </ul>
+
+      <div class="priceBox">
+        <div style="font-weight:900;margin-bottom:8px;">If BetterConnections felt useful, you can continue with full access.</div>
+        <div><strong>$9.99 / month</strong></div>
+        <div style="margin-top:6px;"><strong>$79 / year</strong> (best value)</div>
+        <div style="margin-top:8px;font-size:13px;color:#444;">
+          <strong>One-Year Gift Option:</strong> A thoughtful way to support and appreciate a teacher.
+          After one year, the teacher can decide whether to continue.
+        </div>
+        <div style="margin-top:10px;font-size:13px;color:#444;">
+          BetterConnections isn’t something you try for a week.<br>
+          It’s something you either feel right away — or you don’t.
+        </div>
+      </div>
+
+      <button class="close" onclick="closeModal()">Close</button>
+    </div>
   </div>
 </div>
 
 <script>
   const MAX = 3;
-  const KEY = "bc_demo_uses";
+  const KEY = "bc_demo_uses_v2";
 
   function remaining() {
     const v = localStorage.getItem(KEY);
-    return v === null ? MAX : Math.max(0, Number(v));
+    const n = (v === null) ? MAX : parseInt(v, 10);
+    return Number.isFinite(n) ? Math.max(0, n) : MAX;
   }
 
   function setRemaining(n) {
-    localStorage.setItem(KEY, n);
-    document.getElementById("uses").textContent = n;
+    const val = Math.max(0, n);
+    localStorage.setItem(KEY, String(val));
+    document.getElementById("uses").textContent = String(val);
+  }
+
+  function resetTestDrive() {
+    setRemaining(MAX);
+    alert("Test drive reset to 3 uses (for you only).");
+  }
+
+  function openModal() { document.getElementById("modal").style.display = "flex"; }
+  function closeModal() { document.getElementById("modal").style.display = "none"; }
+
+  function normalize(s) {
+    return (s || "").replace(/\s+/g, " ").trim();
+  }
+
+  function buildResponse(style, parentMsg, context) {
+    const st = (style || "Balanced").toLowerCase();
+    const p = normalize(parentMsg);
+    const c = normalize(context);
+
+    // Tone-specific openers
+    const openers = {
+      driver: "Thank you for your email. I want to address your concern clearly and directly.",
+      amiable: "Thank you for reaching out. I understand how upsetting and confusing this can feel.",
+      expressive: "I appreciate you reaching out and sharing your concerns. I’m glad you let me know.",
+      analytical: "Thank you for your message. I’d like to outline what I observed and the steps we’re taking.",
+      balanced: "Thank you for reaching out. I appreciate the opportunity to clarify what occurred."
+    };
+
+    // Tone-specific structure tweaks
+    const askMoreInfo = {
+      driver: "If you have any additional information you’d like me to consider, please share it and I will review it promptly.",
+      amiable: "If there’s anything you think I may have missed, I genuinely want to understand and will take it into account.",
+      expressive: "If there’s more context you’d like me to know, please share it — I want us to stay aligned and supportive.",
+      analytical: "If you can share any additional details (time, location, witnesses), I will incorporate them into my review.",
+      balanced: "If there’s additional context you’d like me to consider, please share it and I will review it."
+    };
+
+    const meetingLine = {
+      driver: "If you’d like, we can schedule a quick call to confirm next steps.",
+      amiable: "If you’d like, I’m happy to talk by phone so we can work together and support your child.",
+      expressive: "If you’d like, we can connect briefly so we’re on the same page moving forward.",
+      analytical: "If you’d like, we can schedule a brief call to ensure we agree on the plan.",
+      balanced: "If you’d like, I’m happy to schedule a brief conversation so we can align on next steps."
+    };
+
+    const openerKey =
+      st.includes("driver") ? "driver" :
+      st.includes("amiable") ? "amiable" :
+      st.includes("expressive") ? "expressive" :
+      st.includes("analytical") ? "analytical" :
+      "balanced";
+
+    const opener = openers[openerKey];
+
+    // This is the important part: it DOES NOT just repeat what they wrote.
+    // It reframes it, de-escalates, and provides a plan.
+    const email =
+`Subject: Re: Classroom Concern
+
+${opener}
+
+I hear your concern. Here’s what I understand you’re asking:
+- You’re worried your child is being held responsible for something they say they didn’t do.
+
+Here is what I observed in class:
+- ${c || "A situation occurred that required immediate intervention."}
+
+My goal is always student safety, fairness, and helping students learn from mistakes — not punishment. I also want to make sure your child has a chance to share their perspective.
+
+What I will do next:
+1) Speak with your child to hear their account.
+2) Review any additional information available.
+3) Follow up with you with a clear summary of what we find and the plan moving forward.
+
+${askMoreInfo[openerKey]}
+
+${meetingLine[openerKey]}
+
+Sincerely,
+[Teacher Name]`;
+
+    return email.trim();
   }
 
   function generate() {
     let r = remaining();
-    if (r <= 0) {
-      document.getElementById("modal").style.display = "flex";
-      return;
-    }
+    if (r <= 0) { openModal(); return; }
 
-    const style = document.getElementById("style").value.toLowerCase();
-    let opening = "Thank you for reaching out. I appreciate the opportunity to clarify.";
+    const style = document.getElementById("style").value;
+    const parentMsg = document.getElementById("parentMsg").value;
+    const context = document.getElementById("context").value;
 
-    if (style === "driver") opening = "Thank you for your email. I want to address this directly.";
-    if (style === "amiable") opening = "Thank you for reaching out. I understand your concern.";
-    if (style === "expressive") opening = "I appreciate you sharing your concerns.";
-    if (style === "analytical") opening = "Thank you for your message. I’d like to outline what I observed.";
-
-    const email =
-`Subject: Re: Classroom Concern
-
-${opening}
-
-"${document.getElementById("parentMsg").value}"
-
-Here is what I observed:
-- ${document.getElementById("context").value}
-
-My goal is always student safety and constructive learning.
-
-Sincerely,
-[Teacher Name]`;
+    const email = buildResponse(style, parentMsg, context);
 
     const out = document.getElementById("output");
     out.style.display = "block";
     out.textContent = email;
 
-    r--;
+    r -= 1;
     setRemaining(r);
-    if (r === 0) document.getElementById("modal").style.display = "flex";
+
+    if (r === 0) openModal();
   }
 
-  function closeModal() {
-    document.getElementById("modal").style.display = "none";
+  function copyEmail() {
+    const out = document.getElementById("output");
+    const text = (out && out.textContent) ? out.textContent : "";
+    if (!text) { alert("Generate an email first, then click Copy Email."); return; }
+    navigator.clipboard.writeText(text).then(
+      () => alert("Copied to clipboard."),
+      () => alert("Could not copy automatically. You can select the text and copy manually.")
+    );
   }
 
   setRemaining(remaining());
