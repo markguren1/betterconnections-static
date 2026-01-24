@@ -6,229 +6,302 @@
     <title>Wrap-Up - BetterConnections</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        nav {
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-brand {
-            font-size: 1.5em;
-            font-weight: 900;
-            color: #7c3aed;
-            padding: 15px 0;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 5px;
-        }
-
-        .nav-links a {
-            display: block;
-            padding: 15px 12px;
-            color: #4b5563;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-
-        .nav-links a.active {
-            color: #7c3aed;
-            border-bottom: 2px solid #7c3aed;
-        }
+        /* Keep this page consistent with your existing site styling.
+           Only add small, self-contained styles for the pricing area + sections below. */
 
         .wrap-card {
             background: white;
             border-radius: 12px;
             padding: 35px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
 
-        .pricing-box {
-            background: linear-gradient(135deg, #f3e8ff 0%, #fae8ff 100%);
+        .pricing-panel {
+            background: #f3e8ff; /* matches the light purple panel you already use */
             border: 2px solid #e9d5ff;
-            border-radius: 12px;
-            padding: 40px;
+            border-radius: 14px;
+            padding: 34px 26px;
+            margin: 22px 0 34px;
+        }
+
+        .pricing-panel h2 {
+            margin: 0 0 18px 0;
             text-align: center;
-            margin: 30px 0;
-        }
-
-        .pricing-box h2 {
             color: #7c3aed;
-            font-size: 2.5em;
-            margin: 0;
+            font-size: 2.2em;
+            font-weight: 900;
         }
 
-        .price-row {
+        .price-cards {
             display: flex;
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 22px;
+            margin-bottom: 14px;
         }
 
         .price-card {
-            background: white;
+            background: #fff;
             border: 2px solid #e9d5ff;
             border-radius: 12px;
-            padding: 18px;
-            width: 360px;
-            text-align: left;
+            padding: 18px 18px;
+            width: 340px;
         }
 
-        .label {
+        .price-card .label {
             font-weight: 900;
             color: #6d28d9;
+            margin-bottom: 6px;
         }
 
-        .amount {
+        .price-line {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+
+        .price-line .amount {
             font-size: 2.1em;
             font-weight: 900;
             color: #6d28d9;
+            line-height: 1;
         }
 
-        .amount span {
-            font-size: 0.45em;
+        .price-line .per {
+            color: #6d28d9;
+            font-weight: 800;
         }
 
-        .meta {
-            margin-top: 10px;
+        .price-card .subtext {
+            margin: 8px 0 0 0;
             color: #4b5563;
             font-weight: 600;
         }
 
         .gift-line {
-            margin: 16px auto;
+            margin: 14px auto 10px;
             max-width: 760px;
-            background: #ffffffcc;
+            text-align: center;
+            background: rgba(255,255,255,0.65);
             border: 2px dashed #d8b4fe;
             border-radius: 10px;
-            padding: 12px 16px;
-            font-weight: 700;
+            padding: 10px 14px;
+            font-weight: 800;
+            color: #111827;
         }
 
-        .pricing-box ul {
-            text-align: left;
+        .included-list {
             max-width: 760px;
-            margin: 18px auto 0;
+            margin: 14px auto 0;
+            padding-left: 18px;
             line-height: 2;
         }
 
         .cta-row {
             display: flex;
             justify-content: center;
-            margin-top: 22px;
+            margin-top: 18px;
         }
 
-        .cta-button.secondary {
+        .cta-button {
             background: white;
             color: #6d28d9;
             border: 2px solid #c4b5fd;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: bold;
+            padding: 12px 26px;
+            border-radius: 10px;
+            font-weight: 800;
             text-decoration: none;
+            display: inline-block;
         }
 
         .no-trial {
-            margin-top: 14px;
+            text-align: center;
+            margin-top: 12px;
+            font-weight: 900;
             color: #6b21a8;
+        }
+
+        .references {
+            background: #f9fafb;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 10px 0 30px;
+        }
+
+        .references h3 {
+            color: #7c3aed;
+            margin-top: 0;
+        }
+
+        .references ol {
+            line-height: 2;
+            padding-left: 25px;
+            margin: 10px 0 0 0;
+        }
+
+        .references li { margin-bottom: 12px; }
+
+        .closing-statement {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .closing-statement h2 {
+            color: #92400e;
+            margin-top: 0;
+            font-size: 2em;
+        }
+
+        .closing-statement p {
+            font-size: 1.25em;
+            color: #78350f;
+            line-height: 1.75;
+            margin: 14px 0;
+        }
+
+        .back-next-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            margin: 24px 0 34px;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+            color: white;
+            padding: 12px 22px;
+            border-radius: 10px;
+            text-decoration: none;
             font-weight: 800;
+            display: inline-block;
         }
     </style>
 </head>
 
 <body>
 
-<nav>
+    <!-- Keep your existing nav/header as-is (whatever styles.css is already using).
+         If your site uses a shared header, leave it alone here and only focus on content. -->
+
     <div class="container">
-        <div class="nav-brand">BetterConnections</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="quiz.html">Personality Quiz</a></li>
-            <li><a href="results.html">Results</a></li>
-            <li><a href="deep-dive.html">Deep Dive</a></li>
-            <li><a href="hot-buttons.html">Hot Buttons</a></li>
-            <li><a href="compatibility.html">Compatibility</a></li>
-            <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
-            <li><a href="application-stories.html">Application Stories</a></li>
-            <li><a href="learning-quiz.html">Learning Quiz</a></li>
-            <li><a href="wrap-up.html" class="active">Wrap-Up</a></li>
-        </ul>
-    </div>
-</nav>
 
-<div class="container">
+        <div class="back-next-nav">
+            <a href="learning-quiz.html" class="nav-button">← Back to Learning Quiz</a>
+            <a href="index.html" class="nav-button">Back to Home →</a>
+        </div>
 
-    <div class="wrap-card">
-        <h1 style="text-align:center;color:#7c3aed;">🎉 Congratulations!</h1>
-        <p style="text-align:center;font-size:1.2em;">
-            You’ve completed your journey through BetterConnections and now understand the four
-            personality types and how to use them to improve communication.
-        </p>
-    </div>
+        <div class="wrap-card">
+            <h1 style="text-align: center; color: #7c3aed; margin-bottom: 12px;">🎉 Congratulations!</h1>
+            <p style="text-align: center; font-size: 1.15em; line-height: 1.8; max-width: 860px; margin: 0 auto;">
+                You've completed your journey through BetterConnections! You now understand the four personality types
+                (Driver, Analytical, Expressive, Amiable) and how to use this knowledge to build stronger relationships
+                with students, parents, colleagues, and loved ones.
+            </p>
+        </div>
 
-    <div class="pricing-box">
-        <h2>Unlock Full Access</h2>
+        <!-- PRICING (restored + corrected, without “cancel” language, without class-gift wording) -->
+        <section class="pricing-panel">
+            <h2>Unlock Full Access</h2>
 
-        <div class="price-row">
-            <div class="price-card">
-                <div class="label">Monthly</div>
-                <div class="amount">$9.99<span>/month</span></div>
-                <p class="meta">Simple, flexible access.</p>
+            <div class="price-cards">
+                <div class="price-card">
+                    <div class="label">Monthly</div>
+                    <div class="price-line">
+                        <div class="amount">$9.99</div>
+                        <div class="per">/month</div>
+                    </div>
+                    <p class="subtext">Simple, flexible access.</p>
+                </div>
+
+                <div class="price-card">
+                    <div class="label">Yearly</div>
+                    <div class="price-line">
+                        <div class="amount">$79</div>
+                        <div class="per">/year</div>
+                    </div>
+                    <p class="subtext">One full year at a reduced rate.</p>
+                </div>
             </div>
 
-            <div class="price-card">
-                <div class="label">Yearly</div>
-                <div class="amount">$79<span>/year</span></div>
-                <p class="meta">One full year at a reduced rate.</p>
+            <div class="gift-line">
+                Makes a great gift for coworkers, friends, and anyone you appreciate.
+            </div>
+
+            <ul class="included-list">
+                <li>✅ Full access to all personality insights</li>
+                <li>✅ NextGen Assistant for professional communication (emails, behavior notes, difficult conversations)</li>
+                <li>✅ Prevent escalations with personality-adapted responses</li>
+                <li>✅ Hot Buttons quick reference guide</li>
+                <li>✅ Compatibility insights</li>
+                <li>✅ Application Stories + practical examples</li>
+            </ul>
+
+            <div class="cta-row">
+                <a href="nextgen-test-drive.html" class="cta-button">Return to Test Drive</a>
+            </div>
+
+            <div class="no-trial">No free trial • One clear price</div>
+        </section>
+
+        <!-- REFERENCES (RESTORED) -->
+        <div class="wrap-card">
+            <div class="references">
+                <h3>📚 References & Research Foundation</h3>
+                <p>BetterConnections is built on decades of validated personality and communication research:</p>
+                <ol>
+                    <li>Merrill, D. W., & Reid, R. H. (1981). <em>Personal Styles and Effective Performance</em>. CRC Press.</li>
+                    <li>Bolton, R., & Bolton, D. G. (1996). <em>People Styles at Work: Making Bad Relationships Good and Good Relationships Better</em>. AMACOM.</li>
+                    <li>Jung, C. G. (1971). <em>Psychological Types</em>. Princeton University Press. (Original work published 1921)</li>
+                    <li>Goleman, D. (1995). <em>Emotional Intelligence: Why It Can Matter More Than IQ</em>. Bantam Books.</li>
+                    <li>Carnegie, D. (1936). <em>How to Win Friends and Influence People</em>. Simon & Schuster.</li>
+                    <li>Rosenberg, M. B. (2003). <em>Nonviolent Communication: A Language of Life</em>. PuddleDancer Press.</li>
+                    <li>Gottman, J. M., & Silver, N. (1999). <em>The Seven Principles for Making Marriage Work</em>. Harmony Books.</li>
+                    <li>Chapman, G. (1992). <em>The 5 Love Languages: The Secret to Love that Lasts</em>. Northfield Publishing.</li>
+                </ol>
             </div>
         </div>
 
-        <div class="gift-line">
-            Makes a great gift for coworkers, friends, and anyone you appreciate.
+        <!-- SHARE (RESTORED) -->
+        <div class="closing-statement">
+            <h2>💫 Share the Connection</h2>
+            <p><strong>Knowledge is powerful when shared.</strong></p>
+            <p>
+                Share BetterConnections with friends, family, coworkers, and educators to help more people make BetterConnections too.
+            </p>
+            <p style="font-size: 1.1em; margin-top: 18px;">
+                Together, we can build a world where everyone understands each other a little better. 💙
+            </p>
         </div>
 
-        <ul>
-            <li>✅ Full access to all personality insights</li>
-            <li>✅ NextGen Assistant for professional communication</li>
-            <li>✅ Prevent escalations with personality-adapted responses</li>
-            <li>✅ Hot Buttons quick reference guide</li>
-            <li>✅ Compatibility insights</li>
-            <li>✅ Application Stories with real examples</li>
-        </ul>
-
-        <div class="cta-row">
-            <a href="nextgen-test-drive.html" class="cta-button secondary">Return to Test Drive</a>
+        <!-- QUESTIONS (RESTORED) -->
+        <div class="wrap-card" style="text-align: center; background: #f3f4f6;">
+            <h3 style="color: #7c3aed;">Questions or Feedback?</h3>
+            <p>We'd love to hear from you!</p>
+            <p style="margin-top: 16px;">
+                <strong>Email:</strong> <a href="mailto:support@betterconnections.app" style="color: #7c3aed;">support@betterconnections.app</a>
+            </p>
         </div>
 
-        <div class="no-trial">No free trial • One clear price</div>
+        <div class="back-next-nav">
+            <a href="learning-quiz.html" class="nav-button">← Back to Learning Quiz</a>
+            <a href="index.html" class="nav-button">Back to Home →</a>
+        </div>
+
     </div>
 
-</div>
-
-<footer>
-    <div class="container">
-        <p>&copy; 2025 BetterConnections. All rights reserved.</p>
-    </div>
-</footer>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 BetterConnections. All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
