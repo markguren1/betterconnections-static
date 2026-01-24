@@ -2,140 +2,262 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NextGen Assistant - BetterConnections</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css"/>
+
   <style>
-    nav { background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000; }
-    nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-    .nav-brand { font-size: 1.5em; font-weight: 900; color: #7c3aed; padding: 15px 0; }
-    .nav-links { display: flex; list-style: none; margin: 0; padding: 0; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-    .nav-links a { display: block; padding: 12px 10px; color: #4b5563; text-decoration: none; font-weight: 600; font-size: 0.9em; transition: color 0.2s; border-bottom: 2px solid transparent; }
-    .nav-links a:hover { color: #7c3aed; }
-    .nav-links a.active { color: #7c3aed; border-bottom-color: #7c3aed; }
+    nav {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-    .page-wrap { min-height: 100vh; background: linear-gradient(180deg, #eef2ff 0%, #f5f3ff 50%, #ffffff 100%); }
-    .hero { max-width: 1000px; margin: 0 auto; padding: 40px 20px 20px; }
-    .hero-card { background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; }
-    .hero-top { background: linear-gradient(135deg, #7c3aed, #8b5cf6); padding: 28px 24px; color: white; }
-    .hero-top h1 { margin: 0; font-size: 2.0em; }
-    .hero-top p { margin: 8px 0 0; opacity: 0.95; line-height: 1.5; }
+    nav .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-    .section { padding: 24px; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 900px) { .grid { grid-template-columns: 1.2fr 0.8fr; } }
+    .nav-brand {
+      font-size: 1.5em;
+      font-weight: 900;
+      color: #7c3aed;
+      padding: 15px 0;
+    }
 
-    .card { background: #ffffff; border: 1px solid #eef2f7; border-radius: 14px; padding: 18px; }
-    .card h2 { margin: 0 0 10px; color: #111827; font-size: 1.2em; }
-    .muted { color: #6b7280; line-height: 1.7; }
-    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-    .pill { background: #f3f4f6; border: 1px solid #e5e7eb; color: #111827; padding: 8px 12px; border-radius: 999px; font-weight: 700; font-size: 0.9em; }
-    .pill strong { color: #7c3aed; }
-    .steps { margin: 0; padding-left: 18px; line-height: 1.9; }
-    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
-    .btn {
-      display: inline-block;
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 15px 12px;
+      color: #4b5563;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9em;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #7c3aed;
+    }
+
+    .nextgen-header {
+      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .nextgen-header h1 {
+      font-size: 2.4em;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .nextgen-header p {
+      font-size: 1.2em;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .section {
+      background: white;
+      border-radius: 14px;
+      padding: 40px;
+      margin-bottom: 35px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .section h2 {
+      color: #7c3aed;
+      font-size: 1.9em;
+      margin-top: 0;
+      font-weight: 900;
+    }
+
+    .section p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #1f2937;
+    }
+
+    .example-box {
+      background: #f9fafb;
+      border-left: 6px solid #8b5cf6;
+      padding: 20px 25px;
+      margin: 25px 0;
+      border-radius: 8px;
+    }
+
+    .example-box strong {
+      color: #4c1d95;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 10px;
       text-decoration: none;
       font-weight: 800;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border: 2px solid transparent;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      cursor: pointer;
+      font-size: 1.05em;
+      transition: transform 0.2s;
     }
-    .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(124,58,237,0.18); }
-    .btn-primary { background: linear-gradient(135deg, #7c3aed, #8b5cf6); color: #fff; }
-    .btn-ghost { background: #fff; border-color: #d8b4fe; color: #6d28d9; }
-    .tip { margin-top: 14px; background: #f5f3ff; border: 1px solid #e9d5ff; color: #4c1d95; padding: 12px 14px; border-radius: 12px; font-weight: 700; }
 
-    footer { padding: 30px 20px; text-align: center; color: #6b7280; }
+    .primary-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .secondary-btn {
+      background: #ede9fe;
+      color: #5b21b6;
+      padding: 16px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.05em;
+      border: 2px solid #ddd6fe;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      font-size: 13px;
+      color: #6b7280;
+    }
   </style>
 </head>
 
 <body>
-  <nav>
-    <div class="container">
-      <div class="nav-brand">BetterConnections</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="quiz.html">Personality Quiz</a></li>
-        <li><a href="results.html">Results</a></li>
-        <li><a href="deep-dive.html">Deep Dive</a></li>
-        <li><a href="hot-buttons.html">Hot Buttons</a></li>
-        <li><a href="compatibility.html">Compatibility</a></li>
 
-        <li><a href="nextgen-why.html">NextGen: Why</a></li>
-        <li><a class="active" href="nextgen-assistant.html">NextGen Assistant</a></li>
-        <li><a href="nextgen-test-drive.html">NextGen: Test Drive</a></li>
-
-        <li><a href="application-stories.html">Application Stories</a></li>
-        <li><a href="learning-quiz.html">Learning Quiz</a></li>
-        <li><a href="wrap-up.html">Wrap-Up</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <div class="page-wrap">
-    <div class="hero">
-      <div class="hero-card">
-        <div class="hero-top">
-          <h1>NextGen Assistant</h1>
-          <p>Generate a thoughtful, professional response — tuned to the other person’s personality style.</p>
-        </div>
-
-        <div class="section">
-          <div class="grid">
-            <div class="card">
-              <h2>What it does</h2>
-              <p class="muted">
-                Teachers often lose time rewriting the same message over and over — and small wording choices can accidentally
-                escalate tension. NextGen Assistant helps you respond clearly, calmly, and confidently, while matching the tone
-                that each personality style typically responds to best.
-              </p>
-
-              <div class="pill-row">
-                <div class="pill"><strong>Driver</strong>: direct, concise, action-focused</div>
-                <div class="pill"><strong>Amiable</strong>: warm, supportive, relationship-first</div>
-                <div class="pill"><strong>Expressive</strong>: upbeat, encouraging, collaborative</div>
-                <div class="pill"><strong>Analytical</strong>: structured, factual, detail-oriented</div>
-              </div>
-
-              <div class="tip">
-                Tip: Use the same parent email with different styles in the Test Drive to see how tone and structure change.
-              </div>
-
-              <div class="cta-row">
-                <a class="btn btn-primary" href="nextgen-test-drive.html">Go to NextGen: Test Drive</a>
-                <a class="btn btn-ghost" href="nextgen-why.html">Why personality-based responses work</a>
-              </div>
-            </div>
-
-            <div class="card">
-              <h2>How to use it</h2>
-              <ol class="steps">
-                <li>Go to <strong>NextGen: Test Drive</strong>.</li>
-                <li>Choose the <strong>parent’s personality style</strong> (or pick Balanced if unsure).</li>
-                <li>Paste the <strong>parent’s email</strong>.</li>
-                <li>Add your <strong>context</strong> (what happened + what you want to happen next).</li>
-                <li>Click <strong>Generate Response</strong>.</li>
-              </ol>
-
-              <p class="muted" style="margin-top: 10px;">
-                <strong>Demo note:</strong> This reviewer demo generates responses without calling an external AI service.
-                The goal is to show the experience and personality-based structure.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <footer>
-      <div class="container">
-        <p>&copy; 2025 BetterConnections. All rights reserved.</p>
-      </div>
-    </footer>
+<nav>
+  <div class="container">
+    <div class="nav-brand">BetterConnections</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="quiz.html">Personality Quiz</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="deep-dive.html">Deep Dive</a></li>
+      <li><a href="hot-buttons.html">Hot Buttons</a></li>
+      <li><a href="compatibility.html">Compatibility</a></li>
+      <li><a href="nextgen-assistant.html" class="active">NextGen Assistant</a></li>
+      <li><a href="application-stories.html">Application Stories</a></li>
+      <li><a href="learning-quiz.html">Learning Quiz</a></li>
+      <li><a href="wrap-up.html">Wrap-Up</a></li>
+    </ul>
   </div>
+</nav>
+
+<div class="nextgen-header">
+  <h1>NextGen Assistant</h1>
+  <p>
+    Personality-aware communication that helps teachers respond calmly,
+    professionally, and effectively — even in emotionally charged situations.
+  </p>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <h2>What the NextGen Assistant Does</h2>
+    <p>
+      The NextGen Assistant helps you generate thoughtful responses to parents,
+      students, colleagues, and others by adapting your communication to
+      different personality styles.
+    </p>
+    <p>
+      Instead of guessing how to word a response — or rewriting the same email
+      over and over — the Assistant helps you communicate clearly, respectfully,
+      and with confidence.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Quick Example</h2>
+
+    <div class="example-box">
+      <p><strong>Parent message:</strong><br/>
+      “Why is my child always being singled out in your class?”</p>
+
+      <p><strong>NextGen-style response:</strong><br/>
+      “Thank you for reaching out. I want to address your concern clearly and
+      share what I observed, so we can work together to support your child.”</p>
+    </div>
+
+    <p>
+      This is not a template — it’s an adaptive response that changes based on
+      personality style and situation.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Why This Matters for Teachers</h2>
+    <p>
+      Small wording choices can prevent misunderstandings, reduce escalation,
+      and save hours of back-and-forth communication.
+    </p>
+    <p>
+      Over time, teachers using personality-aware communication report:
+    </p>
+    <ul>
+      <li>Fewer emotionally charged exchanges</li>
+      <li>Stronger parent relationships</li>
+      <li>Clearer professional boundaries</li>
+      <li>More confidence in difficult conversations</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Explore NextGen Further</h2>
+
+    <p>
+      You can learn more about why personality-based communication works, or
+      try the NextGen Assistant yourself with a guided test drive.
+    </p>
+
+    <div class="button-row">
+      <a href="nextgen-why.html" class="secondary-btn">
+        Why Personality-Based Responses Work
+      </a>
+
+      <a href="nextgen-test-drive.html" class="primary-btn">
+        Try the NextGen Test Drive
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 BetterConnections. All rights reserved.
+</footer>
+
 </body>
 </html>
