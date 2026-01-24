@@ -69,105 +69,11 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.1);
     }
 
-    .callout {
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 18px 18px;
-      margin: 18px 0;
-      line-height: 1.7;
-    }
-
-    .callout strong { color: #111827; }
-
-    .testdrive-box {
-      background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 60%, #fae8ff 100%);
-      border: 2px solid #ddd6fe;
-      border-radius: 14px;
-      padding: 28px;
-      margin: 22px 0 32px;
-    }
-
-    .testdrive-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 10px;
-      color: #5b21b6;
-      font-size: 1.7em;
-      font-weight: 900;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 12px 0 16px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid #e9d5ff;
-      background: #ffffff;
-      color: #4b5563;
-      font-weight: 700;
-      font-size: 0.92em;
-    }
-
-    .pill b { color: #6d28d9; }
-
-    .testdrive-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .cta-button {
-      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
-      color: white;
-      padding: 14px 20px;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.05em;
-      font-weight: 900;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(139, 92, 246, 0.35);
-    }
-
-    .ghost-button {
-      background: white;
-      color: #6d28d9;
-      border: 2px solid #c4b5fd;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 900;
-      text-decoration: none;
-      display: inline-block;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .ghost-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(124, 58, 237, 0.12);
-    }
-
     .pricing-box {
       background: linear-gradient(135deg, #f3e8ff 0%, #fae8ff 100%);
       border: 2px solid #e9d5ff;
       border-radius: 12px;
-      padding: 34px 28px;
+      padding: 40px;
       text-align: center;
       margin: 30px 0;
     }
@@ -175,70 +81,149 @@
     .pricing-box h2 {
       color: #7c3aed;
       font-size: 2.2em;
-      margin: 0;
+      margin: 0 0 10px 0;
       font-weight: 900;
     }
 
-    .pricing-grid {
+    .pricing-subcopy {
+      font-size: 1.15em;
+      line-height: 1.7;
+      max-width: 820px;
+      margin: 0 auto 18px auto;
+      color: #374151;
+    }
+
+    .price-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 16px;
-      max-width: 900px;
-      margin: 18px auto 0;
-    }
-
-    @media (min-width: 860px) {
-      .pricing-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    .price-card {
-      background: rgba(255,255,255,0.92);
-      border: 1px solid #e9d5ff;
-      border-radius: 12px;
-      padding: 22px 18px;
+      gap: 14px;
+      max-width: 680px;
+      margin: 18px auto 10px auto;
       text-align: left;
     }
 
-    .price-card h3 {
-      margin: 0 0 8px;
-      color: #4c1d95;
-      font-weight: 900;
-      font-size: 1.25em;
+    .price-card {
+      background: rgba(255,255,255,0.85);
+      border: 1px solid #e9d5ff;
+      border-radius: 12px;
+      padding: 18px 18px 14px 18px;
     }
 
-    .price {
+    .price-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .price-amount {
       font-size: 2.2em;
       font-weight: 900;
       color: #6d28d9;
-      margin: 8px 0 12px;
-      line-height: 1.1;
+      line-height: 1;
     }
 
-    .subtext {
-      margin: 0 0 14px;
-      color: #6b7280;
-      font-weight: 600;
+    .price-amount small {
+      font-size: 0.45em;
+      font-weight: 800;
+      color: #6d28d9;
     }
 
-    .price-card ul {
-      margin: 12px 0 0;
-      padding-left: 20px;
-      line-height: 1.9;
+    .price-tag {
+      font-size: 0.85em;
+      font-weight: 800;
+      color: #5b21b6;
+      background: #efeaff;
+      border: 1px solid #ddd6fe;
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .price-note {
+      margin-top: 10px;
+      color: #4b5563;
+      line-height: 1.6;
+      font-size: 1.02em;
+    }
+
+    .pricing-box ul {
+      text-align: left;
+      max-width: 720px;
+      margin: 18px auto 0 auto;
+      line-height: 2;
       color: #111827;
-      font-weight: 600;
     }
 
-    .small-note {
+    .cta-button {
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+      color: white;
+      padding: 18px 50px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2em;
+      font-weight: 900;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 22px;
+      transition: transform 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+    }
+
+    .no-trial {
       margin-top: 14px;
-      color: #6b21a8;
       font-weight: 700;
+      color: #5b21b6;
+      font-size: 1.05em;
+    }
+
+    .gift-box {
+      background: rgba(255,255,255,0.85);
+      border: 1px solid #e9d5ff;
+      border-radius: 12px;
+      padding: 18px;
+      max-width: 720px;
+      margin: 18px auto 0 auto;
+      text-align: left;
+      line-height: 1.7;
+      color: #111827;
+    }
+
+    .gift-box h3 {
+      margin: 0 0 10px 0;
+      color: #7c3aed;
+      font-size: 1.25em;
+      font-weight: 900;
+    }
+
+    .gift-box p { margin: 10px 0; }
+
+    .gift-box ul {
+      margin: 8px 0 0 20px;
+      line-height: 1.8;
+    }
+
+    .confidence-line {
+      margin-top: 16px;
+      color: #4b5563;
+      font-size: 1.02em;
+      line-height: 1.6;
+      max-width: 820px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .references {
       background: #f9fafb;
-      padding: 26px;
+      padding: 30px;
       border-radius: 12px;
-      margin: 12px 0 0;
+      margin: 30px 0;
     }
 
     .references h3 {
@@ -247,59 +232,64 @@
     }
 
     .references ol {
-      line-height: 1.9;
-      padding-left: 22px;
-      margin: 12px 0 0;
+      line-height: 2;
+      padding-left: 25px;
     }
 
-    .references li { margin-bottom: 12px; }
+    .references li {
+      margin-bottom: 15px;
+    }
 
     .closing-statement {
       background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
       border: 2px solid #f59e0b;
       border-radius: 12px;
-      padding: 34px 26px;
+      padding: 40px;
       text-align: center;
-      margin: 34px 0;
+      margin: 40px 0;
     }
 
     .closing-statement h2 {
       color: #92400e;
       margin-top: 0;
-      font-size: 1.9em;
+      font-size: 2em;
       font-weight: 900;
     }
 
     .closing-statement p {
-      font-size: 1.15em;
+      font-size: 1.25em;
       color: #78350f;
       line-height: 1.8;
-      margin: 14px 0;
-      font-weight: 600;
+      margin: 18px 0;
     }
 
     .back-next-nav {
       display: flex;
       justify-content: space-between;
+      margin: 40px 0;
       gap: 12px;
-      margin: 28px 0;
       flex-wrap: wrap;
     }
 
     .nav-button {
       background: linear-gradient(135deg, #a78bfa, #8b5cf6);
       color: white;
-      padding: 12px 22px;
-      border-radius: 10px;
+      padding: 12px 30px;
+      border-radius: 8px;
       text-decoration: none;
-      font-weight: 800;
-      transition: transform 0.2s, box-shadow 0.2s;
+      font-weight: 700;
+      transition: transform 0.2s;
       display: inline-block;
     }
 
-    .nav-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(139, 92, 246, 0.28);
+    .nav-button:hover { transform: translateY(-2px); }
+
+    footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      color: #6b7280;
+      text-align: center;
     }
   </style>
 </head>
@@ -315,12 +305,7 @@
         <li><a href="deep-dive.html">Deep Dive</a></li>
         <li><a href="hot-buttons.html">Hot Buttons</a></li>
         <li><a href="compatibility.html">Compatibility</a></li>
-
-        <!-- NextGen = 3 links (as discussed) -->
-        <li><a href="nextgen-why.html">NextGen: Why</a></li>
-        <li><a href="nextgen-test-drive.html">NextGen: Test Drive</a></li>
-        <li><a href="nextgen-assistant.html">NextGen: Assistant</a></li>
-
+        <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
         <li><a href="application-stories.html">Application Stories</a></li>
         <li><a href="learning-quiz.html">Learning Quiz</a></li>
         <li><a href="wrap-up.html" class="active">Wrap-Up</a></li>
@@ -335,99 +320,95 @@
     </div>
 
     <div class="wrap-card">
-      <h1 style="text-align:center; color:#7c3aed; margin-bottom: 14px; font-weight: 900;">🎉 Congratulations!</h1>
-      <p style="text-align:center; font-size:1.15em; line-height:1.8; max-width: 860px; margin: 0 auto; font-weight: 600; color:#111827;">
+      <h1 style="text-align:center; color:#7c3aed; margin-bottom:20px; font-weight:900;">🎉 Congratulations!</h1>
+      <p style="text-align:center; font-size:1.2em; line-height:1.8; max-width:820px; margin:0 auto; color:#111827;">
         You've completed your journey through BetterConnections! You now understand the four personality types
         (Driver, Analytical, Expressive, Amiable) and how to use this knowledge to build stronger relationships
         with students, parents, colleagues, and loved ones.
       </p>
-
-      <div class="callout" style="margin-top: 18px;">
-        <strong>Important:</strong> Best friends and spouses can sometimes show up as a “worst match” on paper — because chemistry is not the same as communication compatibility.
-        You now know what each personality needs and how to reduce friction.
-      </div>
     </div>
 
-    <!-- TEST DRIVE SECTION (new) -->
-    <div class="testdrive-box">
-      <div class="testdrive-title">🚗 Take NextGen for a Test Drive</div>
-
-      <p style="margin: 6px 0 10px; font-weight: 650; color:#111827; line-height: 1.8;">
-        Before you decide anything, try the part teachers care about most:
-        <strong>writing calm, confident parent communication</strong>—fast.
-      </p>
-
-      <div class="pill-row">
-        <div class="pill">✅ Includes all <b>4</b> personality styles</div>
-        <div class="pill">✅ Built for real teacher scenarios</div>
-        <div class="pill">✅ Saves time + reduces conflict</div>
-        <div class="pill">✅ Demo-friendly (no setup)</div>
-      </div>
-
-      <div class="callout">
-        <strong>How to use it:</strong>
-        Go to <b>NextGen: Test Drive</b>, choose the parent’s style, paste a parent email, add your context, and click <b>Generate Response</b>.
-        You’ll get a response that is professional, warm, and aligned to the parent’s communication needs.
-      </div>
-
-      <div class="testdrive-actions">
-        <a class="cta-button" href="nextgen-test-drive.html">Go to NextGen: Test Drive</a>
-        <a class="ghost-button" href="nextgen-why.html">Why personality-based responses work</a>
-      </div>
-
-      <p class="small-note">
-        Tip: Try the <b>same email</b> with different personality styles to see how tone and structure change.
-      </p>
-    </div>
-
-    <!-- UPDATED PRICING SECTION (new) -->
     <div class="pricing-box">
-      <h2>Unlock Full Access</h2>
+      <h2>Continue with BetterConnections</h2>
 
-      <div class="pricing-grid">
+      <p class="pricing-subcopy">
+        You’ve experienced the framework and the NextGen Assistant.
+        If this felt useful, you can continue with full access — <strong>no free trial</strong> and <strong>no pressure</strong>.
+      </p>
+
+      <div class="price-grid">
         <div class="price-card">
-          <h3>Monthly</h3>
-          <div class="price">$9.99 <span style="font-size:0.45em; font-weight: 900;">/month</span></div>
-          <p class="subtext">Flexible — cancel anytime.</p>
-          <ul>
-            <li>Full access to all personality insights</li>
-            <li>NextGen Assistant (communication support)</li>
-            <li>Compatibility + Hot Buttons</li>
-            <li>Application Stories (monthly)</li>
-            <li>Ongoing improvements and new content</li>
-          </ul>
+          <div class="price-top">
+            <div class="price-amount">$9.99 <small>/month</small></div>
+            <div class="price-tag">Monthly</div>
+          </div>
+          <div class="price-note">
+            Simple and flexible. Cancel anytime.
+          </div>
         </div>
 
         <div class="price-card">
-          <h3>Gift Option (Best Value)</h3>
-          <div class="price">$79 <span style="font-size:0.45em; font-weight: 900;">/year</span></div>
-          <p class="subtext">Perfect for a teacher, friend, or family member.</p>
-          <ul>
-            <li>One full year of access</li>
-            <li>All updates included</li>
-            <li>Great for professional development support</li>
-            <li>Use with students, parents, colleagues, and loved ones</li>
-          </ul>
+          <div class="price-top">
+            <div class="price-amount">$79 <small>/year</small></div>
+            <div class="price-tag">Best value • Great for gifts</div>
+          </div>
+          <div class="price-note">
+            One-year access. At the end of the year, the teacher decides whether to continue — no obligation.
+          </div>
         </div>
       </div>
 
-      <a href="#" class="cta-button" style="margin-top: 18px;">Continue</a>
-      <p style="margin-top: 12px; color:#6b21a8; font-weight: 800;">Demo version note: pricing shown for reviewers — checkout not enabled yet.</p>
+      <ul>
+        <li>✅ Full access to all personality insights</li>
+        <li>✅ Unlimited NextGen Assistant use</li>
+        <li>✅ Reduce misunderstandings and prevent escalation</li>
+        <li>✅ Save time on parent and colleague communication</li>
+        <li>✅ Real-world application stories and examples</li>
+        <li>✅ Ongoing updates and new learning tools</li>
+      </ul>
+
+      <a href="#" class="cta-button">Continue with BetterConnections</a>
+
+      <div class="no-trial">
+        No free trial — the Test Drive is designed to be enough.
+      </div>
+
+      <p class="confidence-line">
+        BetterConnections isn’t something you try for a week.
+        It’s something you either feel right away — or you don’t.
+      </p>
+
+      <div class="gift-box">
+        <h3>🎁 A meaningful gift for teachers</h3>
+        <p>
+          BetterConnections makes a thoughtful end-of-year or “thank you” gift. Parents can gift a one-year subscription
+          to help teachers save time, prevent escalation, and communicate with confidence.
+        </p>
+        <p>
+          Many classes choose to gift together, making this easy and practical — and in communities where families gift individually,
+          it can be a powerful way to show appreciation.
+        </p>
+        <ul>
+          <li><strong>One-year gift:</strong> Parent purchases, teacher receives access immediately.</li>
+          <li><strong>Teacher choice:</strong> After the year ends, the teacher decides whether to continue.</li>
+          <li><strong>No pressure:</strong> It’s a gift of support, not an obligation.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="wrap-card">
       <div class="references">
-        <h3>📚 References & Research Foundation</h3>
-        <p style="margin: 0 0 10px; font-weight: 600; color:#111827;">
-          BetterConnections is built on decades of validated personality and communication research:
-        </p>
+        <h3>📚 References &amp; Research Foundation</h3>
+        <p>BetterConnections is built on decades of validated personality and communication research:</p>
         <ol>
-          <li>Merrill, D. W., & Reid, R. H. (1981). <em>Personal Styles and Effective Performance</em>. CRC Press.</li>
-          <li>Bolton, R., & Bolton, D. G. (1996). <em>People Styles at Work</em>. AMACOM.</li>
+          <li>Merrill, D. W., &amp; Reid, R. H. (1981). <em>Personal Styles and Effective Performance</em>. CRC Press.</li>
+          <li>Bolton, R., &amp; Bolton, D. G. (1996). <em>People Styles at Work: Making Bad Relationships Good and Good Relationships Better</em>. AMACOM.</li>
           <li>Jung, C. G. (1971). <em>Psychological Types</em>. Princeton University Press. (Original work published 1921)</li>
-          <li>Goleman, D. (1995). <em>Emotional Intelligence</em>. Bantam Books.</li>
-          <li>Rosenberg, M. B. (2003). <em>Nonviolent Communication</em>. PuddleDancer Press.</li>
-          <li>Carnegie, D. (1936). <em>How to Win Friends and Influence People</em>. Simon & Schuster.</li>
+          <li>Goleman, D. (1995). <em>Emotional Intelligence: Why It Can Matter More Than IQ</em>. Bantam Books.</li>
+          <li>Chapman, G. (1992). <em>The 5 Love Languages: The Secret to Love that Lasts</em>. Northfield Publishing.</li>
+          <li>Gottman, J. M., &amp; Silver, N. (1999). <em>The Seven Principles for Making Marriage Work</em>. Harmony Books.</li>
+          <li>Carnegie, D. (1936). <em>How to Win Friends and Influence People</em>. Simon &amp; Schuster.</li>
+          <li>Rosenberg, M. B. (2003). <em>Nonviolent Communication: A Language of Life</em>. PuddleDancer Press.</li>
         </ol>
       </div>
     </div>
@@ -436,20 +417,20 @@
       <h2>💫 Share the Connection</h2>
       <p><strong>Knowledge is powerful when shared.</strong></p>
       <p>
-        Share BetterConnections with friends, family, coworkers — and even your toughest relationships —
-        so more people can make BetterConnections too.
+        Share BetterConnections with your friends, family, coworkers, and fellow educators
+        to help them make BetterConnections too.
       </p>
-      <p style="font-size: 1.05em; margin-top: 18px;">
-        Together, we can build a world where people understand each other a little better. 💙
+      <p style="font-size:1.1em; margin-top:30px;">
+        Together, we can build a world where everyone understands each other a little better. 💙
       </p>
     </div>
 
     <div class="wrap-card" style="text-align:center; background:#f3f4f6;">
-      <h3 style="color:#7c3aed; margin-top: 0; font-weight: 900;">Questions or Feedback?</h3>
-      <p style="font-weight: 650; color:#111827;">We’d love to hear from you.</p>
-      <p style="margin-top: 14px; font-weight: 700;">
+      <h3 style="color:#7c3aed; font-weight:900;">Questions or Feedback?</h3>
+      <p>We'd love to hear from you!</p>
+      <p style="margin-top:20px;">
         <strong>Email:</strong>
-        <a href="mailto:support@betterconnections.app" style="color:#7c3aed; font-weight: 900;">support@betterconnections.app</a>
+        <a href="mailto:support@betterconnections.app" style="color:#7c3aed;">support@betterconnections.app</a>
       </p>
     </div>
 
