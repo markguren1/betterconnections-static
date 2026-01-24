@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wrap-Up - BetterConnections</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
   <style>
     nav {
       background: white;
@@ -38,7 +38,6 @@
       padding: 0;
       gap: 5px;
       flex-wrap: wrap;
-      justify-content: flex-end;
     }
 
     .nav-links li { margin: 0; }
@@ -51,7 +50,6 @@
       font-weight: 600;
       font-size: 0.9em;
       transition: color 0.2s;
-      white-space: nowrap;
     }
 
     .nav-links a:hover { color: #7c3aed; }
@@ -82,34 +80,55 @@
       color: #7c3aed;
       font-size: 2.2em;
       margin: 0 0 10px 0;
-      font-weight: 900;
     }
 
-    .pricing-subcopy {
-      font-size: 1.15em;
+    .pricing-subtitle {
+      max-width: 780px;
+      margin: 0 auto 20px;
+      color: #4b5563;
+      font-size: 1.1em;
       line-height: 1.7;
-      max-width: 820px;
-      margin: 0 auto 18px auto;
-      color: #374151;
     }
 
-    .price-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      max-width: 680px;
-      margin: 18px auto 10px auto;
+    .reflection {
+      background: #ffffff;
+      border: 1px solid #e9d5ff;
+      border-radius: 12px;
+      padding: 22px;
+      margin: 18px auto 28px;
+      max-width: 780px;
       text-align: left;
     }
 
-    .price-card {
-      background: rgba(255,255,255,0.85);
-      border: 1px solid #e9d5ff;
-      border-radius: 12px;
-      padding: 18px 18px 14px 18px;
+    .reflection h3 {
+      margin: 0 0 10px 0;
+      color: #7c3aed;
+      font-size: 1.25em;
     }
 
-    .price-top {
+    .reflection ul {
+      margin: 10px 0 0 18px;
+      line-height: 2;
+      color: #1f2937;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .plan {
+      background: white;
+      border: 2px solid #e9d5ff;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .plan-top {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
@@ -117,106 +136,97 @@
       flex-wrap: wrap;
     }
 
-    .price-amount {
-      font-size: 2.2em;
+    .plan-title {
       font-weight: 900;
       color: #6d28d9;
-      line-height: 1;
+      font-size: 1.25em;
+      margin: 0;
     }
 
-    .price-amount small {
-      font-size: 0.45em;
-      font-weight: 800;
+    .plan-price {
+      font-size: 1.8em;
+      font-weight: 900;
       color: #6d28d9;
+      margin: 0;
     }
 
-    .price-tag {
-      font-size: 0.85em;
-      font-weight: 800;
-      color: #5b21b6;
-      background: #efeaff;
-      border: 1px solid #ddd6fe;
-      padding: 6px 10px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-
-    .price-note {
-      margin-top: 10px;
+    .plan-meta {
+      margin-top: 8px;
       color: #4b5563;
-      line-height: 1.6;
+      line-height: 1.7;
       font-size: 1.02em;
     }
 
-    .pricing-box ul {
+    .tag {
+      display: inline-block;
+      margin-left: 8px;
+      font-size: 0.85em;
+      font-weight: 900;
+      color: #5b21b6;
+      background: #efeaff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #e9d5ff;
+    }
+
+    .gift-block {
+      background: #ffffff;
+      border: 1px dashed #c4b5fd;
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 14px;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+
+    .gift-block strong { color: #4c1d95; }
+
+    .features {
       text-align: left;
-      max-width: 720px;
-      margin: 18px auto 0 auto;
+      max-width: 780px;
+      margin: 18px auto 0;
       line-height: 2;
-      color: #111827;
+      color: #1f2937;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 22px;
     }
 
     .cta-button {
       background: linear-gradient(135deg, #a78bfa, #8b5cf6);
       color: white;
-      padding: 18px 50px;
+      padding: 16px 36px;
       border: none;
-      border-radius: 8px;
-      font-size: 1.2em;
+      border-radius: 10px;
+      font-size: 1.1em;
       font-weight: 900;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      margin-top: 22px;
       transition: transform 0.2s;
     }
 
     .cta-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.35);
+    }
+
+    .cta-button.secondary {
+      background: #ffffff;
+      color: #6d28d9;
+      border: 2px solid #e9d5ff;
     }
 
     .no-trial {
-      margin-top: 14px;
+      margin-top: 12px;
+      color: #6b21a8;
       font-weight: 700;
-      color: #5b21b6;
-      font-size: 1.05em;
-    }
-
-    .gift-box {
-      background: rgba(255,255,255,0.85);
-      border: 1px solid #e9d5ff;
-      border-radius: 12px;
-      padding: 18px;
-      max-width: 720px;
-      margin: 18px auto 0 auto;
-      text-align: left;
-      line-height: 1.7;
-      color: #111827;
-    }
-
-    .gift-box h3 {
-      margin: 0 0 10px 0;
-      color: #7c3aed;
-      font-size: 1.25em;
-      font-weight: 900;
-    }
-
-    .gift-box p { margin: 10px 0; }
-
-    .gift-box ul {
-      margin: 8px 0 0 20px;
-      line-height: 1.8;
-    }
-
-    .confidence-line {
-      margin-top: 16px;
-      color: #4b5563;
-      font-size: 1.02em;
-      line-height: 1.6;
-      max-width: 820px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 0.98em;
     }
 
     .references {
@@ -236,9 +246,7 @@
       padding-left: 25px;
     }
 
-    .references li {
-      margin-bottom: 15px;
-    }
+    .references li { margin-bottom: 15px; }
 
     .closing-statement {
       background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
@@ -253,14 +261,13 @@
       color: #92400e;
       margin-top: 0;
       font-size: 2em;
-      font-weight: 900;
     }
 
     .closing-statement p {
-      font-size: 1.25em;
+      font-size: 1.2em;
       color: #78350f;
       line-height: 1.8;
-      margin: 18px 0;
+      margin: 14px 0;
     }
 
     .back-next-nav {
@@ -275,175 +282,177 @@
       background: linear-gradient(135deg, #a78bfa, #8b5cf6);
       color: white;
       padding: 12px 30px;
-      border-radius: 8px;
+      border-radius: 10px;
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 800;
       transition: transform 0.2s;
       display: inline-block;
     }
 
     .nav-button:hover { transform: translateY(-2px); }
-
-    footer .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 10px 20px;
-      color: #6b7280;
-      text-align: center;
-    }
   </style>
 </head>
 
 <body>
-  <nav>
-    <div class="container">
-      <div class="nav-brand">BetterConnections</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="quiz.html">Personality Quiz</a></li>
-        <li><a href="results.html">Results</a></li>
-        <li><a href="deep-dive.html">Deep Dive</a></li>
-        <li><a href="hot-buttons.html">Hot Buttons</a></li>
-        <li><a href="compatibility.html">Compatibility</a></li>
-        <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
-        <li><a href="application-stories.html">Application Stories</a></li>
-        <li><a href="learning-quiz.html">Learning Quiz</a></li>
-        <li><a href="wrap-up.html" class="active">Wrap-Up</a></li>
-      </ul>
-    </div>
-  </nav>
-
+<nav>
   <div class="container">
-    <div class="back-next-nav">
-      <a href="learning-quiz.html" class="nav-button">← Back to Learning Quiz</a>
-      <a href="index.html" class="nav-button">Back to Home →</a>
+    <div class="nav-brand">BetterConnections</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="quiz.html">Personality Quiz</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="deep-dive.html">Deep Dive</a></li>
+      <li><a href="hot-buttons.html">Hot Buttons</a></li>
+      <li><a href="compatibility.html">Compatibility</a></li>
+      <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
+      <li><a href="application-stories.html">Application Stories</a></li>
+      <li><a href="learning-quiz.html">Learning Quiz</a></li>
+      <li><a href="wrap-up.html" class="active">Wrap-Up</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="back-next-nav">
+    <a href="learning-quiz.html" class="nav-button">← Back to Learning Quiz</a>
+    <a href="index.html" class="nav-button">Back to Home →</a>
+  </div>
+
+  <div class="wrap-card">
+    <h1 style="text-align:center;color:#7c3aed;margin-bottom:20px;">🎉 Congratulations!</h1>
+    <p style="text-align:center;font-size:1.2em;line-height:1.8;max-width:900px;margin:0 auto;">
+      You've completed your journey through BetterConnections! You now understand the four personality types
+      (Driver, Analytical, Expressive, Amiable) and how to use this knowledge to build stronger relationships
+      with students, parents, colleagues, and loved ones.
+    </p>
+  </div>
+
+  <!-- UPDATED PRICING + TEST DRIVE PHILOSOPHY -->
+  <div class="pricing-box">
+    <h2>Ready to Continue?</h2>
+    <div class="pricing-subtitle">
+      BetterConnections isn’t something you try for a week.
+      It’s something you either feel right away — or you don’t.
+      That’s why we use a <strong>Test Drive</strong> experience instead of a free trial.
     </div>
 
-    <div class="wrap-card">
-      <h1 style="text-align:center; color:#7c3aed; margin-bottom:20px; font-weight:900;">🎉 Congratulations!</h1>
-      <p style="text-align:center; font-size:1.2em; line-height:1.8; max-width:820px; margin:0 auto; color:#111827;">
-        You've completed your journey through BetterConnections! You now understand the four personality types
-        (Driver, Analytical, Expressive, Amiable) and how to use this knowledge to build stronger relationships
-        with students, parents, colleagues, and loved ones.
-      </p>
-    </div>
-
-    <div class="pricing-box">
-      <h2>Continue with BetterConnections</h2>
-
-      <p class="pricing-subcopy">
-        You’ve experienced the framework and the NextGen Assistant.
-        If this felt useful, you can continue with full access — <strong>no free trial</strong> and <strong>no pressure</strong>.
-      </p>
-
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-top">
-            <div class="price-amount">$9.99 <small>/month</small></div>
-            <div class="price-tag">Monthly</div>
-          </div>
-          <div class="price-note">
-            Simple and flexible. Cancel anytime.
-          </div>
-        </div>
-
-        <div class="price-card">
-          <div class="price-top">
-            <div class="price-amount">$79 <small>/year</small></div>
-            <div class="price-tag">Best value • Great for gifts</div>
-          </div>
-          <div class="price-note">
-            One-year access. At the end of the year, the teacher decides whether to continue — no obligation.
-          </div>
-        </div>
+    <div class="reflection">
+      <h3>Did this feel useful?</h3>
+      <div style="color:#4b5563;line-height:1.7;">
+        Take a moment to reflect:
       </div>
-
       <ul>
-        <li>✅ Full access to all personality insights</li>
-        <li>✅ Unlimited NextGen Assistant use</li>
-        <li>✅ Reduce misunderstandings and prevent escalation</li>
-        <li>✅ Save time on parent and colleague communication</li>
-        <li>✅ Real-world application stories and examples</li>
-        <li>✅ Ongoing updates and new learning tools</li>
+        <li>Will this save you time?</li>
+        <li>Help prevent misunderstandings or escalation?</li>
+        <li>Improve overall communication?</li>
+        <li>Increase your confidence?</li>
+        <li>Give you a professional edge?</li>
       </ul>
+      <div style="margin-top:10px;color:#4b5563;">
+        You don’t need to answer “yes” to everything — just what matters most to you.
+      </div>
+    </div>
 
+    <div class="pricing-grid">
+      <!-- MONTHLY -->
+      <div class="plan">
+        <div class="plan-top">
+          <div class="plan-title">Monthly</div>
+          <div class="plan-price">$9.99<span style="font-size:0.55em;font-weight:900;">/month</span></div>
+        </div>
+        <div class="plan-meta">
+          Simple, flexible access — keep it as long as it’s helping you.
+        </div>
+
+        <!-- GIFT OPTION (MONTHLY TOO) -->
+        <div class="gift-block">
+          <strong>Gift option:</strong> A meaningful way to thank a great teacher.
+          Parents can gift BetterConnections individually, or as a class gift.
+        </div>
+      </div>
+
+      <!-- YEARLY -->
+      <div class="plan">
+        <div class="plan-top">
+          <div class="plan-title">Yearly <span class="tag">Best value</span></div>
+          <div class="plan-price">$79<span style="font-size:0.55em;font-weight:900;">/year</span></div>
+        </div>
+        <div class="plan-meta">
+          Great for the school year — and ideal for gifting.
+        </div>
+
+        <!-- GIFT OPTION (YEARLY) -->
+        <div class="gift-block">
+          <strong>One-year gift option:</strong> A thoughtful way to support and appreciate a great teacher.
+          After one year, the teacher can decide whether to continue.
+        </div>
+      </div>
+    </div>
+
+    <ul class="features">
+      <li>✅ Full access to all personality insights</li>
+      <li>✅ NextGen Assistant for professional communication (emails, behavior notes, difficult conversations)</li>
+      <li>✅ Prevent escalations with personality-adapted responses</li>
+      <li>✅ Hot Buttons quick reference guide</li>
+      <li>✅ Compatibility insights</li>
+      <li>✅ Application Stories + practical examples</li>
+    </ul>
+
+    <div class="cta-row">
       <a href="#" class="cta-button">Continue with BetterConnections</a>
-
-      <div class="no-trial">
-        No free trial — the Test Drive is designed to be enough.
-      </div>
-
-      <p class="confidence-line">
-        BetterConnections isn’t something you try for a week.
-        It’s something you either feel right away — or you don’t.
-      </p>
-
-      <div class="gift-box">
-        <h3>🎁 A meaningful gift for teachers</h3>
-        <p>
-          BetterConnections makes a thoughtful end-of-year or “thank you” gift. Parents can gift a one-year subscription
-          to help teachers save time, prevent escalation, and communicate with confidence.
-        </p>
-        <p>
-          Many classes choose to gift together, making this easy and practical — and in communities where families gift individually,
-          it can be a powerful way to show appreciation.
-        </p>
-        <ul>
-          <li><strong>One-year gift:</strong> Parent purchases, teacher receives access immediately.</li>
-          <li><strong>Teacher choice:</strong> After the year ends, the teacher decides whether to continue.</li>
-          <li><strong>No pressure:</strong> It’s a gift of support, not an obligation.</li>
-        </ul>
-      </div>
+      <a href="nextgen-test-drive.html" class="cta-button secondary">Return to Test Drive</a>
     </div>
 
-    <div class="wrap-card">
-      <div class="references">
-        <h3>📚 References &amp; Research Foundation</h3>
-        <p>BetterConnections is built on decades of validated personality and communication research:</p>
-        <ol>
-          <li>Merrill, D. W., &amp; Reid, R. H. (1981). <em>Personal Styles and Effective Performance</em>. CRC Press.</li>
-          <li>Bolton, R., &amp; Bolton, D. G. (1996). <em>People Styles at Work: Making Bad Relationships Good and Good Relationships Better</em>. AMACOM.</li>
-          <li>Jung, C. G. (1971). <em>Psychological Types</em>. Princeton University Press. (Original work published 1921)</li>
-          <li>Goleman, D. (1995). <em>Emotional Intelligence: Why It Can Matter More Than IQ</em>. Bantam Books.</li>
-          <li>Chapman, G. (1992). <em>The 5 Love Languages: The Secret to Love that Lasts</em>. Northfield Publishing.</li>
-          <li>Gottman, J. M., &amp; Silver, N. (1999). <em>The Seven Principles for Making Marriage Work</em>. Harmony Books.</li>
-          <li>Carnegie, D. (1936). <em>How to Win Friends and Influence People</em>. Simon &amp; Schuster.</li>
-          <li>Rosenberg, M. B. (2003). <em>Nonviolent Communication: A Language of Life</em>. PuddleDancer Press.</li>
-        </ol>
-      </div>
-    </div>
+    <div class="no-trial">No free trial • One clear price • Cancel anytime</div>
+  </div>
 
-    <div class="closing-statement">
-      <h2>💫 Share the Connection</h2>
-      <p><strong>Knowledge is powerful when shared.</strong></p>
-      <p>
-        Share BetterConnections with your friends, family, coworkers, and fellow educators
-        to help them make BetterConnections too.
-      </p>
-      <p style="font-size:1.1em; margin-top:30px;">
-        Together, we can build a world where everyone understands each other a little better. 💙
-      </p>
-    </div>
-
-    <div class="wrap-card" style="text-align:center; background:#f3f4f6;">
-      <h3 style="color:#7c3aed; font-weight:900;">Questions or Feedback?</h3>
-      <p>We'd love to hear from you!</p>
-      <p style="margin-top:20px;">
-        <strong>Email:</strong>
-        <a href="mailto:support@betterconnections.app" style="color:#7c3aed;">support@betterconnections.app</a>
-      </p>
-    </div>
-
-    <div class="back-next-nav">
-      <a href="learning-quiz.html" class="nav-button">← Back to Learning Quiz</a>
-      <a href="index.html" class="nav-button">Back to Home →</a>
+  <div class="wrap-card">
+    <div class="references">
+      <h3>📚 References & Research Foundation</h3>
+      <p>BetterConnections is built on decades of validated personality and communication research:</p>
+      <ol>
+        <li>Merrill, D. W., & Reid, R. H. (1981). <em>Personal Styles and Effective Performance</em>. CRC Press.</li>
+        <li>Bolton, R., & Bolton, D. G. (1996). <em>People Styles at Work: Making Bad Relationships Good and Good Relationships Better</em>. AMACOM.</li>
+        <li>Jung, C. G. (1971). <em>Psychological Types</em>. Princeton University Press. (Original work published 1921)</li>
+        <li>Goleman, D. (1995). <em>Emotional Intelligence: Why It Can Matter More Than IQ</em>. Bantam Books.</li>
+        <li>Chapman, G. (1992). <em>The 5 Love Languages: The Secret to Love that Lasts</em>. Northfield Publishing.</li>
+        <li>Gottman, J. M., & Silver, N. (1999). <em>The Seven Principles for Making Marriage Work</em>. Harmony Books.</li>
+        <li>Carnegie, D. (1936). <em>How to Win Friends and Influence People</em>. Simon & Schuster.</li>
+        <li>Rosenberg, M. B. (2003). <em>Nonviolent Communication: A Language of Life</em>. PuddleDancer Press.</li>
+      </ol>
     </div>
   </div>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 BetterConnections. All rights reserved.</p>
-    </div>
-  </footer>
+  <div class="closing-statement">
+    <h2>💫 Share the Connection</h2>
+    <p><strong>Knowledge is powerful when shared.</strong></p>
+    <p>
+      Share BetterConnections with your friends, family, coworkers, and those you support —
+      to help them make BetterConnections too.
+    </p>
+    <p style="font-size: 1.05em; margin-top: 20px;">
+      Together, we can build a world where everyone understands each other a little better. 💙
+    </p>
+  </div>
+
+  <div class="wrap-card" style="text-align: center; background: #f3f4f6;">
+    <h3 style="color: #7c3aed;">Questions or Feedback?</h3>
+    <p>We'd love to hear from you!</p>
+    <p style="margin-top: 20px;">
+      <strong>Email:</strong> <a href="mailto:support@betterconnections.app" style="color: #7c3aed;">support@betterconnections.app</a>
+    </p>
+  </div>
+
+  <div class="back-next-nav">
+    <a href="learning-quiz.html" class="nav-button">← Back to Learning Quiz</a>
+    <a href="index.html" class="nav-button">Back to Home →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 BetterConnections. All rights reserved.</p>
+  </div>
+</footer>
 </body>
 </html>
