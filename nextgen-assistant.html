@@ -53,17 +53,19 @@
       color: #7c3aed;
     }
 
+    /* HEADER – improved contrast */
     .nextgen-header {
-      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
-      color: white;
-      padding: 50px 20px;
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+      color: #ffffff;
+      padding: 55px 20px;
       text-align: center;
     }
 
     .nextgen-header h1 {
-      font-size: 2.4em;
+      font-size: 2.5em;
       font-weight: 900;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      color: #ffffff;
     }
 
     .nextgen-header p {
@@ -72,25 +74,49 @@
       margin: 0 auto;
       opacity: 0.95;
       line-height: 1.6;
+      color: #ffffff;
     }
 
-    .container {
+    .page-container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 40px 20px;
+    }
+
+    .back-next-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-button {
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+
+    .nav-button:hover {
+      transform: translateY(-2px);
     }
 
     .section {
       background: white;
       border-radius: 14px;
       padding: 40px;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
     .section h2 {
       color: #7c3aed;
-      font-size: 1.9em;
+      font-size: 1.95em;
       margin-top: 0;
       font-weight: 900;
     }
@@ -104,29 +130,37 @@
     .example-box {
       background: #f9fafb;
       border-left: 6px solid #8b5cf6;
-      padding: 20px 25px;
-      margin: 25px 0;
-      border-radius: 8px;
+      padding: 22px 26px;
+      margin: 24px 0;
+      border-radius: 10px;
+      color: #111827;
     }
 
     .example-box strong {
       color: #4c1d95;
     }
 
+    ul.use-cases {
+      margin-top: 18px;
+      line-height: 1.9;
+      font-size: 1.05em;
+      color: #1f2937;
+    }
+
     .button-row {
       display: flex;
-      gap: 15px;
+      gap: 16px;
       flex-wrap: wrap;
-      margin-top: 30px;
+      margin-top: 28px;
     }
 
     .primary-btn {
-      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
       color: white;
-      padding: 16px 32px;
+      padding: 16px 34px;
       border-radius: 10px;
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 1.05em;
       transition: transform 0.2s;
     }
@@ -138,7 +172,7 @@
     .secondary-btn {
       background: #ede9fe;
       color: #5b21b6;
-      padding: 16px 28px;
+      padding: 16px 30px;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 800;
@@ -178,79 +212,88 @@
 <div class="nextgen-header">
   <h1>NextGen Assistant</h1>
   <p>
-    Personality-aware communication that helps teachers respond calmly,
-    professionally, and effectively — even in emotionally charged situations.
+    Personality-aware communication that helps teachers respond clearly,
+    professionally, and calmly — across every situation in BetterConnections.
   </p>
 </div>
 
-<div class="container">
+<div class="page-container">
+
+  <div class="back-next-nav">
+    <a href="deep-dive.html" class="nav-button">← Back: Deep Dive</a>
+    <a href="nextgen-why.html" class="nav-button">Next: Why NextGen Works →</a>
+  </div>
 
   <div class="section">
     <h2>What the NextGen Assistant Does</h2>
     <p>
-      The NextGen Assistant helps you generate thoughtful responses to parents,
-      students, colleagues, and others by adapting your communication to
-      different personality styles.
+      The NextGen Assistant helps you choose words that land the way you intend —
+      by adapting tone, structure, and emphasis to different personality styles.
     </p>
     <p>
-      Instead of guessing how to word a response — or rewriting the same email
-      over and over — the Assistant helps you communicate clearly, respectfully,
-      and with confidence.
+      Instead of guessing how to respond — or rewriting the same message over and over —
+      NextGen helps you communicate with confidence and clarity.
     </p>
   </div>
 
   <div class="section">
-    <h2>Quick Example</h2>
+    <h2>One Quick Example</h2>
 
     <div class="example-box">
-      <p><strong>Parent message:</strong><br/>
+      <p><strong>Concern you receive:</strong><br/>
       “Why is my child always being singled out in your class?”</p>
 
       <p><strong>NextGen-style response:</strong><br/>
-      “Thank you for reaching out. I want to address your concern clearly and
-      share what I observed, so we can work together to support your child.”</p>
+      “Thank you for reaching out. I want to address your concern clearly and share what I observed,
+      so we can work together to support your child.”</p>
     </div>
 
     <p>
-      This is not a template — it’s an adaptive response that changes based on
-      personality style and situation.
+      This isn’t a template — the wording adapts based on personality style and context.
     </p>
   </div>
 
   <div class="section">
-    <h2>Why This Matters for Teachers</h2>
+    <h2>Where Teachers Use NextGen (All Six Core Areas)</h2>
     <p>
-      Small wording choices can prevent misunderstandings, reduce escalation,
-      and save hours of back-and-forth communication.
+      NextGen Assistant supports communication and planning across <strong>all six areas</strong>
+      of the BetterConnections framework — not just emails.
     </p>
-    <p>
-      Over time, teachers using personality-aware communication report:
-    </p>
-    <ul>
-      <li>Fewer emotionally charged exchanges</li>
-      <li>Stronger parent relationships</li>
-      <li>Clearer professional boundaries</li>
-      <li>More confidence in difficult conversations</li>
+
+    <ul class="use-cases">
+      <li><strong>Parent communication:</strong> professional responses that prevent escalation.</li>
+      <li><strong>Student behavior:</strong> de-escalation language and follow-up conversations.</li>
+      <li><strong>Admin communication:</strong> concise updates, summaries, and solution-focused requests.</li>
+      <li><strong>Colleague collaboration:</strong> boundary-setting and alignment messaging.</li>
+      <li><strong>IEPs / support plans:</strong> clearer wording for goals, observations, and next steps.</li>
+      <li><strong>Home & relationships:</strong> difficult conversations using the same personality framework.</li>
     </ul>
+
+    <p style="margin-top:16px;">
+      <strong>If it involves words, tone, or preventing misunderstandings — NextGen helps.</strong>
+    </p>
   </div>
 
   <div class="section">
     <h2>Explore NextGen Further</h2>
-
     <p>
-      You can learn more about why personality-based communication works, or
-      try the NextGen Assistant yourself with a guided test drive.
+      Learn why personality-based responses work — or experience it firsthand
+      through the guided Test Drive.
     </p>
 
     <div class="button-row">
       <a href="nextgen-why.html" class="secondary-btn">
         Why Personality-Based Responses Work
       </a>
-
       <a href="nextgen-test-drive.html" class="primary-btn">
         Try the NextGen Test Drive
       </a>
     </div>
+  </div>
+
+  <div class="back-next-nav">
+    <a href="deep-dive.html" class="nav-button">← Back: Deep Dive</a>
+    <a href="nextgen-why.html" class="nav-button">Next: Why NextGen Works →</a>
   </div>
 
 </div>
