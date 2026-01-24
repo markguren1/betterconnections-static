@@ -1,196 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Why NextGen Assistant - BetterConnections</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        nav {
-            background: white;
-            padding: 15px 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextGen: Why - BetterConnections</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    nav { background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000; }
+    nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { font-size: 1.5em; font-weight: 900; color: #7c3aed; padding: 15px 0; }
+    .nav-links { display: flex; list-style: none; margin: 0; padding: 0; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a { display: block; padding: 12px 10px; color: #4b5563; text-decoration: none; font-weight: 600; font-size: 0.9em; transition: color 0.2s; border-bottom: 2px solid transparent; }
+    .nav-links a:hover { color: #7c3aed; }
+    .nav-links a.active { color: #7c3aed; border-bottom-color: #7c3aed; }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 0;
-            padding: 0;
-        }
+    .page { min-height: 100vh; background: linear-gradient(180deg, #eef2ff 0%, #f5f3ff 50%, #ffffff 100%); padding: 34px 14px 70px; }
+    .wrap { max-width: 980px; margin: 0 auto; }
+    .header { background: white; border-radius: 18px; box-shadow: 0 14px 34px rgba(0,0,0,0.08); overflow: hidden; }
+    .top { background: linear-gradient(135deg, #7c3aed, #8b5cf6); color: white; padding: 26px 22px; }
+    .top h1 { margin: 0; font-size: 2.1em; }
+    .top p { margin: 10px 0 0; opacity: 0.95; line-height: 1.6; }
 
-        nav li {
-            list-style: none;
-        }
+    .body { padding: 22px; display: grid; grid-template-columns: 1fr; gap: 14px; }
+    @media (min-width: 900px) { .body { grid-template-columns: 1fr 1fr; } }
+    .card { background: #fff; border: 1px solid #eef2f7; border-radius: 14px; padding: 16px; }
+    .card h2 { margin: 0 0 10px; font-size: 1.2em; color: #111827; }
+    .muted { color: #6b7280; line-height: 1.7; }
+    .list { margin: 0; padding-left: 18px; line-height: 1.9; color: #111827; }
+    .callout { background: #f5f3ff; border: 1px solid #e9d5ff; border-radius: 14px; padding: 14px; color: #4c1d95; font-weight: 800; }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+    .btn { display: inline-block; text-decoration: none; font-weight: 900; padding: 12px 16px; border-radius: 12px; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(124,58,237,0.18); }
+    .btn-primary { background: linear-gradient(135deg, #7c3aed, #8b5cf6); color: #fff; }
+    .btn-ghost { background: #fff; border: 2px solid #d8b4fe; color: #6d28d9; }
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            padding: 8px 15px;
-            border-radius: 6px;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover,
-        nav a.active {
-            background-color: #f0f0f0;
-        }
-
-        .nextgen-section {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        .nextgen-section h2 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-
-        .nextgen-section .subtitle {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .oneliner-box {
-            border: 1px solid rgba(0,0,0,0.15);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            background-color: #f8f9fa;
-        }
-
-        .oneliner-box strong {
-            font-size: 1.15em;
-            color: #2c3e50;
-        }
-
-        .benefit-section {
-            margin-top: 30px;
-        }
-
-        .benefit-item {
-            margin-bottom: 25px;
-        }
-
-        .benefit-item h3 {
-            font-size: 1.3em;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .benefit-item ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            line-height: 1.8;
-        }
-
-        .benefit-item li {
-            margin-bottom: 8px;
-            color: #444;
-        }
-
-        .wiifm-section {
-            margin-top: 30px;
-        }
-
-        .wiifm-section h3 {
-            font-size: 1.3em;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .wiifm-section ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            line-height: 1.8;
-        }
-
-        .wiifm-section li {
-            margin-bottom: 8px;
-            color: #444;
-        }
-    </style>
+    footer { text-align: center; margin-top: 18px; color: #6b7280; font-weight: 700; }
+  </style>
 </head>
+
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="quiz.html">Personality Quiz</a></li>
-            <li><a href="results.html">Results</a></li>
-            <li><a href="deep-dive.html">Deep Dive</a></li>
-            <li><a href="hot-buttons.html">Hot Buttons</a></li>
-            <li><a href="compatibility.html">Compatibility</a></li>
-            <li><a href="nextgen-assistant.html" class="active">NextGen Assistant</a></li>
-            <li><a href="application-stories.html">Application Stories</a></li>
-            <li><a href="learning-quiz.html">Learning Quiz</a></li>
-            <li><a href="wrap-up.html">Wrap-Up</a></li>
-        </ul>
-    </nav>
+  <nav>
+    <div class="container">
+      <div class="nav-brand">BetterConnections</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quiz.html">Personality Quiz</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="deep-dive.html">Deep Dive</a></li>
+        <li><a href="hot-buttons.html">Hot Buttons</a></li>
+        <li><a href="compatibility.html">Compatibility</a></li>
 
-    <section class="nextgen-section">
-        <h2>Why use NextGen Assistant instead of any AI?</h2>
-        <p class="subtitle">Generic AI can draft an email. NextGen Assistant helps you communicate in a way that actually lands well with this parent, in this situation, over the whole school year.</p>
+        <li><a class="active" href="nextgen-why.html">NextGen: Why</a></li>
+        <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
+        <li><a href="nextgen-test-drive.html">NextGen: Test Drive</a></li>
 
-        <div class="oneliner-box">
-            <strong>NextGen Assistant helps you say the right thing, in the right way, to the right parent — without starting from scratch every time.</strong>
+        <li><a href="application-stories.html">Application Stories</a></li>
+        <li><a href="learning-quiz.html">Learning Quiz</a></li>
+        <li><a href="wrap-up.html">Wrap-Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="wrap">
+      <div class="header">
+        <div class="top">
+          <h1>Why personality-based responses work</h1>
+          <p>
+            The same message can be received as helpful… or offensive — depending on how someone processes tone, detail, and urgency.
+            BetterConnections helps teachers reduce friction by matching the communication style that each personality type responds to best.
+          </p>
         </div>
 
-        <div class="benefit-section">
-            <div class="benefit-item">
-                <h3>It remembers context so you don't start over every time</h3>
-                <ul>
-                    <li>Stores key student and parent context (what matters, what triggers conflict, what tone works).</li>
-                    <li>Reduces duplicate effort across the school year — especially helpful for ongoing behavior plans and repeated parent updates.</li>
-                    <li>Keeps communications consistent over time (no random tone shifts from one email to the next).</li>
-                </ul>
-            </div>
-
-            <div class="benefit-item">
-                <h3>It adapts communication to personality styles</h3>
-                <ul>
-                    <li>Adjusts tone and structure for the parent's style (Driver, Amiable, Expressive, Analytical).</li>
-                    <li>Prevents common misunderstandings where a message is 'professional' but still lands wrong.</li>
-                    <li>Helps de-escalate tension by matching what the parent needs first (clarity, reassurance, relationship, or details).</li>
-                </ul>
-            </div>
-
-            <div class="benefit-item">
-                <h3>It removes the burden of prompt engineering</h3>
-                <ul>
-                    <li>Teachers shouldn't have to learn how to write perfect prompts or iterate drafts 5 times.</li>
-                    <li>Guided inputs make it fast: you answer simple questions, it produces a parent-safe, classroom-appropriate message.</li>
-                    <li>Less time rewriting. More confidence before you hit Send.</li>
-                </ul>
-            </div>
-
-            <div class="benefit-item">
-                <h3>It's designed for school-safe communication</h3>
-                <ul>
-                    <li>Helps avoid accidental blame, defensiveness, or vague wording that creates back-and-forth.</li>
-                    <li>Uses education-appropriate framing: clear, constructive, respectful, and action-oriented.</li>
-                    <li>Supports consistent documentation and follow-up language when situations are sensitive.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="wiifm-section">
-            <h3>What teachers get (WIIFM)</h3>
-            <ul>
-                <li>Less stress before sending parent emails</li>
-                <li>Fewer misunderstandings and angry replies</li>
-                <li>Less back-and-forth and time wasted rewriting</li>
-                <li>More trust and consistency with families</li>
-                <li>More confidence in difficult conversations</li>
+        <div class="body">
+          <div class="card">
+            <h2>What causes friction</h2>
+            <ul class="list">
+              <li><strong>Drivers</strong> can feel slowed down by too much explanation.</li>
+              <li><strong>Amiables</strong> can feel hurt by overly blunt wording.</li>
+              <li><strong>Expressives</strong> can feel shut down by cold, rigid tone.</li>
+              <li><strong>Analyticals</strong> can feel uneasy without specifics and structure.</li>
             </ul>
+            <p class="muted" style="margin-top:10px;">
+              The goal isn’t to “change who you are.” It’s to deliver the same message in a way the other person can actually hear.
+            </p>
+          </div>
+
+          <div class="card">
+            <h2>What NextGen does for teachers</h2>
+            <ul class="list">
+              <li>Reduces emotional escalation in parent communication</li>
+              <li>Creates clarity around expectations and next steps</li>
+              <li>Saves time by giving you a strong draft immediately</li>
+              <li>Helps you stay calm, professional, and confident</li>
+            </ul>
+
+            <div class="callout" style="margin-top:12px;">
+              Try it: run the same parent email through the Test Drive using different styles and compare the output.
+            </div>
+
+            <div class="cta">
+              <a class="btn btn-primary" href="nextgen-test-drive.html">Go to NextGen: Test Drive</a>
+              <a class="btn btn-ghost" href="nextgen-assistant.html">Back to NextGen Assistant</a>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+
+      <footer>&copy; 2025 BetterConnections. All rights reserved.</footer>
+    </div>
+  </div>
 </body>
 </html>
