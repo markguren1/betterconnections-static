@@ -2,321 +2,294 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NextGen: Test Drive - BetterConnections</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NextGen Test Drive - BetterConnections</title>
+  <link rel="stylesheet" href="styles.css"/>
+
   <style>
-    nav { background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000; }
-    nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-    .nav-brand { font-size: 1.5em; font-weight: 900; color: #7c3aed; padding: 15px 0; }
-    .nav-links { display: flex; list-style: none; margin: 0; padding: 0; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-    .nav-links a { display: block; padding: 12px 10px; color: #4b5563; text-decoration: none; font-weight: 600; font-size: 0.9em; transition: color 0.2s; border-bottom: 2px solid transparent; }
-    .nav-links a:hover { color: #7c3aed; }
-    .nav-links a.active { color: #7c3aed; border-bottom-color: #7c3aed; }
-
-    .page-wrap { min-height: 100vh; background: linear-gradient(180deg, #efeaff 0%, #f7f3ff 45%, #ffffff 100%); padding: 30px 12px 60px; }
-    .shell { max-width: 980px; margin: 0 auto; }
-    .panel { background: white; border-radius: 18px; box-shadow: 0 14px 34px rgba(0,0,0,0.08); overflow: hidden; }
-    .panel-head { background: linear-gradient(135deg, #7c3aed, #8b5cf6); color: white; padding: 26px 22px; text-align: center; }
-    .panel-head h1 { margin: 0; font-size: 2.1em; }
-    .panel-head p { margin: 10px 0 0; opacity: 0.95; line-height: 1.5; }
-
-    .panel-body { padding: 22px; }
-    .row { display: grid; grid-template-columns: 1fr; gap: 14px; }
-    @media (min-width: 900px) { .row { grid-template-columns: 0.42fr 0.58fr; } }
-
-    .card { border: 1px solid #eef2f7; border-radius: 14px; padding: 16px; background: #ffffff; }
-    label { display: block; font-weight: 800; margin-bottom: 6px; color: #111827; }
-    select, textarea, input {
-      width: 100%;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 12px 12px;
-      font-size: 14px;
-      outline: none;
-      background: #fff;
+    nav {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    textarea { min-height: 110px; resize: vertical; }
-    .hint { color: #6b7280; font-size: 0.95em; line-height: 1.6; margin-top: 8px; }
-    .btnbar { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-    .btn {
-      border: none;
-      border-radius: 12px;
-      padding: 12px 16px;
+
+    nav .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-size: 1.5em;
       font-weight: 900;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      color: #7c3aed;
+      padding: 15px 0;
     }
-    .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(124,58,237,0.18); }
-    .btn-primary { background: linear-gradient(135deg, #7c3aed, #8b5cf6); color: white; }
-    .btn-ghost { background: #fff; border: 2px solid #d8b4fe; color: #6d28d9; }
-    .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
 
-    .output {
-      background: #0b1220;
-      color: #e5e7eb;
-      border-radius: 14px;
-      padding: 14px;
-      min-height: 180px;
-      white-space: pre-wrap;
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 15px 12px;
+      color: #4b5563;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9em;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #7c3aed;
+    }
+
+    .nextgen-header {
+      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .nextgen-header h1 {
+      font-size: 2.4em;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .nextgen-header p {
+      font-size: 1.15em;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0.95;
       line-height: 1.6;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      border: 1px solid rgba(255,255,255,0.08);
     }
 
-    .badge {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .section {
+      background: white;
+      border-radius: 14px;
+      padding: 40px;
+      margin-bottom: 35px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .section h2 {
+      color: #7c3aed;
+      font-size: 1.9em;
+      margin-top: 0;
       font-weight: 900;
-      font-size: 0.85em;
-      background: #f5f3ff;
-      border: 1px solid #e9d5ff;
-      color: #4c1d95;
-      margin-left: 8px;
     }
 
-    .footer-note { text-align: center; margin-top: 12px; color: #6b7280; font-weight: 700; }
+    .section p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #1f2937;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: 700;
+      color: #374151;
+    }
+
+    select, textarea {
+      width: 100%;
+      margin-top: 6px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 1em;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 25px;
+      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      color: white;
+      border: none;
+      font-size: 1.05em;
+      font-weight: 800;
+      padding: 14px 26px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .email-output {
+      margin-top: 30px;
+      white-space: pre-wrap;
+      background: #f9fafb;
+      border-left: 6px solid #8b5cf6;
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .limit-note {
+      margin-top: 18px;
+      font-size: 0.95em;
+      color: #6b7280;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      font-size: 13px;
+      color: #6b7280;
+    }
   </style>
 </head>
 
 <body>
-  <nav>
-    <div class="container">
-      <div class="nav-brand">BetterConnections</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="quiz.html">Personality Quiz</a></li>
-        <li><a href="results.html">Results</a></li>
-        <li><a href="deep-dive.html">Deep Dive</a></li>
-        <li><a href="hot-buttons.html">Hot Buttons</a></li>
-        <li><a href="compatibility.html">Compatibility</a></li>
 
-        <li><a href="nextgen-why.html">NextGen: Why</a></li>
-        <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
-        <li><a class="active" href="nextgen-test-drive.html">NextGen: Test Drive</a></li>
+<nav>
+  <div class="container">
+    <div class="nav-brand">BetterConnections</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="quiz.html">Personality Quiz</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="deep-dive.html">Deep Dive</a></li>
+      <li><a href="hot-buttons.html">Hot Buttons</a></li>
+      <li><a href="compatibility.html">Compatibility</a></li>
+      <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
+      <li><a href="application-stories.html">Application Stories</a></li>
+      <li><a href="learning-quiz.html">Learning Quiz</a></li>
+      <li><a href="wrap-up.html">Wrap-Up</a></li>
+    </ul>
+  </div>
+</nav>
 
-        <li><a href="application-stories.html">Application Stories</a></li>
-        <li><a href="learning-quiz.html">Learning Quiz</a></li>
-        <li><a href="wrap-up.html">Wrap-Up</a></li>
-      </ul>
-    </div>
-  </nav>
+<div class="nextgen-header">
+  <h1>NextGen Test Drive</h1>
+  <p>
+    Try the NextGen Assistant with a real situation.
+    Take your time — this is designed to give you a true feel for how it works.
+  </p>
+</div>
 
-  <div class="page-wrap">
-    <div class="shell">
-      <div class="panel">
-        <div class="panel-head">
-          <h1>NextGen Assistant <span class="badge">Test Drive</span></h1>
-          <p>Generate a professional teacher response that matches the parent’s communication style.</p>
-        </div>
+<div class="container">
 
-        <div class="panel-body">
-          <div class="row">
-            <div class="card">
-              <label for="parentType">Parent Personality Style</label>
-              <select id="parentType">
-                <option value="balanced">Balanced (Default — use when unsure)</option>
-                <option value="driver">Driver (direct, results-focused)</option>
-                <option value="amiable">Amiable (warm, harmony-focused)</option>
-                <option value="expressive">Expressive (energetic, relationship & ideas)</option>
-                <option value="analytical">Analytical (details, logic, structure)</option>
-              </select>
-
-              <div class="hint">
-                Tip: Run the same email through different styles and compare tone + structure.
-              </div>
-
-              <div class="btnbar">
-                <button class="btn btn-primary" id="generateBtn" type="button">Generate Response</button>
-                <button class="btn btn-ghost" id="copyBtn" type="button" disabled>Copy</button>
-                <button class="btn btn-ghost" id="clearBtn" type="button">Clear</button>
-              </div>
-
-              <div class="footer-note">Demo version: no external AI calls.</div>
-            </div>
-
-            <div class="card">
-              <label for="parentEmail">Parent’s Email to You</label>
-              <textarea id="parentEmail" placeholder="Paste the parent email here..."></textarea>
-
-              <label for="situationContext" style="margin-top:12px;">Your Situation Context</label>
-              <textarea id="situationContext" placeholder="What happened + what you want to happen next..."></textarea>
-
-              <label style="margin-top:12px;">Generated Output</label>
-              <div id="emailOutput" class="output">Your generated response will appear here…</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div style="text-align:center; margin-top:14px;">
-        <a href="nextgen-why.html" style="font-weight:900; color:#6d28d9; text-decoration:none;">Why this works →</a>
-      </div>
-    </div>
+  <div class="section">
+    <h2>Before You Begin</h2>
+    <p>
+      This Test Drive is meant to be used thoughtfully. Choose a real situation
+      that matters to you and allow yourself enough time to reflect on the result.
+    </p>
+    <p>
+      You’ll be able to generate up to <strong>three responses</strong> during this Test Drive.
+    </p>
   </div>
 
-  <script>
-    function clean(text) {
-      return (text || "").trim().replace(/\n{3,}/g, "\n\n");
-    }
+  <div class="section">
 
-    function subjectLine(style) {
-      const map = {
-        driver: "Subject: Next steps for [Student Name]",
-        amiable: "Subject: Partnering to support [Student Name]",
-        expressive: "Subject: Let’s team up to help [Student Name] thrive",
-        analytical: "Subject: Summary and plan for [Student Name]",
-        balanced: "Subject: Follow-up regarding [Student Name]"
-      };
-      return map[style] || map.balanced;
-    }
+    <label for="personality">Other Person’s Personality Style</label>
+    <select id="personality">
+      <option>Balanced (use when unsure)</option>
+      <option>Driver</option>
+      <option>Amiable</option>
+      <option>Expressive</option>
+      <option>Analytical</option>
+    </select>
 
-    function opening(style) {
-      const map = {
-        driver: "Thank you for reaching out. I want to address this directly and move us toward a clear next step.",
-        amiable: "Thank you for reaching out. I hear your concern, and I care about supporting your child in a fair and positive way.",
-        expressive: "Thanks for your note — I’m glad you reached out. I want us on the same team so we can help your child succeed.",
-        analytical: "Thank you for your message. I’m going to summarize what I observed and outline the steps we’re taking.",
-        balanced: "Thank you for reaching out. I appreciate you sharing your concern, and I’d like to clarify what happened and what comes next."
-      };
-      return map[style] || map.balanced;
-    }
+    <label for="incoming">Message or Concern You Received</label>
+    <textarea id="incoming">Why are you singling my child out?</textarea>
 
-    function structure(style, parentEmail, context) {
-      const pe = clean(parentEmail);
-      const cx = clean(context);
+    <label for="context">Your Situation or Observation</label>
+    <textarea id="context">I observed the student interrupting others repeatedly during class.</textarea>
 
-      const common = [
-        "What I understand from your message:",
-        pe ? ("• " + pe.split("\n").slice(0,2).join(" ").slice(0,180) + (pe.length > 180 ? "…" : "")) : "• (No parent email provided.)",
-        "",
-        "My context / what I observed:",
-        cx ? ("• " + cx.split("\n").slice(0,3).join(" ").slice(0,240) + (cx.length > 240 ? "…" : "")) : "• (No context provided.)",
-        "",
-        "Next steps:",
-        "• I will follow up with [Student Name] to reinforce expectations and repair any harm.",
-        "• If needed, I’ll document what occurred and monitor patterns over the next [timeframe].",
-        "• I’m happy to talk briefly by phone or in person if that would help.",
-        "",
-        "Thank you,",
-        "[Your Name]"
-      ];
+    <button onclick="generateResponse()">Generate Response</button>
 
-      if (style === "driver") {
-        return [
-          "Key point:",
-          "• Here’s what I observed and what we’re doing next.",
-          "",
-          "Action plan:",
-          "• [Step 1] (today)",
-          "• [Step 2] (this week)",
-          "• [Step 3] (follow-up)",
-          "",
-          "Details (for transparency):",
-          ...(common)
-        ].join("\n");
-      }
+    <div id="output" class="email-output"></div>
 
-      if (style === "amiable") {
-        return [
-          "I want to make sure you feel heard and that we keep communication supportive.",
-          "",
-          ...(common.slice(0,6)),
-          "",
-          "How we can work together:",
-          "• I’ll support [Student Name] at school with clear expectations and encouragement.",
-          "• If you’d like, you can share anything that helps me better understand what your child needs.",
-          "",
-          ...common.slice(6)
-        ].join("\n");
-      }
+    <div class="limit-note">
+      Test Drive limit: 3 responses total.
+    </div>
 
-      if (style === "expressive") {
-        return [
-          "I’m confident we can solve this together and keep things positive for your child.",
-          "",
-          ...(common.slice(0,6)),
-          "",
-          "Here’s the game plan (and I’ll keep you posted):",
-          "• Check-in with [Student Name]",
-          "• Reinforce expectations + reset",
-          "• Quick update to you by [day/time]",
-          "",
-          ...common.slice(6)
-        ].join("\n");
-      }
+  </div>
 
-      if (style === "analytical") {
-        return [
-          "Summary:",
-          "• Concern raised",
-          "• What was observed",
-          "• Outcome / plan",
-          "",
-          "Details:",
-          ...(common),
-          "",
-          "If you’d like, I can share the specific classroom expectation and how we teach/reteach it."
-        ].join("\n");
-      }
+</div>
 
-      // balanced default
-      return [
-        ...(common.slice(0,6)),
-        "",
-        "What happens next:",
-        "• I’ll address the situation with [Student Name] and reinforce expectations.",
-        "• I’ll monitor and follow up if anything changes.",
-        "",
-        ...common.slice(6)
-      ].join("\n");
-    }
+<footer>
+  © 2025 BetterConnections. All rights reserved.
+</footer>
 
-    function generate(style, parentEmail, context) {
-      const parts = [
-        subjectLine(style),
-        "",
-        opening(style),
-        "",
-        structure(style, parentEmail, context)
-      ];
-      return parts.join("\n");
-    }
+<script>
+let usageCount = 0;
 
-    const parentType = document.getElementById("parentType");
-    const parentEmail = document.getElementById("parentEmail");
-    const situationContext = document.getElementById("situationContext");
-    const emailOutput = document.getElementById("emailOutput");
-    const generateBtn = document.getElementById("generateBtn");
-    const copyBtn = document.getElementById("copyBtn");
-    const clearBtn = document.getElementById("clearBtn");
+function generateResponse() {
+  if (usageCount >= 3) {
+    document.getElementById("output").style.display = "block";
+    document.getElementById("output").textContent =
+      "You’ve reached the Test Drive limit.\n\nIf this felt useful, full access is available on the Wrap-Up page.";
+    return;
+  }
 
-    generateBtn.addEventListener("click", () => {
-      const style = parentType.value;
-      const out = generate(style, parentEmail.value, situationContext.value);
-      emailOutput.textContent = out;
-      copyBtn.disabled = false;
-    });
+  const style = document.getElementById("personality").value.toLowerCase();
+  const incoming = document.getElementById("incoming").value.trim();
+  const context = document.getElementById("context").value.trim();
+  const output = document.getElementById("output");
 
-    copyBtn.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(emailOutput.textContent || "");
-        copyBtn.textContent = "Copied!";
-        setTimeout(() => (copyBtn.textContent = "Copy"), 1200);
-      } catch (e) {
-        alert("Copy failed. You can manually select and copy the text in the output box.");
-      }
-    });
+  let opening = "Thank you for reaching out.";
 
-    clearBtn.addEventListener("click", () => {
-      parentType.value = "balanced";
-      parentEmail.value = "";
-      situationContext.value = "";
-      emailOutput.textContent = "Your generated response will appear here…";
-      copyBtn.disabled = true;
-      copyBtn.textContent = "Copy";
-    });
-  </script>
+  if (style.includes("driver")) {
+    opening = "Thank you for your message. I want to address your concern directly.";
+  } else if (style.includes("amiable")) {
+    opening = "Thank you for reaching out. I understand how concerning this feels.";
+  } else if (style.includes("expressive")) {
+    opening = "I appreciate you sharing your concerns with me.";
+  } else if (style.includes("analytical")) {
+    opening = "Thank you for your message. I’d like to clearly explain what I observed.";
+  }
+
+  const response =
+`Subject: Re: Classroom Concern
+
+${opening}
+
+I understand your concern:
+"${incoming || "..." }"
+
+Here is what I observed:
+- ${context || "A situation occurred that required my attention."}
+
+My goal is always student safety, fairness, and helping students learn from situations like this. I will also speak with your child to hear their perspective.
+
+Please feel free to reach out if you’d like to discuss this further.
+
+Sincerely,
+[Teacher Name]`;
+
+  output.style.display = "block";
+  output.textContent = response;
+  usageCount++;
+}
+</script>
+
 </body>
 </html>
