@@ -53,44 +53,69 @@
       color: #7c3aed;
     }
 
-    .nextgen-header {
-      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
-      color: white;
-      padding: 50px 20px;
+    /* HEADER – readable */
+    .why-header {
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+      color: #ffffff;
+      padding: 55px 20px;
       text-align: center;
     }
 
-    .nextgen-header h1 {
-      font-size: 2.4em;
+    .why-header h1 {
+      font-size: 2.5em;
       font-weight: 900;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      color: #ffffff;
     }
 
-    .nextgen-header p {
-      font-size: 1.15em;
+    .why-header p {
+      font-size: 1.2em;
       max-width: 900px;
       margin: 0 auto;
-      opacity: 0.95;
       line-height: 1.6;
+      opacity: 0.95;
+      color: #ffffff;
     }
 
-    .container {
+    .page-container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 40px 20px;
+    }
+
+    .back-next-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-button {
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform 0.2s;
+    }
+
+    .nav-button:hover {
+      transform: translateY(-2px);
     }
 
     .section {
       background: white;
       border-radius: 14px;
       padding: 40px;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
     .section h2 {
       color: #7c3aed;
-      font-size: 1.9em;
+      font-size: 1.95em;
       margin-top: 0;
       font-weight: 900;
     }
@@ -101,63 +126,40 @@
       color: #1f2937;
     }
 
-    .comparison {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin-top: 25px;
-    }
-
-    .comparison-box {
+    .example {
       background: #f9fafb;
-      border-radius: 10px;
-      padding: 25px;
       border-left: 6px solid #8b5cf6;
+      padding: 22px 26px;
+      margin: 24px 0;
+      border-radius: 10px;
+      color: #111827;
     }
 
-    .comparison-box h3 {
-      margin-top: 0;
+    .example strong {
       color: #4c1d95;
-      font-weight: 900;
     }
 
-    .comparison-box ul {
-      margin: 0;
-      padding-left: 20px;
-      line-height: 1.8;
-    }
-
-    .callout {
-      background: #ede9fe;
-      border: 2px solid #ddd6fe;
-      border-radius: 12px;
-      padding: 30px;
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    .callout p {
-      font-size: 1.2em;
-      color: #4c1d95;
-      font-weight: 700;
-      margin: 0;
+    ul {
+      margin-top: 18px;
+      line-height: 1.9;
+      font-size: 1.05em;
+      color: #1f2937;
     }
 
     .button-row {
       display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 25px;
+      gap: 16px;
       flex-wrap: wrap;
+      margin-top: 28px;
     }
 
     .primary-btn {
-      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
       color: white;
-      padding: 16px 32px;
+      padding: 16px 34px;
       border-radius: 10px;
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 1.05em;
       transition: transform 0.2s;
     }
@@ -166,28 +168,11 @@
       transform: translateY(-2px);
     }
 
-    .secondary-btn {
-      background: #ede9fe;
-      color: #5b21b6;
-      padding: 16px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 1.05em;
-      border: 2px solid #ddd6fe;
-    }
-
     footer {
       text-align: center;
       padding: 25px;
       font-size: 13px;
       color: #6b7280;
-    }
-
-    @media (max-width: 800px) {
-      .comparison {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
@@ -212,85 +197,86 @@
   </div>
 </nav>
 
-<div class="nextgen-header">
-  <h1>Why Personality-Based Responses Work</h1>
+<div class="why-header">
+  <h1>Why NextGen Works</h1>
   <p>
-    The same message can calm one person — and escalate another.
-    Understanding personality styles helps you choose words that land the way you intend.
+    The same message can land very differently — depending on personality.
+    NextGen works because it adapts how ideas are delivered, not just what is said.
   </p>
 </div>
 
-<div class="container">
+<div class="page-container">
+
+  <div class="back-next-nav">
+    <a href="nextgen-assistant.html" class="nav-button">← Back: NextGen Assistant</a>
+    <a href="nextgen-test-drive.html" class="nav-button">Next: Test Drive →</a>
+  </div>
 
   <div class="section">
-    <h2>One Message. Very Different Reactions.</h2>
+    <h2>The Real Problem Isn’t What You Say</h2>
     <p>
-      When emotions are high, people filter information through their personality style.
-      A response that feels “clear” to you may feel dismissive, cold, or overwhelming to someone else.
+      Most communication issues aren’t caused by bad intentions —
+      they’re caused by mismatched styles.
+    </p>
+    <p>
+      When people feel unheard, talked down to, or overwhelmed,
+      the message breaks down — even when the content is correct.
     </p>
   </div>
 
   <div class="section">
-    <h2>How Personality Styles Change Interpretation</h2>
+    <h2>One Message. Four Very Different Reactions.</h2>
 
-    <div class="comparison">
-      <div class="comparison-box">
-        <h3>Without Personality Awareness</h3>
-        <ul>
-          <li>Messages feel misunderstood</li>
-          <li>Emotions escalate quickly</li>
-          <li>Repeated back-and-forth emails</li>
-          <li>Defensiveness on both sides</li>
-        </ul>
-      </div>
+    <div class="example">
+      <p><strong>Same situation:</strong> A behavior incident occurred in class.</p>
 
-      <div class="comparison-box">
-        <h3>With Personality Awareness</h3>
-        <ul>
-          <li>Language matches the listener</li>
-          <li>Concerns are acknowledged appropriately</li>
-          <li>Clear expectations are set calmly</li>
-          <li>Trust builds over time</li>
-        </ul>
-      </div>
+      <p><strong>Driver parent hears:</strong><br/>
+      “Get to the point. What happened and what’s the plan?”</p>
+
+      <p><strong>Amiable parent hears:</strong><br/>
+      “Is my child okay? Do you care about them?”</p>
+
+      <p><strong>Expressive parent hears:</strong><br/>
+      “Why wasn’t I told sooner? This feels big.”</p>
+
+      <p><strong>Analytical parent hears:</strong><br/>
+      “What are the facts? What evidence supports this?”</p>
     </div>
+
+    <p>
+      NextGen adjusts tone, structure, and emphasis so the same message
+      lands clearly for each style — without you rewriting everything.
+    </p>
   </div>
 
   <div class="section">
     <h2>Why This Matters for Teachers</h2>
-    <p>
-      Teachers often face emotionally charged conversations — especially with parents.
-      Small wording differences can determine whether a situation de-escalates or becomes a prolonged conflict.
-    </p>
-    <p>
-      The NextGen Assistant helps you make those wording choices intentionally,
-      so your message reflects both professionalism and empathy.
-    </p>
-  </div>
-
-  <div class="callout">
-    <p>
-      When people feel understood, they listen.
-      When they don’t, they push back.
-    </p>
+    <ul>
+      <li>Fewer emotional escalations</li>
+      <li>Less back-and-forth communication</li>
+      <li>Clearer expectations for students and parents</li>
+      <li>More confidence in difficult conversations</li>
+      <li>Professional documentation that reflects intent</li>
+    </ul>
   </div>
 
   <div class="section">
     <h2>Experience It Yourself</h2>
     <p>
-      Reading about personality-based communication is helpful —
-      but seeing how it changes a real response is what makes it click.
+      Reading about personality-based communication helps —
+      but experiencing it makes the difference obvious.
     </p>
 
     <div class="button-row">
       <a href="nextgen-test-drive.html" class="primary-btn">
         Try the NextGen Test Drive
       </a>
-
-      <a href="nextgen-assistant.html" class="secondary-btn">
-        Back to NextGen Assistant
-      </a>
     </div>
+  </div>
+
+  <div class="back-next-nav">
+    <a href="nextgen-assistant.html" class="nav-button">← Back: NextGen Assistant</a>
+    <a href="nextgen-test-drive.html" class="nav-button">Next: Test Drive →</a>
   </div>
 
 </div>
