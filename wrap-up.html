@@ -5,298 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wrap-Up - BetterConnections</title>
   <link rel="stylesheet" href="styles.css">
-  <style>
-    nav {
-      background: white;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-brand {
-      font-size: 1.5em;
-      font-weight: 900;
-      color: #7c3aed;
-      padding: 15px 0;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 5px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links li { margin: 0; }
-
-    .nav-links a {
-      display: block;
-      padding: 15px 12px;
-      color: #4b5563;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9em;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: #7c3aed; }
-
-    .nav-links a.active {
-      color: #7c3aed;
-      border-bottom: 2px solid #7c3aed;
-    }
-
-    .wrap-card {
-      background: white;
-      border-radius: 12px;
-      padding: 35px;
-      margin-bottom: 30px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-    }
-
-    .pricing-box {
-      background: linear-gradient(135deg, #f3e8ff 0%, #fae8ff 100%);
-      border: 2px solid #e9d5ff;
-      border-radius: 12px;
-      padding: 40px;
-      text-align: center;
-      margin: 30px 0;
-    }
-
-    .pricing-box h2 {
-      color: #7c3aed;
-      font-size: 2.2em;
-      margin: 0 0 10px 0;
-    }
-
-    .pricing-subtitle {
-      max-width: 820px;
-      margin: 0 auto 20px;
-      color: #4b5563;
-      font-size: 1.1em;
-      line-height: 1.7;
-    }
-
-    .reflection {
-      background: #ffffff;
-      border: 1px solid #e9d5ff;
-      border-radius: 12px;
-      padding: 22px;
-      margin: 18px auto 22px;
-      max-width: 820px;
-      text-align: left;
-    }
-
-    .reflection h3 {
-      margin: 0 0 10px 0;
-      color: #7c3aed;
-      font-size: 1.25em;
-    }
-
-    .reflection ul {
-      margin: 10px 0 0 18px;
-      line-height: 2;
-      color: #1f2937;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      max-width: 820px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    @media (min-width: 860px) {
-      .pricing-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    .plan {
-      background: white;
-      border: 2px solid #e9d5ff;
-      border-radius: 12px;
-      padding: 22px;
-    }
-
-    .plan-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .plan-title {
-      font-weight: 900;
-      color: #6d28d9;
-      font-size: 1.25em;
-      margin: 0;
-    }
-
-    .plan-price {
-      font-size: 2.0em;
-      font-weight: 900;
-      color: #6d28d9;
-      margin: 0;
-    }
-
-    .plan-meta {
-      margin-top: 8px;
-      color: #4b5563;
-      line-height: 1.7;
-      font-size: 1.02em;
-    }
-
-    .tag {
-      display: inline-block;
-      margin-left: 8px;
-      font-size: 0.85em;
-      font-weight: 900;
-      color: #5b21b6;
-      background: #efeaff;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid #e9d5ff;
-    }
-
-    .gift-line {
-      max-width: 820px;
-      margin: 14px auto 0;
-      padding: 14px 16px;
-      background: #ffffff;
-      border: 1px dashed #c4b5fd;
-      border-radius: 12px;
-      color: #1f2937;
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .gift-line strong { color: #4c1d95; }
-
-    .features {
-      text-align: left;
-      max-width: 820px;
-      margin: 18px auto 0;
-      line-height: 2;
-      color: #1f2937;
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 22px;
-    }
-
-    .cta-button {
-      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
-      color: white;
-      padding: 16px 36px;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.1em;
-      font-weight: 900;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: transform 0.2s;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.35);
-    }
-
-    .cta-button.secondary {
-      background: #ffffff;
-      color: #6d28d9;
-      border: 2px solid #e9d5ff;
-    }
-
-    .no-trial {
-      margin-top: 12px;
-      color: #6b21a8;
-      font-weight: 800;
-      font-size: 0.98em;
-    }
-
-    .references {
-      background: #f9fafb;
-      padding: 30px;
-      border-radius: 12px;
-      margin: 30px 0;
-    }
-
-    .references h3 {
-      color: #7c3aed;
-      margin-top: 0;
-    }
-
-    .references ol {
-      line-height: 2;
-      padding-left: 25px;
-    }
-
-    .references li { margin-bottom: 15px; }
-
-    .closing-statement {
-      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-      border: 2px solid #f59e0b;
-      border-radius: 12px;
-      padding: 40px;
-      text-align: center;
-      margin: 40px 0;
-    }
-
-    .closing-statement h2 {
-      color: #92400e;
-      margin-top: 0;
-      font-size: 2em;
-    }
-
-    .closing-statement p {
-      font-size: 1.2em;
-      color: #78350f;
-      line-height: 1.8;
-      margin: 14px 0;
-    }
-
-    .back-next-nav {
-      display: flex;
-      justify-content: space-between;
-      margin: 40px 0;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .nav-button {
-      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
-      color: white;
-      padding: 12px 30px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 800;
-      transition: transform 0.2s;
-      display: inline-block;
-    }
-
-    .nav-button:hover { transform: translateY(-2px); }
-  </style>
 </head>
 
 <body>
@@ -319,10 +27,6 @@
 </nav>
 
 <div class="container">
-  <div class="back-next-nav">
-    <a href="learning-quiz.html" class="nav-button">← Back to Learning Quiz</a>
-    <a href="index.html" class="nav-button">Back to Home →</a>
-  </div>
 
   <div class="wrap-card">
     <h1 style="text-align:center;color:#7c3aed;margin-bottom:20px;">🎉 Congratulations!</h1>
@@ -335,45 +39,29 @@
 
   <div class="pricing-box">
     <h2>Ready to Continue?</h2>
-    <div class="pricing-subtitle">
-      BetterConnections isn’t something you try for a week. It’s something you either feel right away — or you don’t.
-      That’s why we use a <strong>Test Drive</strong> experience instead of a free trial.
-    </div>
-
-    <div class="reflection">
-      <h3>Did this feel useful?</h3>
-      <div style="color:#4b5563;line-height:1.7;">Take a moment to reflect:</div>
-      <ul>
-        <li>Will this save you time?</li>
-        <li>Help prevent misunderstandings or escalation?</li>
-        <li>Improve overall communication?</li>
-        <li>Increase your confidence?</li>
-        <li>Give you a professional edge?</li>
-      </ul>
-      <div style="margin-top:10px;color:#4b5563;">
-        You don’t need to answer “yes” to everything — just what matters most to you.
-      </div>
-    </div>
+    <p class="pricing-subtitle">
+      BetterConnections uses a <strong>Test Drive</strong> instead of a free trial — so you can decide based on
+      real experience, not hype.
+    </p>
 
     <div class="pricing-grid">
       <div class="plan">
         <div class="plan-top">
           <div class="plan-title">Monthly</div>
-          <div class="plan-price">$9.99<span style="font-size:0.55em;font-weight:900;">/month</span></div>
+          <div class="plan-price">$9.99<span style="font-size:0.6em;">/month</span></div>
         </div>
-        <div class="plan-meta">Simple, flexible access — keep it as long as it’s helping you.</div>
+        <p class="plan-meta">Simple, flexible access — keep it as long as it’s helping you.</p>
       </div>
 
       <div class="plan">
         <div class="plan-top">
           <div class="plan-title">Yearly <span class="tag">Best value</span></div>
-          <div class="plan-price">$79<span style="font-size:0.55em;font-weight:900;">/year</span></div>
+          <div class="plan-price">$79<span style="font-size:0.6em;">/year</span></div>
         </div>
-        <div class="plan-meta">Great for the school year — and a strong fit for class gifts.</div>
+        <p class="plan-meta">One full year of access at a reduced rate.</p>
       </div>
     </div>
 
-    <!-- KEEP GIFTING SEPARATE (AS REQUESTED) -->
     <div class="gift-line">
       <strong>Makes a great gift</strong> for coworkers, friends, and anyone you appreciate.
     </div>
@@ -384,56 +72,25 @@
       <li>✅ Prevent escalations with personality-adapted responses</li>
       <li>✅ Hot Buttons quick reference guide</li>
       <li>✅ Compatibility insights</li>
-      <li>✅ Application Stories + practical examples</li>
+      <li>✅ Application Stories with practical examples</li>
     </ul>
 
     <div class="cta-row">
-      <a href="#" class="cta-button">Continue with BetterConnections</a>
       <a href="nextgen-test-drive.html" class="cta-button secondary">Return to Test Drive</a>
     </div>
 
     <div class="no-trial">No free trial • One clear price • Cancel anytime</div>
   </div>
 
-  <div class="wrap-card">
-    <div class="references">
-      <h3>📚 References & Research Foundation</h3>
-      <p>BetterConnections is built on decades of validated personality and communication research:</p>
-      <ol>
-        <li>Merrill, D. W., & Reid, R. H. (1981). <em>Personal Styles and Effective Performance</em>. CRC Press.</li>
-        <li>Bolton, R., & Bolton, D. G. (1996). <em>People Styles at Work</em>. AMACOM.</li>
-        <li>Jung, C. G. (1971). <em>Psychological Types</em>. Princeton University Press.</li>
-        <li>Goleman, D. (1995). <em>Emotional Intelligence</em>. Bantam Books.</li>
-        <li>Carnegie, D. (1936). <em>How to Win Friends and Influence People</em>. Simon & Schuster.</li>
-        <li>Rosenberg, M. B. (2003). <em>Nonviolent Communication</em>. PuddleDancer Press.</li>
-      </ol>
-    </div>
-  </div>
-
   <div class="closing-statement">
     <h2>💫 Share the Connection</h2>
-    <p><strong>Knowledge is powerful when shared.</strong></p>
+    <p><strong>Understanding people changes everything.</strong></p>
     <p>
-      Share BetterConnections with your friends, family, coworkers, and those you support —
-      to help them make BetterConnections too.
-    </p>
-    <p style="font-size: 1.05em; margin-top: 20px;">
-      Together, we can build a world where everyone understands each other a little better. 💙
+      Use BetterConnections to strengthen communication with students, parents,
+      colleagues, friends, and family.
     </p>
   </div>
 
-  <div class="wrap-card" style="text-align: center; background: #f3f4f6;">
-    <h3 style="color: #7c3aed;">Questions or Feedback?</h3>
-    <p>We'd love to hear from you!</p>
-    <p style="margin-top: 20px;">
-      <strong>Email:</strong> <a href="mailto:support@betterconnections.app" style="color: #7c3aed;">support@betterconnections.app</a>
-    </p>
-  </div>
-
-  <div class="back-next-nav">
-    <a href="learning-quiz.html" class="nav-button">← Back to Learning Quiz</a>
-    <a href="index.html" class="nav-button">Back to Home →</a>
-  </div>
 </div>
 
 <footer>
