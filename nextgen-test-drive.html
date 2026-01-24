@@ -14,6 +14,7 @@
       top: 0;
       z-index: 1000;
     }
+
     nav .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -22,12 +23,14 @@
       justify-content: space-between;
       align-items: center;
     }
+
     .nav-brand {
       font-size: 1.5em;
       font-weight: 900;
       color: #7c3aed;
       padding: 15px 0;
     }
+
     .nav-links {
       display: flex;
       list-style: none;
@@ -36,6 +39,7 @@
       gap: 5px;
       flex-wrap: wrap;
     }
+
     .nav-links a {
       padding: 15px 12px;
       color: #4b5563;
@@ -43,35 +47,38 @@
       font-weight: 600;
       font-size: 0.9em;
     }
+
     .nav-links a:hover,
     .nav-links a.active {
       color: #7c3aed;
     }
 
-    /* Improved readability */
-    .nextgen-header {
+    /* HEADER – readable */
+    .testdrive-header {
       background: linear-gradient(135deg, #a78bfa, #8b5cf6);
       color: #ffffff;
-      padding: 52px 20px;
+      padding: 55px 20px;
       text-align: center;
     }
-    .nextgen-header h1 {
-      font-size: 2.4em;
+
+    .testdrive-header h1 {
+      font-size: 2.5em;
       font-weight: 900;
-      margin: 0 0 10px 0;
+      margin-bottom: 12px;
       color: #ffffff;
     }
-    .nextgen-header p {
-      font-size: 1.15em;
+
+    .testdrive-header p {
+      font-size: 1.2em;
       max-width: 900px;
       margin: 0 auto;
-      opacity: 0.95;
       line-height: 1.6;
+      opacity: 0.95;
       color: #ffffff;
     }
 
     .page-container {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 40px 20px;
     }
@@ -80,100 +87,92 @@
       display: flex;
       justify-content: space-between;
       gap: 12px;
-      margin: 0 0 24px 0;
+      margin-bottom: 24px;
       flex-wrap: wrap;
     }
+
     .nav-button {
       background: linear-gradient(135deg, #a78bfa, #8b5cf6);
       color: white;
-      padding: 12px 18px;
+      padding: 12px 20px;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 800;
-      display: inline-block;
       transition: transform 0.2s;
     }
-    .nav-button:hover { transform: translateY(-2px); }
+
+    .nav-button:hover {
+      transform: translateY(-2px);
+    }
 
     .section {
       background: white;
       border-radius: 14px;
-      padding: 38px;
-      margin-bottom: 28px;
+      padding: 40px;
+      margin-bottom: 30px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
     .section h2 {
       color: #7c3aed;
-      font-size: 1.9em;
+      font-size: 1.95em;
       margin-top: 0;
       font-weight: 900;
     }
+
     .section p {
       font-size: 1.1em;
       line-height: 1.8;
       color: #1f2937;
     }
 
-    .note {
-      background: #f5f3ff;
-      border: 2px solid #ddd6fe;
-      border-radius: 12px;
-      padding: 16px 16px;
-      margin-top: 12px;
-      color: #4c1d95;
+    label {
       font-weight: 700;
-      line-height: 1.6;
+      margin-top: 22px;
+      display: block;
+      color: #1f2937;
     }
 
-    label {
-      display: block;
-      margin-top: 18px;
-      font-weight: 800;
-      color: #374151;
-    }
     select, textarea {
       width: 100%;
-      margin-top: 6px;
-      padding: 12px;
+      padding: 14px;
+      margin-top: 8px;
       border-radius: 10px;
       border: 1px solid #d1d5db;
       font-size: 1em;
-      font-family: inherit;
-      box-sizing: border-box;
     }
-    textarea { min-height: 90px; resize: vertical; }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
 
     button {
-      margin-top: 18px;
+      margin-top: 26px;
       background: linear-gradient(135deg, #a78bfa, #8b5cf6);
       color: white;
-      border: none;
-      font-size: 1.05em;
-      font-weight: 900;
-      padding: 14px 22px;
+      padding: 16px 34px;
       border-radius: 10px;
+      border: none;
+      font-weight: 900;
+      font-size: 1.05em;
       cursor: pointer;
-      transition: transform 0.2s, opacity 0.2s;
+      transition: transform 0.2s;
     }
-    button:hover { transform: translateY(-2px); opacity: 0.98; }
 
-    .email-output {
-      margin-top: 22px;
-      white-space: pre-wrap;
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .output-box {
+      margin-top: 30px;
       background: #f9fafb;
       border-left: 6px solid #8b5cf6;
-      padding: 18px;
-      border-radius: 12px;
+      padding: 26px;
+      border-radius: 10px;
+      white-space: pre-wrap;
       display: none;
       color: #111827;
-    }
-
-    .small {
-      margin-top: 12px;
-      font-size: 0.95em;
-      color: #6b7280;
-      line-height: 1.6;
     }
 
     footer {
@@ -198,8 +197,6 @@
       <li><a href="hot-buttons.html">Hot Buttons</a></li>
       <li><a href="compatibility.html">Compatibility</a></li>
       <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
-      <li><a href="nextgen-why.html">Why NextGen Works</a></li>
-      <li><a href="nextgen-test-drive.html" class="active">NextGen Test Drive</a></li>
       <li><a href="application-stories.html">Application Stories</a></li>
       <li><a href="learning-quiz.html">Learning Quiz</a></li>
       <li><a href="wrap-up.html">Wrap-Up</a></li>
@@ -207,10 +204,11 @@
   </div>
 </nav>
 
-<div class="nextgen-header">
+<div class="testdrive-header">
   <h1>NextGen Test Drive</h1>
   <p>
-    Try the NextGen Assistant with a real situation. Set aside a few minutes so you can experience the full value.
+    Experience how personality-aware communication changes tone, clarity,
+    and outcomes — using your own real-world situations.
   </p>
 </div>
 
@@ -218,48 +216,45 @@
 
   <div class="back-next-nav">
     <a href="nextgen-why.html" class="nav-button">← Back: Why NextGen Works</a>
-    <a href="wrap-up.html" class="nav-button">Next: Wrap-Up →</a>
+    <a href="application-stories.html" class="nav-button">Next: Application Stories →</a>
   </div>
 
   <div class="section">
-    <h2>Take a Test Drive</h2>
+    <h2>How the Test Drive Works</h2>
     <p>
-      This is a full experience — not a preview. Choose a real situation that matters to you and review the response
-      for tone, clarity, and de-escalation.
+      Choose a personality style, describe a real situation, and see how
+      the NextGen Assistant helps shape a clear, professional response.
     </p>
-    <div class="note">
-      Test Drive limit: <strong>3 responses</strong> (enough to decide if BetterConnections is useful).
-    </div>
+    <p>
+      This is a guided experience — not a full subscription.
+      The goal is to help you decide if this tool fits how you work.
+    </p>
   </div>
 
   <div class="section">
-    <label for="personality">Other Person’s Personality Style</label>
-    <select id="personality">
-      <option>Balanced (use when unsure)</option>
+    <h2>Try It Yourself</h2>
+
+    <label for="style">Personality Style</label>
+    <select id="style">
       <option>Driver</option>
       <option>Amiable</option>
       <option>Expressive</option>
       <option>Analytical</option>
     </select>
 
-    <label for="incoming">Message or Concern You Received</label>
-    <textarea id="incoming">Why are you singling my child out?</textarea>
+    <label for="inputText">Situation or Message</label>
+    <textarea id="inputText">
+A parent is upset about a consequence their child received.
+    </textarea>
 
-    <label for="context">Your Situation or Observation</label>
-    <textarea id="context">I observed the student interrupting others repeatedly during class.</textarea>
+    <button onclick="generateResponse()">Generate Response</button>
 
-    <button type="button" onclick="generateResponse()">Generate Response</button>
-
-    <div id="output" class="email-output"></div>
-
-    <div class="small">
-      After 3 uses, you’ll see a message directing you to the Wrap-Up page.
-    </div>
+    <div id="output" class="output-box"></div>
   </div>
 
   <div class="back-next-nav">
     <a href="nextgen-why.html" class="nav-button">← Back: Why NextGen Works</a>
-    <a href="wrap-up.html" class="nav-button">Next: Wrap-Up →</a>
+    <a href="application-stories.html" class="nav-button">Next: Application Stories →</a>
   </div>
 
 </div>
@@ -269,60 +264,38 @@
 </footer>
 
 <script>
-let usageCount = 0;
-
-function buildResponse(style, incoming, context) {
-  const s = (style || "balanced").toLowerCase();
-  let opening = "Thank you for reaching out. I appreciate the opportunity to clarify what occurred.";
-
-  if (s.includes("driver")) {
-    opening = "Thank you for your message. I want to address your concern clearly and directly.";
-  } else if (s.includes("amiable")) {
-    opening = "Thank you for reaching out. I understand how upsetting this situation feels.";
-  } else if (s.includes("expressive")) {
-    opening = "I appreciate you reaching out and sharing your concerns.";
-  } else if (s.includes("analytical")) {
-    opening = "Thank you for your message. I’d like to clearly outline what I observed and the steps taken.";
-  }
-
-  return `Subject: Re: Classroom Concern
-
-${opening}
-
-I understand your concern:
-"${(incoming || "...").trim()}"
-
-Here is what I observed:
-- ${(context || "A situation occurred that required my attention.").trim()}
-
-My goal is always student safety, fairness, and helping students learn from mistakes—not punishment. I will also speak with your child to hear their perspective and review any additional information.
-
-Please let me know if you’d like to discuss this further. I value working together to support your child.
-
-Sincerely,
-[Teacher Name]`.trim();
-}
-
 function generateResponse() {
+  const style = document.getElementById("style").value;
+  const input = document.getElementById("inputText").value;
   const output = document.getElementById("output");
 
-  if (usageCount >= 3) {
-    output.style.display = "block";
-    output.textContent =
-      "You’ve reached the Test Drive limit.\n\nIf this felt useful, continue on the Wrap-Up page to see pricing and the gift option.";
-    return;
+  let opening = "";
+
+  if (style === "Driver") {
+    opening = "Thank you for reaching out. I want to clearly explain what occurred and outline the next steps.";
+  } else if (style === "Amiable") {
+    opening = "Thank you for sharing your concern. I understand how upsetting this situation can feel.";
+  } else if (style === "Expressive") {
+    opening = "I appreciate you reaching out and sharing your thoughts. I’d like to talk through what happened.";
+  } else {
+    opening = "Thank you for your message. I’d like to explain the situation based on what I observed.";
   }
 
-  const style = document.getElementById("personality").value;
-  const incoming = document.getElementById("incoming").value;
-  const context = document.getElementById("context").value;
+  const response = `
+${opening}
 
-  const response = buildResponse(style, incoming, context);
+Regarding the situation:
+${input}
+
+My goal is always to ensure fairness, safety, and learning for all students.
+I’m happy to discuss this further so we can move forward together.
+
+Sincerely,
+[Teacher Name]
+  `.trim();
 
   output.style.display = "block";
   output.textContent = response;
-
-  usageCount++;
 }
 </script>
 
