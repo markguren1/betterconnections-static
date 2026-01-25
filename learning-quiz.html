@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Learning Quiz — BetterConnections</title>
+<link rel="stylesheet" href="styles.css">
 <style>
 :root{
   --bg1:#FDF1F6; --bg2:#F3F8FF; --bg3:#FFF7FB;
@@ -19,9 +20,6 @@ body{
     radial-gradient(900px 520px at 110% 120%,var(--bg3),transparent 60%),
     linear-gradient(180deg,var(--bg1),#fff);
 }
-header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.6);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
-.brand{max-width:1040px;margin:0 auto;padding:12px 16px;font-weight:900;color:#7a5ea7}
-.brand .tag{font-weight:400;font-size:.88rem;color:var(--muted);margin-top:4px}
 .wrap{max-width:1040px;margin:26px auto 90px;padding:0 16px}
 .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin-bottom:18px}
 .card-pink{background:linear-gradient(180deg,#fff,#fff3f8);border-color:var(--pink)}
@@ -35,16 +33,60 @@ h1,h2,h3{margin:0 0 10px} .muted{color:var(--muted)} .small{font-size:.92rem}
 .conf span{position:absolute;width:8px;height:14px;opacity:.9;animation:fall .9s linear forwards}
 @keyframes fall{0%{transform:translateY(-10px) rotate(0)}100%{transform:translateY(120vh) rotate(340deg)}}
 .icon-sparkle::before{content:'✨';margin-right:4px}
+
+nav {
+    background: white;
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    background-color: #f0f0f0;
+}
 </style>
 </head>
 <body>
 <div class="conf" id="confetti"></div>
-<header>
-  <div class="brand">
-    <div>BetterConnections</div>
-    <div class="tag">AI Engineered, Human Inspired!</div>
-  </div>
-</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quiz.html">Personality Quiz</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="deep-dive.html">Deep Dive</a></li>
+        <li><a href="hot-buttons.html">Hot Buttons</a></li>
+        <li><a href="compatibility.html">Compatibility</a></li>
+        <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
+        <li><a href="application-stories.html">Application Stories</a></li>
+        <li><a href="learning-quiz.html" class="active">Learning Quiz</a></li>
+        <li><a href="wrap-up.html">Wrap-Up</a></li>
+    </ul>
+</nav>
+
 <main class="wrap">
 <section class="card card-pink">
   <a href="application-stories.html" class="back">← Back</a>
