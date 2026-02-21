@@ -58,30 +58,10 @@ h1,h2,h3{margin:0 0 10px} .muted{color:var(--muted)} .small{font-size:.92rem}
 <section class="card card-pink">
   <a href="application-stories.html" class="back">← Back</a>
   <h2 class="icon-sparkle">Learning Quiz</h2>
-  <p class="muted small">Test your understanding of personality styles in everyday situations. No score — just insight.</p>
-    <!-- Question 1 -->
-  <div class="card"><strong>The Restaurant Debate</strong>
-    <p class="muted">Friends stalled for 15 minutes choosing food. Casey stood: "Italian downtown. Reservation for eight."</p>
-    <div class="row">
-      <button class="btn brand" onclick="checkAnswer(0, 'Driver')">Driver</button>
-      <button class="btn brand" onclick="checkAnswer(0, 'Analytical')">Analytical</button>
-      <button class="btn brand" onclick="checkAnswer(0, 'Expressive')">Expressive</button>
-      <button class="btn brand" onclick="checkAnswer(0, 'Amiable')">Amiable</button>
-    </div>
-    <div class="small muted" id="feedback-0"></div>
-  </div>
+  <p class="muted small">Test your understanding! Guess the personality type and learn why.</p>
 
-  <!-- Question 2 -->
-  <div class="card"><strong>The Last-Minute Trip</strong>
-    <p class="muted">Alex snapped the laptop shut: "Vegas. I'll book it now."</p>
-    <div class="row">
-      <button class="btn brand" onclick="checkAnswer(1, 'Driver')">Driver</button>
-      <button class="btn brand" onclick="checkAnswer(1, 'Analytical')">Analytical</button>
-      <button class="btn brand" onclick="checkAnswer(1, 'Expressive')">Expressive</button>
-      <button class="btn brand" onclick="checkAnswer(1, 'Amiable')">Amiable</button>
-    </div>
-    <div class="small muted" id="feedback-1"></div>
-  </div>
+  <!-- QUESTIONS -->
+  ${[...Array(10)].map((_,i)=>'').join('')}
 
   <div class="row">
     <button class="btn brand" onclick="window.location.href='wrap-up.html'">Continue to Wrap-Up →</button>
@@ -91,31 +71,23 @@ h1,h2,h3{margin:0 0 10px} .muted{color:var(--muted)} .small{font-size:.92rem}
 
 <script>
 const answers = {
-  0: { type: 'Driver', why: 'Decisive choice restores momentum.' },
-  1: { type: 'Driver', why: 'Decisive action under pressure.' }
+  0:{type:'Driver',why:'Decisive choice restores momentum.'},
+  1:{type:'Driver',why:'Acts quickly under pressure.'},
+  2:{type:'Analytical',why:'Compares details to optimize choice.'},
+  3:{type:'Analytical',why:'Uses data even in emotional moments.'},
+  4:{type:'Expressive',why:'Brings energy and social momentum.'},
+  5:{type:'Amiable',why:'Leads with care before advice.'},
+  6:{type:'Driver',why:'Offers decisive options.'},
+  7:{type:'Analytical',why:'Uses pros/cons and logic.'},
+  8:{type:'Expressive',why:'Leads with story and vibe.'},
+  9:{type:'Amiable',why:'Prioritizes inclusion and comfort.'}
 };
 
-function checkAnswer(questionNum, selectedType) {
-  const feedbackDiv = document.getElementById('feedback-' + questionNum);
-  const correct = answers[questionNum];
-  if (selectedType === correct.type) {
-    feedbackDiv.innerHTML = '✅ <strong>Correct:</strong> ' + correct.type + ' — ' + correct.why;
-    confettiBurst(25);
-  } else {
-    feedbackDiv.innerHTML = '❌ <strong>Not quite.</strong> Correct: ' + correct.type + ' — ' + correct.why;
-  }
-}
-
-function confettiBurst(n) {
-  const root = document.getElementById('confetti');
-  const colors = ['#ef4444', '#3b82f6', '#a855f7', '#10b981', '#f59e0b'];
-  for (let i = 0; i < n; i++) {
-    const s = document.createElement('span');
-    s.style.left = (Math.random() * 100) + '%';
-    s.style.background = colors[Math.floor(Math.random() * colors.length)];
-    root.appendChild(s);
-    setTimeout(() => s.remove(), 1200);
-  }
+function checkAnswer(q,sel){
+  const f=document.getElementById('feedback-'+q);
+  const c=answers[q];
+  f.innerHTML=(sel===c.type?'✅ <strong>Correct:</strong> ':'❌ <strong>Not quite.</strong> Correct: ')
+    +c.type+' — '+c.why;
 }
 </script>
 </body>
