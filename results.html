@@ -15,13 +15,14 @@
   <a href="deep-dive.html">Deep Dive</a>
   <a href="compatibility.html">Compatibility</a>
   <a href="nextgen-assistant.html">NextGen Assistant</a>
-  <a href="wrap-up.html">Wrap-Up</a>
   <a href="learning-quiz.html">Learning Quiz</a>
+  <a href="wrap-up.html">Wrap-Up</a>
 </nav>
 
 <h1>Your Personality Results</h1>
 <p class="sub">
-Your style shapes how you communicate, make decisions, handle pressure, and navigate expectations at work and in interviews.
+Your personality style shapes how you communicate, respond to stress,
+and interpret expectations.
 </p>
 
 <div id="missing" class="card" style="display:none;">
@@ -62,7 +63,7 @@ Your style shapes how you communicate, make decisions, handle pressure, and navi
       <tr><th>Strengths</th><td id="strengths"></td></tr>
       <tr><th>Challenges</th><td id="challenges"></td></tr>
       <tr><th>Communication Style</th><td id="comm"></td></tr>
-      <tr><th>Under Pressure</th><td id="stress"></td></tr>
+      <tr><th>Under Stress</th><td id="stress"></td></tr>
     </table>
   </div>
 
@@ -75,32 +76,32 @@ Your style shapes how you communicate, make decisions, handle pressure, and navi
 
   const CONTENT = {
     Driver: {
-      summary: "Direct, decisive, and outcome-focused. You prioritize progress, clarity, and results in high-stakes professional settings.",
-      strengths: "Decisive • Confident • Action-oriented • Efficient under deadlines",
-      challenges: "Can come across as blunt • Impatient with slow progress • May overlook stakeholder concerns",
-      comm: "Concise, direct, results-focused communication.",
-      stress: "May become controlling or overly forceful under pressure."
+      summary: "Direct, decisive, and goal-focused. You value progress, clarity, and results.",
+      strengths: "Decisive • Confident • Action-oriented • Efficient",
+      challenges: "Can seem blunt • Impatient • May overlook feelings",
+      comm: "Concise, direct, results-focused.",
+      stress: "May become controlling or forceful."
     },
     Amiable: {
-      summary: "Supportive, steady, and relationship-focused. You prioritize trust, stability, and collaboration across teams.",
-      strengths: "Reliable • Patient • Team-oriented • Builds trust",
-      challenges: "Avoids conflict • Hesitant to say no • Can take on too much",
-      comm: "Warm, collaborative, reassuring communication.",
-      stress: "May withdraw, defer decisions, or people-please under pressure."
+      summary: "Supportive, steady, and relationship-focused. You value harmony, trust, and cooperation.",
+      strengths: "Patient • Loyal • Supportive • Team-oriented",
+      challenges: "Avoids conflict • Difficulty saying no • Internalizes stress",
+      comm: "Warm, collaborative, reassuring.",
+      stress: "May withdraw or people-please."
     },
     Expressive: {
-      summary: "Energetic, persuasive, and idea-driven. You thrive on connection, momentum, and influencing outcomes.",
-      strengths: "Engaging • Optimistic • Persuasive • Creative",
-      challenges: "Impulsive • May miss details • Can over-commit",
-      comm: "Animated, story-driven, big-picture communication.",
-      stress: "May become scattered or reactive under pressure."
+      summary: "Enthusiastic, social, and idea-driven. You value connection, recognition, and inspiration.",
+      strengths: "Energetic • Optimistic • Persuasive • Creative",
+      challenges: "Impulsive • Misses details • Can overwhelm",
+      comm: "Open, animated, big-picture.",
+      stress: "May become scattered or dramatic."
     },
     Analytical: {
-      summary: "Thoughtful, precise, and logic-driven. You prioritize accuracy, structure, and informed decision-making.",
-      strengths: "Prepared • Thorough • Data-informed • Risk-aware",
-      challenges: "Overanalyzes • Slower to decide • Can seem distant",
-      comm: "Structured, detailed, evidence-based communication.",
-      stress: "May get stuck in analysis or disengage under pressure."
+      summary: "Thoughtful, precise, and logic-focused. You value accuracy, structure, and understanding.",
+      strengths: "Logical • Accurate • Prepared • Thorough",
+      challenges: "Overthinks • Slow to decide • Can seem detached",
+      comm: "Structured, detailed, data-driven.",
+      stress: "Analysis paralysis or withdrawal."
     }
   };
 
