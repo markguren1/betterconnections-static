@@ -6,354 +6,150 @@
     <title>Application Stories - BetterConnections</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        nav {
-            background: white;
-            padding: 15px 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
+        .stories-section { max-width: 900px; margin: 40px auto; padding: 20px; }
+        .stories-header { margin-bottom: 30px; }
+        .stories-header h2 { font-size: 2em; margin-bottom: 10px; color: #2c3e50; }
+        .stories-header p { color: #555; line-height: 1.6; margin-bottom: 8px; }
+        .cadence-note { font-size: 0.95em; color: #666; font-style: italic; }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav li {
-            list-style: none;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            padding: 8px 15px;
-            border-radius: 6px;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover,
-        nav a.active {
-            background-color: #f0f0f0;
-        }
-
-        .stories-section {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        .stories-header {
-            margin-bottom: 30px;
-        }
-
-        .stories-header h2 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-
-        .stories-header p {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 8px;
-        }
-
-        .cadence-note {
-            font-size: 0.95em;
-            color: #666;
-            font-style: italic;
-        }
-
-        .filter-buttons {
-            display: flex;
-            gap: 10px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
+        .filter-buttons { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
         .filter-btn {
-            padding: 10px 16px;
-            border-radius: 10px;
-            border: 1px solid rgba(0,0,0,0.15);
-            background: transparent;
-            cursor: pointer;
-            font-size: 0.95em;
-            transition: background-color 0.2s;
+            padding: 10px 16px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15);
+            background: transparent; cursor: pointer; font-size: 0.95em;
         }
+        .filter-btn.active, .filter-btn:hover { background-color: rgba(0,0,0,0.08); }
 
-        .filter-btn:hover,
-        .filter-btn.active {
-            background-color: rgba(0,0,0,0.08);
-        }
+        .story-pack { border: 1px solid rgba(0,0,0,0.15); border-radius: 14px; padding: 20px; margin-bottom: 20px; }
+        .story-pack.hidden { display: none; }
 
-        .story-pack {
-            border: 1px solid rgba(0,0,0,0.15);
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
+        .pack-header { cursor: pointer; user-select: none; }
+        .pack-title { font-size: 1.3em; font-weight: 600; color: #2c3e50; margin-bottom: 8px; }
+        .pack-tagline { color: #666; font-style: italic; margin-bottom: 4px; }
+        .pack-story-count { font-size: 0.9em; color: #888; }
 
-        .story-pack.hidden {
-            display: none;
-        }
+        .pack-content { display: none; margin-top: 20px; }
+        .pack-content.expanded { display: block; }
 
-        .pack-header {
-            cursor: pointer;
-            user-select: none;
-        }
+        .pack-goal { margin-bottom: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px; }
+        .story-item { border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 16px; margin-bottom: 15px; background-color: #fafafa; }
 
-        .pack-title {
-            font-size: 1.3em;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-
-        .pack-tagline {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 4px;
-        }
-
-        .pack-story-count {
-            font-size: 0.9em;
-            color: #888;
-        }
-
-        .pack-content {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .pack-content.expanded {
-            display: block;
-        }
-
-        .pack-goal {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .pack-goal strong {
-            color: #2c3e50;
-        }
-
-        .story-item {
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 15px;
-            background-color: #fafafa;
-        }
-
-        .story-title {
-            font-weight: 600;
-            font-size: 1.1em;
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-
-        .story-types {
-            font-size: 0.9em;
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        .story-scenario,
-        .story-takeaway {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-
-        .story-scenario strong,
-        .story-takeaway strong {
-            color: #2c3e50;
-        }
+        .story-title { font-weight: 600; font-size: 1.1em; color: #2c3e50; margin-bottom: 8px; }
+        .story-types { font-size: 0.9em; color: #666; margin-bottom: 10px; }
+        .story-scenario, .story-takeaway { margin-bottom: 10px; line-height: 1.6; }
     </style>
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="quiz.html">Personality Quiz</a></li>
-            <li><a href="results.html">Results</a></li>
-            <li><a href="deep-dive.html">Deep Dive</a></li>
-            <li><a href="hot-buttons.html">Hot Buttons</a></li>
-            <li><a href="compatibility.html">Compatibility</a></li>
-            <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
-            <li><a href="application-stories.html" class="active">Application Stories</a></li>
-            <li><a href="learning-quiz.html">Learning Quiz</a></li>
-            <li><a href="wrap-up.html">Wrap-Up</a></li>
-        </ul>
+        <div class="container">
+            <div class="nav-brand">BetterConnections</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quiz.html">Personality Quiz</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="deep-dive.html">Deep Dive</a></li>
+                <li><a href="hot-buttons.html">Hot Buttons</a></li>
+                <li><a href="compatibility.html">Compatibility</a></li>
+                <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
+                <li><a class="active" href="application-stories.html">Application Stories</a></li>
+                <li><a href="learning-quiz.html">Learning Quiz</a></li>
+                <li><a href="wrap-up.html">Wrap-Up</a></li>
+            </ul>
+        </div>
     </nav>
 
     <section class="stories-section">
         <div class="stories-header">
             <h2>Application Stories</h2>
-            <p>Short, relatable scenarios that show how personality differences play out in real school life.</p>
-            <p class="cadence-note">Cadence: <strong>monthly</strong> — Application Stories are delivered monthly (not weekly) to protect quality, usability, and long-term reuse for PD.</p>
+            <p>Short, real-world scenarios showing how personality differences show up in work, leadership, interviews, and high-stakes conversations.</p>
+            <p class="cadence-note">Cadence: <strong>Monthly</strong> — released monthly to preserve quality and practical reuse.</p>
         </div>
 
         <div class="filter-buttons">
             <button class="filter-btn active" data-filter="All">All</button>
-            <button class="filter-btn" data-filter="Parents">Parents</button>
-            <button class="filter-btn" data-filter="Students">Students</button>
-            <button class="filter-btn" data-filter="Staff">Staff</button>
+            <button class="filter-btn" data-filter="Leadership">Leadership</button>
+            <button class="filter-btn" data-filter="Teams">Teams</button>
+            <button class="filter-btn" data-filter="Interviews">Interviews</button>
         </div>
 
-        <!-- Month 1: Miscommunication with Parents -->
-        <div class="story-pack" data-category="Parents">
+        <!-- Month 1 -->
+        <div class="story-pack" data-category="Leadership">
             <div class="pack-header" onclick="togglePack(this)">
-                <div class="pack-title">Month 1: Miscommunication with Parents</div>
+                <div class="pack-title">Month 1: Leadership Misalignment</div>
                 <div class="pack-tagline">I said the right thing… but it landed wrong.</div>
                 <div class="pack-story-count">4 stories</div>
             </div>
             <div class="pack-content">
-                <div class="pack-goal">
-                    <strong>Goal:</strong> Help teachers recognize how personality mismatches escalate parent tension and how to reframe communication so it lands well.
-                </div>
+                <div class="pack-goal"><strong>Goal:</strong> Show how mismatched styles between leaders and reports create friction — and how to adjust tone, structure, and pacing.</div>
 
                 <div class="story-item">
                     <div class="story-title">The Data Dump That Backfired</div>
-                    <div class="story-types"><strong>Types involved:</strong> Analytical teacher → Expressive parent</div>
-                    <div class="story-scenario"><strong>Scenario:</strong> A teacher sends a long, detailed email with dates, rubrics, and step-by-step explanations. The parent feels overwhelmed, misses the key point, and responds emotionally.</div>
-                    <div class="story-takeaway"><strong>Key takeaway:</strong> Match depth and structure to the receiver. Start with the main point and a supportive tone before adding details.</div>
+                    <div class="story-types"><strong>Types involved:</strong> Analytical leader → Expressive team member</div>
+                    <div class="story-scenario"><strong>Scenario:</strong> A long, detailed update overwhelms the recipient and triggers emotion instead of clarity.</div>
+                    <div class="story-takeaway"><strong>Key takeaway:</strong> Lead with the headline and intent. Add details after connection.</div>
                 </div>
 
                 <div class="story-item">
-                    <div class="story-title">The Too-Brief Update</div>
-                    <div class="story-types"><strong>Types involved:</strong> Driver parent → Amiable teacher</div>
-                    <div class="story-scenario"><strong>Scenario:</strong> A parent receives a short email: 'He's missing work. Please have him complete it by Friday.' The parent hears it as cold or dismissive and assumes the teacher is judging their family.</div>
-                    <div class="story-takeaway"><strong>Key takeaway:</strong> Drivers want clarity and action, but not coldness. Add one line of collaboration and shared goals.</div>
-                </div>
-
-                <div class="story-item">
-                    <div class="story-title">"I Thought We Agreed…"</div>
-                    <div class="story-types"><strong>Types involved:</strong> Amiable parent → Driver teacher</div>
-                    <div class="story-scenario"><strong>Scenario:</strong> In a conference, the parent nods, smiles, and says 'That sounds good.' The teacher assumes agreement. Later, the parent is upset because they thought it was only a suggestion.</div>
-                    <div class="story-takeaway"><strong>Key takeaway:</strong> Amiable politeness can be mistaken for consent. Confirm the plan explicitly: who will do what, by when.</div>
-                </div>
-
-                <div class="story-item">
-                    <div class="story-title">The Email That Triggered Defensiveness</div>
-                    <div class="story-types"><strong>Types involved:</strong> Expressive parent → Analytical teacher</div>
-                    <div class="story-scenario"><strong>Scenario:</strong> A parent writes emotionally: 'I feel like you're not seeing my child.' The teacher responds with facts and data only. The parent feels dismissed and escalates.</div>
-                    <div class="story-takeaway"><strong>Key takeaway:</strong> Emotion first, explanation second. Acknowledge feelings before sharing details and next steps.</div>
+                    <div class="story-title">The Too-Brief Direction</div>
+                    <div class="story-types"><strong>Types involved:</strong> Driver leader → Amiable report</div>
+                    <div class="story-scenario"><strong>Scenario:</strong> A short directive lands as cold or dismissive.</div>
+                    <div class="story-takeaway"><strong>Key takeaway:</strong> Add one line of shared goal or support.</div>
                 </div>
             </div>
         </div>
 
-        <!-- Month 2: Student Behavior & Classroom Friction -->
-        <div class="story-pack" data-category="Students">
+        <!-- Month 2 -->
+        <div class="story-pack" data-category="Teams">
             <div class="pack-header" onclick="togglePack(this)">
-                <div class="pack-title">Month 2: Student Behavior & Classroom Friction</div>
-                <div class="pack-tagline">They're not being difficult — they're being different.</div>
+                <div class="pack-title">Month 2: Team Friction</div>
+                <div class="pack-tagline">They’re not being difficult — they’re being different.</div>
                 <div class="pack-story-count">4 stories</div>
             </div>
             <div class="pack-content">
-                <div class="pack-goal">
-                    <strong>Goal:</strong> Help teachers reinterpret student behavior through a personality lens and respond in ways that reduce conflict and increase cooperation.
-                </div>
-
-                <div class="story-item">
-                    <div class="story-title">The Student Who Challenges Everything</div>
-                    <div class="story-types"><strong>Types involved:</strong> Driver student → Analytical teacher</div>
-                    <div class="story-scenario"><strong>Scenario:</strong> A student challenges instructions, debates rules, and pushes back publicly. The teacher doubles down with more explanation and tighter control, and the student pushes harder.</div>
-                    <div class="story-takeaway"><strong>Key takeaway:</strong> Drivers need autonomy framed within structure. Offer choice within boundaries and make expectations short and clear.</div>
-                </div>
-
-                <div class="story-item">
-                    <div class="story-title">The Quiet Student Who Was Misread</div>
-                    <div class="story-types"><strong>Types involved:</strong> Analytical student → Expressive teacher</div>
-                    <div class="story-scenario"><strong>Scenario:</strong> A quiet student rarely participates. The teacher tries enthusiastic engagement, but the student withdraws more. The teacher assumes disengagement.</div>
-                    <div class="story-takeaway"><strong>Key takeaway:</strong> Silence isn't lack of interest. Give analytical students time, preview questions, and allow written participation options.</div>
-                </div>
-
-                <div class="story-item">
-                    <div class="story-title">The Emotional Outburst That Seemed Random</div>
-                    <div class="story-types"><strong>Types involved:</strong> Expressive student → Driver teacher</div>
-                    <div class="story-scenario"><strong>Scenario:</strong> A student has an emotional outburst after a correction. The teacher responds quickly with consequences and a firm tone. The student escalates and shuts down.</div>
-                    <div class="story-takeaway"><strong>Key takeaway:</strong> Expressives need acknowledgment before redirection. Validate the feeling, then guide behavior with calm next steps.</div>
-                </div>
-
-                <div class="story-item">
-                    <div class="story-title">The Student Who Just Wants Everyone Happy</div>
-                    <div class="story-types"><strong>Types involved:</strong> Amiable student → Driver classroom environment</div>
-                    <div class="story-scenario"><strong>Scenario:</strong> A student avoids participating and agrees with others to keep peace. The teacher mistakes it for laziness or lack of confidence.</div>
-                    <div class="story-takeaway"><strong>Key takeaway:</strong> Amiables need relational safety. Encourage voice with gentle check-ins and low-risk ways to contribute.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Month 3: Teacher-to-Teacher & Admin Communication -->
-        <div class="story-pack" data-category="Staff">
-            <div class="pack-header" onclick="togglePack(this)">
-                <div class="pack-title">Month 3: Teacher-to-Teacher & Admin Communication</div>
-                <div class="pack-tagline">Professional conflict without professional damage.</div>
-                <div class="pack-story-count">4 stories</div>
-            </div>
-            <div class="pack-content">
-                <div class="pack-goal">
-                    <strong>Goal:</strong> Show how personality dynamics affect staff relationships, meetings, and follow-ups — so communication stays clear without harming trust.
-                </div>
+                <div class="pack-goal"><strong>Goal:</strong> Reduce unnecessary conflict inside teams by matching communication style to personality style.</div>
 
                 <div class="story-item">
                     <div class="story-title">The Meeting That Went Sideways</div>
-                    <div class="story-types"><strong>Types involved:</strong> Driver admin → Expressive teacher</div>
-                    <div class="story-scenario"><strong>Scenario:</strong> In a meeting, the admin moves quickly to decisions. The teacher feels shut down, becomes emotional, and the meeting turns tense.</div>
-                    <div class="story-takeaway"><strong>Key takeaway:</strong> Sequence matters. Invite input before decisions. Drivers want progress; Expressives need to be heard first.</div>
+                    <div class="story-types"><strong>Types involved:</strong> Driver facilitator → Expressive teammate</div>
+                    <div class="story-scenario"><strong>Scenario:</strong> Decisions move too fast; creative input feels shut down.</div>
+                    <div class="story-takeaway"><strong>Key takeaway:</strong> Invite input before locking decisions.</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Month 3 -->
+        <div class="story-pack" data-category="Interviews">
+            <div class="pack-header" onclick="togglePack(this)">
+                <div class="pack-title">Month 3: Interviews & High-Stakes Conversations</div>
+                <div class="pack-tagline">Same answer — different impact.</div>
+                <div class="pack-story-count">4 stories</div>
+            </div>
+            <div class="pack-content">
+                <div class="pack-goal"><strong>Goal:</strong> Help professionals tailor tone and framing in interviews, negotiations, and performance conversations.</div>
 
                 <div class="story-item">
-                    <div class="story-title">The Email CC'd One Too Many People</div>
-                    <div class="story-types"><strong>Types involved:</strong> Analytical teacher → Amiable colleague</div>
-                    <div class="story-scenario"><strong>Scenario:</strong> A teacher corrects a colleague's mistake via email and CCs a department lead 'for transparency.' The colleague feels embarrassed and resentful.</div>
-                    <div class="story-takeaway"><strong>Key takeaway:</strong> Private reassurance before public clarity. Amiables value relationship safety; address sensitive issues one-on-one first.</div>
-                </div>
-
-                <div class="story-item">
-                    <div class="story-title">The Vague Request That Didn't Get Done</div>
-                    <div class="story-types"><strong>Types involved:</strong> Amiable admin → Driver teacher</div>
-                    <div class="story-scenario"><strong>Scenario:</strong> An admin asks politely: 'When you have a moment, could you consider…?' The teacher doesn't treat it as urgent. The admin feels ignored.</div>
-                    <div class="story-takeaway"><strong>Key takeaway:</strong> Drivers need explicit expectations. Convert vague requests into clear actions, deadlines, and priority level.</div>
-                </div>
-
-                <div class="story-item">
-                    <div class="story-title">"I Thought You Were Upset With Me"</div>
-                    <div class="story-types"><strong>Types involved:</strong> Expressive teacher → Analytical teacher</div>
-                    <div class="story-scenario"><strong>Scenario:</strong> A neutral, brief response is interpreted as anger. The Expressive teacher becomes anxious and over-explains, creating more awkwardness.</div>
-                    <div class="story-takeaway"><strong>Key takeaway:</strong> Neutral isn't negative, but perception matters. Add one human line to reduce misinterpretation and keep trust intact.</div>
+                    <div class="story-title">The Flat Answer</div>
+                    <div class="story-types"><strong>Types involved:</strong> Analytical candidate → Expressive interviewer</div>
+                    <div class="story-scenario"><strong>Scenario:</strong> A precise but emotionally flat answer loses impact.</div>
+                    <div class="story-takeaway"><strong>Key takeaway:</strong> Add one human sentence to build connection.</div>
                 </div>
             </div>
         </div>
     </section>
 
     <script>
-        // Toggle expand/collapse for story packs
         function togglePack(header) {
             const content = header.nextElementSibling;
             content.classList.toggle('expanded');
         }
 
-        // Filter functionality
         const filterButtons = document.querySelectorAll('.filter-btn');
         const storyPacks = document.querySelectorAll('.story-pack');
 
         filterButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Update active button
                 filterButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
                 const filter = btn.getAttribute('data-filter');
-
-                // Show/hide story packs
                 storyPacks.forEach(pack => {
                     if (filter === 'All' || pack.getAttribute('data-category') === filter) {
                         pack.classList.remove('hidden');
