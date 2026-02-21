@@ -33,6 +33,29 @@ h1,h2,h3{margin:0 0 10px} .muted{color:var(--muted)} .small{font-size:.92rem}
 .conf span{position:absolute;width:8px;height:14px;opacity:.9;animation:fall .9s linear forwards}
 @keyframes fall{0%{transform:translateY(-10px) rotate(0)}100%{transform:translateY(120vh) rotate(340deg)}}
 .icon-sparkle::before{content:'✨';margin-right:4px}
+
+nav {
+  background: white;
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 15px;
+  border-radius: 6px;
+}
+nav a.active, nav a:hover { background:#f0f0f0; }
 </style>
 </head>
 <body>
@@ -40,55 +63,76 @@ h1,h2,h3{margin:0 0 10px} .muted{color:var(--muted)} .small{font-size:.92rem}
 <div class="conf" id="confetti"></div>
 
 <nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="quiz.html">Personality Quiz</a></li>
-    <li><a href="results.html">Results</a></li>
-    <li><a href="deep-dive.html">Deep Dive</a></li>
-    <li><a href="hot-buttons.html">Hot Buttons</a></li>
-    <li><a href="compatibility.html">Compatibility</a></li>
-    <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
-    <li><a href="application-stories.html">Application Stories</a></li>
-    <li><a class="active" href="learning-quiz.html">Learning Quiz</a></li>
-    <li><a href="wrap-up.html">Wrap-Up</a></li>
-  </ul>
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="quiz.html">Personality Quiz</a></li>
+  <li><a href="results.html">Results</a></li>
+  <li><a href="deep-dive.html">Deep Dive</a></li>
+  <li><a href="hot-buttons.html">Hot Buttons</a></li>
+  <li><a href="compatibility.html">Compatibility</a></li>
+  <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
+  <li><a href="application-stories.html">Application Stories</a></li>
+  <li><a href="learning-quiz.html" class="active">Learning Quiz</a></li>
+  <li><a href="wrap-up.html">Wrap-Up</a></li>
+</ul>
 </nav>
 
 <main class="wrap">
 <section class="card card-pink">
-  <a href="application-stories.html" class="back">← Back</a>
   <h2 class="icon-sparkle">Learning Quiz</h2>
-  <p class="muted small">Test your understanding! Guess the personality type and learn why.</p>
+  <p class="muted small">Test your understanding! No score — just learning.</p>
 
-  <!-- QUESTIONS -->
-  ${[...Array(10)].map((_,i)=>'').join('')}
+  <!-- 10 QUESTIONS -->
+  <script>
+    const questions = [
+      ["The Restaurant Debate","Friends stalled for 15 minutes choosing food. Casey stood: 'Italian downtown. Reservation for eight.'","Driver","Decisive choice restores momentum."],
+      ["The Last-Minute Trip","Alex snapped the laptop shut: 'Vegas. I'll book it now.'","Driver","Bias for action under pressure."],
+      ["First Date Spreadsheet","Taylor compared cafés — price, noise, reviews — optimizing the choice.","Analytical","Comparison and optimization."],
+      ["Apology With a Chart","After an argument, Jordan sent a note… and a tiny chart.","Analytical","Uses logic to repair."],
+      ["Karaoke Plan","Maya pitched karaoke and wrote everyone's names on a napkin setlist.","Expressive","Energy and social excitement."],
+      ["The Check-In Text","'Made it home? Need anything?' Pat asked before advice.","Amiable","Leads with care."],
+      ["Two-Option Email","'Option A today. Option B next week.'","Driver","Clear options drive action."],
+      ["Pros & Cons Note","Riley listed pros/cons before choosing.","Analytical","Deliberate evaluation."],
+      ["Story First","Sam told a funny story before explaining the task.","Expressive","Leads with narrative and vibe."],
+      ["Include Everyone","'Let’s pick something everyone can afford.'","Amiable","Prioritizes harmony."]
+    ];
+    function checkAnswer(i,t){
+      const f=document.getElementById('f'+i);
+      if(t===questions[i][2]){f.innerHTML="✅ <b>Correct:</b> "+questions[i][2]+" — "+questions[i][3]; confetti();}
+      else{f.innerHTML="❌ <b>Not quite.</b> Correct: "+questions[i][2]+" — "+questions[i][3];}
+    }
+    function confetti(){
+      const root=document.getElementById("confetti");
+      for(let i=0;i<20;i++){
+        const s=document.createElement("span");
+        s.style.left=Math.random()*100+"%";
+        s.style.background=["#ef4444","#3b82f6","#a855f7","#10b981","#f59e0b"][Math.floor(Math.random()*5)];
+        root.appendChild(s); setTimeout(()=>s.remove(),1200);
+      }
+    }
+  </script>
 
-  <div class="row">
-    <button class="btn brand" onclick="window.location.href='wrap-up.html'">Continue to Wrap-Up →</button>
-  </div>
+  <div id="quiz"></div>
 </section>
 </main>
 
 <script>
-const answers = {
-  0:{type:'Driver',why:'Decisive choice restores momentum.'},
-  1:{type:'Driver',why:'Acts quickly under pressure.'},
-  2:{type:'Analytical',why:'Compares details to optimize choice.'},
-  3:{type:'Analytical',why:'Uses data even in emotional moments.'},
-  4:{type:'Expressive',why:'Brings energy and social momentum.'},
-  5:{type:'Amiable',why:'Leads with care before advice.'},
-  6:{type:'Driver',why:'Offers decisive options.'},
-  7:{type:'Analytical',why:'Uses pros/cons and logic.'},
-  8:{type:'Expressive',why:'Leads with story and vibe.'},
-  9:{type:'Amiable',why:'Prioritizes inclusion and comfort.'}
-};
-
-function checkAnswer(q,sel){
-  const f=document.getElementById('feedback-'+q);
-  const c=answers[q];
-  f.innerHTML=(sel===c.type?'✅ <strong>Correct:</strong> ':'❌ <strong>Not quite.</strong> Correct: ')
-    +c.type+' — '+c.why;
-}
+const quiz=document.getElementById("quiz");
+questions.forEach((q,i)=>{
+  quiz.innerHTML+=`
+  <div class="card">
+    <strong>${q[0]}</strong>
+    <p class="muted">${q[1]}</p>
+    <div class="row">
+      <button class="btn brand" onclick="checkAnswer(${i},'Driver')">Driver</button>
+      <button class="btn brand" onclick="checkAnswer(${i},'Analytical')">Analytical</button>
+      <button class="btn brand" onclick="checkAnswer(${i},'Expressive')">Expressive</button>
+      <button class="btn brand" onclick="checkAnswer(${i},'Amiable')">Amiable</button>
+    </div>
+    <div class="small muted" id="f${i}"></div>
+  </div>`;
+});
 </script>
+
 </body>
 </html>
