@@ -1,27 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Personality Quiz</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .question {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 16px;
-      background: #ffffff;
-    }
-    .option { display: block; margin: 8px 0; cursor: pointer; }
-    .progress {
-      border: 1px solid #e5e5e5;
-      border-radius: 10px;
-      padding: 10px 12px;
-      margin: 12px 0 18px;
-      background: #fff;
-      font-size: 14px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 <div class="container">
@@ -33,145 +15,134 @@
   <a href="deep-dive.html">Deep Dive</a>
   <a href="compatibility.html">Compatibility</a>
   <a href="nextgen-assistant.html">NextGen Assistant</a>
-  <a href="wrap-up.html">Wrap-Up</a>
   <a href="learning-quiz.html">Learning Quiz</a>
+  <a href="wrap-up.html">Wrap-Up</a>
 </nav>
 
 <h1>Personality Quiz</h1>
 <p class="sub">
-Answer honestly. There are no right or wrong answers.
+Answer 10 quick questions to discover your dominant personality style.
 </p>
 
-<div class="progress" id="progress">Progress: 0/10 answered</div>
+<form id="quizForm" class="card">
 
-<form id="quizForm">
-
-  <div class="question">
-    <p><strong>1. In a group, you usually:</strong></p>
-    <label class="option"><input type="radio" name="q1" value="Driver"> Take charge and move things forward</label>
-    <label class="option"><input type="radio" name="q1" value="Amiable"> Make sure everyone feels included</label>
-    <label class="option"><input type="radio" name="q1" value="Expressive"> Bring energy and ideas</label>
-    <label class="option"><input type="radio" name="q1" value="Analytical"> Think things through carefully</label>
+  <div class="q">
+    <p><strong>1. In a group project, you usually:</strong></p>
+    <label><input type="radio" name="q1" value="Driver"> Take charge and move things forward</label><br>
+    <label><input type="radio" name="q1" value="Analytical"> Plan carefully and analyze options</label><br>
+    <label><input type="radio" name="q1" value="Expressive"> Energize the group with ideas</label><br>
+    <label><input type="radio" name="q1" value="Amiable"> Make sure everyone feels included</label>
   </div>
 
-  <div class="question">
-    <p><strong>2. When there is conflict, you tend to:</strong></p>
-    <label class="option"><input type="radio" name="q2" value="Driver"> Address it directly and resolve it fast</label>
-    <label class="option"><input type="radio" name="q2" value="Amiable"> Try to keep harmony and reduce tension</label>
-    <label class="option"><input type="radio" name="q2" value="Expressive"> Talk it out openly and express feelings</label>
-    <label class="option"><input type="radio" name="q2" value="Analytical"> Step back and analyze what caused it</label>
+  <div class="q">
+    <p><strong>2. Under pressure, you tend to:</strong></p>
+    <label><input type="radio" name="q2" value="Driver"> Decide quickly</label><br>
+    <label><input type="radio" name="q2" value="Analytical"> Gather more data</label><br>
+    <label><input type="radio" name="q2" value="Expressive"> Talk it through</label><br>
+    <label><input type="radio" name="q2" value="Amiable"> Check how others are feeling</label>
   </div>
 
-  <div class="question">
-    <p><strong>3. You are most comfortable when:</strong></p>
-    <label class="option"><input type="radio" name="q3" value="Driver"> Goals are clear and moving fast</label>
-    <label class="option"><input type="radio" name="q3" value="Amiable"> People are cooperative and respectful</label>
-    <label class="option"><input type="radio" name="q3" value="Expressive"> Things are upbeat, social, and fun</label>
-    <label class="option"><input type="radio" name="q3" value="Analytical"> Plans and details are clear and logical</label>
+  <div class="q">
+    <p><strong>3. You prefer communication that is:</strong></p>
+    <label><input type="radio" name="q3" value="Driver"> Direct and brief</label><br>
+    <label><input type="radio" name="q3" value="Analytical"> Detailed and precise</label><br>
+    <label><input type="radio" name="q3" value="Expressive"> Warm and engaging</label><br>
+    <label><input type="radio" name="q3" value="Amiable"> Kind and supportive</label>
   </div>
 
-  <div class="question">
-    <p><strong>4. When making decisions, you usually:</strong></p>
-    <label class="option"><input type="radio" name="q4" value="Driver"> Decide quickly and adjust later</label>
-    <label class="option"><input type="radio" name="q4" value="Amiable"> Consider how it affects people first</label>
-    <label class="option"><input type="radio" name="q4" value="Expressive"> Go with what feels exciting or inspiring</label>
-    <label class="option"><input type="radio" name="q4" value="Analytical"> Weigh evidence carefully and reduce risk</label>
+  <div class="q">
+    <p><strong>4. When making decisions, you value:</strong></p>
+    <label><input type="radio" name="q4" value="Driver"> Speed and results</label><br>
+    <label><input type="radio" name="q4" value="Analytical"> Accuracy and logic</label><br>
+    <label><input type="radio" name="q4" value="Expressive"> Creativity and vision</label><br>
+    <label><input type="radio" name="q4" value="Amiable"> Harmony and buy-in</label>
   </div>
 
-  <div class="question">
+  <div class="q">
     <p><strong>5. Others often describe you as:</strong></p>
-    <label class="option"><input type="radio" name="q5" value="Driver"> Bold, confident, and decisive</label>
-    <label class="option"><input type="radio" name="q5" value="Amiable"> Kind, loyal, and patient</label>
-    <label class="option"><input type="radio" name="q5" value="Expressive"> Enthusiastic, expressive, and friendly</label>
-    <label class="option"><input type="radio" name="q5" value="Analytical"> Thoughtful, precise, and logical</label>
+    <label><input type="radio" name="q5" value="Driver"> Bold</label><br>
+    <label><input type="radio" name="q5" value="Analytical"> Thoughtful</label><br>
+    <label><input type="radio" name="q5" value="Expressive"> Enthusiastic</label><br>
+    <label><input type="radio" name="q5" value="Amiable"> Caring</label>
   </div>
 
-  <div class="question">
-    <p><strong>6. In a new situation, you prefer to:</strong></p>
-    <label class="option"><input type="radio" name="q6" value="Driver"> Jump in and lead the way</label>
-    <label class="option"><input type="radio" name="q6" value="Amiable"> Build trust and connect with others first</label>
-    <label class="option"><input type="radio" name="q6" value="Expressive"> Meet people and explore possibilities</label>
-    <label class="option"><input type="radio" name="q6" value="Analytical"> Observe and understand before acting</label>
+  <div class="q">
+    <p><strong>6. In conflict, you tend to:</strong></p>
+    <label><input type="radio" name="q6" value="Driver"> Confront directly</label><br>
+    <label><input type="radio" name="q6" value="Analytical"> Analyze what went wrong</label><br>
+    <label><input type="radio" name="q6" value="Expressive"> Express feelings openly</label><br>
+    <label><input type="radio" name="q6" value="Amiable"> Try to smooth things over</label>
   </div>
 
-  <div class="question">
-    <p><strong>7. Under stress, you're most likely to:</strong></p>
-    <label class="option"><input type="radio" name="q7" value="Driver"> Become more forceful and impatient</label>
-    <label class="option"><input type="radio" name="q7" value="Amiable"> Withdraw or avoid conflict</label>
-    <label class="option"><input type="radio" name="q7" value="Expressive"> Talk more and seek reassurance</label>
-    <label class="option"><input type="radio" name="q7" value="Analytical"> Overthink and focus on details</label>
+  <div class="q">
+    <p><strong>7. You feel most productive when:</strong></p>
+    <label><input type="radio" name="q7" value="Driver"> Moving fast toward goals</label><br>
+    <label><input type="radio" name="q7" value="Analytical"> Working through details</label><br>
+    <label><input type="radio" name="q7" value="Expressive"> Collaborating and brainstorming</label><br>
+    <label><input type="radio" name="q7" value="Amiable"> Supporting others</label>
   </div>
 
-  <div class="question">
-    <p><strong>8. Your communication style is usually:</strong></p>
-    <label class="option"><input type="radio" name="q8" value="Driver"> Direct and to the point</label>
-    <label class="option"><input type="radio" name="q8" value="Amiable"> Warm and supportive</label>
-    <label class="option"><input type="radio" name="q8" value="Expressive"> Animated and story-driven</label>
-    <label class="option"><input type="radio" name="q8" value="Analytical"> Clear, structured, and specific</label>
+  <div class="q">
+    <p><strong>8. Your biggest strength is:</strong></p>
+    <label><input type="radio" name="q8" value="Driver"> Getting things done</label><br>
+    <label><input type="radio" name="q8" value="Analytical"> Getting things right</label><br>
+    <label><input type="radio" name="q8" value="Expressive"> Getting people excited</label><br>
+    <label><input type="radio" name="q8" value="Amiable"> Getting people aligned</label>
   </div>
 
-  <div class="question">
-    <p><strong>9. You're most motivated by:</strong></p>
-    <label class="option"><input type="radio" name="q9" value="Driver"> Winning, achieving, and results</label>
-    <label class="option"><input type="radio" name="q9" value="Amiable"> Belonging, helping, and stability</label>
-    <label class="option"><input type="radio" name="q9" value="Expressive"> Recognition, excitement, and connection</label>
-    <label class="option"><input type="radio" name="q9" value="Analytical"> Accuracy, mastery, and understanding</label>
+  <div class="q">
+    <p><strong>9. Your biggest challenge is:</strong></p>
+    <label><input type="radio" name="q9" value="Driver"> Impatience</label><br>
+    <label><input type="radio" name="q9" value="Analytical"> Overthinking</label><br>
+    <label><input type="radio" name="q9" value="Expressive"> Losing focus</label><br>
+    <label><input type="radio" name="q9" value="Amiable"> Avoiding conflict</label>
   </div>
 
-  <div class="question">
-    <p><strong>10. A strong day for you feels like:</strong></p>
-    <label class="option"><input type="radio" name="q10" value="Driver"> You got a lot done</label>
-    <label class="option"><input type="radio" name="q10" value="Amiable"> You supported someone and kept peace</label>
-    <label class="option"><input type="radio" name="q10" value="Expressive"> You had fun and connected with people</label>
-    <label class="option"><input type="radio" name="q10" value="Analytical"> You solved a problem or learned something</label>
+  <div class="q">
+    <p><strong>10. If friends describe you in one word:</strong></p>
+    <label><input type="radio" name="q10" value="Driver"> Decisive</label><br>
+    <label><input type="radio" name="q10" value="Analytical"> Logical</label><br>
+    <label><input type="radio" name="q10" value="Expressive"> Fun</label><br>
+    <label><input type="radio" name="q10" value="Amiable"> Supportive</label>
   </div>
 
-  <button type="button" onclick="calculateResult()">View Results</button>
+  <div class="btnRow" style="margin-top:20px;">
+    <button type="submit" class="button">See My Results →</button>
+  </div>
+
 </form>
 
 </div>
 
 <script>
-  function updateProgress() {
-    const inputs = document.querySelectorAll('#quizForm input[type="radio"]');
-    const questionNames = [...new Set([...inputs].map(i => i.name))];
-    let answered = 0;
-    for (const q of questionNames) {
-      if (document.querySelector(`input[name="${q}"]:checked`)) answered++;
+document.getElementById("quizForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const scores = { Driver:0, Analytical:0, Expressive:0, Amiable:0 };
+
+  for (let i = 1; i <= 10; i++) {
+    const q = document.querySelector('input[name="q' + i + '"]:checked');
+    if (!q) {
+      alert("Please answer all 10 questions.");
+      return;
     }
-    document.getElementById("progress").textContent =
-      `Progress: ${answered}/${questionNames.length} answered`;
+    scores[q.value]++;
   }
-  document.addEventListener("change", function(e) {
-    if (e.target && e.target.matches('#quizForm input[type="radio"]')) updateProgress();
-  });
-  updateProgress();
 
-  function calculateResult() {
-    const types = ["Driver", "Amiable", "Expressive", "Analytical"];
-    const scores = { Driver: 0, Amiable: 0, Expressive: 0, Analytical: 0 };
-
-    const inputs = document.querySelectorAll('#quizForm input[type="radio"]');
-    const questionNames = [...new Set([...inputs].map(i => i.name))];
-
-    for (const q of questionNames) {
-      const selected = document.querySelector(`input[name="${q}"]:checked`);
-      if (!selected) { alert("Please answer all questions."); return; }
-      scores[selected.value]++;
+  let topType = "Driver";
+  let max = 0;
+  for (const type in scores) {
+    if (scores[type] > max) {
+      max = scores[type];
+      topType = type;
     }
-
-    let topType = types[0];
-    let topScore = scores[topType];
-    for (const t of types) {
-      if (scores[t] > topScore) { topScore = scores[t]; topType = t; }
-    }
-
-    localStorage.setItem("bc_personality_type", topType);
-    localStorage.setItem("bc_personality_scores", JSON.stringify(scores));
-
-    window.location.href =
-      `results.html?type=${encodeURIComponent(topType)}&scores=${encodeURIComponent(JSON.stringify(scores))}`;
   }
+
+  localStorage.setItem("bc_personality_type", topType);
+  localStorage.setItem("bc_personality_scores", JSON.stringify(scores));
+
+  window.location.href = "results.html";
+});
 </script>
 
 </body>
