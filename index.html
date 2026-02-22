@@ -1,259 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BetterConnections - Build Better Professional Relationships Through Personality Understanding</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        nav {
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .nav-brand {
-            font-size: 1.5em;
-            font-weight: 900;
-            color: #7c3aed;
-            padding: 15px 0;
-        }
-        .nav-links {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 5px;
-        }
-        .nav-links li { margin: 0; }
-        .nav-links a {
-            display: block;
-            padding: 15px 12px;
-            color: #4b5563;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9em;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: #7c3aed; }
-        .nav-links a.active {
-            color: #7c3aed;
-            border-bottom: 2px solid #7c3aed;
-        }
-        :root {
-            --primary-purple: #a78bfa;
-            --light-purple: #e9d5ff;
-            --accent-purple: #c4b5fd;
-        }
-        .hero {
-            background: linear-gradient(135deg, var(--light-purple) 0%, #fae8ff 100%);
-            padding: 60px 20px;
-            text-align: center;
-            border-radius: 12px;
-            margin-bottom: 40px;
-        }
-        .hero h1 {
-            color: #7c3aed;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 1.2em;
-            color: #6b21a8;
-            max-width: 800px;
-            margin: 0 auto 30px;
-        }
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary-purple), #8b5cf6);
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: transform 0.2s;
-        }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
-        }
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-        .feature-card {
-            background: #ffffff;
-            border: 2px solid var(--light-purple);
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
-            box-shadow: 0 2px 8px rgba(167, 139, 250, 0.1);
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(167, 139, 250, 0.2);
-            border-color: var(--primary-purple);
-        }
-        .feature-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-        }
-        .feature-card h3 {
-            color: #7c3aed;
-            font-size: 1.3em;
-            margin-bottom: 15px;
-        }
-        .feature-card p {
-            color: #6b7280;
-            line-height: 1.6;
-        }
-        .reviewer-path {
-            background: linear-gradient(135deg, #f3e8ff 0%, #fae8ff 100%);
-            padding: 40px;
-            border-radius: 12px;
-            margin: 40px 0;
-            border: 2px solid var(--accent-purple);
-        }
-        .reviewer-path h2 {
-            color: #7c3aed;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .path-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .path-step {
-            background: #ffffff;
-            padding: 15px 20px;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-purple);
-            transition: all 0.2s;
-        }
-        .path-step:hover {
-            transform: translateX(5px);
-            border-left-color: #8b5cf6;
-        }
-        .path-step a {
-            color: #7c3aed;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1em;
-        }
-        .back-button {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #7c3aed;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-        .back-button:hover { color: #6d28d9; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Back in the Game – The Winning Edge System</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      background: #ffffff;
+      color: #111;
+    }
+    nav {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-brand {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #0f3c7a;
+    }
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      margin-top: 40px;
+    }
+    p {
+      line-height: 1.6;
+      color: #444;
+      font-size: 1.1rem;
+    }
+    ul, ol {
+      padding-left: 20px;
+      line-height: 1.6;
+    }
+    .cta {
+      margin-top: 40px;
+      padding: 24px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      background: #f9fafb;
+    }
+    .cta a {
+      display: inline-block;
+      margin-top: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      color: #0f3c7a;
+    }
+    footer {
+      margin-top: 80px;
+      padding: 30px 20px;
+      border-top: 1px solid #e5e7eb;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
 </head>
+
 <body>
-    <nav>
-        <div class="container">
-            <div class="nav-brand">BetterConnections</div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="quiz.html">Personality Quiz</a></li>
-                <li><a href="results.html">Results</a></li>
-                <li><a href="deep-dive.html">Deep Dive</a></li>
-                <li><a href="hot-buttons.html">Hot Buttons</a></li>
-                <li><a href="compatibility.html">Compatibility</a></li>
-                <li><a href="nextgen-assistant.html">NextGen Assistant</a></li>
-                <li><a href="application-stories.html">Application Stories</a></li>
-                <li><a href="learning-quiz.html">Learning Quiz</a></li>
-                <li><a href="wrap-up.html">Wrap-Up</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <div class="container">
-        <div class="hero">
-            <h1>✨ Navigate Work, Interviews, and AI with Clarity</h1>
-            <p>BetterConnections blends personality psychology with AI-assisted structure to help professionals communicate clearly, confidently, and effectively across work, interviews, and career transitions.</p>
-            <p><strong>This isn’t theory.</strong> It’s a practical system for building trust, reducing friction, and standing out in high-stakes professional moments.</p>
-            <a href="quiz.html" class="cta-button">Start with the Quiz →</a>
-        </div>
+  <nav>
+    <div class="nav-container">
+      <div class="nav-brand">Get Back in the Game</div>
+    </div>
+  </nav>
 
-        <div class="feature-grid">
-            <div class="feature-card" onclick="window.location.href='parent-emails.html'" style="cursor: pointer;">
-                <div class="feature-icon">📧</div>
-                <h3>Professional Emails</h3>
-                <p>Write clear, persuasive emails that build trust with colleagues, managers, and clients.</p>
-            </div>
+  <main class="container">
 
-            <div class="feature-card" onclick="window.location.href='student-behavior.html'" style="cursor: pointer;">
-                <div class="feature-icon">🎯</div>
-                <h3>Difficult Conversations</h3>
-                <p>Handle tense conversations and feedback with confidence using personality-aware strategies.</p>
-            </div>
+    <h1>Get Back in the Game</h1>
+    <p>
+      A practical system to help professionals reposition, reconnect, and compete
+      in an AI-reshaped job market.
+    </p>
 
-            <div class="feature-card" onclick="window.location.href='ieps.html'" style="cursor: pointer;">
-                <div class="feature-icon">📋</div>
-                <h3>High-Stakes Meetings</h3>
-                <p>Prepare for interviews, negotiations, and critical meetings with structured communication.</p>
-            </div>
+    <h2>Start Here</h2>
+    <p>
+      This isn’t hype. This is a working system.
+      Use the Playbook for strategy, then apply it with the three prep tools below.
+    </p>
 
-            <div class="feature-card" onclick="window.location.href='lesson-planning.html'" style="cursor: pointer;">
-                <div class="feature-icon">📚</div>
-                <h3>Team Planning</h3>
-                <p>Design plans and workflows that align with different working styles and motivations.</p>
-            </div>
+    <ol>
+      <li><strong>Read the Playbook</strong> – Get clarity on how to reposition yourself.</li>
+      <li><strong>BetterYou</strong> – Get mentally ready to act.</li>
+      <li><strong>BetterConnections</strong> – Build trust and rapport in minutes.</li>
+      <li><strong>AgentClarity</strong> – Partner with AI for better results.</li>
+    </ol>
 
-            <div class="feature-card" onclick="window.location.href='grading-feedback.html'" style="cursor: pointer;">
-                <div class="feature-icon">✏️</div>
-                <h3>Performance Feedback</h3>
-                <p>Deliver feedback in a way that motivates different personality styles to improve.</p>
-            </div>
-
-            <div class="feature-card" onclick="window.location.href='admin-relations.html'" style="cursor: pointer;">
-                <div class="feature-icon">🤝</div>
-                <h3>Leadership & Stakeholders</h3>
-                <p>Communicate effectively with leaders and stakeholders based on their communication style.</p>
-            </div>
-        </div>
-
-        <div class="reviewer-path">
-            <h2>📍 Reviewer Path</h2>
-            <div class="path-steps">
-                <div class="path-step"><a href="quiz.html">1. Take the Personality Quiz →</a></div>
-                <div class="path-step"><a href="results.html">2. Review Results →</a></div>
-                <div class="path-step"><a href="deep-dive.html">3. Explore Deep Dive →</a></div>
-                <div class="path-step"><a href="hot-buttons.html">4. Learn Hot Buttons →</a></div>
-                <div class="path-step"><a href="compatibility.html">5. See Compatibility →</a></div>
-                <div class="path-step"><a href="nextgen-assistant.html">6. Experience NextGen Assistant →</a></div>
-                <div class="path-step"><a href="application-stories.html">7. Read Application Stories →</a></div>
-                <div class="path-step"><a href="learning-quiz.html">8. Take Learning Quiz →</a></div>
-                <div class="path-step"><a href="wrap-up.html">9. Wrap-Up →</a></div>
-            </div>
-        </div>
+    <div class="cta">
+      <h2>Jump In</h2>
+      <ul>
+        <li><a href="/betteryou-wrap-up.html">Start with BetterYou</a></li>
+        <li><a href="/index.html">Explore BetterConnections</a></li>
+        <li><a href="/AgentClarity.html">Use AgentClarity</a></li>
+      </ul>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 BetterConnections. All rights reserved.</p>
-            <p>Build better professional relationships through personality understanding.</p>
-        </div>
-    </footer>
+  </main>
+
+  <footer>
+    Get Back in the Game • AI Engineered. Human Inspired.
+  </footer>
+
 </body>
 </html>
